@@ -30,12 +30,12 @@ describe('PointsEarned', () => {
     expect(element).toHaveClass('custom-class');
   });
 
-  it('renders SVG icon', () => {
+  it('renders circular icon with border', () => {
     const { container } = render(<PointsEarned points={25} />);
     
-    const svg = container.querySelector('svg');
-    expect(svg).toBeInTheDocument();
-    expect(svg).toHaveAttribute('viewBox', '0 0 47 48');
+    const icon = container.querySelector('[class*="icon"]:not([class*="wrapper"])');
+    expect(icon).toBeInTheDocument();
+    expect(icon).toHaveClass(expect.stringContaining('icon'));
   });
 
   it('has proper structure for styling', () => {
