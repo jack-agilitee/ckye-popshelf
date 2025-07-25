@@ -1312,7 +1312,14 @@ import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
 />
 
 // Product card example
-function ProductCard({ product }) {
+function ProductCard({ product }: { 
+  product: { 
+    name: string; 
+    rating: number; 
+    reviewCount: number; 
+    price: number; 
+  } 
+}) {
   return (
     <div className="product-card">
       <h3>{product.name}</h3>
@@ -1321,7 +1328,7 @@ function ProductCard({ product }) {
         showCount={true}
         reviewCount={product.reviewCount}
       />
-      <p>${product.price}</p>
+      <p>$\{product.price}</p>
     </div>
   );
 }`}</pre>
