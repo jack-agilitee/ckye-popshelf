@@ -2,83 +2,102 @@
 @import '../../../styles/mixins';
 
 .product-cards {
-  @include flex-column;
   background-color: $white;
   border-radius: $radius-sm;
   box-shadow: $shadow-text-field;
   padding: $spacing-4;
-  position: relative;
   transition: all $transition-base;
 
   // Horizontal variant
   &--horizontal {
+    display: flex;
     flex-direction: row;
     gap: $spacing-3;
     width: $product-cards-horizontal-width;
     height: $product-cards-horizontal-height;
-    align-items: flex-start;
+    align-items: stretch;
 
     .product-cards__image-container {
       width: $product-cards-horizontal-image-size;
       height: $product-cards-horizontal-image-size;
       flex-shrink: 0;
+      align-self: center;
     }
 
-    .product-cards__content {
+    .product-cards__main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-cards__top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .product-cards__info {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: $spacing-1;
-      position: relative;
-      height: 100%;
-      padding-right: 140px; // Space for button and price
     }
 
     .product-cards__name {
       margin: 0;
-      width: 215px;
-      height: 40px;
+      max-width: 215px;
     }
 
     .product-cards__rating {
-      margin-top: $spacing-2;
+      // No special styles needed
     }
 
     .product-cards__color-choices {
-      margin-top: $spacing-1;
+      // No special styles needed
+    }
+
+    .product-cards__price-section {
+      flex-shrink: 0;
+      margin-left: $spacing-3;
     }
 
     .product-cards__price-container {
-      position: absolute;
-      top: 68px;
-      right: 0;
       display: flex;
       align-items: baseline;
       gap: $spacing-2;
       flex-direction: row-reverse;
     }
 
-    .product-cards__button {
-      position: absolute;
-      bottom: 0;
-      right: 0;
+    .product-cards__bottom-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .product-cards__status-section {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-2;
     }
 
     .product-cards__stock-info {
-      position: absolute;
-      bottom: 32px;
-      left: 0;
+      // No special styles needed
     }
 
     .product-cards__fulfillments {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      // No special styles needed
+    }
+
+    .product-cards__button {
+      flex-shrink: 0;
     }
   }
 
   // Vertical variant
   &--vertical {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: $spacing-2;
     width: $product-cards-vertical-width;
@@ -96,6 +115,7 @@
       flex-direction: column;
       gap: $spacing-1;
       align-items: flex-start;
+      flex: 1;
     }
 
     .product-cards__name {

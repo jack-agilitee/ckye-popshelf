@@ -130,11 +130,85 @@ const ProductCards: React.FC<ProductCardsProps> = ({
     );
   };
 
+  if (variant === 'horizontal') {
+    return (
+      <div 
+        className={`
+          ${styles['product-cards']} 
+          ${styles['product-cards--horizontal']} 
+          ${!inStock ? styles['product-cards--out-of-stock'] : ''} 
+          ${className || ''}
+        `}
+      >
+        <div className={styles['product-cards__image-container']}>
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            width={80}
+            height={80}
+            className={styles['product-cards__image']}
+          />
+        </div>
+
+        <div className={styles['product-cards__main-content']}>
+          <div className={styles['product-cards__top-section']}>
+            <div className={styles['product-cards__info']}>
+              <h3 
+                className={styles['product-cards__name']}
+                onClick={handleProductNameClick}
+                role={onProductClick ? 'button' : undefined}
+                tabIndex={onProductClick ? 0 : undefined}
+                onKeyDown={onProductClick ? (e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleProductNameClick();
+                  }
+                } : undefined}
+                title={name}
+              >
+                {name}
+              </h3>
+              <div className={styles['product-cards__rating']}>
+                <ReviewStars rating={rating} showCount={true} reviewCount={reviewCount} />
+              </div>
+              {colorChoices && colorChoices > 0 && (
+                <div className={styles['product-cards__color-choices']}>
+                  {colorChoices} color choices
+                </div>
+              )}
+            </div>
+            <div className={styles['product-cards__price-section']}>
+              <div className={styles['product-cards__price-container']}>
+                <span className={styles['product-cards__price']}>
+                  {formatPrice(price)}
+                </span>
+                {regularPrice && regularPrice !== price && (
+                  <span className={styles['product-cards__regular-price']}>
+                    reg {formatPrice(regularPrice)}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          
+          <div className={styles['product-cards__bottom-section']}>
+            <div className={styles['product-cards__status-section']}>
+              {renderStockStatus()}
+              {renderFulfillments()}
+            </div>
+            {renderButton()}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Vertical variant
   return (
     <div 
       className={`
         ${styles['product-cards']} 
-        ${styles[`product-cards--${variant}`]} 
+        ${styles['product-cards--vertical']} 
         ${!inStock ? styles['product-cards--out-of-stock'] : ''} 
         ${className || ''}
       `}
@@ -143,8 +217,8 @@ const ProductCards: React.FC<ProductCardsProps> = ({
         <Image
           src={imageUrl}
           alt={imageAlt}
-          width={variant === 'horizontal' ? 80 : 140}
-          height={variant === 'horizontal' ? 80 : 96}
+          width={140}
+          height={96}
           className={styles['product-cards__image']}
         />
       </div>
@@ -189,10 +263,9 @@ const ProductCards: React.FC<ProductCardsProps> = ({
 
         {renderStockStatus()}
         {renderFulfillments()}
-        {variant === 'horizontal' && renderButton()}
       </div>
 
-      {variant === 'vertical' && renderButton()}
+      {renderButton()}
     </div>
   );
 };
