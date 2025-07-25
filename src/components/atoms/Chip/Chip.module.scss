@@ -1,0 +1,82 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.chip {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-1;
+  padding: 9px $spacing-2 7px;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: all $transition-fast;
+  outline: none;
+  
+  // Focus state for accessibility
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba($purple-primary, 0.3);
+  }
+  
+  // Active state
+  &:active {
+    transform: scale(0.95);
+  }
+
+  // Solid variant (default)
+  &--solid {
+    background-color: $purple-primary;
+    color: $white;
+    
+    &:hover {
+      background-color: $purple-dark;
+    }
+  }
+
+  // Outlined variant
+  &--outlined {
+    background-color: $white;
+    color: $purple-primary;
+    border: 1.5px solid $purple-primary;
+    
+    &:hover {
+      background-color: $purple-lightest;
+      border-color: $purple-dark;
+    }
+  }
+
+  // Removable variant (with X icon)
+  &--removable {
+    background-color: $purple-primary;
+    color: $white;
+    padding-left: $spacing-2;
+    padding-right: $spacing-2;
+    
+    &:hover {
+      background-color: $purple-dark;
+    }
+  }
+
+  // Label styling
+  &__label {
+    @include font-semibold;
+    font-size: $font-size-sm;
+    line-height: 16px;
+    display: inline-block;
+  }
+
+  // Icon styling
+  &__icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    
+    // Apply white filter to SVG icon
+    filter: brightness(0) invert(1);
+  }
+}
