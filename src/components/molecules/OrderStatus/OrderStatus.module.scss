@@ -1,0 +1,164 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.order-status {
+  background-color: $white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  position: relative;
+  
+  &__store-info {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-4 $spacing-3;
+  }
+
+  &__icon-wrapper {
+    width: $order-status-icon-size;
+    height: $order-status-icon-size;
+    background-color: $purple-primary;
+    border-radius: $radius-circle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    filter: brightness(0) invert(1); // Make icon white
+  }
+
+  &__store-details {
+    flex: 1;
+    min-width: 0; // Allow text truncation
+  }
+
+  &__store-name {
+    @include body-medium;
+    @include font-medium;
+    color: $black;
+    margin: 0 0 $spacing-1;
+  }
+
+  &__store-address {
+    @include body-medium;
+    @include font-semibold;
+    color: $text-primary;
+    margin: 0 0 $spacing-1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__store-hours {
+    @include body-xs;
+    @include font-semibold;
+    color: $text-secondary;
+    margin: 0;
+  }
+
+  &__edit-button {
+    width: $order-status-edit-icon-size;
+    height: $order-status-edit-icon-size;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity $transition-fast;
+    
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: $spacing-1;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__status-bar {
+    padding: $spacing-4 0;
+    text-align: center;
+    position: relative;
+  }
+
+  &__status-label {
+    @include body-medium;
+    @include font-semibold;
+    color: $black;
+    margin: 0 0 $spacing-2;
+  }
+
+  &__status-text {
+    @include body-medium;
+    @include font-extrabold;
+    color: $text-primary;
+    text-transform: uppercase;
+    margin: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: default;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  // Status variants
+  &--no-order {
+    border: $order-status-border-width solid $order-status-no-order-bg;
+
+    .order-status__status-bar {
+      background-color: $order-status-no-order-bg;
+    }
+  }
+
+  &--received {
+    border: $order-status-border-width solid $order-status-received-bg;
+
+    .order-status__status-bar {
+      background-color: $order-status-received-bg;
+    }
+  }
+
+  &--ready {
+    border: $order-status-border-width solid $order-status-ready-bg;
+
+    .order-status__status-bar {
+      background-color: $order-status-ready-bg;
+    }
+  }
+
+  &--multiple {
+    border: $order-status-border-width solid $order-status-multiple-bg;
+
+    .order-status__status-bar {
+      background-color: $order-status-multiple-bg;
+    }
+
+    .order-status__status-label {
+      @include font-medium;
+    }
+
+    .order-status__status-text {
+      cursor: pointer;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:focus {
+        outline: 2px solid $text-primary;
+        outline-offset: $spacing-1;
+      }
+    }
+  }
+}

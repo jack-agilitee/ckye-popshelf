@@ -8,6 +8,7 @@ import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioBut
 import TextField from '@/components/atoms/TextField/TextField';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
+import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -281,6 +282,59 @@ const CategoryTileDemo = () => {
           selected={selectedCategory === category.id}
         />
       ))}
+    </div>
+  );
+};
+
+const OrderStatusDemo = () => {
+  const storeInfo = {
+    storeName: 'Your store',
+    storeAddress: '315 N Main St, Goodlettsville, TN 37072',
+    closingTime: '9pm'
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* No Order Status */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>No Order</h4>
+        <OrderStatus
+          status={OrderStatusType.NO_ORDER}
+          {...storeInfo}
+          onEdit={() => console.log('Edit store location')}
+        />
+      </div>
+
+      {/* Order Received Status */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Order Received</h4>
+        <OrderStatus
+          status={OrderStatusType.ORDER_RECEIVED}
+          {...storeInfo}
+          onEdit={() => console.log('Edit store location')}
+        />
+      </div>
+
+      {/* Ready to Pickup Status */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Ready to Pickup</h4>
+        <OrderStatus
+          status={OrderStatusType.READY_TO_PICKUP}
+          {...storeInfo}
+          onEdit={() => console.log('Edit store location')}
+        />
+      </div>
+
+      {/* Multiple Orders Status */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Multiple Orders</h4>
+        <OrderStatus
+          status={OrderStatusType.MULTIPLE_ORDERS}
+          {...storeInfo}
+          onEdit={() => console.log('Edit store location')}
+          onViewOrders={() => console.log('View your orders')}
+        />
+      </div>
     </div>
   );
 };
@@ -837,6 +891,85 @@ const CategoryGrid = () => {
         />
       ))}
     </div>
+  );
+};`}</pre>
+                </div>
+              </div>
+              
+              {/* OrderStatus Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>OrderStatus</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/OrderStatus
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <OrderStatusDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Import with enum
+import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
+
+// Basic usage - different status variants
+<OrderStatus
+  status={OrderStatusType.NO_ORDER}
+  storeName="Your store"
+  storeAddress="315 N Main St, Goodlettsville, TN 37072"
+  closingTime="9pm"
+  onEdit={() => handleEditStore()}
+/>
+
+<OrderStatus
+  status={OrderStatusType.ORDER_RECEIVED}
+  storeName="Your store"
+  storeAddress="315 N Main St, Goodlettsville, TN 37072"
+  closingTime="9pm"
+  onEdit={() => handleEditStore()}
+/>
+
+<OrderStatus
+  status={OrderStatusType.READY_TO_PICKUP}
+  storeName="Your store"
+  storeAddress="315 N Main St, Goodlettsville, TN 37072"
+  closingTime="9pm"
+  onEdit={() => handleEditStore()}
+/>
+
+// Multiple orders with view orders callback
+<OrderStatus
+  status={OrderStatusType.MULTIPLE_ORDERS}
+  storeName="Your store"
+  storeAddress="315 N Main St, Goodlettsville, TN 37072"
+  closingTime="9pm"
+  onEdit={() => handleEditStore()}
+  onViewOrders={() => navigateToOrders()}
+/>
+
+// Dynamic status example
+const OrderTracker = () => {
+  const [status, setStatus] = useState(OrderStatusType.NO_ORDER);
+  
+  useEffect(() => {
+    // Subscribe to order updates
+    const unsubscribe = subscribeToOrderStatus((newStatus) => {
+      setStatus(newStatus);
+    });
+    
+    return unsubscribe;
+  }, []);
+  
+  return (
+    <OrderStatus
+      status={status}
+      storeName={store.name}
+      storeAddress={store.address}
+      closingTime={store.closingTime}
+      onEdit={handleEditStore}
+      onViewOrders={status === OrderStatusType.MULTIPLE_ORDERS ? viewOrders : undefined}
+    />
   );
 };`}</pre>
                 </div>
