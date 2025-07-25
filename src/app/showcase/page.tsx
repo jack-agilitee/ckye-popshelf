@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import Button from '@/components/atoms/Button/Button';
 import styles from './page.module.scss';
 
 const ShowcasePage = () => {
@@ -42,11 +45,81 @@ const ShowcasePage = () => {
             </p>
             
             <div className={styles.showcase__grid}>
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Buttons</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Button components will be displayed here
-                </p>
+              {/* Button Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Button</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/Button
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+                    {/* Single-line variants */}
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      <Button onClick={() => console.log('Primary clicked')}>
+                        Primary
+                      </Button>
+                      <Button variant="secondary" onClick={() => console.log('Secondary clicked')}>
+                        Secondary
+                      </Button>
+                      <Button variant="link" onClick={() => console.log('Link clicked')}>
+                        Link Style
+                      </Button>
+                      <Button variant="inactive">
+                        Inactive
+                      </Button>
+                    </div>
+                    
+                    {/* Multi-line variants */}
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      <Button 
+                        multiline
+                        labelTop="Add to Cart"
+                        label="$9.99"
+                        onClick={() => console.log('Add to cart clicked')}
+                      />
+                      <Button 
+                        multiline
+                        variant="secondary"
+                        labelTop="View All"
+                        label="Products"
+                        onClick={() => console.log('View products clicked')}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<Button onClick={handleClick}>
+  Click me
+</Button>
+
+// Variants
+<Button variant="secondary">Secondary</Button>
+<Button variant="link">Link Style</Button>
+<Button variant="inactive">Inactive</Button>
+
+// Multi-line buttons
+<Button 
+  multiline
+  labelTop="Add to Cart"
+  label="$9.99"
+  onClick={handleAddToCart}
+/>
+
+// With custom props
+<Button 
+  type="submit"
+  disabled={isLoading}
+  className="custom-class"
+  ariaLabel="Save and continue"
+>
+  Save & Continue
+</Button>`}</pre>
+                </div>
               </div>
               
               <div className={styles.showcase__placeholder}>
