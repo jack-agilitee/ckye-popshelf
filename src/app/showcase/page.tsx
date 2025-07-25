@@ -1596,16 +1596,14 @@ const ShoppingCart = () => {
             
             <div className={styles.showcase__grid}>
               {/* OrderSummary Component */}
-              <div className={styles.showcase__component}>
+              <div className={styles.showcase__component} style={{ gridColumn: '1 / -1' }}>
                 <h3 className={styles.showcase__componentTitle}>OrderSummary</h3>
                 <p className={styles.showcase__componentDescription}>
                   Order summary with line items, fees, and checkout functionality
                 </p>
                 
-                <div className={styles.showcase__examples}>
-                  {/* Full example with all features */}
-                  <div className={styles.showcase__example}>
-                    <h4 className={styles.showcase__exampleTitle}>Complete Order Summary</h4>
+                <div className={styles.showcase__examples} style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div className={styles.showcase__example} style={{ width: '350px' }}>
                     <OrderSummary
                       originalTotal={7.99}
                       rewards={5.00}
@@ -1616,18 +1614,6 @@ const ShoppingCart = () => {
                       bagFeePerItem={0.10}
                       tax={2.34}
                       orderTotal={12.94}
-                      onProceedToCheckout={() => console.log('Proceed to checkout')}
-                    />
-                  </div>
-
-                  {/* Minimal example */}
-                  <div className={styles.showcase__example}>
-                    <h4 className={styles.showcase__exampleTitle}>Minimal Order Summary</h4>
-                    <OrderSummary
-                      originalTotal={25.00}
-                      subtotal={25.00}
-                      tax={2.00}
-                      orderTotal={27.00}
                       onProceedToCheckout={() => console.log('Proceed to checkout')}
                     />
                   </div>

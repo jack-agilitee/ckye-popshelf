@@ -57,7 +57,7 @@
   &__promo-section {
     display: flex;
     gap: $spacing-3; // 12px (from Figma)
-    align-items: flex-start;
+    align-items: center; // Center align vertically
     padding: $spacing-2 0; // 8px vertical padding (from Figma)
   }
   
