@@ -65,12 +65,18 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
           <Image
             src="/trash.svg"
             alt=""
-            width={14}
-            height={16}
+            width={24}
+            height={24}
             className={styles['quantity-selector__icon']}
           />
         ) : (
-          <div className={styles['quantity-selector__minus']} />
+          <Image
+            src="/minus.svg"
+            alt=""
+            width={24}
+            height={24}
+            className={styles['quantity-selector__icon']}
+          />
         )}
       </button>
 
@@ -85,10 +91,13 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         aria-label="Increase quantity"
         disabled={isAtMax}
       >
-        <div className={styles['quantity-selector__plus']}>
-          <div className={styles['quantity-selector__plus-horizontal']} />
-          <div className={styles['quantity-selector__plus-vertical']} />
-        </div>
+        <Image
+          src="/plus.svg"
+          alt=""
+          width={24}
+          height={24}
+          className={styles['quantity-selector__icon']}
+        />
       </button>
     </div>
   );
