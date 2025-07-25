@@ -14,6 +14,7 @@ import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
 import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker';
 import ProductCard from '@/components/molecules/ProductCard/ProductCard';
+import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import styles from './page.module.scss';
 
@@ -1577,6 +1578,90 @@ const ShoppingCart = () => {
           onIncrement={() => updateQuantity(item.id, item.quantity + 1)}
           onDecrement={() => updateQuantity(item.id, item.quantity - 1)}
           onDelete={() => removeItem(item.id)}
+        />
+      ))}
+    </div>
+  );
+};`}</pre>
+                </div>
+              </div>
+
+              {/* MiniProductCard Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>MiniProductCard</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/MiniProductCard
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    {/* In stock example */}
+                    <MiniProductCard
+                      name="Party Balloon Set"
+                      price={12.99}
+                      imageUrl="/categories/product-balloon.png"
+                      imageAlt="Colorful party balloons"
+                      inStock={true}
+                      onAddToCart={() => console.log('Add to cart: Party Balloon Set')}
+                      onViewDetails={() => console.log('View details: Party Balloon Set')}
+                    />
+                    
+                    {/* Out of stock example */}
+                    <MiniProductCard
+                      name="Unicorn Themed Party Supplies Bundle with Decorations"
+                      price={24.99}
+                      imageUrl="/categories/product-balloon.png"
+                      imageAlt="Unicorn party supplies"
+                      inStock={false}
+                      onAddToCart={() => console.log('Add to cart: Unicorn Bundle')}
+                      onViewDetails={() => console.log('View details: Unicorn Bundle')}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
+
+// In stock product
+<MiniProductCard
+  name="Party Balloon Set"
+  price={12.99}
+  imageUrl="/categories/product-balloon.png"
+  imageAlt="Colorful party balloons"
+  inStock={true}
+  onAddToCart={() => handleAddToCart('balloon-set')}
+  onViewDetails={() => handleViewDetails('balloon-set')}
+/>
+
+// Out of stock product
+<MiniProductCard
+  name="Unicorn Pinata"
+  price={24.99}
+  imageUrl="/categories/product-pinata.png"
+  imageAlt="Rainbow unicorn pinata"
+  inStock={false}
+  onAddToCart={() => handleAddToCart('unicorn-pinata')}
+  onViewDetails={() => handleViewDetails('unicorn-pinata')}
+/>
+
+// Product grid implementation
+const ProductGrid = () => {
+  const { products } = useProducts();
+  
+  return (
+    <div className="product-grid">
+      {products.map((product) => (
+        <MiniProductCard
+          key={product.id}
+          name={product.name}
+          price={product.price}
+          imageUrl={product.image}
+          imageAlt={product.name}
+          inStock={product.stock > 0}
+          onAddToCart={() => addToCart(product.id)}
+          onViewDetails={() => navigateToProduct(product.id)}
         />
       ))}
     </div>

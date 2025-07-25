@@ -33,7 +33,9 @@ $gray-500: #9E9E9E;
 $gray-checkbox-border: #979797; // Used in checkbox border (from Figma)
 $gray-400: #BDBDBD;
 $gray-300: #E3E3E3; // Used in text field border (from Figma)
+$gray-border-light: #F0F0F0; // Used in MiniProductCard border (from Figma)
 $gray-200: #EEEEEE;
+$gray-placeholder: #D9D9D9; // Used for placeholder images (from Figma)
 $gray-100: #F5F5F5;
 $gray-50: #FAFAFA;
 $white: #FFFFFF;
@@ -316,3 +318,10 @@ $order-summary-promo-width: 227px; // Promo input width (from Figma)
 $order-summary-apply-width: 96px; // Apply button width (from Figma)
 $order-summary-proceed-width: 335px; // Proceed button width (from Figma)
 $order-summary-letter-spacing: 0.5333px; // Letter spacing for Avenir Heavy (from Figma)
+
+// MiniProductCard Component
+$mini-product-card-width: 170px; // Card width (updated to prevent text wrap)
+$mini-product-card-image-size: 80px; // Image width and height (from Figma)
+$mini-product-card-button-height: 32px; // Button height (from Figma)
+$mini-product-card-name-width: 154px; // Product name width (adjusted for new card width)
+$mini-product-card-name-height: 32px; // Product name height (from Figma)
