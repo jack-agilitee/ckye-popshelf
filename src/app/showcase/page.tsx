@@ -3,9 +3,93 @@
 import React, { useState } from 'react';
 import Button from '@/components/atoms/Button/Button';
 import Chip from '@/components/atoms/Chip/Chip';
+import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
 import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import styles from './page.module.scss';
+
+const DropdownDemo = () => {
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('electronics');
+  const [selectedShipping, setSelectedShipping] = useState('');
+
+  const sizeOptions: DropdownOption[] = [
+    { value: 'xs', label: 'Extra Small' },
+    { value: 's', label: 'Small' },
+    { value: 'm', label: 'Medium' },
+    { value: 'l', label: 'Large' },
+    { value: 'xl', label: 'Extra Large' },
+  ];
+
+  const categoryOptions: DropdownOption[] = [
+    { value: 'electronics', label: 'Electronics' },
+    { value: 'clothing', label: 'Clothing & Accessories' },
+    { value: 'home', label: 'Home & Garden' },
+    { value: 'toys', label: 'Toys & Games' },
+    { value: 'books', label: 'Books & Media' },
+  ];
+
+  const shippingOptions: DropdownOption[] = [
+    { value: 'standard', label: 'Standard (5-7 days)' },
+    { value: 'express', label: 'Express (2-3 days)' },
+    { value: 'overnight', label: 'Overnight', disabled: true },
+    { value: 'pickup', label: 'Store Pickup' },
+  ];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      {/* Basic dropdown */}
+      <div style={{ maxWidth: '300px' }}>
+        <Dropdown
+          id="size-dropdown"
+          label="Size"
+          placeholder="Select a size"
+          options={sizeOptions}
+          value={selectedSize}
+          onChange={setSelectedSize}
+        />
+      </div>
+
+      {/* Dropdown with pre-selected value */}
+      <div style={{ maxWidth: '300px' }}>
+        <Dropdown
+          id="category-dropdown"
+          label="Category"
+          options={categoryOptions}
+          value={selectedCategory}
+          onChange={setSelectedCategory}
+          required
+        />
+      </div>
+
+      {/* Dropdown with disabled options */}
+      <div style={{ maxWidth: '300px' }}>
+        <Dropdown
+          id="shipping-dropdown"
+          label="Shipping Method"
+          placeholder="Choose shipping"
+          options={shippingOptions}
+          value={selectedShipping}
+          onChange={setSelectedShipping}
+          error={!selectedShipping}
+          errorMessage="Please select a shipping method"
+        />
+      </div>
+
+      {/* Disabled dropdown */}
+      <div style={{ maxWidth: '300px' }}>
+        <Dropdown
+          id="disabled-dropdown"
+          label="Disabled Dropdown"
+          options={sizeOptions}
+          value="m"
+          onChange={() => {}}
+          disabled
+        />
+      </div>
+    </div>
+  );
+};
 
 const RadioButtonSelectorDemo = () => {
   const [selectedValue, setSelectedValue] = useState('option2');
@@ -338,6 +422,76 @@ const RadioGroup = () => {
     </div>
   );
 };`}</pre>
+                </div>
+              </div>
+
+              {/* Dropdown Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Dropdown</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/Dropdown
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <DropdownDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
+
+const options: DropdownOption[] = [
+  { value: 'small', label: 'Small' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'large', label: 'Large' },
+];
+
+<Dropdown
+  id="size"
+  label="Size"
+  options={options}
+  value={selected}
+  onChange={setSelected}
+/>
+
+// With placeholder
+<Dropdown
+  id="category"
+  placeholder="Choose a category"
+  options={categoryOptions}
+  value={category}
+  onChange={setCategory}
+/>
+
+// With disabled options
+const shippingOptions: DropdownOption[] = [
+  { value: 'standard', label: 'Standard' },
+  { value: 'express', label: 'Express' },
+  { value: 'overnight', label: 'Overnight', disabled: true },
+];
+
+// With error state
+<Dropdown
+  id="required-field"
+  label="Required Field"
+  options={options}
+  value={value}
+  onChange={setValue}
+  required
+  error={!value}
+  errorMessage="This field is required"
+/>
+
+// Disabled state
+<Dropdown
+  id="disabled"
+  label="Disabled"
+  options={options}
+  value="medium"
+  disabled
+/>`}</pre>
                 </div>
               </div>
               
