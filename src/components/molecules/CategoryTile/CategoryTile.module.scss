@@ -50,6 +50,8 @@
     overflow: hidden;
     border-radius: $radius-circle;
     margin-bottom: $category-tile-text-spacing;
+    border: $spacing-1 solid $white;
+    background-color: $white;
 
     &::after {
       content: '';
