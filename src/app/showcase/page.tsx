@@ -186,7 +186,7 @@ const RadioButtonSelectorDemo = () => {
   return (
     <div className={styles.showcase__demoLayout}>
       {/* Basic radio group */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '45%' }}>
         <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Basic Radio Group</span>
         <RadioButtonSelector
           id="option1"
@@ -217,7 +217,7 @@ const RadioButtonSelectorDemo = () => {
       </div>
       
       {/* Pricing options */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '45%' }}>
         <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Subscription Plans</span>
         <RadioButtonSelector
           id="basic-plan"
