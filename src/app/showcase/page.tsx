@@ -6,6 +6,7 @@ import Chip from '@/components/atoms/Chip/Chip';
 import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
 import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
 import TextField from '@/components/atoms/TextField/TextField';
+import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -745,6 +746,94 @@ import TextField from '@/components/atoms/TextField/TextField';
   defaultValue=""
   onChange={(value) => console.log('Search:', value)}
 />`}</pre>
+                </div>
+              </div>
+              
+              {/* CartHeader Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>CartHeader</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/CartHeader
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+                    {/* Basic usage */}
+                    <div style={{ width: '100%' }}>
+                      <CartHeader
+                        itemCount={3}
+                        totalPrice={40.64}
+                      />
+                    </div>
+                    
+                    {/* With custom aria label */}
+                    <div style={{ width: '100%' }}>
+                      <CartHeader
+                        itemCount={5}
+                        totalPrice={125.99}
+                        ariaLabel="Shopping cart summary"
+                      />
+                    </div>
+                    
+                    {/* Different currency */}
+                    <div style={{ width: '100%' }}>
+                      <CartHeader
+                        itemCount={10}
+                        totalPrice={89.50}
+                        currencySymbol="€"
+                      />
+                    </div>
+                    
+                    {/* Empty cart */}
+                    <div style={{ width: '100%' }}>
+                      <CartHeader
+                        itemCount={0}
+                        totalPrice={0}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import CartHeader from '@/components/atoms/CartHeader/CartHeader';
+
+<CartHeader
+  itemCount={3}
+  totalPrice={40.64}
+/>
+
+// With custom aria label
+<CartHeader
+  itemCount={5}
+  totalPrice={125.99}
+  ariaLabel="Shopping cart summary"
+/>
+
+// Custom currency
+<CartHeader
+  itemCount={10}
+  totalPrice={89.50}
+  currencySymbol="€"
+/>
+
+// In header layout
+const AppHeader = () => {
+  const { itemCount, totalPrice } = useCart();
+  
+  return (
+    <header className="app-header">
+      <Logo />
+      <Navigation />
+      <CartHeader
+        itemCount={itemCount}
+        totalPrice={totalPrice}
+      />
+    </header>
+  );
+};`}</pre>
                 </div>
               </div>
               
