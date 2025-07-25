@@ -5,9 +5,9 @@
 // ------
 
 // Primary Brand Colors
-$purple-primary: #6B2FA6; // PopShelf primary purple
-$purple-dark: #551F85;
-$purple-light: #8B4FC6;
+$purple-primary: #87189D; // PopShelf primary purple (from Figma)
+$purple-dark: #6B1480; // Darker shade for hover states
+$purple-light: #A542B3; // Lighter shade
 $purple-lightest: #F3E9FB;
 
 // Secondary Colors
@@ -20,15 +20,15 @@ $green-success: #00C853;
 $blue-primary: #2196F3;
 $blue-info: #00B8D4;
 
-// Neutral Colors
+// Neutral Colors (from Figma)
 $black: #000000;
 $gray-900: #212121;
 $gray-800: #424242;
-$gray-700: #616161;
-$gray-600: #757575;
+$gray-700: #474747; // Used in inactive button text
+$gray-600: #757575; // Used in multiline secondary labelTop
 $gray-500: #9E9E9E;
 $gray-400: #BDBDBD;
-$gray-300: #E0E0E0;
+$gray-300: #E6E6E6; // Used in inactive button background
 $gray-200: #EEEEEE;
 $gray-100: #F5F5F5;
 $gray-50: #FAFAFA;

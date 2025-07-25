@@ -1,0 +1,166 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.button {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  padding: 0 $spacing-6;
+  height: 40px;
+  min-width: 80px;
+  transition: all $transition-fast;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  
+  // Focus state for accessibility
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba($purple-primary, 0.3);
+  }
+  
+  // Disabled state for all variants
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    
+    &.button--primary {
+      background-color: $gray-300;
+      color: $gray-700;
+    }
+    
+    &.button--secondary {
+      background-color: $gray-100;
+      color: $gray-500;
+      border-color: $gray-300;
+    }
+    
+    &.button--tertiary {
+      background-color: $gray-100;
+      color: $gray-500;
+      text-decoration: none;
+    }
+  }
+  
+  // Active state
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  // Primary variant
+  &--primary {
+    background-color: $purple-primary;
+    color: $white;
+    
+    &:hover:not(:disabled) {
+      background-color: $purple-dark;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: darken($purple-dark, 5%);
+    }
+  }
+
+  // Secondary variant
+  &--secondary {
+    background-color: $white;
+    color: $purple-primary;
+    border: 1px solid $purple-primary;
+    
+    &:hover:not(:disabled) {
+      background-color: $purple-lightest;
+      border-color: $purple-dark;
+      color: $purple-dark;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: darken($purple-lightest, 3%);
+    }
+  }
+
+  // Tertiary variant
+  &--tertiary {
+    background-color: $white;
+    color: $purple-primary;
+    padding: 0 $spacing-3;
+    min-width: auto;
+    
+    &:hover:not(:disabled) {
+      color: $purple-dark;
+      text-decoration: underline;
+    }
+    
+    &:active:not(:disabled) {
+      color: darken($purple-dark, 10%);
+    }
+    
+    &:focus-visible {
+      box-shadow: none;
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  // Multiline variant modifications
+  &--multiline {
+    height: auto;
+    padding: $spacing-3 $spacing-6;
+    min-height: 52px;
+    
+    .button__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-1;
+    }
+    
+    .button__labelTop {
+      @include body-small;
+      line-height: 1.33;
+      opacity: 0.85;
+    }
+    
+    .button__label {
+      @include body-medium;
+      @include font-semibold;
+      line-height: 1;
+    }
+    
+    // Multiline secondary specific styles
+    &.button--secondary {
+      .button__labelTop {
+        color: $gray-600;
+        opacity: 1;
+      }
+      
+      .button__label {
+        color: $gray-700;
+      }
+      
+      &:hover:not(:disabled) {
+        .button__label {
+          color: $purple-dark;
+        }
+      }
+    }
+  }
+
+  // Label styling
+  &__label {
+    display: inline-block;
+    letter-spacing: 0.3px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__labelTop {
+    display: block;
+  }
+}
