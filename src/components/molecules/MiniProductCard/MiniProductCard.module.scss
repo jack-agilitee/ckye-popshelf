@@ -61,7 +61,7 @@
   }
   
   &__button {
-    width: $mini-product-card-button-width; // 128px
+    width: 100%; // Full width to prevent text wrapping
     height: $mini-product-card-button-height; // 32px
     
     // Override Button styles to match Figma exactly
@@ -69,12 +69,14 @@
     &.button--secondary {
       @include sofia-semibold; // Sofia Semi Bold 14px uppercase
       border-radius: $radius-sm; // 4px
-      padding: 0;
+      padding: 0 $spacing-2; // Add horizontal padding for better text spacing
       height: $mini-product-card-button-height;
       min-height: unset;
+      white-space: nowrap; // Prevent text wrapping
       
       .button__label {
         @include sofia-semibold;
+        white-space: nowrap; // Ensure label doesn't wrap
       }
     }
     

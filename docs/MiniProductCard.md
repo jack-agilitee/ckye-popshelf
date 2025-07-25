@@ -67,9 +67,10 @@ The component displays different button styles based on the `inStock` prop:
 - **Out of Stock (`inStock={false}`)**: Purple outline "VIEW DETAILS" button
 
 ### Responsive Design
-- Fixed width of 160px for consistent grid layouts
+- Fixed width of 170px for consistent grid layouts
 - Product images are 80x80px with cover fit
 - Product names support up to 2 lines with ellipsis for overflow
+- Full-width buttons prevent text wrapping
 
 ### Accessibility
 - Proper alt text for images
@@ -96,10 +97,10 @@ The component uses SCSS modules with BEM methodology:
 ```css
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 16px;
   padding: 16px;
 }
 ```
 
-This creates a responsive grid that adjusts the number of columns based on available space while maintaining the 160px minimum width for each card.
+This creates a responsive grid that adjusts the number of columns based on available space while maintaining the 170px minimum width for each card.

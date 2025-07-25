@@ -320,9 +320,8 @@ $order-summary-proceed-width: 335px; // Proceed button width (from Figma)
 $order-summary-letter-spacing: 0.5333px; // Letter spacing for Avenir Heavy (from Figma)
 
 // MiniProductCard Component
-$mini-product-card-width: 160px; // Card width (from Figma)
+$mini-product-card-width: 170px; // Card width (updated to prevent text wrap)
 $mini-product-card-image-size: 80px; // Image width and height (from Figma)
-$mini-product-card-button-width: 128px; // Button width (from Figma)
 $mini-product-card-button-height: 32px; // Button height (from Figma)
-$mini-product-card-name-width: 144px; // Product name width (from Figma)
+$mini-product-card-name-width: 154px; // Product name width (adjusted for new card width)
 $mini-product-card-name-height: 32px; // Product name height (from Figma)
