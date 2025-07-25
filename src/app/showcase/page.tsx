@@ -7,6 +7,7 @@ import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
 import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
 import TextField from '@/components/atoms/TextField/TextField';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
+import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -250,6 +251,36 @@ const RadioButtonSelectorDemo = () => {
           price="Contact Us"
         />
       </div>
+    </div>
+  );
+};
+
+const CategoryTileDemo = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+
+  const categories = [
+    { id: 'home', name: 'Home & Garden', image: '/categories/category-home.jpg' },
+    { id: 'electronics', name: 'Electronics', image: '/categories/category-electronics.jpg' },
+    { id: 'fashion', name: 'Fashion', image: '/categories/category-fashion.jpg' },
+    { id: 'toys', name: 'Toys & Games', image: '/categories/category-toys.jpg' },
+    { id: 'beauty', name: 'Beauty', image: '/categories/category-beauty.jpg' },
+    { id: 'sports', name: 'Sports', image: '/categories/category-sports.jpg' },
+  ];
+
+  return (
+    <div className={styles.showcase__demoLayout}>
+      {categories.map((category) => (
+        <CategoryTile
+          key={category.id}
+          label={category.name}
+          imageSrc={category.image}
+          onClick={() => {
+            setSelectedCategory(category.id);
+            console.log(`Selected category: ${category.name}`);
+          }}
+          selected={selectedCategory === category.id}
+        />
+      ))}
     </div>
   );
 };
@@ -663,12 +694,6 @@ import TextField from '@/components/atoms/TextField/TextField';
                 </div>
               </div>
               
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Typography</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Typography components will be displayed here
-                </p>
-              </div>
             </div>
           </section>
 
@@ -755,6 +780,63 @@ const CartItem = ({ item }) => {
       onDecrement={() => updateQuantity(item.id, item.quantity - 1)}
       onDelete={() => removeFromCart(item.id)}
     />
+  );
+};`}</pre>
+                </div>
+              </div>
+              
+              {/* CategoryTile Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>CategoryTile</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/CategoryTile
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <CategoryTileDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<CategoryTile
+  label="Home & Garden"
+  imageSrc="/categories/category-home.jpg"
+  onClick={() => console.log('Category selected')}
+/>
+
+// With selected state
+<CategoryTile
+  label="Electronics"
+  imageSrc="/categories/category-electronics.jpg"
+  onClick={() => selectCategory('electronics')}
+  selected={selectedCategory === 'electronics'}
+/>
+
+// Category grid implementation
+const CategoryGrid = () => {
+  const [selectedId, setSelectedId] = useState(null);
+  
+  const categories = [
+    { id: 1, name: 'Home & Garden', image: '/categories/home.jpg' },
+    { id: 2, name: 'Electronics', image: '/categories/electronics.jpg' },
+    { id: 3, name: 'Fashion', image: '/categories/fashion.jpg' },
+    { id: 4, name: 'Toys & Games', image: '/categories/toys.jpg' }
+  ];
+
+  return (
+    <div className="category-grid">
+      {categories.map((category) => (
+        <CategoryTile
+          key={category.id}
+          label={category.name}
+          imageSrc={category.image}
+          onClick={() => setSelectedId(category.id)}
+          selected={selectedId === category.id}
+        />
+      ))}
+    </div>
   );
 };`}</pre>
                 </div>
