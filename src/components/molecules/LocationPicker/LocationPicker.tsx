@@ -26,10 +26,15 @@ const LocationPicker: React.FC<LocationPickerProps> = ({
 }) => {
   return (
     <div className={`${styles['location-picker']} ${className || ''}`}>
-      <div className={styles['location-picker__content']}>
+      <button
+        type="button"
+        className={styles['location-picker__content']}
+        onClick={onEdit}
+        aria-label={editAriaLabel}
+      >
         <span className={styles['location-picker__label']}>{label}</span>
         <span className={styles['location-picker__address']}>{address}</span>
-      </div>
+      </button>
       <button
         type="button"
         className={styles['location-picker__edit-button']}

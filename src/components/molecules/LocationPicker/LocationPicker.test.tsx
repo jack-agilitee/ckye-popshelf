@@ -27,7 +27,7 @@ describe('LocationPicker', () => {
     
     expect(screen.getByText('Picking up at')).toBeInTheDocument();
     expect(screen.getByText('315 N Main St, Atlanta GA')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Edit pickup location' })).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'Edit pickup location' })).toHaveLength(2); // Text button and icon button
   });
 
   it('renders with custom label', () => {
@@ -47,16 +47,36 @@ describe('LocationPicker', () => {
     expect(component).toHaveClass('custom-class');
   });
 
-  it('calls onEdit when edit button is clicked', () => {
+  it('calls onEdit when edit icon button is clicked', () => {
     render(<LocationPicker {...defaultProps} />);
     
-    const editButton = screen.getByRole('button', { name: 'Edit pickup location' });
-    fireEvent.click(editButton);
+    const editButtons = screen.getAllByRole('button', { name: 'Edit pickup location' });
+    const iconButton = editButtons[1]; // Second button is the icon
+    fireEvent.click(iconButton);
     
     expect(defaultProps.onEdit).toHaveBeenCalledTimes(1);
   });
 
-  it('uses custom aria label for edit button', () => {
+  it('calls onEdit when text content is clicked', () => {
+    render(<LocationPicker {...defaultProps} />);
+    
+    const editButtons = screen.getAllByRole('button', { name: 'Edit pickup location' });
+    const textButton = editButtons[0]; // First button contains the text
+    fireEvent.click(textButton);
+    
+    expect(defaultProps.onEdit).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onEdit when clicking on address text', () => {
+    render(<LocationPicker {...defaultProps} />);
+    
+    const addressText = screen.getByText('315 N Main St, Atlanta GA');
+    fireEvent.click(addressText);
+    
+    expect(defaultProps.onEdit).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses custom aria label for edit buttons', () => {
     render(
       <LocationPicker 
         {...defaultProps} 
@@ -64,7 +84,7 @@ describe('LocationPicker', () => {
       />
     );
     
-    expect(screen.getByRole('button', { name: 'Change delivery location' })).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'Change delivery location' })).toHaveLength(2);
   });
 
   it('displays address with underline styling', () => {
@@ -92,13 +112,14 @@ describe('LocationPicker', () => {
     expect(screen.getByText(longAddress)).toBeInTheDocument();
   });
 
-  it('maintains focus on edit button after click', () => {
+  it('maintains focus on clicked button after click', () => {
     render(<LocationPicker {...defaultProps} />);
     
-    const editButton = screen.getByRole('button', { name: 'Edit pickup location' });
-    fireEvent.click(editButton);
+    const editButtons = screen.getAllByRole('button', { name: 'Edit pickup location' });
+    const textButton = editButtons[0];
+    fireEvent.click(textButton);
     
-    expect(document.activeElement).toBe(editButton);
+    expect(document.activeElement).toBe(textButton);
   });
 
   it('has correct structure for label and address', () => {

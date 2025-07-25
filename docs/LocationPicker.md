@@ -56,25 +56,31 @@ import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker
   - Color: #7A7A7A (mapped to $gray-750)
   - Font size: 12px
   - Font weight: 500 (medium)
+  - Line height: 1.5 for better readability when wrapped
 - **Address**: 
   - Color: #1F1F1F (mapped to $black-primary)
   - Font size: 16px
   - Font weight: 600 (semibold)
   - Text decoration: underline
-- **Gap**: 5px between label and address
+  - Line height: 1.625 for better readability when wrapped
+- **Layout**:
+  - Gap between label and address: 5px
+  - Gap between text and icon: 24px (fixed spacing)
 - **Edit icon**: 
   - Size: 20px × 23px
   - Path: `/public/edit.svg`
+  - Fixed width (doesn't shrink)
 
 ## Component Details
 
-The LocationPicker component displays location information with an editable option. The address text is underlined to indicate it's associated with the location, and an edit icon button allows users to modify the location.
+The LocationPicker component displays location information with an editable option. Both the text content and the edit icon are clickable and trigger the same `onEdit` callback. The address text is underlined to indicate it's associated with the location. The component maintains 24px spacing between the text and icon, and uses improved line heights for better readability when text wraps on smaller screens.
 
 ## Accessibility
 
-- Edit button has proper ARIA label for screen readers
-- Keyboard navigation supported with focus indicators
-- Semantic HTML structure with button element
+- Both text content and icon are clickable buttons with proper ARIA labels
+- Keyboard navigation supported with focus indicators on both buttons
+- Semantic HTML structure with button elements
+- Focus styles clearly indicate which element is active
 
 ## Testing
 
