@@ -5,6 +5,7 @@ import Button from '@/components/atoms/Button/Button';
 import Chip from '@/components/atoms/Chip/Chip';
 import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
 import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
+import TextField from '@/components/atoms/TextField/TextField';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import styles from './page.module.scss';
 
@@ -85,6 +86,93 @@ const DropdownDemo = () => {
           value="m"
           onChange={() => {}}
           disabled
+        />
+      </div>
+    </div>
+  );
+};
+
+const TextFieldDemo = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      {/* Basic text field */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="name-field"
+          label="Full Name"
+          placeholder="Enter your full name"
+          value={name}
+          onChange={setName}
+        />
+      </div>
+
+      {/* Email field with validation */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="email-field"
+          label="Email Address"
+          type="email"
+          placeholder="you@example.com"
+          value={email}
+          onChange={setEmail}
+          required
+          error={email.length > 0 && !email.includes('@')}
+          errorMessage="Please enter a valid email address"
+        />
+      </div>
+
+      {/* Password field */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="password-field"
+          label="Password"
+          type="password"
+          placeholder="Enter secure password"
+          value={password}
+          onChange={setPassword}
+          required
+          error={password.length > 0 && password.length < 8}
+          errorMessage="Password must be at least 8 characters"
+        />
+      </div>
+
+      {/* Phone field */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="phone-field"
+          label="Phone Number"
+          type="tel"
+          placeholder="(555) 123-4567"
+          value={phone}
+          onChange={setPhone}
+          maxLength={14}
+        />
+      </div>
+
+      {/* Disabled field */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="disabled-field"
+          label="Disabled Field"
+          value="This field is disabled"
+          onChange={() => {}}
+          disabled
+        />
+      </div>
+
+      {/* Uncontrolled with default value */}
+      <div style={{ maxWidth: '400px' }}>
+        <TextField
+          id="notes-field"
+          label="Additional Notes"
+          placeholder="Any additional information..."
+          defaultValue="Default text"
+          onChange={(value) => console.log('Notes changed:', value)}
         />
       </div>
     </div>
@@ -495,11 +583,84 @@ const shippingOptions: DropdownOption[] = [
                 </div>
               </div>
               
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Inputs</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Input components will be displayed here
-                </p>
+              {/* TextField Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>TextField</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/TextField
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <TextFieldDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import TextField from '@/components/atoms/TextField/TextField';
+
+<TextField
+  id="name"
+  label="Name"
+  placeholder="Enter your name"
+  value={name}
+  onChange={setName}
+/>
+
+// With validation
+<TextField
+  id="email"
+  label="Email"
+  type="email"
+  placeholder="you@example.com"
+  value={email}
+  onChange={setEmail}
+  required
+  error={!isValidEmail}
+  errorMessage="Please enter a valid email"
+/>
+
+// Password field
+<TextField
+  id="password"
+  label="Password"
+  type="password"
+  value={password}
+  onChange={setPassword}
+  required
+  maxLength={20}
+  error={passwordError}
+  errorMessage="Password must be at least 8 characters"
+/>
+
+// With all features
+<TextField
+  id="notes"
+  label="Notes"
+  placeholder="Additional notes..."
+  value={notes}
+  onChange={setNotes}
+  onFocus={() => console.log('Focused')}
+  onBlur={() => console.log('Blurred')}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter') {
+      submitForm();
+    }
+  }}
+  autoComplete="off"
+  aria-describedby="notes-help"
+/>
+
+// Uncontrolled component
+<TextField
+  id="search"
+  type="search"
+  placeholder="Search..."
+  defaultValue=""
+  onChange={(value) => console.log('Search:', value)}
+/>`}</pre>
+                </div>
               </div>
               
               <div className={styles.showcase__placeholder}>
