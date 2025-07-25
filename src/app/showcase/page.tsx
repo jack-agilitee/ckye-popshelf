@@ -10,6 +10,7 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
+import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -334,6 +335,70 @@ const OrderStatusDemo = () => {
           {...storeInfo}
           onEdit={() => console.log('Edit store location')}
           onViewOrders={() => console.log('View your orders')}
+        />
+      </div>
+    </div>
+  );
+};
+
+const LocationPickerDemo = () => {
+  const [selectedLocation, setSelectedLocation] = useState('315 N Main St, Atlanta GA');
+
+  const locations = [
+    '315 N Main St, Atlanta GA',
+    '123 Oak Avenue, Nashville TN 37201',
+    '456 Elm Street, Memphis TN 38103',
+    '789 Pine Road, Knoxville TN 37902',
+  ];
+
+  const handleEditLocation = () => {
+    // Simulate location change
+    const currentIndex = locations.indexOf(selectedLocation);
+    const nextIndex = (currentIndex + 1) % locations.length;
+    setSelectedLocation(locations[nextIndex]);
+    console.log('Location changed to:', locations[nextIndex]);
+  };
+
+  return (
+    <div className={styles.showcase__demoLayout}>
+      {/* Default usage */}
+      <div style={{ maxWidth: '400px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Default Pickup Location</h4>
+        <LocationPicker
+          address={selectedLocation}
+          onEdit={handleEditLocation}
+        />
+      </div>
+
+      {/* With custom label */}
+      <div style={{ maxWidth: '400px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Delivery Address</h4>
+        <LocationPicker
+          label="Delivery address"
+          address="456 Oak St, Suite 200, Nashville TN"
+          onEdit={() => console.log('Edit delivery address')}
+          editAriaLabel="Change delivery address"
+        />
+      </div>
+
+      {/* Long address */}
+      <div style={{ maxWidth: '400px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Long Address</h4>
+        <LocationPicker
+          label="Ship to"
+          address="1234 Very Long Street Name, Building B, Apt 567, Some City, State 12345"
+          onEdit={() => console.log('Edit shipping address')}
+        />
+      </div>
+
+      {/* Different label */}
+      <div style={{ maxWidth: '400px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Store Location</h4>
+        <LocationPicker
+          label="Your selected store"
+          address="PopShelf #123, Goodlettsville TN"
+          onEdit={() => console.log('Change store')}
+          editAriaLabel="Select a different store"
         />
       </div>
     </div>
@@ -1059,6 +1124,66 @@ const OrderTracker = () => {
       onEdit={handleEditStore}
       onViewOrders={status === OrderStatusType.MULTIPLE_ORDERS ? viewOrders : undefined}
     />
+  );
+};`}</pre>
+                </div>
+              </div>
+              
+              {/* LocationPicker Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>LocationPicker</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/LocationPicker
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <LocationPickerDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<LocationPicker
+  address="315 N Main St, Atlanta GA"
+  onEdit={() => handleEditLocation()}
+/>
+
+// With custom label
+<LocationPicker
+  label="Delivery address"
+  address="123 Delivery St, Nashville TN"
+  onEdit={() => openLocationModal()}
+/>
+
+// With custom aria label
+<LocationPicker
+  address="789 Pine Rd, Knoxville TN"
+  onEdit={() => handleChangeLocation()}
+  editAriaLabel="Change store location"
+/>
+
+// Implementation example
+const StorePickup = () => {
+  const [store, setStore] = useState({
+    address: '315 N Main St, Atlanta GA'
+  });
+
+  const handleEditLocation = () => {
+    // Open store selector modal
+    openStoreSelector((newStore) => {
+      setStore(newStore);
+    });
+  };
+
+  return (
+    <div className="pickup-section">
+      <LocationPicker
+        address={store.address}
+        onEdit={handleEditLocation}
+      />
+      <p>Store closes at {store.closingTime}</p>
+    </div>
   );
 };`}</pre>
                 </div>

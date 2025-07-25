@@ -22,8 +22,10 @@ $blue-info: #00B8D4;
 
 // Neutral Colors (from Figma)
 $black: #000000;
+$black-primary: #1F1F1F; // Used in LocationPicker address (from Figma)
 $gray-900: #212121;
 $gray-800: #424242;
+$gray-750: #7A7A7A; // Used in LocationPicker label (from Figma)
 $gray-700: #636363; // Used in text field labels (from Figma)
 $gray-600: #757575; // Used in multiline secondary labelTop and text field placeholders
 $gray-500: #9E9E9E;
@@ -284,3 +286,8 @@ $nav-shadow: $shadow-sm;
 // Footer
 $footer-background: $gray-900;
 $footer-text: $text-inverse;
+
+// LocationPicker Component
+$location-picker-label-gap: 5px; // Gap between label and address (from Figma)
+$location-picker-icon-width: 20px; // Edit icon width
+$location-picker-icon-height: 23px; // Edit icon height
