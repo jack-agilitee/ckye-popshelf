@@ -302,3 +302,8 @@ $product-card-close-size: $spacing-4; // 16px close button
 $product-card-name-height: 40px; // 2 lines of text
 $product-card-price-size: $font-size-lg; // 18px
 $product-card-stock-width: 72px; // Stock text width
+
+// Checkbox Component
+$checkbox-size: $spacing-5; // 20px (from Figma)
+$checkbox-checked-bg: #9230A8; // Checked background color (from Figma)
+$checkbox-checked-border: #979797; // Checked border color (from Figma)

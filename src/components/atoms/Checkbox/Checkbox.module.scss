@@ -1,0 +1,98 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: $spacing-3; // 12px
+  }
+
+  &__box {
+    width: $checkbox-size; // 20px from Figma
+    height: $checkbox-size; // 20px from Figma
+    flex-shrink: 0;
+    border-radius: $radius-sm; // 4px
+    border: 1px solid $gray-600; // #757575 from Figma
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-fast;
+    position: relative;
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+    }
+
+    &--checked {
+      background-color: $checkbox-checked-bg; // #9230A8 from Figma
+      border-color: $checkbox-checked-border; // #979797 from Figma
+    }
+  }
+
+  &__checkmark {
+    width: $spacing-3; // 12px
+    height: 10px;
+    display: block;
+  }
+
+  &__text {
+    @include body-medium;
+    color: $text-primary;
+    line-height: $line-height-normal;
+  }
+
+  // Hover state
+  &:not(&--disabled) &__label:hover &__box {
+    border-color: $gray-500;
+    
+    &--checked {
+      background-color: darken($checkbox-checked-bg, 5%);
+      border-color: darken($checkbox-checked-border, 5%);
+    }
+  }
+
+  // Disabled state
+  &--disabled {
+    cursor: not-allowed;
+
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__box {
+      background-color: $gray-100;
+      border-color: $gray-400;
+      
+      &--checked {
+        background-color: $gray-400;
+        border-color: $gray-400;
+      }
+    }
+
+    .checkbox__text {
+      color: $text-disabled;
+    }
+  }
+
+  // Focus visible for keyboard navigation
+  &__input:focus-visible + &__label &__box {
+    outline: 2px solid $purple-primary;
+    outline-offset: 2px;
+  }
+}
