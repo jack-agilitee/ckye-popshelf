@@ -23,12 +23,14 @@ $blue-info: #00B8D4;
 // Neutral Colors (from Figma)
 $black: #000000;
 $black-primary: #1F1F1F; // Used in LocationPicker address (from Figma)
+$gray-950: #090909; // Used in OrderSummary headings (from Figma)
 $gray-900: #212121;
 $gray-800: #424242;
 $gray-750: #7A7A7A; // Used in LocationPicker label (from Figma)
 $gray-700: #636363; // Used in text field labels (from Figma)
 $gray-600: #757575; // Used in multiline secondary labelTop and text field placeholders
 $gray-500: #9E9E9E;
+$gray-checkbox-border: #979797; // Used in checkbox border (from Figma)
 $gray-400: #BDBDBD;
 $gray-300: #E3E3E3; // Used in text field border (from Figma)
 $gray-200: #EEEEEE;
@@ -74,6 +76,7 @@ $font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
 $font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 $font-family-mono: 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
 $font-family-avenir: 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-sofia: 'Sofia Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
 // Font Sizes
 $font-size-xxs: 10px;
@@ -307,3 +310,9 @@ $product-card-stock-width: 72px; // Stock text width
 $checkbox-size: $spacing-5; // 20px (from Figma)
 $checkbox-checked-bg: #9230A8; // Checked background color (from Figma)
 $checkbox-checked-border: #979797; // Checked border color (from Figma)
+
+// OrderSummary Component
+$order-summary-promo-width: 227px; // Promo input width (from Figma)
+$order-summary-apply-width: 96px; // Apply button width (from Figma)
+$order-summary-proceed-width: 335px; // Proceed button width (from Figma)
+$order-summary-letter-spacing: 0.5333px; // Letter spacing for Avenir Heavy (from Figma)

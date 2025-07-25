@@ -14,6 +14,7 @@ import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
 import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker';
 import ProductCard from '@/components/molecules/ProductCard/ProductCard';
+import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -1594,6 +1595,58 @@ const ShoppingCart = () => {
             </p>
             
             <div className={styles.showcase__grid}>
+              {/* OrderSummary Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>OrderSummary</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/organisms/OrderSummary
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ width: '350px', margin: '0 auto' }}>
+                    <OrderSummary
+                      originalTotal={7.99}
+                      rewards={5.00}
+                      subtotal={33.48}
+                      crvFeeQuantity={3}
+                      crvFeePerItem={0.10}
+                      bagFeeQuantity={2}
+                      bagFeePerItem={0.10}
+                      tax={2.34}
+                      orderTotal={12.94}
+                      onProceedToCheckout={() => console.log('Proceed to checkout')}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
+
+function CheckoutPage() {
+  const handleCheckout = () => {
+    console.log('Proceeding to checkout...');
+  };
+
+  return (
+    <OrderSummary
+      originalTotal={7.99}
+      rewards={5.00}
+      subtotal={33.48}
+      crvFeeQuantity={3}
+      crvFeePerItem={0.10}
+      bagFeeQuantity={2}
+      bagFeePerItem={0.10}
+      tax={2.34}
+      orderTotal={12.94}
+      onProceedToCheckout={handleCheckout}
+    />
+  );
+}`}</pre>
+                </div>
+              </div>
+
               <div className={styles.showcase__placeholder}>
                 <h3 className={styles.showcase__componentTitle}>Navigation</h3>
                 <p className={styles.showcase__componentDescription}>

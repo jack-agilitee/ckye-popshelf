@@ -1,0 +1,125 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.order-summary {
+  @include flex-column;
+  gap: $spacing-4; // 16px (from Figma)
+  width: 100%;
+  
+  &__bring-bags {
+    @include flex-column;
+    gap: $spacing-2; // 8px (from Figma)
+    opacity: 0.8; // From Figma
+  }
+  
+  &__section-title {
+    @include avenir-heavy; // Avenir Heavy 16px
+    color: $gray-950; // #090909 (from Figma)
+    margin: 0;
+  }
+  
+  &__checkbox {
+    // Checkbox component has its own styles using Sofia Medium 14px
+    width: 100%;
+  }
+  
+  &__details {
+    @include flex-column;
+    gap: $spacing-2; // 8px (from Figma)
+  }
+  
+  &__line-item {
+    @include flex-between;
+    gap: $spacing-2; // 8px (from Figma)
+    width: $order-summary-proceed-width; // 335px (from Figma)
+    
+    &--total {
+      .order-summary__line-label,
+      .order-summary__line-value {
+        @include avenir-black; // Avenir Black 18px
+      }
+    }
+  }
+  
+  &__line-label {
+    @include avenir-book; // Avenir Book 16px
+    color: $black-primary; // #1F1F1F (from Figma)
+    flex: 1;
+  }
+  
+  &__line-value {
+    @include avenir-book; // Avenir Book 16px
+    color: $black-primary; // #1F1F1F (from Figma)
+    text-align: right;
+    white-space: nowrap;
+  }
+  
+  &__promo-section {
+    display: flex;
+    gap: $spacing-3; // 12px (from Figma)
+    align-items: center; // Center align vertically
+    padding: $spacing-2 0; // 8px vertical padding (from Figma)
+  }
+  
+  &__promo-input {
+    // Override TextField wrapper to set specific width
+    .textField__wrapper {
+      width: $order-summary-promo-width; // 227px (from Figma)
+      height: $button-height-lg; // 48px (from Figma)
+      background-color: $white; // #FFFFFF
+      border-radius: $radius-sm; // 4px
+      box-shadow: $shadow-text-field; // 0px 4px 16px 0px rgba(55,58,64,0.15)
+      
+      .textField__input {
+        @include sofia-regular; // Sofia Regular 18px
+        color: $gray-600; // #757575 (from Figma)
+        padding: 0 $spacing-3; // 12px horizontal padding
+        height: 100%;
+        border: 1px solid $gray-300; // #E3E3E3 (from Figma)
+        border-radius: $radius-sm; // 4px
+        
+        &::placeholder {
+          color: $gray-600; // #757575
+        }
+      }
+    }
+  }
+  
+  &__apply-button {
+    width: $order-summary-apply-width; // 96px (from Figma)
+    height: $button-height-lg; // 48px (from Figma)
+    
+    // Override Button styles to match Figma exactly
+    &.button--secondary {
+      @include sofia-semibold; // Sofia Semi Bold 14px uppercase
+      background-color: $white; // #FFFFFF
+      color: $purple-primary; // #87189D
+      border: 1px solid $purple-primary; // #87189D
+      border-radius: $radius-sm; // 4px
+      padding: 0;
+      
+      &:hover:not(:disabled) {
+        background-color: rgba($purple-primary, 0.05);
+      }
+    }
+  }
+  
+  &__proceed-button {
+    width: $order-summary-proceed-width; // 335px (from Figma)
+    height: $button-height-lg; // 48px (from Figma)
+    
+    // Override Button styles to match Figma exactly
+    &.button--primary {
+      @include sofia-semibold; // Sofia Semi Bold 14px uppercase
+      background-color: $purple-primary; // #87189D
+      color: $white; // #FFFFFF
+      border: none;
+      border-radius: $radius-sm; // 4px
+      padding: 0;
+      
+      &:hover:not(:disabled) {
+        background-color: $purple-dark;
+      }
+    }
+  }
+}
