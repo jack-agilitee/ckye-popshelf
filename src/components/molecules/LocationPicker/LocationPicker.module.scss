@@ -1,0 +1,66 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.location-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $location-picker-label-gap; // 5px from Figma
+    flex: 1;
+  }
+
+  &__label {
+    @include font-medium; // 500 weight
+    font-size: $font-size-xs; // 12px
+    line-height: 1; // 12px line height
+    color: $gray-750; // #7A7A7A
+  }
+
+  &__address {
+    @include font-semibold; // 600 weight
+    font-size: $font-size-base; // 16px
+    line-height: 1; // 16px line height
+    color: $black-primary; // #1F1F1F
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-position: from-font;
+  }
+
+  &__edit-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $location-picker-icon-width; // 20px
+    height: $location-picker-icon-height; // 23px
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: $spacing-1 / 2; // 2px
+      border-radius: $radius-sm;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__edit-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
