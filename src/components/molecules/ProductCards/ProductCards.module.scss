@@ -1,0 +1,251 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product-cards {
+  @include flex-column;
+  background-color: $white;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-text-field;
+  padding: $spacing-4;
+  position: relative;
+  transition: all $transition-base;
+
+  // Horizontal variant
+  &--horizontal {
+    flex-direction: row;
+    gap: $spacing-3;
+    width: $product-cards-horizontal-width;
+    height: $product-cards-horizontal-height;
+
+    .product-cards__image-container {
+      width: $product-cards-horizontal-image-size;
+      height: $product-cards-horizontal-image-size;
+      flex-shrink: 0;
+    }
+
+    .product-cards__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+
+    .product-cards__button {
+      position: absolute;
+      bottom: $spacing-4;
+      right: $spacing-4;
+    }
+
+    .product-cards__stock-info {
+      position: absolute;
+      bottom: 48px;
+      left: $spacing-4;
+    }
+
+    .product-cards__fulfillments {
+      position: absolute;
+      bottom: $spacing-4;
+      left: $spacing-4;
+    }
+
+    .product-cards__price-container {
+      position: absolute;
+      top: 84px;
+      right: $spacing-4;
+      display: flex;
+      align-items: baseline;
+      gap: $spacing-2;
+      flex-direction: row-reverse;
+    }
+
+    .product-cards__color-choices {
+      position: absolute;
+      top: 90px;
+      left: 104px;
+    }
+
+    .product-cards__rating {
+      position: absolute;
+      top: 68px;
+      left: 104px;
+    }
+  }
+
+  // Vertical variant
+  &--vertical {
+    align-items: center;
+    gap: $spacing-2;
+    width: $product-cards-vertical-width;
+    min-height: $product-cards-vertical-height;
+
+    .product-cards__image-container {
+      width: $product-cards-vertical-image-width;
+      height: $product-cards-vertical-image-height;
+      margin-top: -$spacing-1;
+    }
+
+    .product-cards__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+      align-items: flex-start;
+    }
+
+    .product-cards__name {
+      margin-top: $spacing-1;
+    }
+
+    .product-cards__button {
+      margin-top: auto;
+      align-self: center;
+    }
+
+    .product-cards__price-container {
+      display: flex;
+      align-items: baseline;
+      gap: $spacing-2;
+      margin-top: $spacing-1;
+    }
+
+    .product-cards__stock-info,
+    .product-cards__fulfillments {
+      width: 100%;
+    }
+  }
+
+  &__image-container {
+    background-color: $gray-100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include product-card-name;
+    @include line-clamp(2);
+    color: $black;
+    margin: 0;
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $purple-primary;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+  }
+
+  &__color-choices {
+    @include product-card-regular-price;
+    color: $gray-600;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-1;
+  }
+
+  &__price {
+    @include product-card-price;
+    color: $black;
+  }
+
+  &__regular-price {
+    @include product-card-regular-price;
+    color: $gray-600;
+  }
+
+  &__stock-info {
+    margin-top: $spacing-1;
+  }
+
+  &__stock-status {
+    @include product-card-stock-status;
+    color: $black;
+  }
+
+  &__out-of-stock {
+    @include product-card-out-of-stock;
+    color: $color-error;
+  }
+
+  &__fulfillments {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    margin-top: $spacing-1;
+  }
+
+  &__checkmark {
+    width: $product-cards-checkmark-size;
+    height: $product-cards-checkmark-size;
+    flex-shrink: 0;
+  }
+
+  &__fulfillments-text {
+    @include product-card-stock-status;
+    color: $black;
+  }
+
+  &__button {
+    width: $product-cards-button-width;
+    height: $button-height-sm;
+    
+    // Override Button component styles to match Figma
+    &.button--primary,
+    &.button--secondary {
+      @include sofia-semibold;
+      border-radius: $radius-sm;
+      height: $button-height-sm;
+      min-height: unset;
+      
+      .button__label {
+        @include sofia-semibold;
+      }
+    }
+    
+    &.button--primary {
+      background-color: $purple-primary;
+      color: $white;
+      border: none;
+      
+      &:hover:not(:disabled) {
+        background-color: $purple-dark;
+      }
+    }
+    
+    &.button--secondary {
+      background-color: $white;
+      color: $purple-primary;
+      border: 1px solid $purple-primary;
+      
+      &:hover:not(:disabled) {
+        background-color: rgba($purple-primary, 0.05);
+      }
+    }
+  }
+
+  // Out of stock state adjustments
+  &--out-of-stock {
+    .product-cards__stock-status {
+      display: none;
+    }
+  }
+}
