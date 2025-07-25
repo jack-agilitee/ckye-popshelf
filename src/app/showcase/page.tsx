@@ -1596,26 +1596,28 @@ const ShoppingCart = () => {
             
             <div className={styles.showcase__grid}>
               {/* OrderSummary Component */}
-              <div className={styles.showcase__component} style={{ gridColumn: '1 / -1' }}>
+              <div className={styles.showcase__component}>
                 <h3 className={styles.showcase__componentTitle}>OrderSummary</h3>
                 <p className={styles.showcase__componentDescription}>
                   Order summary with line items, fees, and checkout functionality
                 </p>
                 
-                <div className={styles.showcase__examples} style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div className={styles.showcase__example} style={{ width: '350px' }}>
-                    <OrderSummary
-                      originalTotal={7.99}
-                      rewards={5.00}
-                      subtotal={33.48}
-                      crvFeeQuantity={3}
-                      crvFeePerItem={0.10}
-                      bagFeeQuantity={2}
-                      bagFeePerItem={0.10}
-                      tax={2.34}
-                      orderTotal={12.94}
-                      onProceedToCheckout={() => console.log('Proceed to checkout')}
-                    />
+                <div className={styles.showcase__examples}>
+                  <div className={styles.showcase__example}>
+                    <div style={{ width: '350px', margin: '0 auto' }}>
+                      <OrderSummary
+                        originalTotal={7.99}
+                        rewards={5.00}
+                        subtotal={33.48}
+                        crvFeeQuantity={3}
+                        crvFeePerItem={0.10}
+                        bagFeeQuantity={2}
+                        bagFeePerItem={0.10}
+                        tax={2.34}
+                        orderTotal={12.94}
+                        onProceedToCheckout={() => console.log('Proceed to checkout')}
+                      />
+                    </div>
                   </div>
                 </div>
 
