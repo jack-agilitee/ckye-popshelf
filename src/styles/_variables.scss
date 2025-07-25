@@ -206,6 +206,20 @@ $category-tile-image-height: 137px;
 $category-tile-padding: 13px;
 $category-tile-text-spacing: $spacing-3; // 12px (closest to 11px from Figma)
 
+// Component-specific: OrderStatus
+// -------------------------------
+
+// Status bar background colors
+$order-status-no-order-bg: #DBBAE2;
+$order-status-received-bg: #B0E3FA;
+$order-status-ready-bg: #91D6AC;
+$order-status-multiple-bg: #FEC4A8;
+
+// Other measurements
+$order-status-border-width: 1.5px;
+$order-status-icon-size: 40px;
+$order-status-edit-icon-size: 30px;
+
 // Container Max Widths
 // --------------------
 
