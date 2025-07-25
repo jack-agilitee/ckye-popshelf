@@ -198,6 +198,14 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-2xl: 1400px;
 
+// Component-specific: CategoryTile
+// --------------------------------
+
+$category-tile-image-width: 134px;
+$category-tile-image-height: 137px;
+$category-tile-padding: 13px;
+$category-tile-text-spacing: $spacing-3; // 12px (closest to 11px from Figma)
+
 // Container Max Widths
 // --------------------
 
