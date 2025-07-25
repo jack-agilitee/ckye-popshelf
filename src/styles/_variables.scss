@@ -24,11 +24,11 @@ $blue-info: #00B8D4;
 $black: #000000;
 $gray-900: #212121;
 $gray-800: #424242;
-$gray-700: #474747; // Used in inactive button text
-$gray-600: #757575; // Used in multiline secondary labelTop
+$gray-700: #636363; // Used in text field labels (from Figma)
+$gray-600: #757575; // Used in multiline secondary labelTop and text field placeholders
 $gray-500: #9E9E9E;
 $gray-400: #BDBDBD;
-$gray-300: #E6E6E6; // Used in inactive button background
+$gray-300: #E3E3E3; // Used in text field border (from Figma)
 $gray-200: #EEEEEE;
 $gray-100: #F5F5F5;
 $gray-50: #FAFAFA;
@@ -167,6 +167,7 @@ $shadow-none: none;
 
 // Component-specific shadows
 $shadow-radio-selector: 0 4px 16px 0 rgba(55, 58, 64, 0.15); // From RadioButtonSelector Figma
+$shadow-text-field: 0px 4px 16px 0px rgba(55, 58, 64, 0.15); // From TextField Figma
 
 // Z-Index
 // -------

@@ -242,6 +242,13 @@
     }
   }
 
+  &__demoLayout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-8;
+  }
+
   &__componentProps {
     margin-top: $spacing-4;
   }
