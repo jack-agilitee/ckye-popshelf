@@ -189,9 +189,10 @@ const ProductCards: React.FC<ProductCardsProps> = ({
 
         {renderStockStatus()}
         {renderFulfillments()}
+        {variant === 'horizontal' && renderButton()}
       </div>
 
-      {renderButton()}
+      {variant === 'vertical' && renderButton()}
     </div>
   );
 };

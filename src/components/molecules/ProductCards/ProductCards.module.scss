@@ -16,6 +16,7 @@
     gap: $spacing-3;
     width: $product-cards-horizontal-width;
     height: $product-cards-horizontal-height;
+    align-items: flex-start;
 
     .product-cards__image-container {
       width: $product-cards-horizontal-image-size;
@@ -28,46 +29,51 @@
       display: flex;
       flex-direction: column;
       gap: $spacing-1;
+      position: relative;
+      height: 100%;
+      padding-right: 140px; // Space for button and price
     }
 
-    .product-cards__button {
-      position: absolute;
-      bottom: $spacing-4;
-      right: $spacing-4;
+    .product-cards__name {
+      margin: 0;
+      width: 215px;
+      height: 40px;
     }
 
-    .product-cards__stock-info {
-      position: absolute;
-      bottom: 48px;
-      left: $spacing-4;
+    .product-cards__rating {
+      margin-top: $spacing-2;
     }
 
-    .product-cards__fulfillments {
-      position: absolute;
-      bottom: $spacing-4;
-      left: $spacing-4;
+    .product-cards__color-choices {
+      margin-top: $spacing-1;
     }
 
     .product-cards__price-container {
       position: absolute;
-      top: 84px;
-      right: $spacing-4;
+      top: 68px;
+      right: 0;
       display: flex;
       align-items: baseline;
       gap: $spacing-2;
       flex-direction: row-reverse;
     }
 
-    .product-cards__color-choices {
+    .product-cards__button {
       position: absolute;
-      top: 90px;
-      left: 104px;
+      bottom: 0;
+      right: 0;
     }
 
-    .product-cards__rating {
+    .product-cards__stock-info {
       position: absolute;
-      top: 68px;
-      left: 104px;
+      bottom: 32px;
+      left: 0;
+    }
+
+    .product-cards__fulfillments {
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   }
 
@@ -115,7 +121,6 @@
   }
 
   &__image-container {
-    background-color: $gray-100;
     display: flex;
     align-items: center;
     justify-content: center;
