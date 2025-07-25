@@ -38,7 +38,7 @@ const DropdownDemo = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+    <div className={styles.showcase__demoLayout}>
       {/* Basic dropdown */}
       <div style={{ maxWidth: '300px' }}>
         <Dropdown
@@ -99,7 +99,7 @@ const TextFieldDemo = () => {
   const [phone, setPhone] = useState('');
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+    <div className={styles.showcase__demoLayout}>
       {/* Basic text field */}
       <div style={{ maxWidth: '400px' }}>
         <TextField
@@ -184,7 +184,7 @@ const RadioButtonSelectorDemo = () => {
   const [selectedPlan, setSelectedPlan] = useState('premium');
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div className={styles.showcase__demoLayout}>
       {/* Basic radio group */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Basic Radio Group</span>
@@ -305,7 +305,7 @@ const ShowcasePage = () => {
                 </div>
                 
                 <div className={styles.showcase__componentDemo}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+                  <div className={styles.showcase__demoLayout}>
                     {/* Single-line variants */}
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
                       <Button onClick={() => console.log('Primary clicked')}>
@@ -382,7 +382,7 @@ const ShowcasePage = () => {
                 </div>
                 
                 <div className={styles.showcase__componentDemo}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+                  <div className={styles.showcase__demoLayout}>
                     {/* All variants */}
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
                       <Chip label="FILTERS" onClick={() => console.log('Solid chip clicked')} />
@@ -690,7 +690,7 @@ import TextField from '@/components/atoms/TextField/TextField';
                 </div>
                 
                 <div className={styles.showcase__componentDemo}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
+                  <div className={styles.showcase__demoLayout}>
                     {/* Default state (qty = 1) */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '12px', color: '#666' }}>Default (qty = 1)</span>
