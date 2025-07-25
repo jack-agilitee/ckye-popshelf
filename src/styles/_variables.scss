@@ -15,6 +15,7 @@ $pink-primary: #E91E63;
 $pink-light: #F8BBD0;
 $orange-primary: #FF6B35;
 $yellow-primary: #FFD23F;
+$yellow-star: #FFC700; // Used in ReviewStars filled state (from Figma)
 $green-primary: #4CAF50;
 $green-success: #00C853;
 $blue-primary: #2196F3;
@@ -30,6 +31,7 @@ $gray-750: #7A7A7A; // Used in LocationPicker label (from Figma)
 $gray-700: #636363; // Used in text field labels (from Figma)
 $gray-600: #757575; // Used in multiline secondary labelTop and text field placeholders
 $gray-500: #9E9E9E;
+$gray-star-empty: #A3A3A3; // Used in ReviewStars empty state (from Figma)
 $gray-checkbox-border: #979797; // Used in checkbox border (from Figma)
 $gray-400: #BDBDBD;
 $gray-300: #E3E3E3; // Used in text field border (from Figma)
@@ -325,3 +327,8 @@ $mini-product-card-image-size: 80px; // Image width and height (from Figma)
 $mini-product-card-button-height: 32px; // Button height (from Figma)
 $mini-product-card-name-width: 154px; // Product name width (adjusted for new card width)
 $mini-product-card-name-height: 32px; // Product name height (from Figma)
+
+// ReviewStars Component
+$review-star-width: 13px; // Star width (from Figma)
+$review-star-height: 12px; // Star height (from Figma)
+$review-star-gap: 4px; // Gap between stars (from Figma)

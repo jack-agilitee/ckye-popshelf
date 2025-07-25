@@ -1,0 +1,41 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.review-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1; // 4px gap between stars container and count
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__stars {
+    display: flex;
+    gap: $review-star-gap; // 4px gap between stars
+  }
+
+  &__star {
+    width: $review-star-width; // 13px
+    height: $review-star-height; // 12px
+    flex-shrink: 0;
+    
+    // Ensure the SVG fills the container
+    path {
+      transition: fill $transition-fast;
+    }
+  }
+
+  &__count {
+    @include review-count;
+    margin-left: $spacing-1; // 4px gap from stars
+  }
+}
