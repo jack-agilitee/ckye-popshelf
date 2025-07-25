@@ -9,6 +9,7 @@ import TextField from '@/components/atoms/TextField/TextField';
 import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
 import Checkbox from '@/components/atoms/Checkbox/Checkbox';
+import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -1213,6 +1214,122 @@ function SettingsForm() {
         onChange={handleChange('analytics')}
       />
     </form>
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* ReviewStars Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ReviewStars</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/ReviewStars
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {/* Rating variations */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Rating Variations</h4>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={0} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>0 stars</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={1} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>1 star</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={2.5} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>2.5 stars</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={3.7} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>3.7 stars</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={4} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>4 stars</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={5} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>5 stars</span>
+                      </div>
+                    </div>
+
+                    {/* With review count */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>With Review Count</h4>
+                      <ReviewStars rating={4.5} showCount={true} reviewCount={280} />
+                      <ReviewStars rating={3.2} showCount={true} reviewCount={1543} />
+                      <ReviewStars rating={5} showCount={true} reviewCount={42} />
+                    </div>
+
+                    {/* Edge cases */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Edge Cases</h4>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={-1} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>Negative rating (clamped to 0)</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ReviewStars rating={10} />
+                        <span style={{ fontSize: '12px', color: '#666' }}>Rating {'>'} 5 (clamped to 5)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
+
+// Simple rating display
+<ReviewStars rating={4.5} />
+
+// With review count
+<ReviewStars 
+  rating={4.5} 
+  showCount={true} 
+  reviewCount={280} 
+/>
+
+// Various ratings
+<ReviewStars rating={0} />     // Empty stars
+<ReviewStars rating={2.5} />   // Half-filled
+<ReviewStars rating={5} />     // Fully filled
+
+// Edge cases (automatically clamped)
+<ReviewStars rating={-1} />    // Shows 0 stars
+<ReviewStars rating={10} />    // Shows 5 stars
+
+// Custom styling
+<ReviewStars 
+  rating={3.7} 
+  className="custom-stars" 
+/>
+
+// Product card example
+function ProductCard({ product }: { 
+  product: { 
+    name: string; 
+    rating: number; 
+    reviewCount: number; 
+    price: number; 
+  } 
+}) {
+  return (
+    <div className="product-card">
+      <h3>{product.name}</h3>
+      <ReviewStars 
+        rating={product.rating} 
+        showCount={true}
+        reviewCount={product.reviewCount}
+      />
+      <p>$\{product.price}</p>
+    </div>
   );
 }`}</pre>
                 </div>
