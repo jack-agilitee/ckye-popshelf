@@ -49,17 +49,6 @@
     }
   }
 
-  // Removable variant (with X icon)
-  &--removable {
-    background-color: $purple-primary;
-    color: $white;
-    padding-left: $spacing-2;
-    padding-right: $spacing-2;
-    
-    &:hover {
-      background-color: $purple-dark;
-    }
-  }
 
   // Label styling
   &__label {
@@ -72,11 +61,18 @@
   // Icon styling
   &__icon {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     flex-shrink: 0;
     
-    // Apply white filter to SVG icon
-    filter: brightness(0) invert(1);
+    // Apply white filter to SVG icon for solid variant
+    .chip--solid & {
+      filter: brightness(0) invert(1);
+    }
+    
+    // Keep original color for outlined variant
+    .chip--outlined & {
+      filter: none;
+    }
   }
 }

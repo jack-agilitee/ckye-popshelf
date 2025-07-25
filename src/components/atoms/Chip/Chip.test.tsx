@@ -50,28 +50,26 @@ describe('Chip', () => {
       expect(chip).toHaveClass('chip--outlined');
     });
 
-    it('applies removable variant class', () => {
-      const { container } = render(<Chip variant="removable" />);
-      const chip = container.querySelector('button');
-      expect(chip).toHaveClass('chip--removable');
-    });
 
-    it('renders delete icon for removable variant', () => {
-      render(<Chip variant="removable" />);
+    it('renders icon when icon prop is provided', () => {
+      render(<Chip icon="/delete.svg" />);
       const icon = screen.getByRole('img');
       expect(icon).toHaveAttribute('src', '/delete.svg');
-      expect(icon).toHaveAttribute('width', '10');
-      expect(icon).toHaveAttribute('height', '10');
+      expect(icon).toHaveAttribute('width', '8');
+      expect(icon).toHaveAttribute('height', '8');
     });
 
-    it('does not render icon for solid variant', () => {
-      render(<Chip variant="solid" />);
+    it('does not render icon when icon prop is not provided', () => {
+      render(<Chip />);
       expect(screen.queryByRole('img')).not.toBeInTheDocument();
     });
 
-    it('does not render icon for outlined variant', () => {
-      render(<Chip variant="outlined" />);
-      expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    it('renders icon with any variant', () => {
+      const { rerender } = render(<Chip variant="solid" icon="/test.svg" />);
+      expect(screen.getByRole('img')).toBeInTheDocument();
+      
+      rerender(<Chip variant="outlined" icon="/test.svg" />);
+      expect(screen.getByRole('img')).toBeInTheDocument();
     });
   });
 
@@ -102,8 +100,8 @@ describe('Chip', () => {
       expect(() => fireEvent.click(chip)).not.toThrow();
     });
 
-    it('calls onClick for removable variant when clicked anywhere', () => {
-      render(<Chip variant="removable" onClick={mockOnClick} />);
+    it('calls onClick when chip with icon is clicked', () => {
+      render(<Chip icon="/delete.svg" onClick={mockOnClick} />);
       const chip = screen.getByRole('button');
       fireEvent.click(chip);
       expect(mockOnClick).toHaveBeenCalledTimes(1);

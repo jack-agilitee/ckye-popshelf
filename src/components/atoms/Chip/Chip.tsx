@@ -6,7 +6,8 @@ import styles from './Chip.module.scss';
 
 interface ChipProps {
   label?: string;
-  variant?: 'solid' | 'outlined' | 'removable';
+  variant?: 'solid' | 'outlined';
+  icon?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   ariaLabel?: string;
@@ -15,6 +16,7 @@ interface ChipProps {
 const Chip: React.FC<ChipProps> = ({ 
   label = 'FILTERS',
   variant = 'solid',
+  icon,
   onClick,
   className,
   ariaLabel
@@ -32,12 +34,12 @@ const Chip: React.FC<ChipProps> = ({
       onClick={onClick}
       aria-label={ariaLabel || label}
     >
-      {variant === 'removable' && (
+      {icon && (
         <Image 
-          src="/delete.svg"
+          src={icon}
           alt=""
-          width={10}
-          height={10}
+          width={8}
+          height={8}
           className={styles.chip__icon}
         />
       )}

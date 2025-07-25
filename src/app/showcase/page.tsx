@@ -138,14 +138,14 @@ const ShowcasePage = () => {
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
                       <Chip label="FILTERS" onClick={() => console.log('Solid chip clicked')} />
                       <Chip variant="outlined" label="CATEGORY" onClick={() => console.log('Outlined chip clicked')} />
-                      <Chip variant="removable" label="PRICE: $10-$20" onClick={() => console.log('Remove chip clicked')} />
+                      <Chip label="PRICE: $10-$20" icon="/delete.svg" onClick={() => console.log('Remove chip clicked')} />
                     </div>
                     
                     {/* Example use cases */}
                     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', marginTop: '16px' }}>
-                      <Chip variant="removable" label="NEW ARRIVALS" onClick={() => console.log('Remove filter')} />
-                      <Chip variant="removable" label="UNDER $25" onClick={() => console.log('Remove filter')} />
-                      <Chip variant="removable" label="IN STOCK" onClick={() => console.log('Remove filter')} />
+                      <Chip label="NEW ARRIVALS" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
+                      <Chip label="UNDER $25" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
+                      <Chip label="IN STOCK" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
                     </div>
                   </div>
                 </div>
@@ -160,14 +160,16 @@ const ShowcasePage = () => {
 // Variants
 <Chip variant="solid" label="FILTERS" />
 <Chip variant="outlined" label="CATEGORY" />
-<Chip variant="removable" label="PRICE: $10-$20" />
+
+// With icon
+<Chip label="PRICE: $10-$20" icon="/delete.svg" />
 
 // Filter implementation
 {filters.map(filter => (
   <Chip
     key={filter}
-    variant="removable"
     label={filter}
+    icon="/delete.svg"
     onClick={() => removeFilter(filter)}
   />
 ))}

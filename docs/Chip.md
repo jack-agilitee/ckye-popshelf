@@ -1,7 +1,7 @@
 # Chip Component
 
 ## Overview
-The Chip component is a compact, interactive element used for filtering, tagging, or categorizing content. It supports three variants based on the PopShelf design system.
+The Chip component is a compact, interactive element used for filtering, tagging, or categorizing content. It supports two variants (solid and outlined) and an optional icon.
 
 ## Figma Reference
 - URL: https://www.figma.com/design/ri9qaHxsKZS00ViWhwguiP/%F0%9F%93%8C-PS-Components?node-id=105-885&m=dev
@@ -27,8 +27,9 @@ import Chip from '@/components/atoms/Chip/Chip';
 // Outlined variant
 <Chip variant="outlined" label="CATEGORY" />
 
-// Removable variant with delete icon
-<Chip variant="removable" label="PRICE: $10-$20" onClick={handleRemove} />
+// With icon (can be used with any variant)
+<Chip label="PRICE: $10-$20" icon="/delete.svg" onClick={handleRemove} />
+<Chip variant="outlined" label="FILTER" icon="/filter.svg" />
 ```
 
 ### Filter Implementation
@@ -45,8 +46,8 @@ const FilterBar = () => {
       {filters.map(filter => (
         <Chip
           key={filter}
-          variant="removable"
           label={filter}
+          icon="/delete.svg"
           onClick={() => removeFilter(filter)}
         />
       ))}
@@ -90,8 +91,8 @@ const CategorySelector = () => {
 ```tsx
 // Custom aria-label for better screen reader context
 <Chip 
-  variant="removable"
   label="$10-$20"
+  icon="/delete.svg"
   ariaLabel="Remove price filter $10 to $20"
   onClick={handleRemove}
 />
@@ -102,7 +103,8 @@ const CategorySelector = () => {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `label` | `string` | `'FILTERS'` | Text displayed in the chip |
-| `variant` | `'solid' \| 'outlined' \| 'removable'` | `'solid'` | Visual style variant |
+| `variant` | `'solid' \| 'outlined'` | `'solid'` | Visual style variant |
+| `icon` | `string` | - | Path to icon image (e.g., `/delete.svg`) |
 | `onClick` | `(event: React.MouseEvent) => void` | - | Click handler function |
 | `className` | `string` | - | Additional CSS classes |
 | `ariaLabel` | `string` | - | Custom aria-label for accessibility |
@@ -115,7 +117,6 @@ The component uses CSS Modules with SCSS and follows the BEM methodology. All st
 - `.chip` - Base chip styles
 - `.chip--solid` - Solid variant styles (purple background)
 - `.chip--outlined` - Outlined variant styles (white background, purple border)
-- `.chip--removable` - Removable variant styles (purple background with delete icon)
 - `.chip__label` - Label text styles
 - `.chip__icon` - Delete icon styles
 
@@ -136,7 +137,7 @@ The component uses design tokens from the PopShelf design system:
 
 ## Icon
 
-The removable variant uses a delete icon located at `/public/delete.svg`. The icon is automatically styled to be white using CSS filters.
+Icons can be used with any variant by providing the `icon` prop with the path to the icon file. Icons are automatically styled - white for solid variant, original color for outlined variant.
 
 ## Testing
 
@@ -158,9 +159,9 @@ npm run test Chip.test.tsx
 ```tsx
 <div className="filter-bar">
   <Chip variant="solid" label="ALL FILTERS" onClick={openFilterModal} />
-  <Chip variant="removable" label="Under $25" onClick={() => removeFilter('price')} />
-  <Chip variant="removable" label="In Stock" onClick={() => removeFilter('stock')} />
-  <Chip variant="removable" label="New Arrivals" onClick={() => removeFilter('new')} />
+  <Chip label="Under $25" icon="/delete.svg" onClick={() => removeFilter('price')} />
+  <Chip label="In Stock" icon="/delete.svg" onClick={() => removeFilter('stock')} />
+  <Chip label="New Arrivals" icon="/delete.svg" onClick={() => removeFilter('new')} />
 </div>
 ```
 
