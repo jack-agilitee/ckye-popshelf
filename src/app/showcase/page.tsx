@@ -8,6 +8,7 @@ import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioBut
 import TextField from '@/components/atoms/TextField/TextField';
 import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
+import Checkbox from '@/components/atoms/Checkbox/Checkbox';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -255,6 +256,85 @@ const RadioButtonSelectorDemo = () => {
           rightContent="price"
           price="Contact Us"
         />
+      </div>
+    </div>
+  );
+};
+
+const CheckboxDemo = () => {
+  const [formState, setFormState] = useState({
+    terms: false,
+    newsletter: true,
+    notifications: false,
+    analytics: true,
+    marketing: false
+  });
+
+  const handleCheckboxChange = (field: keyof typeof formState) => (checked: boolean) => {
+    setFormState(prev => ({ ...prev, [field]: checked }));
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      {/* Basic checkboxes */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Basic Checkboxes</h4>
+        <Checkbox
+          label="Accept terms and conditions"
+          checked={formState.terms}
+          onChange={handleCheckboxChange('terms')}
+        />
+        <Checkbox
+          label="Subscribe to newsletter"
+          checked={formState.newsletter}
+          onChange={handleCheckboxChange('newsletter')}
+        />
+        <Checkbox
+          label="Enable notifications"
+          checked={formState.notifications}
+          onChange={handleCheckboxChange('notifications')}
+        />
+      </div>
+
+      {/* Disabled states */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Disabled States</h4>
+        <Checkbox
+          label="Disabled unchecked"
+          disabled
+        />
+        <Checkbox
+          label="Disabled checked"
+          checked={true}
+          disabled
+        />
+      </div>
+
+      {/* Form example */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Form Example</h4>
+        <Checkbox
+          id="analytics-checkbox"
+          name="analytics"
+          label="Allow analytics tracking"
+          checked={formState.analytics}
+          onChange={handleCheckboxChange('analytics')}
+        />
+        <Checkbox
+          id="marketing-checkbox"
+          name="marketing"
+          label="Receive marketing emails"
+          checked={formState.marketing}
+          onChange={handleCheckboxChange('marketing')}
+          disabled={!formState.newsletter}
+        />
+      </div>
+
+      {/* Current state display */}
+      <div style={{ marginTop: '8px', padding: '12px', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+        <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>
+          Current state: {JSON.stringify(formState, null, 2)}
+        </p>
       </div>
     </div>
   );
@@ -1052,6 +1132,87 @@ const OrderRewards = () => {
     </div>
   );
 };`}</pre>
+                </div>
+              </div>
+              
+              {/* Checkbox Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Checkbox</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/Checkbox
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <CheckboxDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import Checkbox from '@/components/atoms/Checkbox/Checkbox';
+
+<Checkbox
+  label="Accept terms and conditions"
+  onChange={(checked) => console.log('Checked:', checked)}
+/>
+
+// Controlled component
+const [isChecked, setIsChecked] = useState(false);
+
+<Checkbox
+  label="Subscribe to newsletter"
+  checked={isChecked}
+  onChange={setIsChecked}
+/>
+
+// Disabled state
+<Checkbox
+  label="This option is unavailable"
+  disabled
+/>
+
+// With form attributes
+<Checkbox
+  id="terms-checkbox"
+  name="terms"
+  label="I agree to the terms of service"
+  checked={formData.acceptTerms}
+  onChange={(checked) => updateFormData({ acceptTerms: checked })}
+/>
+
+// Form integration example
+function SettingsForm() {
+  const [settings, setSettings] = useState({
+    notifications: true,
+    marketing: false,
+    analytics: true
+  });
+
+  const handleChange = (field: string) => (checked: boolean) => {
+    setSettings(prev => ({ ...prev, [field]: checked }));
+  };
+
+  return (
+    <form>
+      <Checkbox
+        label="Enable notifications"
+        checked={settings.notifications}
+        onChange={handleChange('notifications')}
+      />
+      <Checkbox
+        label="Receive marketing emails"
+        checked={settings.marketing}
+        onChange={handleChange('marketing')}
+      />
+      <Checkbox
+        label="Allow analytics"
+        checked={settings.analytics}
+        onChange={handleChange('analytics')}
+      />
+    </form>
+  );
+}`}</pre>
                 </div>
               </div>
               
