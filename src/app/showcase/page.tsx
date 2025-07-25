@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from '@/components/atoms/Button/Button';
 import Chip from '@/components/atoms/Chip/Chip';
+import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import styles from './page.module.scss';
 
 const ShowcasePage = () => {
@@ -207,6 +208,86 @@ const ShowcasePage = () => {
             </p>
             
             <div className={styles.showcase__grid}>
+              {/* QuantitySelector Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>QuantitySelector</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/QuantitySelector
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
+                    {/* Default state (qty = 1) */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '12px', color: '#666' }}>Default (qty = 1)</span>
+                      <QuantitySelector
+                        initialQuantity={1}
+                        onIncrement={() => console.log('Increment')}
+                        onDecrement={() => console.log('Decrement')}
+                        onDelete={() => console.log('Delete')}
+                      />
+                    </div>
+                    
+                    {/* Higher quantity */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '12px', color: '#666' }}>Higher quantity</span>
+                      <QuantitySelector
+                        initialQuantity={5}
+                        onIncrement={() => console.log('Increment')}
+                        onDecrement={() => console.log('Decrement')}
+                        onDelete={() => console.log('Delete')}
+                      />
+                    </div>
+                    
+                    {/* With max limit */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '12px', color: '#666' }}>With max limit (3)</span>
+                      <QuantitySelector
+                        initialQuantity={3}
+                        maxQuantity={3}
+                        onIncrement={() => console.log('Cannot increment - at max')}
+                        onDecrement={() => console.log('Decrement')}
+                        onDelete={() => console.log('Delete')}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<QuantitySelector
+  initialQuantity={1}
+  onIncrement={handleIncrement}
+  onDecrement={handleDecrement}
+  onDelete={handleDelete}
+/>
+
+// With constraints
+<QuantitySelector
+  initialQuantity={5}
+  minQuantity={1}
+  maxQuantity={10}
+  onIncrement={handleIncrement}
+  onDecrement={handleDecrement}
+  onDelete={handleDelete}
+/>
+
+// In a cart item
+const CartItem = ({ item }) => {
+  return (
+    <QuantitySelector
+      initialQuantity={item.quantity}
+      onIncrement={() => updateQuantity(item.id, item.quantity + 1)}
+      onDecrement={() => updateQuantity(item.id, item.quantity - 1)}
+      onDelete={() => removeFromCart(item.id)}
+    />
+  );
+};`}</pre>
+                </div>
+              </div>
+              
               <div className={styles.showcase__placeholder}>
                 <h3 className={styles.showcase__componentTitle}>Form Fields</h3>
                 <p className={styles.showcase__componentDescription}>
@@ -251,7 +332,7 @@ const ShowcasePage = () => {
           <section id="templates" className={styles.showcase__section}>
             <h2 className={styles.showcase__sectionTitle}>Templates</h2>
             <p className={styles.showcase__sectionDescription}>
-              Page-level layouts that place components into a layout and articulate the design's underlying content structure
+              Page-level layouts that place components into a layout and articulate the design&apos;s underlying content structure
             </p>
             
             <div className={styles.showcase__grid}>

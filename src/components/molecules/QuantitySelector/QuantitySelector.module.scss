@@ -1,0 +1,71 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.quantity-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+  border: 1px solid $purple-primary;
+  border-radius: $radius-sm;
+  height: $input-height-lg;
+  width: 120px; // Component-specific width
+  overflow: hidden;
+
+  &__action {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color $transition-base;
+
+    &:hover:not(:disabled) {
+      background-color: rgba($purple-primary, 0.05);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba($purple-primary, 0.1);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &__quantity {
+    font-family: $font-family-primary; // Note: Sofia Pro from Figma, using Inter as fallback
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-lg;
+    line-height: $line-height-snug;
+    color: $black;
+    text-align: center;
+    user-select: none;
+  }
+
+  &__icon {
+    display: block;
+  }
+
+  // Removed CSS-generated icons - using SVG files instead
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+}
