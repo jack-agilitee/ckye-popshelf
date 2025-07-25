@@ -7,6 +7,7 @@ import Dropdown, { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
 import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
 import TextField from '@/components/atoms/TextField/TextField';
 import CartHeader from '@/components/atoms/CartHeader/CartHeader';
+import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -974,6 +975,81 @@ const AppHeader = () => {
         totalPrice={totalPrice}
       />
     </header>
+  );
+};`}</pre>
+                </div>
+              </div>
+              
+              {/* PointsEarned Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>PointsEarned</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/PointsEarned
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '400px', margin: '0 auto' }}>
+                    {/* Basic usage */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>100 Points</h4>
+                      <PointsEarned points={100} />
+                    </div>
+                    
+                    {/* Large points */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Large Points Value</h4>
+                      <PointsEarned points={5250} />
+                    </div>
+                    
+                    {/* Zero points */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>No Points</h4>
+                      <PointsEarned points={0} />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
+
+<PointsEarned points={100} />
+
+// Large number of points
+<PointsEarned points={5250} />
+
+// Zero points
+<PointsEarned points={0} />
+
+// In checkout flow
+const CheckoutSummary = () => {
+  const { subtotal, pointsEarned } = useCheckout();
+
+  return (
+    <div className="checkout-summary">
+      <h2>Order Summary</h2>
+      <div className="subtotal">Subtotal: $\{subtotal}</div>
+      <PointsEarned points={pointsEarned} />
+      <button>Complete Order</button>
+    </div>
+  );
+};
+
+// With rewards membership check
+const OrderRewards = () => {
+  const { isRewardsMember, calculatedPoints } = useRewards();
+
+  if (!isRewardsMember) {
+    return <JoinRewardsPrompt />;
+  }
+
+  return (
+    <div className="order-rewards">
+      <PointsEarned points={calculatedPoints} />
+      <p>Current balance: {currentPoints} points</p>
+    </div>
   );
 };`}</pre>
                 </div>
