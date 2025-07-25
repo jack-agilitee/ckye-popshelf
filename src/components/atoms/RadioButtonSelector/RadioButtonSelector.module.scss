@@ -1,0 +1,118 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.radio-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: $white; // #FFFFFF from Figma
+  border-radius: $radius-sm; // 4px from Figma
+  box-shadow: $shadow-radio-selector; // 0px 4px 16px 0px rgba(55,58,64,0.15) from Figma
+  padding: $spacing-3 $spacing-4; // 12px 16px
+  min-height: $spacing-12; // 48px
+  cursor: pointer;
+  transition: all $transition-base;
+  user-select: none;
+
+  &:hover:not(&--disabled) {
+    box-shadow: 0 6px 20px 0 rgba(55, 58, 64, 0.2);
+  }
+
+  &:focus-within:not(&--disabled) {
+    outline: 2px solid $purple-primary;
+    outline-offset: 2px;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $spacing-5; // 20px from Figma
+    height: $spacing-5; // 20px from Figma
+    margin-right: $spacing-3; // 12px
+    flex-shrink: 0;
+  }
+
+  &__radio-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__label {
+    flex: 1;
+    font-family: $font-family-primary; // Sofia Pro from Figma, using Inter
+    font-size: $font-size-base; // 16px from Figma
+    font-weight: $font-weight-medium; // 500 from Figma (Medium)
+    line-height: $spacing-5; // 20px from Figma
+    letter-spacing: 0.0333em; // 0.5333px from Figma converted to em
+    color: $black; // #000000 from Figma
+    cursor: pointer;
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $spacing-6; // 24px from Figma
+    height: $spacing-6; // 24px from Figma
+    margin-left: auto;
+  }
+
+  &__check-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__price {
+    margin-left: auto;
+    font-family: $font-family-primary;
+    font-size: $font-size-base; // 16px from Figma
+    font-weight: $font-weight-semibold; // 600 from Figma (Semi Bold)
+    line-height: $spacing-5; // 20px from Figma
+    color: $black; // #000000 from Figma
+  }
+
+  &__status {
+    margin-left: auto;
+    font-family: $font-family-primary;
+    font-size: $font-size-xs; // 12px from Figma
+    font-weight: $font-weight-normal; // 400 from Figma (Regular)
+    line-height: $spacing-5; // 20px from Figma
+    letter-spacing: 0.0333em; // 0.4px from Figma converted to em
+    color: $gray-600; // #757575 from Figma
+  }
+
+  // States
+  &--disabled {
+    cursor: not-allowed;
+
+    .radio-selector__label {
+      color: $gray-600; // #757575 from Figma
+    }
+
+    &:hover {
+      box-shadow: $shadow-radio-selector;
+    }
+  }
+
+  &--selected {
+    // Selected state styling if needed
+  }
+
+  &--priced {
+    // Priced state styling if needed
+  }
+
+  &--default {
+    // Default state styling if needed
+  }
+}

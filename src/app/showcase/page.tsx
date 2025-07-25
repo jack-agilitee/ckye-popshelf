@@ -1,10 +1,86 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@/components/atoms/Button/Button';
 import Chip from '@/components/atoms/Chip/Chip';
+import RadioButtonSelector from '@/components/atoms/RadioButtonSelector/RadioButtonSelector';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import styles from './page.module.scss';
+
+const RadioButtonSelectorDemo = () => {
+  const [selectedValue, setSelectedValue] = useState('option2');
+  const [selectedPlan, setSelectedPlan] = useState('premium');
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Basic radio group */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Basic Radio Group</span>
+        <RadioButtonSelector
+          id="option1"
+          name="basic-group"
+          value="option1"
+          label="Option 1"
+          checked={selectedValue === 'option1'}
+          onChange={setSelectedValue}
+        />
+        <RadioButtonSelector
+          id="option2"
+          name="basic-group"
+          value="option2"
+          label="Option 2"
+          checked={selectedValue === 'option2'}
+          onChange={setSelectedValue}
+          rightContent="check"
+        />
+        <RadioButtonSelector
+          id="option3"
+          name="basic-group"
+          value="option3"
+          label="Option 3"
+          disabled
+          rightContent="status"
+          statusText="unavailable"
+        />
+      </div>
+      
+      {/* Pricing options */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <span style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Subscription Plans</span>
+        <RadioButtonSelector
+          id="basic-plan"
+          name="plans"
+          value="basic"
+          label="Basic Plan"
+          checked={selectedPlan === 'basic'}
+          onChange={setSelectedPlan}
+          rightContent="price"
+          price="$9.99"
+        />
+        <RadioButtonSelector
+          id="premium-plan"
+          name="plans"
+          value="premium"
+          label="Premium Plan"
+          checked={selectedPlan === 'premium'}
+          onChange={setSelectedPlan}
+          rightContent="price"
+          price="$19.99"
+        />
+        <RadioButtonSelector
+          id="enterprise-plan"
+          name="plans"
+          value="enterprise"
+          label="Enterprise Plan"
+          checked={selectedPlan === 'enterprise'}
+          onChange={setSelectedPlan}
+          rightContent="price"
+          price="Contact Us"
+        />
+      </div>
+    </div>
+  );
+};
 
 const ShowcasePage = () => {
   return (
@@ -181,6 +257,87 @@ const ShowcasePage = () => {
   label="HOME DECOR"
   onClick={() => setCategory('home')}
 />`}</pre>
+                </div>
+              </div>
+              
+              {/* RadioButtonSelector Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>RadioButtonSelector</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/RadioButtonSelector
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <RadioButtonSelectorDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<RadioButtonSelector
+  id="option1"
+  name="group"
+  value="option1"
+  label="Option 1"
+  checked={selected === 'option1'}
+  onChange={setSelected}
+/>
+
+// With check indicator
+<RadioButtonSelector
+  id="option2"
+  name="group"
+  value="option2"
+  label="Selected Option"
+  checked={true}
+  onChange={setSelected}
+  rightContent="check"
+/>
+
+// With price
+<RadioButtonSelector
+  id="plan"
+  name="subscription"
+  value="premium"
+  label="Premium Plan"
+  checked={selected === 'premium'}
+  onChange={setSelected}
+  rightContent="price"
+  price="$19.99"
+/>
+
+// Disabled with status
+<RadioButtonSelector
+  id="unavailable"
+  name="group"
+  value="unavailable"
+  label="Out of Stock"
+  disabled
+  rightContent="status"
+  statusText="Currently unavailable"
+/>
+
+// Radio group implementation
+const RadioGroup = () => {
+  const [value, setValue] = useState('option1');
+  
+  return (
+    <div role="radiogroup">
+      {options.map(option => (
+        <RadioButtonSelector
+          key={option.id}
+          id={option.id}
+          name="group"
+          value={option.value}
+          label={option.label}
+          checked={value === option.value}
+          onChange={setValue}
+        />
+      ))}
+    </div>
+  );
+};`}</pre>
                 </div>
               </div>
               
