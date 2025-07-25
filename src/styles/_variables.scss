@@ -291,3 +291,13 @@ $footer-text: $text-inverse;
 $location-picker-label-gap: 5px; // Gap between label and address (from Figma)
 $location-picker-icon-width: 20px; // Edit icon width
 $location-picker-icon-height: 23px; // Edit icon height
+
+// ProductCard Component
+$product-card-padding: $spacing-2; // 8px padding (from Figma)
+$product-card-gap: $spacing-2; // 8px gap (from Figma)
+$product-card-shadow: 0 4px 16px 0 rgba(55, 58, 64, 0.15); // From Figma
+$product-card-image-size: 112px; // Product image size
+$product-card-close-size: $spacing-4; // 16px close button
+$product-card-name-height: 40px; // 2 lines of text
+$product-card-price-size: $font-size-lg; // 18px
+$product-card-stock-width: 72px; // Stock text width

@@ -1,0 +1,156 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product-card {
+  background-color: $white;
+  border-radius: $radius-sm;
+  box-shadow: $product-card-shadow;
+  padding: $product-card-padding;
+  display: flex;
+  gap: $product-card-gap;
+  position: relative;
+  width: 100%;
+
+  &__image {
+    width: $product-card-image-size;
+    height: $product-card-image-size;
+    object-fit: contain;
+    flex-shrink: 0;
+    
+    &--unavailable {
+      opacity: 0.33;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $product-card-gap;
+    min-width: 0; // Allow text truncation
+  }
+
+  &__name {
+    @include font-medium;
+    font-size: $font-size-sm; // 14px
+    line-height: $line-height-tight; // 1.2
+    color: $black;
+    height: $product-card-name-height;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0;
+    
+    &--unavailable {
+      color: $gray-600; // #757575
+    }
+  }
+
+  &__price-section {
+    display: flex;
+    gap: $spacing-2;
+    align-items: flex-end;
+    
+    &--hidden {
+      opacity: 0;
+    }
+  }
+
+  &__price {
+    @include font-extrabold; // Heavy weight
+    font-size: $product-card-price-size; // 18px
+    line-height: $line-height-tight;
+    color: $black;
+  }
+
+  &__regular-price {
+    font-size: $font-size-xs; // 12px
+    line-height: 1.25; // 15px
+    color: $gray-600; // #757575
+    display: flex;
+    gap: $spacing-1;
+  }
+
+  &__reg-label {
+    // Regular price "reg" label
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__stock {
+    @include font-medium;
+    font-size: $font-size-sm; // 14px
+    line-height: 1.07; // ~15px
+    color: $gray-600; // #757575
+    letter-spacing: 0.2917px; // From Figma
+    width: $product-card-stock-width;
+    flex-shrink: 0;
+  }
+
+  &__out-of-stock {
+    @include font-medium;
+    font-size: $font-size-sm; // 14px
+    line-height: $line-height-normal;
+    color: $color-error; // #F40000
+    letter-spacing: 0.2917px; // From Figma
+    flex: 1;
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-2;
+    right: $spacing-2;
+    width: $product-card-close-size;
+    height: $product-card-close-size;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: $spacing-1 / 2;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__close-icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $product-card-close-size;
+      height: 1.333px;
+      background-color: $black;
+      border-radius: $radius-full;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
