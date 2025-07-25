@@ -294,10 +294,10 @@ const OrderStatusDemo = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
       {/* No Order Status */}
       <div>
-        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>No Order</h4>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>No Order</h4>
         <OrderStatus
           status={OrderStatusType.NO_ORDER}
           {...storeInfo}
@@ -307,7 +307,7 @@ const OrderStatusDemo = () => {
 
       {/* Order Received Status */}
       <div>
-        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Order Received</h4>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Order Received</h4>
         <OrderStatus
           status={OrderStatusType.ORDER_RECEIVED}
           {...storeInfo}
@@ -317,7 +317,7 @@ const OrderStatusDemo = () => {
 
       {/* Ready to Pickup Status */}
       <div>
-        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Ready to Pickup</h4>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Ready to Pickup</h4>
         <OrderStatus
           status={OrderStatusType.READY_TO_PICKUP}
           {...storeInfo}
@@ -327,7 +327,7 @@ const OrderStatusDemo = () => {
 
       {/* Multiple Orders Status */}
       <div>
-        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Multiple Orders</h4>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Multiple Orders</h4>
         <OrderStatus
           status={OrderStatusType.MULTIPLE_ORDERS}
           {...storeInfo}

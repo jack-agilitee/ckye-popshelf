@@ -89,7 +89,7 @@ const OrderStatus: React.FC<OrderStatusProps> = ({
       <div className={styles['order-status__store-info']}>
         <div className={styles['order-status__icon-wrapper']}>
           <Image
-            src="/icons/location.svg"
+            src="/location.svg"
             alt=""
             width={24}
             height={24}
@@ -108,7 +108,7 @@ const OrderStatus: React.FC<OrderStatusProps> = ({
           type="button"
         >
           <Image
-            src="/icons/edit.svg"
+            src="/edit.svg"
             alt=""
             width={20}
             height={20}
