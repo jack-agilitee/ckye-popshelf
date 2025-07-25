@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CartHeader from './CartHeader';
 
@@ -51,71 +51,24 @@ describe('CartHeader', () => {
     expect(header).toHaveClass('custom-class');
   });
 
-  describe('Non-clickable variant', () => {
-    it('renders as div when onClick is not provided', () => {
-      render(<CartHeader {...defaultProps} />);
-      const header = screen.getByRole('status');
-      expect(header.tagName).toBe('DIV');
-    });
-
-    it('has correct aria-label', () => {
-      render(<CartHeader {...defaultProps} />);
-      const header = screen.getByRole('status');
-      expect(header).toHaveAttribute('aria-label', 'Cart with 3 items, total $40.64');
-    });
-
-    it('uses custom aria-label when provided', () => {
-      render(
-        <CartHeader {...defaultProps} ariaLabel="Shopping cart summary" />
-      );
-      const header = screen.getByRole('status');
-      expect(header).toHaveAttribute('aria-label', 'Shopping cart summary');
-    });
+  it('renders as div', () => {
+    render(<CartHeader {...defaultProps} />);
+    const header = screen.getByRole('status');
+    expect(header.tagName).toBe('DIV');
   });
 
-  describe('Clickable variant', () => {
-    const onClickMock = jest.fn();
+  it('has correct aria-label', () => {
+    render(<CartHeader {...defaultProps} />);
+    const header = screen.getByRole('status');
+    expect(header).toHaveAttribute('aria-label', 'Cart with 3 items, total $40.64');
+  });
 
-    beforeEach(() => {
-      onClickMock.mockClear();
-    });
-
-    it('renders as button when onClick is provided', () => {
-      render(<CartHeader {...defaultProps} onClick={onClickMock} />);
-      const button = screen.getByRole('button');
-      expect(button.tagName).toBe('BUTTON');
-    });
-
-    it('calls onClick when clicked', () => {
-      render(<CartHeader {...defaultProps} onClick={onClickMock} />);
-      const button = screen.getByRole('button');
-      fireEvent.click(button);
-      expect(onClickMock).toHaveBeenCalledTimes(1);
-    });
-
-    it('has clickable class when onClick is provided', () => {
-      render(<CartHeader {...defaultProps} onClick={onClickMock} />);
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass('cart-header--clickable');
-    });
-
-    it('has correct aria-label on button', () => {
-      render(<CartHeader {...defaultProps} onClick={onClickMock} />);
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-label', 'Cart with 3 items, total $40.64');
-    });
-
-    it('uses custom aria-label on button when provided', () => {
-      render(
-        <CartHeader 
-          {...defaultProps} 
-          onClick={onClickMock}
-          ariaLabel="Open shopping cart"
-        />
-      );
-      const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-label', 'Open shopping cart');
-    });
+  it('uses custom aria-label when provided', () => {
+    render(
+      <CartHeader {...defaultProps} ariaLabel="Shopping cart summary" />
+    );
+    const header = screen.getByRole('status');
+    expect(header).toHaveAttribute('aria-label', 'Shopping cart summary');
   });
 
   describe('Price formatting', () => {

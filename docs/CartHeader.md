@@ -25,19 +25,18 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
   currencySymbol="€"
 />
 
-// Clickable variant
-<CartHeader
-  itemCount={2}
-  totalPrice={25.50}
-  onClick={() => openCartDrawer()}
-  ariaLabel="Open shopping cart"
-/>
-
 // With custom styling
 <CartHeader
   itemCount={10}
   totalPrice={150.00}
   className="fixed-header"
+/>
+
+// With custom aria label
+<CartHeader
+  itemCount={2}
+  totalPrice={25.50}
+  ariaLabel="Shopping cart summary"
 />
 ```
 
@@ -49,7 +48,6 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 | `totalPrice` | `number` | Required | Total price of items in cart |
 | `currencySymbol` | `string` | `'$'` | Currency symbol to display |
 | `className` | `string` | - | Additional CSS class names |
-| `onClick` | `() => void` | - | Callback when header is clicked (makes it a button) |
 | `ariaLabel` | `string` | - | Custom ARIA label for accessibility |
 
 ## Design Specifications
@@ -64,25 +62,16 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
   - "total:" label: 16px medium weight
   - Price: 20px extra bold
 
-## Variants
+## Component Details
 
-### Static Header
-When no `onClick` prop is provided, the component renders as a `<div>` with `role="status"` for accessibility.
-
-### Clickable Header
-When `onClick` prop is provided, the component renders as a `<button>` with:
-- Hover state (darker purple)
-- Focus outline
-- Active state (even darker purple)
-- Proper button semantics
+The CartHeader component renders as a `<div>` with `role="status"` for accessibility. It displays the cart information in a purple header bar with white text.
 
 ## Accessibility
 
 - Automatic ARIA label generation: "Cart with X items, total $Y"
 - Custom ARIA labels supported
-- Proper semantic HTML (div vs button based on interactivity)
-- Focus indicators for keyboard navigation
-- Role attributes for screen readers
+- Proper semantic HTML with role="status"
+- Screen reader friendly
 
 ## Testing
 
@@ -97,7 +86,6 @@ Test coverage includes:
 - Price formatting (2 decimal places)
 - Singular/plural item text
 - Currency symbol customization
-- Click handler functionality
 - Accessibility attributes
 
 ## Examples
@@ -107,7 +95,6 @@ Test coverage includes:
 ```tsx
 function AppHeader() {
   const { itemCount, totalPrice } = useCart();
-  const { openDrawer } = useCartDrawer();
 
   return (
     <header className="app-header">
@@ -116,8 +103,6 @@ function AppHeader() {
       <CartHeader
         itemCount={itemCount}
         totalPrice={totalPrice}
-        onClick={openDrawer}
-        ariaLabel="View shopping cart"
       />
     </header>
   );
@@ -170,7 +155,6 @@ function StickyCart() {
       <CartHeader
         {...cartData}
         className="sticky-cart"
-        onClick={() => window.location.href = '/cart'}
       />
     </div>
   );

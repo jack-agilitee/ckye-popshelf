@@ -768,13 +768,12 @@ import TextField from '@/components/atoms/TextField/TextField';
                       />
                     </div>
                     
-                    {/* Clickable variant */}
+                    {/* With custom aria label */}
                     <div style={{ width: '100%' }}>
                       <CartHeader
                         itemCount={5}
                         totalPrice={125.99}
-                        onClick={() => console.log('Cart clicked')}
-                        ariaLabel="Open shopping cart"
+                        ariaLabel="Shopping cart summary"
                       />
                     </div>
                     
@@ -806,12 +805,11 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
   totalPrice={40.64}
 />
 
-// Clickable variant
+// With custom aria label
 <CartHeader
   itemCount={5}
   totalPrice={125.99}
-  onClick={() => openCartDrawer()}
-  ariaLabel="Open shopping cart"
+  ariaLabel="Shopping cart summary"
 />
 
 // Custom currency
@@ -832,7 +830,6 @@ const AppHeader = () => {
       <CartHeader
         itemCount={itemCount}
         totalPrice={totalPrice}
-        onClick={() => router.push('/cart')}
       />
     </header>
   );

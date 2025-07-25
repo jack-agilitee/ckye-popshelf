@@ -10,8 +10,6 @@ interface CartHeaderProps {
   currencySymbol?: string;
   /** Additional CSS class names */
   className?: string;
-  /** Callback when header is clicked (optional) */
-  onClick?: () => void;
   /** ARIA label for the header (optional) */
   ariaLabel?: string;
 }
@@ -21,15 +19,18 @@ const CartHeader: React.FC<CartHeaderProps> = ({
   totalPrice,
   currencySymbol = '$',
   className,
-  onClick,
   ariaLabel,
 }) => {
   const formattedPrice = totalPrice.toFixed(2);
   const itemText = itemCount === 1 ? 'item' : 'items';
   const defaultAriaLabel = `Cart with ${itemCount} ${itemText}, total ${currencySymbol}${formattedPrice}`;
   
-  const headerContent = (
-    <>
+  return (
+    <div 
+      className={`${styles['cart-header']} ${className || ''}`}
+      role="status"
+      aria-label={ariaLabel || defaultAriaLabel}
+    >
       <div className={styles['cart-header__left']}>
         <span className={styles['cart-header__cart-text']}>cart</span>
         <span className={styles['cart-header__count']}>({itemCount} {itemText})</span>
@@ -38,29 +39,6 @@ const CartHeader: React.FC<CartHeaderProps> = ({
         <span className={styles['cart-header__total-label']}>total:</span>
         <span className={styles['cart-header__total-price']}>{currencySymbol}{formattedPrice}</span>
       </div>
-    </>
-  );
-
-  if (onClick) {
-    return (
-      <button
-        className={`${styles['cart-header']} ${styles['cart-header--clickable']} ${className || ''}`}
-        onClick={onClick}
-        aria-label={ariaLabel || defaultAriaLabel}
-        type="button"
-      >
-        {headerContent}
-      </button>
-    );
-  }
-
-  return (
-    <div 
-      className={`${styles['cart-header']} ${className || ''}`}
-      role="status"
-      aria-label={ariaLabel || defaultAriaLabel}
-    >
-      {headerContent}
     </div>
   );
 };
