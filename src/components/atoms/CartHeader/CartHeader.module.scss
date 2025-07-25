@@ -1,0 +1,65 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.cart-header {
+  background-color: $purple-primary;
+  color: $text-inverse;
+  height: $cart-header-height;
+  padding: 0 $spacing-5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+  // When clickable
+  &--clickable {
+    border: none;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    text-align: left;
+    
+    &:hover {
+      background-color: darken($purple-primary, 5%);
+    }
+    
+    &:focus {
+      outline: 2px solid $white;
+      outline-offset: -2px;
+    }
+    
+    &:active {
+      background-color: darken($purple-primary, 10%);
+    }
+  }
+  
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+  }
+  
+  &__cart-text {
+    @include font-extrabold;
+    font-size: $font-size-xl;
+    line-height: 1.2; // 24px with 20px font
+  }
+  
+  &__count {
+    font-size: $font-size-base;
+    line-height: 1.25; // 20px with 16px font
+    // Using normal weight to approximate "Book" weight
+  }
+  
+  &__total-label {
+    @include font-medium;
+    font-size: $font-size-base;
+    line-height: 1.25; // 20px with 16px font
+  }
+  
+  &__total-price {
+    @include font-extrabold;
+    font-size: $font-size-xl;
+    line-height: 1.2; // 24px with 20px font
+  }
+}
