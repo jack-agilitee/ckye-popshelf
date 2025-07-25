@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Button from '@/components/atoms/Button/Button';
+import Chip from '@/components/atoms/Chip/Chip';
 import styles from './page.module.scss';
 
 const ShowcasePage = () => {
@@ -119,6 +120,66 @@ const ShowcasePage = () => {
 >
   Save & Continue
 </Button>`}</pre>
+                </div>
+              </div>
+              
+              {/* Chip Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Chip</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/Chip
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+                    {/* All variants */}
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      <Chip label="FILTERS" onClick={() => console.log('Solid chip clicked')} />
+                      <Chip variant="outlined" label="CATEGORY" onClick={() => console.log('Outlined chip clicked')} />
+                      <Chip label="PRICE: $10-$20" icon="/delete.svg" onClick={() => console.log('Remove chip clicked')} />
+                    </div>
+                    
+                    {/* Example use cases */}
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center', marginTop: '16px' }}>
+                      <Chip label="NEW ARRIVALS" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
+                      <Chip label="UNDER $25" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
+                      <Chip label="IN STOCK" icon="/delete.svg" onClick={() => console.log('Remove filter')} />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+<Chip onClick={handleClick} />
+
+// With custom label
+<Chip label="NEW ARRIVALS" />
+
+// Variants
+<Chip variant="solid" label="FILTERS" />
+<Chip variant="outlined" label="CATEGORY" />
+
+// With icon
+<Chip label="PRICE: $10-$20" icon="/delete.svg" />
+
+// Filter implementation
+{filters.map(filter => (
+  <Chip
+    key={filter}
+    label={filter}
+    icon="/delete.svg"
+    onClick={() => removeFilter(filter)}
+  />
+))}
+
+// Category selector
+<Chip 
+  variant={selected ? 'solid' : 'outlined'}
+  label="HOME DECOR"
+  onClick={() => setCategory('home')}
+/>`}</pre>
                 </div>
               </div>
               
