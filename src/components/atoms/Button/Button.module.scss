@@ -2,7 +2,7 @@
 @import '../../../styles/mixins';
 
 .button {
-  @include button-text;
+  @include sofia-semibold;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -118,14 +118,17 @@
     }
     
     .button__labelTop {
-      @include body-small;
+      font-family: $font-family-sofia;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
       line-height: 1.33;
       opacity: 0.85;
     }
     
     .button__label {
-      @include body-medium;
-      @include font-semibold;
+      font-family: $font-family-sofia;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
       line-height: 1;
     }
     
