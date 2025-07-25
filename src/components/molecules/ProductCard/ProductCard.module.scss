@@ -10,6 +10,7 @@
   gap: $product-card-gap;
   position: relative;
   width: 100%;
+  font-family: $font-family-avenir;
 
   &__image {
     width: $product-card-image-size;
@@ -28,6 +29,7 @@
     flex-direction: column;
     gap: $product-card-gap;
     min-width: 0; // Allow text truncation
+    padding-right: $spacing-6; // 24px to avoid close button overlap
   }
 
   &__name {
@@ -58,13 +60,14 @@
   }
 
   &__price {
-    @include font-extrabold; // Heavy weight
+    font-weight: 900; // Avenir Heavy
     font-size: $product-card-price-size; // 18px
     line-height: $line-height-tight;
     color: $black;
   }
 
   &__regular-price {
+    font-weight: 400; // Avenir Roman
     font-size: $font-size-xs; // 12px
     line-height: 1.25; // 15px
     color: $gray-600; // #757575
