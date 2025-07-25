@@ -11,6 +11,7 @@ import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySe
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
 import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker';
+import ProductCard from '@/components/molecules/ProductCard/ProductCard';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -399,6 +400,82 @@ const LocationPickerDemo = () => {
           address="PopShelf #123, Goodlettsville TN"
           onEdit={() => console.log('Change store')}
           editAriaLabel="Select a different store"
+        />
+      </div>
+    </div>
+  );
+};
+
+const ProductCardDemo = () => {
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({
+    product1: 1,
+    product2: 2,
+    product3: 1,
+  });
+
+  const updateQuantity = (productId: string, newQuantity: number) => {
+    setQuantities(prev => ({ ...prev, [productId]: newQuantity }));
+    console.log(`Updated ${productId} quantity to ${newQuantity}`);
+  };
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+      {/* In stock product */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>In Stock Product</h4>
+        <ProductCard
+          name="Round Gold Metal Wall Mirror"
+          price={9.00}
+          regularPrice={11.00}
+          stockQuantity={15}
+          initialQuantity={quantities.product1}
+          onClose={() => console.log('Remove product 1')}
+          onIncrement={() => updateQuantity('product1', quantities.product1 + 1)}
+          onDecrement={() => updateQuantity('product1', Math.max(1, quantities.product1 - 1))}
+          onDelete={() => console.log('Delete product 1')}
+        />
+      </div>
+
+      {/* Product with discount */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Product with Discount</h4>
+        <ProductCard
+          name="Decorative Ceramic Planter with Drainage Hole and Saucer"
+          price={12.99}
+          regularPrice={24.99}
+          stockQuantity={8}
+          initialQuantity={quantities.product2}
+          onClose={() => console.log('Remove product 2')}
+          onIncrement={() => updateQuantity('product2', quantities.product2 + 1)}
+          onDecrement={() => updateQuantity('product2', Math.max(1, quantities.product2 - 1))}
+          onDelete={() => console.log('Delete product 2')}
+        />
+      </div>
+
+      {/* Out of stock product */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Out of Stock</h4>
+        <ProductCard
+          name="Vintage Table Lamp with Fabric Shade"
+          price={45.00}
+          regularPrice={65.00}
+          outOfStock={true}
+          onClose={() => console.log('Remove out of stock product')}
+        />
+      </div>
+
+      {/* Low stock product */}
+      <div>
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Low Stock</h4>
+        <ProductCard
+          name="Set of 4 Storage Baskets"
+          price={18.00}
+          stockQuantity={2}
+          initialQuantity={quantities.product3}
+          onClose={() => console.log('Remove product 3')}
+          onIncrement={() => updateQuantity('product3', quantities.product3 + 1)}
+          onDecrement={() => updateQuantity('product3', Math.max(1, quantities.product3 - 1))}
+          onDelete={() => console.log('Delete product 3')}
         />
       </div>
     </div>
@@ -1196,11 +1273,78 @@ const StorePickup = () => {
                 </p>
               </div>
               
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Cards</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Card components will be displayed here
-                </p>
+              {/* ProductCard Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductCard</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/ProductCard
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <ProductCardDemo />
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// In stock product
+<ProductCard
+  name="Round Gold Metal Wall Mirror"
+  price={9.00}
+  stockQuantity={15}
+  onClose={() => handleRemoveProduct()}
+  onIncrement={() => handleIncrement()}
+  onDecrement={() => handleDecrement()}
+  onDelete={() => handleDelete()}
+/>
+
+// Out of stock product
+<ProductCard
+  name="Vintage Table Lamp"
+  price={45.00}
+  outOfStock={true}
+  onClose={() => handleRemoveProduct()}
+/>
+
+// With discount pricing
+<ProductCard
+  name="Decorative Throw Pillow"
+  price={12.99}
+  regularPrice={19.99}
+  stockQuantity={8}
+  initialQuantity={2}
+  onClose={() => handleRemoveProduct()}
+  onIncrement={() => handleIncrement()}
+  onDecrement={() => handleDecrement()}
+  onDelete={() => handleDelete()}
+/>
+
+// Shopping cart implementation
+const ShoppingCart = () => {
+  const { items, updateQuantity, removeItem } = useCart();
+
+  return (
+    <div className="cart-items">
+      {items.map((item) => (
+        <ProductCard
+          key={item.id}
+          name={item.name}
+          image={item.image}
+          price={item.salePrice}
+          regularPrice={item.originalPrice}
+          stockQuantity={item.availableStock}
+          initialQuantity={item.quantity}
+          outOfStock={item.availableStock === 0}
+          onClose={() => removeItem(item.id)}
+          onIncrement={() => updateQuantity(item.id, item.quantity + 1)}
+          onDecrement={() => updateQuantity(item.id, item.quantity - 1)}
+          onDelete={() => removeItem(item.id)}
+        />
+      ))}
+    </div>
+  );
+};`}</pre>
+                </div>
               </div>
             </div>
           </section>
