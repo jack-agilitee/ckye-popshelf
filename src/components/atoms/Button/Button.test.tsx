@@ -33,17 +33,17 @@ describe('Button', () => {
       expect(button).toHaveClass('button--secondary');
     });
 
-    it('applies link variant class correctly', () => {
-      const { container } = render(<Button label="Link" variant="link" />);
+    it('applies tertiary variant class correctly', () => {
+      const { container } = render(<Button label="Tertiary" variant="tertiary" />);
       const button = container.querySelector('button');
-      expect(button).toHaveClass('button--link');
+      expect(button).toHaveClass('button--tertiary');
     });
 
-    it('applies inactive variant class and is disabled', () => {
-      const { container } = render(<Button label="Inactive" variant="inactive" />);
+    it('applies disabled state correctly', () => {
+      const { container } = render(<Button label="Disabled" disabled />);
       const button = container.querySelector('button');
-      expect(button).toHaveClass('button--inactive');
       expect(button).toBeDisabled();
+      expect(button).toHaveAttribute('disabled');
     });
 
     it('calls onClick when clicked', () => {
@@ -60,11 +60,22 @@ describe('Button', () => {
       expect(mockOnClick).not.toHaveBeenCalled();
     });
 
-    it('does not call onClick when variant is inactive', () => {
-      render(<Button label="Inactive" onClick={mockOnClick} variant="inactive" />);
-      const button = screen.getByRole('button');
-      fireEvent.click(button);
-      expect(mockOnClick).not.toHaveBeenCalled();
+    it('disabled state works for all variants', () => {
+      const variants: Array<'primary' | 'secondary' | 'tertiary'> = ['primary', 'secondary', 'tertiary'];
+      
+      variants.forEach(variant => {
+        mockOnClick.mockClear();
+        const { unmount } = render(
+          <Button variant={variant} disabled onClick={mockOnClick}>
+            {variant} disabled
+          </Button>
+        );
+        const button = screen.getByRole('button');
+        expect(button).toBeDisabled();
+        fireEvent.click(button);
+        expect(mockOnClick).not.toHaveBeenCalled();
+        unmount();
+      });
     });
 
     it('applies custom className', () => {

@@ -147,18 +147,9 @@
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: $spacing-6;
-
-    @include breakpoint(md) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: $spacing-8;
-    }
-
-    @include breakpoint(lg) {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   &__placeholder {
@@ -197,8 +188,13 @@
   &__componentShowcase {
     @include card;
     background-color: $background-primary;
-    padding: $spacing-6;
-    margin-bottom: $spacing-6;
+    padding: $spacing-8;
+    margin-bottom: $spacing-8;
+    width: 100%;
+    
+    @include breakpoint(md) {
+      padding: $spacing-10;
+    }
   }
 
   &__componentHeader {

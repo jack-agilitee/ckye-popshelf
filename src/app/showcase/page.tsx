@@ -64,11 +64,11 @@ const ShowcasePage = () => {
                       <Button variant="secondary" onClick={() => console.log('Secondary clicked')}>
                         Secondary
                       </Button>
-                      <Button variant="link" onClick={() => console.log('Link clicked')}>
-                        Link Style
+                      <Button variant="tertiary" onClick={() => console.log('Tertiary clicked')}>
+                        Tertiary
                       </Button>
-                      <Button variant="inactive">
-                        Inactive
+                      <Button disabled onClick={() => console.log('This should not fire')}>
+                        Disabled
                       </Button>
                     </div>
                     
@@ -99,8 +99,8 @@ const ShowcasePage = () => {
 
 // Variants
 <Button variant="secondary">Secondary</Button>
-<Button variant="link">Link Style</Button>
-<Button variant="inactive">Inactive</Button>
+<Button variant="tertiary">Tertiary</Button>
+<Button disabled>Disabled</Button>
 
 // Multi-line buttons
 <Button 

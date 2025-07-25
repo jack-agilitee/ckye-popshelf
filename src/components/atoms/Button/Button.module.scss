@@ -22,9 +22,27 @@
     box-shadow: 0 0 0 3px rgba($purple-primary, 0.3);
   }
   
-  // Disabled state
+  // Disabled state for all variants
   &:disabled {
     cursor: not-allowed;
+    opacity: 0.5;
+    
+    &.button--primary {
+      background-color: $gray-300;
+      color: $gray-700;
+    }
+    
+    &.button--secondary {
+      background-color: $gray-100;
+      color: $gray-500;
+      border-color: $gray-300;
+    }
+    
+    &.button--tertiary {
+      background-color: $gray-100;
+      color: $gray-500;
+      text-decoration: none;
+    }
   }
   
   // Active state
@@ -63,9 +81,9 @@
     }
   }
 
-  // Link variant
-  &--link {
-    background-color: transparent;
+  // Tertiary variant
+  &--tertiary {
+    background-color: $white;
     color: $purple-primary;
     padding: 0 $spacing-3;
     min-width: auto;
@@ -83,21 +101,6 @@
       box-shadow: none;
       outline: 2px solid $purple-primary;
       outline-offset: 2px;
-    }
-  }
-
-  // Inactive variant
-  &--inactive {
-    background-color: $gray-300;
-    color: $gray-700;
-    cursor: not-allowed;
-    
-    &:hover {
-      background-color: $gray-300;
-    }
-    
-    &:focus-visible {
-      box-shadow: 0 0 0 3px rgba($gray-500, 0.3);
     }
   }
 

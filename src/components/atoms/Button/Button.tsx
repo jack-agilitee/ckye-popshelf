@@ -7,7 +7,7 @@ interface ButtonProps {
   children?: React.ReactNode;
   label?: string;
   labelTop?: string;
-  variant?: 'primary' | 'secondary' | 'link' | 'inactive';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   multiline?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
@@ -28,10 +28,8 @@ const Button: React.FC<ButtonProps> = ({
   className,
   ariaLabel
 }) => {
-  const isDisabled = disabled || variant === 'inactive';
-  
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!isDisabled && onClick) {
+    if (!disabled && onClick) {
       onClick(event);
     }
   };
@@ -48,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       className={buttonClasses}
       onClick={handleClick}
-      disabled={isDisabled}
+      disabled={disabled}
       aria-label={ariaLabel || (multiline && labelTop ? `${labelTop} ${label}` : label)}
     >
       {multiline ? (

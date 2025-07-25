@@ -30,11 +30,11 @@ import Button from '@/components/atoms/Button/Button';
 // Secondary
 <Button variant="secondary">Secondary Button</Button>
 
-// Link style
-<Button variant="link">Link Button</Button>
+// Tertiary style
+<Button variant="tertiary">Tertiary Button</Button>
 
-// Inactive (disabled state)
-<Button variant="inactive">Inactive Button</Button>
+// Disabled state (works with all variants)
+<Button disabled>Disabled Button</Button>
 ```
 
 ### Multiline Buttons
@@ -68,14 +68,19 @@ import Button from '@/components/atoms/Button/Button';
 
 ### Disabled State
 ```tsx
-// Explicitly disabled
+// Disabled primary button
 <Button disabled onClick={handleClick}>
-  Disabled Button
+  Disabled Primary
 </Button>
 
-// Inactive variant is always disabled
-<Button variant="inactive">
-  Always Disabled
+// Disabled secondary button
+<Button variant="secondary" disabled>
+  Disabled Secondary
+</Button>
+
+// Disabled tertiary button
+<Button variant="tertiary" disabled>
+  Disabled Tertiary
 </Button>
 ```
 
@@ -112,7 +117,7 @@ import Button from '@/components/atoms/Button/Button';
 | `children` | `React.ReactNode` | - | Button content (takes precedence over label) |
 | `label` | `string` | - | Button text (used when children not provided) |
 | `labelTop` | `string` | - | Top label for multiline variant |
-| `variant` | `'primary' \| 'secondary' \| 'link' \| 'inactive'` | `'primary'` | Visual style variant |
+| `variant` | `'primary' \| 'secondary' \| 'tertiary'` | `'primary'` | Visual style variant |
 | `multiline` | `boolean` | `false` | Enable two-line layout |
 | `onClick` | `(event: React.MouseEvent) => void` | - | Click handler function |
 | `disabled` | `boolean` | `false` | Disable button interactions |
@@ -128,8 +133,7 @@ The component uses CSS Modules with SCSS and follows the BEM methodology. All st
 - `.button` - Base button styles
 - `.button--primary` - Primary variant styles
 - `.button--secondary` - Secondary variant styles  
-- `.button--link` - Link variant styles
-- `.button--inactive` - Inactive variant styles
+- `.button--tertiary` - Tertiary variant styles
 - `.button--multiline` - Multiline layout modifier
 - `.button__label` - Label element
 - `.button__labelTop` - Top label in multiline mode
@@ -209,7 +213,7 @@ npm run test Button.test.tsx
 ### Navigation
 ```tsx
 <Button 
-  variant="link"
+  variant="tertiary"
   onClick={() => navigate('/products')}
 >
   View all products →
