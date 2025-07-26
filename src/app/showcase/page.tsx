@@ -10,6 +10,7 @@ import CartHeader from '@/components/atoms/CartHeader/CartHeader';
 import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
 import Checkbox from '@/components/atoms/Checkbox/Checkbox';
 import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
+import ContentBlock from '@/components/atoms/ContentBlock/ContentBlock';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -1330,6 +1331,96 @@ function ProductCard({ product }: {
         reviewCount={product.reviewCount}
       />
       <p>$\{product.price}</p>
+    </div>
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* ContentBlock Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ContentBlock</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/atoms/ContentBlock
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '600px', margin: '0 auto' }}>
+                    {/* Product highlights example */}
+                    <ContentBlock
+                      title="Highlights"
+                      items={[
+                        '5.5oz 100% ring spun cotton tee is super soft and comfortable',
+                        'Vintage washed and garment dyed for a retro look and feel',
+                        'No shrink comfort for a dependable fit wash after wash',
+                        'Cotton sourced from American farms'
+                      ]}
+                    />
+                    
+                    {/* Features example */}
+                    <ContentBlock
+                      title="Key Features"
+                      items={[
+                        'Machine washable for easy care',
+                        'Pre-shrunk to minimize shrinkage',
+                        'Double-needle stitching for durability',
+                        'Tag-free for added comfort'
+                      ]}
+                    />
+                    
+                    {/* Short list example */}
+                    <ContentBlock
+                      title="Package Includes"
+                      items={[
+                        '1x Premium T-Shirt',
+                        'Care instructions card'
+                      ]}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ContentBlock from '@/components/atoms/ContentBlock/ContentBlock';
+
+// Basic usage
+<ContentBlock
+  title="Highlights"
+  items={[
+    '5.5oz 100% ring spun cotton tee is super soft and comfortable',
+    'Vintage washed and garment dyed for a retro look and feel',
+    'No shrink comfort for a dependable fit wash after wash',
+    'Cotton sourced from American farms'
+  ]}
+/>
+
+// Product features
+<ContentBlock
+  title="Key Features"
+  items={productFeatures}
+/>
+
+// Custom styling
+<ContentBlock
+  title="Benefits"
+  items={benefitsList}
+  className="product-benefits"
+/>
+
+// Usage in product detail page
+function ProductDetails({ product }) {
+  return (
+    <div className="product-details">
+      <h1>{product.name}</h1>
+      <ContentBlock
+        title="Product Highlights"
+        items={product.highlights}
+      />
+      <ContentBlock
+        title="Materials & Care"
+        items={product.careInstructions}
+      />
     </div>
   );
 }`}</pre>
