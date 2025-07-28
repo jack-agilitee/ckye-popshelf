@@ -21,6 +21,7 @@ import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions';
 import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
+import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2417,6 +2418,85 @@ function ProductGrid({ products }) {
   onAddToCart={() => handleAddToCart()}
   onPolicyClick={() => showShippingPolicy()}
 />`}</pre>
+            </div>
+          </section>
+
+          {/* FeaturedContentBlock Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>FeaturedContentBlock</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/FeaturedContentBlock
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center' }}>
+                {/* Example 1 - Fashion */}
+                <FeaturedContentBlock
+                  title="New Arrivals"
+                  description="Check out our latest collection"
+                  desktopImage="/content/content-shoe.png"
+                  mobileImage="/content/content-bath.jpg"
+                  onClick={() => console.log('Navigate to new arrivals')}
+                />
+                
+                {/* Example 2 - Bath & Beauty */}
+                <FeaturedContentBlock
+                  title="bath & beauty essentials"
+                  description="Add style to everyday bath & beauty supplies."
+                  desktopImage="/content/content-bath.jpg"
+                  mobileImage="/content/content-bath.jpg"
+                  onClick={() => console.log('Navigate to bath & beauty')}
+                />
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
+
+// Basic usage
+<FeaturedContentBlock
+  title="New Arrivals"
+  description="Check out our latest collection"
+  desktopImage="/content/content-shoe.png"
+  mobileImage="/content/content-bath.jpg"
+  onClick={() => router.push('/new-arrivals')}
+/>
+
+// With router navigation
+const router = useRouter();
+
+<FeaturedContentBlock
+  title="bath & beauty essentials"
+  description="Add style to everyday bath & beauty supplies."
+  desktopImage="/content/bath-desktop.png"
+  mobileImage="/content/bath-mobile.jpg"
+  onClick={() => router.push('/category/bath-beauty')}
+/>
+
+// Multiple features
+const features = [
+  {
+    title: "Summer Collection",
+    description: "Bright styles for sunny days",
+    desktop: "/content/summer-d.jpg",
+    mobile: "/content/summer-m.jpg",
+    link: "/summer"
+  },
+  // ... more features
+];
+
+{features.map((feature, i) => (
+  <FeaturedContentBlock
+    key={i}
+    title={feature.title}
+    description={feature.description}
+    desktopImage={feature.desktop}
+    mobileImage={feature.mobile}
+    onClick={() => router.push(feature.link)}
+  />
+))}`}</pre>
             </div>
           </section>
 

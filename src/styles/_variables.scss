@@ -26,6 +26,7 @@ $black: #000000;
 $black-primary: #1F1F1F; // Used in LocationPicker address (from Figma)
 $gray-950: #090909; // Used in OrderSummary headings (from Figma)
 $gray-900: #212121;
+$gray-850: #262525; // Used in FeaturedContentBlock text (from Figma)
 $gray-800: #424242;
 $gray-750: #7A7A7A; // Used in LocationPicker label (from Figma)
 $gray-700: #636363; // Used in text field labels (from Figma)
@@ -178,6 +179,8 @@ $shadow-none: none;
 // Component-specific shadows
 $shadow-radio-selector: 0 4px 16px 0 rgba(55, 58, 64, 0.15); // From RadioButtonSelector Figma
 $shadow-text-field: 0px 4px 16px 0px rgba(55, 58, 64, 0.15); // From TextField Figma
+$shadow-featured-desktop: 12px 12px 24px 0px #E6E6E6; // From FeaturedContentBlock desktop
+$shadow-featured-mobile: 0px 3px 10px 0px rgba(55, 58, 64, 0.15); // From FeaturedContentBlock mobile
 
 // Z-Index
 // -------
@@ -365,3 +368,15 @@ $related-products-padding: $spacing-5; // 20px section padding (from Figma)
 $related-products-title-size: $font-size-base; // 16px section title (from Figma)
 $related-products-button-letter-spacing: 0.3px; // Sofia Pro button letter spacing (from Figma)
 $related-products-title-margin: 7px; // Title to content margin (from Figma)
+
+// FeaturedContentBlock Component
+$featured-desktop-width: 620px; // Desktop container width (from Figma)
+$featured-desktop-height: 360px; // Desktop container height (from Figma)
+$featured-content-card-width: 220px; // Desktop content card width (from Figma)
+$featured-content-card-position-left: 564px; // Desktop card left position (from Figma)
+$featured-content-card-position-top: 144px; // Desktop card top position (from Figma)
+$featured-mobile-image-height: 240px; // Mobile image height (from Figma)
+$featured-icon-size: 32px; // Arrow icon size (from Figma)
+$featured-decoration-rotation: 15deg; // Decoration rotation angle (from Figma)
+$featured-title-letter-spacing-desktop: -0.6667px; // Desktop title letter spacing (from Figma)
+$featured-description-letter-spacing-desktop: -0.4444px; // Desktop description letter spacing (from Figma)
