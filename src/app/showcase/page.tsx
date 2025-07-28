@@ -20,6 +20,7 @@ import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductC
 import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
+import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -2240,6 +2241,82 @@ function CheckoutPage() {
       orderTotal={12.94}
       onProceedToCheckout={handleCheckout}
     />
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* ProductDetails Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductDetails</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/organisms/ProductDetails
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+                    <ProductDetails
+                      title="Highlights"
+                      highlights={[
+                        'Foil balloon is shaped like the letter E.',
+                        'Measures 14 inches tall when inflated',
+                        'Combine to spell out words and names.',
+                        'Coordinate with more silver party supplies.'
+                      ]}
+                      ratingsContent={
+                        <div style={{ padding: '20px', textAlign: 'center' }}>
+                          <p>Ratings and reviews content would go here</p>
+                        </div>
+                      }
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
+
+// Basic usage with highlights
+<ProductDetails
+  title="Highlights"
+  highlights={[
+    'Foil balloon is shaped like the letter E.',
+    'Measures 14 inches tall when inflated',
+    'Combine to spell out words and names.',
+    'Coordinate with more silver party supplies.'
+  ]}
+/>
+
+// With custom ratings content
+<ProductDetails
+  highlights={productHighlights}
+  ratingsContent={<ReviewsList reviews={productReviews} />}
+/>
+
+// Minimal configuration
+<ProductDetails />
+
+// In product detail page
+function ProductDetailPage({ product }) {
+  return (
+    <div className="product-detail-page">
+      <ProductImage src={product.image} />
+      <ProductNamePrice {...product} />
+      
+      <ProductDetails
+        highlights={product.highlights}
+        ratingsContent={
+          <ReviewsSection
+            reviews={product.reviews}
+            rating={product.rating}
+            onWriteReview={() => openReviewModal()}
+          />
+        }
+      />
+      
+      <RelatedProducts items={product.related} />
+    </div>
   );
 }`}</pre>
                 </div>
