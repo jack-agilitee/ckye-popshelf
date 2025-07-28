@@ -21,7 +21,7 @@
   }
 
   &__category-swiper {
-    overflow: visible; // Allow content to show properly
+    // Categories look perfect, no changes needed
   }
 
   &__category-slide {
@@ -50,11 +50,12 @@
   }
 
   &__product-swiper {
-    overflow: visible; // Allow slides to show properly
+    // Let Swiper handle overflow
   }
 
   &__product-slide {
     width: $related-products-card-width !important; // 160px from Figma
+    height: auto;
   }
 
   &__card {
@@ -95,3 +96,4 @@
     }
   }
 }
+
