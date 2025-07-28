@@ -292,8 +292,13 @@ $nav-background: $white;
 $nav-shadow: $shadow-sm;
 
 // Footer
-$footer-background: $gray-900;
+$footer-background: $purple-primary; // Updated to match Figma design
 $footer-text: $text-inverse;
+$footer-desktop-width: 1440px; // Desktop container width (from Figma)
+$footer-desktop-height: 324px; // Desktop footer height (from Figma)
+$footer-copyright-height: 84px; // Copyright bar height (from Figma)
+$footer-font-size-copyright: 13px; // Copyright text size (from Figma)
+$footer-letter-spacing: 0.5667px; // Letter spacing for footer links (from Figma)
 
 // LocationPicker Component
 $location-picker-label-gap: 5px; // Gap between label and address (from Figma)
