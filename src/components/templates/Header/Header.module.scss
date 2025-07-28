@@ -1,0 +1,147 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+// Component-specific variables from Figma
+$header-height: 48px; // From Figma for both mobile and desktop
+$header-border-color: $gray-border-light; // #F0F0F0 closest to Figma #F1F1F1
+$header-logo-width: 120px; // From Figma
+$header-logo-height: 26px; // Logo height from implementation
+$header-icon-size: 48px; // Touch target size from Figma
+$header-inner-icon-size: 24px; // Actual icon size
+$header-mobile-breakpoint: 768px;
+$header-desktop-width: 1024px; // From Figma
+$header-outline-width: 2px;
+$header-outline-offset-negative: -2px;
+$header-outline-offset-positive: 4px;
+$header-badge-size: 18px;
+$header-badge-radius: 10px;
+$header-badge-position: 8px;
+$header-border-width: 1px;
+
+.header {
+  background-color: $white; // #FFFFFF from Figma
+  border-bottom: $header-border-width solid $header-border-color;
+  height: $header-height;
+  position: relative;
+  width: 100%;
+  z-index: $z-index-sticky;
+
+  &__container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
+    max-width: $header-desktop-width;
+    padding: 0;
+    position: relative;
+  }
+
+  &__left,
+  &__right {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  &__center {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__menuButton {
+    @include reset-button;
+    align-items: center;
+    display: flex;
+    height: $header-icon-size;
+    padding: 0 $spacing-3; // 12px
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: $header-outline-width solid $purple-primary;
+      outline-offset: $header-outline-offset-negative;
+    }
+  }
+
+  &__menuText {
+    @include sofia-semibold; // Sofia Pro Semi Bold from Figma
+    color: $black; // #000000 from Figma
+    display: none;
+    margin-left: $spacing-2; // 8px
+
+    @media (min-width: $header-mobile-breakpoint) {
+      display: block;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: $header-logo-height;
+    position: relative;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: $header-outline-width solid $purple-primary;
+      outline-offset: $header-outline-offset-positive;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__iconButton {
+    @include reset-button;
+    align-items: center;
+    display: flex;
+    height: $header-icon-size;
+    justify-content: center;
+    position: relative;
+    transition: opacity $transition-fast;
+    width: $header-icon-size;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: $header-outline-width solid $purple-primary;
+      outline-offset: $header-outline-offset-negative;
+    }
+
+    &--cart {
+      // Cart-specific styles if needed
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: $header-inner-icon-size;
+    width: $header-inner-icon-size;
+  }
+
+  &__cartBadge {
+    @include font-semibold;
+    align-items: center;
+    background-color: $purple-primary;
+    border-radius: $header-badge-radius;
+    color: $white;
+    display: flex;
+    font-size: $font-size-xxs; // 10px
+    height: $header-badge-size;
+    justify-content: center;
+    line-height: 1;
+    min-width: $header-badge-size;
+    padding: 0 $spacing-1; // 4px
+    position: absolute;
+    right: $header-badge-position;
+    top: $header-badge-position;
+  }
+}

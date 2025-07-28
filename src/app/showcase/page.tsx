@@ -24,6 +24,7 @@ import FulfillmentCard, { FulfillmentType } from '@/components/molecules/Fulfill
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
+import Header from '@/components/templates/Header/Header';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -2719,6 +2720,91 @@ function ProductDetailPage({ product }) {
             <p className={styles.showcase__sectionDescription}>
               Page-level layouts that place components into a layout and articulate the design&apos;s underlying content structure
             </p>
+            
+            <div className={styles.showcase__grid}>
+              {/* Header Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Header</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/templates/Header
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
+                    <Header
+                      onMenuClick={() => console.log('Menu clicked')}
+                      onSearchClick={() => console.log('Search clicked')}
+                      onCartClick={() => console.log('Cart clicked')}
+                      onLogoClick={() => console.log('Logo clicked')}
+                      cartItemCount={3}
+                    />
+                  </div>
+                  
+                  <div style={{ marginTop: '20px', border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
+                    <Header
+                      onMenuClick={() => console.log('Menu clicked')}
+                      onSearchClick={() => console.log('Search clicked')}
+                      onCartClick={() => console.log('Cart clicked - empty')}
+                      onLogoClick={() => console.log('Logo clicked')}
+                      cartItemCount={0}
+                    />
+                  </div>
+                  
+                  <div style={{ marginTop: '20px', border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
+                    <Header
+                      onMenuClick={() => console.log('Menu clicked')}
+                      onSearchClick={() => console.log('Search clicked')}
+                      onCartClick={() => console.log('Cart clicked - many items')}
+                      onLogoClick={() => console.log('Logo clicked')}
+                      cartItemCount={150}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import Header from '@/components/templates/Header/Header';
+
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(3);
+
+  return (
+    <Header
+      onMenuClick={() => setIsMenuOpen(true)}
+      onSearchClick={() => console.log('Open search')}
+      onCartClick={() => router.push('/cart')}
+      onLogoClick={() => router.push('/')}
+      cartItemCount={cartCount}
+    />
+  );
+}
+
+// With navigation drawer
+function AppLayout() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const router = useRouter();
+
+  return (
+    <>
+      <Header
+        onMenuClick={() => setIsDrawerOpen(true)}
+        onSearchClick={() => router.push('/search')}
+        onCartClick={() => router.push('/cart')}
+        onLogoClick={() => router.push('/')}
+        cartItemCount={cart.items.length}
+      />
+      <NavigationDrawer 
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
+    </>
+  );
+}`}</pre>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
