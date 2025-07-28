@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.content-block {
+  background-color: $white;
+  padding: $spacing-5;
+
+  &__title {
+    @include content-block-title;
+    color: $black;
+    margin: 0 0 30px 0; // 30px gap between title and list
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include content-block-text;
+    color: $black;
+    position: relative;
+    padding-left: $spacing-5; // 20px indent for text
+    
+    // Custom bullet point
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      @include content-block-text;
+      color: $black;
+    }
+    
+    // Add spacing between items except the last one
+    &:not(:last-child) {
+      margin-bottom: $spacing-2; // 8px between items
+    }
+  }
+}
