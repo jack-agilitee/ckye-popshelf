@@ -46,16 +46,14 @@
 
   &__products {
     padding-left: $related-products-padding; // 20px from Figma
-    position: relative;
   }
 
   &__product-swiper {
-    // Let Swiper handle overflow
+    // Match category swiper setup
   }
 
   &__product-slide {
     width: $related-products-card-width !important; // 160px from Figma
-    height: auto;
   }
 
   &__card {

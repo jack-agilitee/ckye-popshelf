@@ -112,12 +112,12 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({
               spaceBetween={8}
               slidesPerView="auto"
               slidesPerGroup={1}
-              watchSlidesProgress={true}
+              freeMode={true}
               pagination={{
                 clickable: true,
                 el: `.${styles['related-products__pagination']}`,
               }}
-              modules={[Pagination]}
+              modules={[Pagination, FreeMode]}
               className={styles['related-products__product-swiper']}
             >
               {products.map((product) => (
