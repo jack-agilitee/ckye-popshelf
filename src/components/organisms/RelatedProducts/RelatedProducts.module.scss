@@ -65,11 +65,12 @@
 
   &__product-slide {
     width: $related-products-card-width; // 160px from Figma
+    flex-shrink: 0;
   }
 
   &__card {
     // Override MiniProductCard styles to match Figma exactly
-    width: $related-products-card-width; // 160px from Figma
+    width: 100%; // Fill the slide width
     
     // Override button width to match Figma
     .mini-product-card__button {

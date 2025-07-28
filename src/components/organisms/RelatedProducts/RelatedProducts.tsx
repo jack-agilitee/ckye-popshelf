@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, FreeMode } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import Button from '@/components/atoms/Button/Button';
 import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
@@ -76,6 +76,9 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({
               }}
               spaceBetween={8}
               slidesPerView="auto"
+              slidesPerGroup={1}
+              freeMode={true}
+              modules={[FreeMode]}
               className={styles['related-products__category-swiper']}
             >
               {categories.map((category) => (
@@ -108,6 +111,8 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({
               }}
               spaceBetween={8}
               slidesPerView="auto"
+              slidesPerGroup={1}
+              watchSlidesProgress={true}
               pagination={{
                 clickable: true,
                 el: `.${styles['related-products__pagination']}`,
