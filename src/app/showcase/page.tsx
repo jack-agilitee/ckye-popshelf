@@ -2722,7 +2722,7 @@ function ProductDetailPage({ product }) {
             </p>
             
             {/* Header Component */}
-            <div className={styles.showcase__componentShowcase} style={{ maxWidth: 'none', width: '100%' }}>
+            <div style={{ width: '100%', marginBottom: '40px' }}>
               <div className={styles.showcase__componentHeader}>
                 <h3 className={styles.showcase__componentName}>Header</h3>
                 <span className={styles.showcase__componentPath}>
@@ -2730,8 +2730,15 @@ function ProductDetailPage({ product }) {
                 </span>
               </div>
               
-              <div className={styles.showcase__componentDemo} style={{ padding: 0 }}>
-                <div style={{ border: '1px solid #eee', overflow: 'hidden', marginBottom: '20px' }}>
+              {/* Header with cart items */}
+              <div style={{ marginBottom: '60px' }}>
+                <h4 style={{ marginBottom: '16px', fontSize: '16px', color: '#666' }}>Header with Cart Items</h4>
+                <div style={{ 
+                  width: '100vw', 
+                  marginLeft: 'calc(-50vw + 50%)',
+                  border: '1px solid #eee',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                }}>
                   <Header
                     onMenuClick={() => console.log('Menu clicked')}
                     onSearchClick={() => console.log('Search clicked')}
@@ -2740,8 +2747,17 @@ function ProductDetailPage({ product }) {
                     cartItemCount={3}
                   />
                 </div>
-                
-                <div style={{ border: '1px solid #eee', overflow: 'hidden', marginBottom: '20px' }}>
+              </div>
+              
+              {/* Header with empty cart */}
+              <div style={{ marginBottom: '60px' }}>
+                <h4 style={{ marginBottom: '16px', fontSize: '16px', color: '#666' }}>Header with Empty Cart</h4>
+                <div style={{ 
+                  width: '100vw', 
+                  marginLeft: 'calc(-50vw + 50%)',
+                  border: '1px solid #eee',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                }}>
                   <Header
                     onMenuClick={() => console.log('Menu clicked')}
                     onSearchClick={() => console.log('Search clicked')}
@@ -2750,8 +2766,17 @@ function ProductDetailPage({ product }) {
                     cartItemCount={0}
                   />
                 </div>
-                
-                <div style={{ border: '1px solid #eee', overflow: 'hidden' }}>
+              </div>
+              
+              {/* Header with many items */}
+              <div style={{ marginBottom: '40px' }}>
+                <h4 style={{ marginBottom: '16px', fontSize: '16px', color: '#666' }}>Header with 99+ Cart Items</h4>
+                <div style={{ 
+                  width: '100vw', 
+                  marginLeft: 'calc(-50vw + 50%)',
+                  border: '1px solid #eee',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                }}>
                   <Header
                     onMenuClick={() => console.log('Menu clicked')}
                     onSearchClick={() => console.log('Search clicked')}
