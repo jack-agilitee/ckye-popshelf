@@ -1717,14 +1717,6 @@ const StorePickup = () => {
 };`}</pre>
                 </div>
               </div>
-              
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Form Fields</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Form field components will be displayed here
-                </p>
-              </div>
-              
               {/* ProductCard Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
@@ -2637,20 +2629,6 @@ function ProductDetailPage({ product }) {
 }`}</pre>
                 </div>
               </div>
-
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Navigation</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Navigation components will be displayed here
-                </p>
-              </div>
-              
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Product Lists</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Product list components will be displayed here
-                </p>
-              </div>
             </div>
           </section>
 
@@ -2660,15 +2638,6 @@ function ProductDetailPage({ product }) {
             <p className={styles.showcase__sectionDescription}>
               Page-level layouts that place components into a layout and articulate the design&apos;s underlying content structure
             </p>
-            
-            <div className={styles.showcase__grid}>
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Page Layouts</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Page layout templates will be displayed here
-                </p>
-              </div>
-            </div>
           </section>
         </div>
       </main>
