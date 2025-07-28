@@ -32,7 +32,6 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
 
     @media (min-width: $footer-mobile-breakpoint) {
       max-width: $footer-desktop-width; // 1440px from Figma
-      padding: 0 250px; // Position content at 17.361% from left (250px)
       display: grid;
       grid-template-columns: 162px 1fr; // Logo width + navigation
       gap: 88px; // Gap to position first column at correct offset
