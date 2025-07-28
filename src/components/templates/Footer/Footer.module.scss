@@ -32,10 +32,10 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
 
     @media (min-width: $footer-mobile-breakpoint) {
       max-width: $footer-desktop-width; // 1440px from Figma
-      padding: 0 250px; // Position content based on Figma design
+      padding: 0 250px; // Position content at 17.361% from left (250px)
       display: grid;
       grid-template-columns: 162px 1fr; // Logo width + navigation
-      gap: $spacing-20; // 80px gap
+      gap: 88px; // Gap to position first column at correct offset
     }
   }
 
@@ -133,18 +133,21 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
   }
 
   &__link {
-    @include avenir-heavy; // Avenir Heavy from Figma
+    @include sofia-semibold; // Sofia Pro Semi Bold from Figma mobile
     color: $footer-text; // $white
-    font-size: 17px; // 17px from Figma desktop
-    line-height: 2; // 32px line height
+    font-size: $font-size-base; // 16px from Figma
+    line-height: 32px; // 32px line height from Figma
     letter-spacing: $footer-letter-spacing; // 0.5667px from Figma
     text-decoration: none;
     text-transform: none; // No uppercase
     transition: opacity $transition-fast;
+    display: block; // Block display for proper spacing
 
-    @media (max-width: #{$footer-mobile-breakpoint - 1px}) {
-      @include sofia-semibold; // Sofia Pro Semi Bold for mobile
-      font-size: $font-size-base; // 16px for mobile
+    @media (min-width: $footer-mobile-breakpoint) {
+      @include avenir-heavy; // Avenir Heavy for desktop
+      font-size: 17px; // 17px from Figma desktop
+      line-height: normal; // Desktop doesn't use 32px line height
+      display: inline; // Inline for desktop
     }
 
     &:hover {
