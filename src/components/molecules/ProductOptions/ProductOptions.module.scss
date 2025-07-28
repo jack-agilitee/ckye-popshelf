@@ -1,0 +1,88 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+// Component-specific variables
+$product-options-image-size: 60px; // From Figma
+$product-options-dropdown-width: 200px; // From Figma
+$product-options-dropdown-height: 40px; // From Figma
+$product-options-selected-border-width: 2px; // From Figma
+$product-options-label-font-size: 13px; // From Figma
+
+// Custom typography mixin for Avenir Heavy 13px
+@mixin product-options-label {
+  font-family: $font-family-avenir;
+  font-size: $product-options-label-font-size;
+  font-weight: 900; // Heavy
+  line-height: $line-height-normal;
+  color: $gray-600; // #757575 from Figma
+}
+
+.product-options {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4; // 16px from Figma
+
+  &__color-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    @include product-options-label;
+    margin-bottom: $spacing-2; // 8px to match Figma spacing
+  }
+
+  &__color-selector {
+    display: flex;
+    gap: $spacing-2; // 8px from Figma
+    align-items: center;
+  }
+
+  &__color-option {
+    @include reset-button;
+    position: relative;
+    width: $product-options-image-size;
+    height: $product-options-image-size;
+    border-radius: $radius-sm; // 4px from Figma
+    overflow: hidden;
+    background-color: $white; // #FFFFFF from Figma
+    border: $input-border-width solid $gray-300; // #D8D8D8 mapped to $gray-300
+    transition: border-color $transition-fast;
+    cursor: pointer;
+
+    &:hover:not(&--selected) {
+      border-color: $gray-400;
+    }
+
+    &:focus-visible {
+      outline: $product-options-selected-border-width solid $purple-primary;
+      outline-offset: $product-options-selected-border-width;
+    }
+
+    &--selected {
+      border: $product-options-selected-border-width solid $purple-primary; // #87189D from Figma
+      border-color: $purple-primary;
+    }
+  }
+
+  &__color-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: $spacing-1; // 4px inset to show border
+    display: block;
+  }
+
+  &__letter-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6; // 24px from Figma
+  }
+
+  &__dropdown {
+    flex: 0 0 $product-options-dropdown-width;
+    
+    // Style the dropdown directly (it will be passed as className)
+    // The Dropdown component will apply these styles to its root element
+  }
+}

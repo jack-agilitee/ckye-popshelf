@@ -19,6 +19,7 @@ import ProductCard from '@/components/molecules/ProductCard/ProductCard';
 import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
 import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
+import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -1716,14 +1717,6 @@ const StorePickup = () => {
 };`}</pre>
                 </div>
               </div>
-              
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Form Fields</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Form field components will be displayed here
-                </p>
-              </div>
-              
               {/* ProductCard Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
@@ -2003,6 +1996,163 @@ function ProductDetail({ product }) {
     </div>
   );
 }`}</pre>
+                </div>
+              </div>
+
+              {/* ProductOptions Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductOptions</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/ProductOptions
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px', margin: '0 auto' }}>
+                    {/* Basic example */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Basic Product Options</h4>
+                      <ProductOptions
+                        colorOptions={[
+                          { id: 'gold', name: 'Gold', imagePath: '/products/product-1.jpg' },
+                          { id: 'silver', name: 'Silver', imagePath: '/products/product-2.jpg' },
+                          { id: 'rose', name: 'Rose', imagePath: '/products/product-3.png' }
+                        ]}
+                        letterOptions={[
+                          { value: 'A', label: 'A' },
+                          { value: 'B', label: 'B' },
+                          { value: 'C', label: 'C' },
+                          { value: 'D', label: 'D' },
+                          { value: 'E', label: 'E' }
+                        ]}
+                        onColorSelect={(colorId) => console.log('Selected color:', colorId)}
+                        onLetterSelect={(letter) => console.log('Selected letter:', letter)}
+                      />
+                    </div>
+                    
+                    {/* With defaults */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>With Default Selections</h4>
+                      <ProductOptions
+                        colorOptions={[
+                          { id: 'red', name: 'Red', imagePath: '/products/product-1.jpg' },
+                          { id: 'blue', name: 'Blue', imagePath: '/products/product-2.jpg' },
+                          { id: 'green', name: 'Green', imagePath: '/products/product-3.png' },
+                          { id: 'yellow', name: 'Yellow', imagePath: '/products/product-4.png' }
+                        ]}
+                        letterOptions={[
+                          { value: 'X', label: 'X' },
+                          { value: 'Y', label: 'Y' },
+                          { value: 'Z', label: 'Z' }
+                        ]}
+                        defaultColorId="blue"
+                        defaultLetter="Y"
+                        onColorSelect={(colorId) => console.log('Selected color:', colorId)}
+                        onLetterSelect={(letter) => console.log('Selected letter:', letter)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions';
+import type { ColorOption } from '@/components/molecules/ProductOptions/ProductOptions';
+import type { DropdownOption } from '@/components/atoms/Dropdown/Dropdown';
+
+// Define color options
+const colorOptions: ColorOption[] = [
+  { id: 'gold', name: 'Gold', imagePath: '/products/balloon-gold.png' },
+  { id: 'silver', name: 'Silver', imagePath: '/products/balloon-silver.png' },
+  { id: 'rose', name: 'Rose Gold', imagePath: '/products/balloon-rose.png' }
+];
+
+// Define letter options
+const letterOptions: DropdownOption[] = [
+  { value: 'A', label: 'A' },
+  { value: 'B', label: 'B' },
+  { value: 'C', label: 'C' },
+  { value: 'D', label: 'D' },
+  { value: 'E', label: 'E' }
+];
+
+// Basic usage
+<ProductOptions
+  colorOptions={colorOptions}
+  letterOptions={letterOptions}
+  onColorSelect={(colorId) => handleColorSelect(colorId)}
+  onLetterSelect={(letter) => handleLetterSelect(letter)}
+/>
+
+// With default selections
+<ProductOptions
+  colorOptions={colorOptions}
+  letterOptions={letterOptions}
+  defaultColorId="gold"
+  defaultLetter="E"
+  onColorSelect={(colorId) => updateProductColor(colorId)}
+  onLetterSelect={(letter) => updateProductLetter(letter)}
+/>
+
+// Minimal (no callbacks)
+<ProductOptions
+  colorOptions={colorOptions}
+  letterOptions={letterOptions}
+/>
+
+// Product page implementation
+function ProductPage() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    color: 'gold',
+    letter: 'A'
+  });
+
+  const handleColorSelect = (colorId: string) => {
+    setSelectedOptions(prev => ({ ...prev, color: colorId }));
+    updateProductImage(colorId);
+  };
+
+  const handleLetterSelect = (letter: string) => {
+    setSelectedOptions(prev => ({ ...prev, letter }));
+    updateProductPrice(letter);
+  };
+
+  return (
+    <div className="product-page">
+      <ProductImage variant={selectedOptions.color} />
+      
+      <ProductOptions
+        colorOptions={colorOptions}
+        letterOptions={letterOptions}
+        defaultColorId={selectedOptions.color}
+        defaultLetter={selectedOptions.letter}
+        onColorSelect={handleColorSelect}
+        onLetterSelect={handleLetterSelect}
+      />
+      
+      <AddToCartButton
+        productId="balloon-letter"
+        options={selectedOptions}
+      />
+    </div>
+  );
+}
+
+// With disabled letter options
+const letterOptionsWithDisabled: DropdownOption[] = [
+  { value: 'A', label: 'A' },
+  { value: 'B', label: 'B (Out of Stock)', disabled: true },
+  { value: 'C', label: 'C' },
+  { value: 'D', label: 'D' },
+  { value: 'E', label: 'E' }
+];
+
+<ProductOptions
+  colorOptions={colorOptions}
+  letterOptions={letterOptionsWithDisabled}
+  onColorSelect={handleColorSelect}
+  onLetterSelect={handleLetterSelect}
+/>`}</pre>
                 </div>
               </div>
 
@@ -2479,20 +2629,6 @@ function ProductDetailPage({ product }) {
 }`}</pre>
                 </div>
               </div>
-
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Navigation</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Navigation components will be displayed here
-                </p>
-              </div>
-              
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Product Lists</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Product list components will be displayed here
-                </p>
-              </div>
             </div>
           </section>
 
@@ -2502,15 +2638,6 @@ function ProductDetailPage({ product }) {
             <p className={styles.showcase__sectionDescription}>
               Page-level layouts that place components into a layout and articulate the design&apos;s underlying content structure
             </p>
-            
-            <div className={styles.showcase__grid}>
-              <div className={styles.showcase__placeholder}>
-                <h3 className={styles.showcase__componentTitle}>Page Layouts</h3>
-                <p className={styles.showcase__componentDescription}>
-                  Page layout templates will be displayed here
-                </p>
-              </div>
-            </div>
           </section>
         </div>
       </main>
