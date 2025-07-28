@@ -53,7 +53,7 @@
   }
 
   &__product-slide {
-    width: $related-products-card-width !important; // 160px from Figma
+    width: fit-content !important; // 160px from Figma
   }
 
   &__card {
