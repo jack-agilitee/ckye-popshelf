@@ -18,19 +18,14 @@
 
   &__categories {
     padding-left: $related-products-padding; // 20px from Figma
-    overflow: hidden; // Prevent horizontal scroll
   }
 
   &__category-swiper {
-    margin-right: -$related-products-padding; // Compensate for container padding
-    
-    .swiper-wrapper {
-      align-items: center;
-    }
+    overflow: visible; // Allow content to show properly
   }
 
   &__category-slide {
-    width: auto;
+    width: auto !important; // Let button determine width
   }
 
   &__category-button {
@@ -52,25 +47,18 @@
   &__products {
     padding-left: $related-products-padding; // 20px from Figma
     position: relative;
-    overflow: hidden; // Prevent horizontal scroll
   }
 
   &__product-swiper {
-    margin-right: -$related-products-padding; // Compensate for container padding
-    
-    .swiper-wrapper {
-      align-items: stretch;
-    }
+    overflow: visible; // Allow slides to show properly
   }
 
   &__product-slide {
-    width: $related-products-card-width; // 160px from Figma
-    flex-shrink: 0;
+    width: $related-products-card-width !important; // 160px from Figma
   }
 
   &__card {
-    // Override MiniProductCard styles to match Figma exactly
-    width: 100%; // Fill the slide width
+    // MiniProductCard already has width: 160px from its own styles
     
     // Override button width to match Figma
     .mini-product-card__button {
@@ -105,24 +93,5 @@
         background-color: $purple-primary; // Purple for active dot
       }
     }
-  }
-}
-
-// Remove any default Swiper margins/paddings
-.related-products {
-  .swiper {
-    margin: 0;
-    padding: 0;
-  }
-
-  .swiper-wrapper {
-    margin: 0;
-    padding: 0;
-  }
-
-  .swiper-slide {
-    height: auto;
-    margin: 0;
-    padding: 0;
   }
 }
