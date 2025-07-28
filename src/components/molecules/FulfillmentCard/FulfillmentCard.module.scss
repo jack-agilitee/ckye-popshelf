@@ -18,9 +18,11 @@ $fulfillment-card-outline-offset: 2px;
   border-radius: $radius-md; // 8px from Figma
   box-shadow: $fulfillment-card-shadow;
   padding: $spacing-4; // 16px from Figma
-  position: relative;
   width: 100%;
   max-width: $fulfillment-card-max-width;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; // Ensure minimum height for consistent layout
 
   &__header {
     display: flex;
@@ -70,8 +72,16 @@ $fulfillment-card-outline-offset: 2px;
     }
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: $spacing-4; // 16px gap between content and button
+  }
+
   &__content {
-    margin-bottom: $spacing-8; // 32px to action button
+    flex: 1;
   }
 
   &__stock {
@@ -142,9 +152,9 @@ $fulfillment-card-outline-offset: 2px;
   }
 
   &__action {
-    position: absolute;
-    bottom: $spacing-4; // 16px from Figma
-    right: $spacing-4; // 16px from Figma
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   &__button {

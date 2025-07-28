@@ -80,56 +80,58 @@ const FulfillmentCard: React.FC<FulfillmentCardProps> = ({
         </a>
       </div>
 
-      <div className={styles['fulfillment-card__content']}>
-        {isPickup ? (
-          <>
-            <p className={`${styles['fulfillment-card__stock']} ${outOfStock ? styles['fulfillment-card__stock--error'] : ''}`}>
-              {outOfStock ? 'Out of stock at' : `${stockCount} in stock at`}
-            </p>
-            <button
-              className={styles['fulfillment-card__address']}
-              onClick={onAddressClick}
-              type="button"
-            >
-              {storeName}<br />
-              {storeAddress}
-            </button>
-            {outOfStock && nearbyStoresCount > 0 && (
-              <p className={styles['fulfillment-card__nearby']}>
-                In stock at {nearbyStoresCount} nearby stores
+      <div className={styles['fulfillment-card__body']}>
+        <div className={styles['fulfillment-card__content']}>
+          {isPickup ? (
+            <>
+              <p className={`${styles['fulfillment-card__stock']} ${outOfStock ? styles['fulfillment-card__stock--error'] : ''}`}>
+                {outOfStock ? 'Out of stock at' : `${stockCount} in stock at`}
               </p>
-            )}
-          </>
-        ) : (
-          <>
-            <p className={styles['fulfillment-card__shipping']}>
-              Shipping to <span className={styles['fulfillment-card__zipcode']}>{zipCode}</span>
-            </p>
-            <p className={styles['fulfillment-card__timeline']}>
-              Ships within {shippingDays}
-            </p>
-          </>
-        )}
-      </div>
+              <button
+                className={styles['fulfillment-card__address']}
+                onClick={onAddressClick}
+                type="button"
+              >
+                {storeName}<br />
+                {storeAddress}
+              </button>
+              {outOfStock && nearbyStoresCount > 0 && (
+                <p className={styles['fulfillment-card__nearby']}>
+                  In stock at {nearbyStoresCount} nearby stores
+                </p>
+              )}
+            </>
+          ) : (
+            <>
+              <p className={styles['fulfillment-card__shipping']}>
+                Shipping to <span className={styles['fulfillment-card__zipcode']}>{zipCode}</span>
+              </p>
+              <p className={styles['fulfillment-card__timeline']}>
+                Ships within {shippingDays}
+              </p>
+            </>
+          )}
+        </div>
 
-      <div className={styles['fulfillment-card__action']}>
-        {outOfStock && isPickup ? (
-          <Button
-            variant="secondary"
-            onClick={onChangeStore}
-            className={styles['fulfillment-card__button']}
-          >
-            CHANGE STORE
-          </Button>
-        ) : (
-          <Button
-            variant="primary"
-            onClick={onAddToCart}
-            className={styles['fulfillment-card__button']}
-          >
-            ADD TO CART
-          </Button>
-        )}
+        <div className={styles['fulfillment-card__action']}>
+          {outOfStock && isPickup ? (
+            <Button
+              variant="secondary"
+              onClick={onChangeStore}
+              className={styles['fulfillment-card__button']}
+            >
+              CHANGE STORE
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              onClick={onAddToCart}
+              className={styles['fulfillment-card__button']}
+            >
+              ADD TO CART
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
