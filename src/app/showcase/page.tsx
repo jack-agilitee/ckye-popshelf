@@ -2721,50 +2721,49 @@ function ProductDetailPage({ product }) {
               Page-level layouts that place components into a layout and articulate the design&apos;s underlying content structure
             </p>
             
-            <div className={styles.showcase__grid}>
-              {/* Header Component */}
-              <div className={styles.showcase__componentShowcase}>
-                <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Header</h3>
-                  <span className={styles.showcase__componentPath}>
-                    components/templates/Header
-                  </span>
+            {/* Header Component */}
+            <div className={styles.showcase__componentShowcase} style={{ maxWidth: 'none', width: '100%' }}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>Header</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/templates/Header
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo} style={{ padding: 0 }}>
+                <div style={{ border: '1px solid #eee', overflow: 'hidden', marginBottom: '20px' }}>
+                  <Header
+                    onMenuClick={() => console.log('Menu clicked')}
+                    onSearchClick={() => console.log('Search clicked')}
+                    onCartClick={() => console.log('Cart clicked')}
+                    onLogoClick={() => console.log('Logo clicked')}
+                    cartItemCount={3}
+                  />
                 </div>
                 
-                <div className={styles.showcase__componentDemo}>
-                  <div style={{ border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
-                    <Header
-                      onMenuClick={() => console.log('Menu clicked')}
-                      onSearchClick={() => console.log('Search clicked')}
-                      onCartClick={() => console.log('Cart clicked')}
-                      onLogoClick={() => console.log('Logo clicked')}
-                      cartItemCount={3}
-                    />
-                  </div>
-                  
-                  <div style={{ marginTop: '20px', border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
-                    <Header
-                      onMenuClick={() => console.log('Menu clicked')}
-                      onSearchClick={() => console.log('Search clicked')}
-                      onCartClick={() => console.log('Cart clicked - empty')}
-                      onLogoClick={() => console.log('Logo clicked')}
-                      cartItemCount={0}
-                    />
-                  </div>
-                  
-                  <div style={{ marginTop: '20px', border: '1px solid #eee', borderRadius: '8px', overflow: 'hidden' }}>
-                    <Header
-                      onMenuClick={() => console.log('Menu clicked')}
-                      onSearchClick={() => console.log('Search clicked')}
-                      onCartClick={() => console.log('Cart clicked - many items')}
-                      onLogoClick={() => console.log('Logo clicked')}
-                      cartItemCount={150}
-                    />
-                  </div>
+                <div style={{ border: '1px solid #eee', overflow: 'hidden', marginBottom: '20px' }}>
+                  <Header
+                    onMenuClick={() => console.log('Menu clicked')}
+                    onSearchClick={() => console.log('Search clicked')}
+                    onCartClick={() => console.log('Cart clicked - empty')}
+                    onLogoClick={() => console.log('Logo clicked')}
+                    cartItemCount={0}
+                  />
                 </div>
                 
-                <div className={styles.showcase__componentCode}>
-                  <pre>{`import Header from '@/components/templates/Header/Header';
+                <div style={{ border: '1px solid #eee', overflow: 'hidden' }}>
+                  <Header
+                    onMenuClick={() => console.log('Menu clicked')}
+                    onSearchClick={() => console.log('Search clicked')}
+                    onCartClick={() => console.log('Cart clicked - many items')}
+                    onLogoClick={() => console.log('Logo clicked')}
+                    cartItemCount={150}
+                  />
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import Header from '@/components/templates/Header/Header';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -2802,7 +2801,6 @@ function AppLayout() {
     </>
   );
 }`}</pre>
-                </div>
               </div>
             </div>
           </section>
