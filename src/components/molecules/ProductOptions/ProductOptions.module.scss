@@ -61,17 +61,16 @@ $product-options-label-font-size: 13px; // From Figma
 
     &--selected {
       border: $product-options-selected-border-width solid $purple-primary; // #87189D from Figma
+      border-color: $purple-primary;
     }
   }
 
   &__color-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - $spacing-2); // 6.667% inset = ~4px padding on 60px
-    height: calc(100% - $spacing-2);
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    padding: $spacing-1; // 4px inset to show border
+    display: block;
   }
 
   &__letter-section {
@@ -83,18 +82,7 @@ $product-options-label-font-size: 13px; // From Figma
   &__dropdown {
     flex: 0 0 $product-options-dropdown-width;
     
-    // Override dropdown styles to match Figma
-    :global(.dropdown__trigger) {
-      height: $product-options-dropdown-height;
-      border-color: $gray-600; // #757575 from Figma
-      box-shadow: $shadow-text-field; // From Figma: 0px 4px 16px 0px rgba(55, 58, 64, 0.15)
-      
-      // Override dropdown text style
-      :global(.dropdown__value) {
-        @include sofia-medium; // Sofia Pro Medium from Figma
-        font-size: $font-size-base; // 16px from Figma
-        color: $black; // #000000 from Figma
-      }
-    }
+    // Style the dropdown directly (it will be passed as className)
+    // The Dropdown component will apply these styles to its root element
   }
 }

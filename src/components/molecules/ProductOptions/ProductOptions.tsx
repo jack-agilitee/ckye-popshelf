@@ -70,8 +70,8 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
               <Image
                 src={color.imagePath}
                 alt={color.name}
-                width={60}
-                height={60}
+                width={52}
+                height={52}
                 className={styles['product-options__color-image']}
               />
             </button>
