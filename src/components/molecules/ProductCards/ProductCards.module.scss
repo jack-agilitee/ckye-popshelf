@@ -1,0 +1,303 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product-cards {
+  background-color: $white;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-text-field;
+  padding: $spacing-4;
+  transition: all $transition-base;
+
+  // Horizontal variant
+  &--horizontal {
+    width: $product-cards-horizontal-width;
+    height: $product-cards-horizontal-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .product-cards__top-section {
+      display: flex;
+      gap: $spacing-2;
+    }
+
+    .product-cards__image-container {
+      width: $product-cards-horizontal-image-size;
+      height: $product-cards-horizontal-image-size;
+      flex-shrink: 0;
+    }
+
+    .product-cards__details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-cards__name {
+      margin: 0;
+      margin-bottom: $spacing-2;
+    }
+
+    .product-cards__review-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-cards__rating {
+      // Rating styles
+    }
+
+    .product-cards__price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .product-cards__regular-price {
+      display: flex;
+      gap: $spacing-1;
+      margin-top: $spacing-1;
+      
+      span {
+        @include product-card-regular-price;
+        color: $gray-600;
+      }
+    }
+
+    .product-cards__left-column {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+
+    .product-cards__color-choices {
+      // Inherits gap from parent left-column
+    }
+
+    .product-cards__bottom-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .product-cards__status-section {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+    }
+
+    .product-cards__fulfillments {
+      margin-top: 0;
+    }
+
+    .product-cards__button {
+      flex-shrink: 0;
+    }
+  }
+
+  // Vertical variant
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-2;
+    width: $product-cards-vertical-width;
+    min-height: $product-cards-vertical-height;
+
+    .product-cards__image-container {
+      width: $product-cards-vertical-image-width;
+      height: $product-cards-vertical-image-height;
+      margin-top: -$spacing-1;
+    }
+
+    .product-cards__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-1;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    .product-cards__name {
+      margin-top: $spacing-1;
+    }
+
+    .product-cards__button {
+      margin-top: auto;
+      align-self: center;
+    }
+
+    .product-cards__price-container {
+      display: flex;
+      align-items: baseline;
+      gap: $spacing-2;
+      margin-top: $spacing-1;
+    }
+
+    .product-cards__stock-info,
+    .product-cards__fulfillments {
+      width: 100%;
+    }
+  }
+
+  &__image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include product-card-name;
+    @include line-clamp(2);
+    color: $black;
+    margin: 0;
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $purple-primary;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+  }
+
+  &__color-choices {
+    @include product-card-regular-price;
+    color: $gray-600;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-1;
+  }
+
+  &__price {
+    @include product-card-price;
+    color: $black;
+  }
+
+  &__regular-price {
+    @include product-card-regular-price;
+    color: $gray-600;
+  }
+
+  &__stock-info {
+    margin-top: $spacing-1;
+  }
+
+  &__stock-status {
+    @include product-card-stock-status;
+    color: $black;
+  }
+
+  &__out-of-stock {
+    @include product-card-out-of-stock;
+    color: $color-error;
+  }
+
+  &__fulfillments {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    margin-top: $spacing-1;
+  }
+
+  &__content {
+    // Content wrapper for horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__details {
+    // Product details section in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__top-section {
+    // Top section containing image and details in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__review-price-row {
+    // Review and price row in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__left-column {
+    // Left column in review-price row
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__checkmark {
+    width: $product-cards-checkmark-size;
+    height: $product-cards-checkmark-size;
+    flex-shrink: 0;
+  }
+
+  &__fulfillments-text {
+    @include product-card-stock-status;
+    color: $black;
+  }
+
+  &__button {
+    width: $product-cards-button-width;
+    height: $button-height-sm;
+    
+    // Override Button component styles to match Figma
+    &.button--primary,
+    &.button--secondary {
+      @include sofia-semibold;
+      border-radius: $radius-sm;
+      height: $button-height-sm;
+      min-height: unset;
+      
+      .button__label {
+        @include sofia-semibold;
+      }
+    }
+    
+    &.button--primary {
+      background-color: $purple-primary;
+      color: $white;
+      border: none;
+      
+      &:hover:not(:disabled) {
+        background-color: $purple-dark;
+      }
+    }
+    
+    &.button--secondary {
+      background-color: $white;
+      color: $purple-primary;
+      border: 1px solid $purple-primary;
+      
+      &:hover:not(:disabled) {
+        background-color: rgba($purple-primary, 0.05);
+      }
+    }
+  }
+
+  // Out of stock state adjustments
+  &--out-of-stock {
+    .product-cards__stock-status {
+      display: none;
+    }
+  }
+}

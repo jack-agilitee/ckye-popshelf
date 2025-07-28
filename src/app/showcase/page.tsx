@@ -16,6 +16,7 @@ import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus
 import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker';
 import ProductCard from '@/components/molecules/ProductCard/ProductCard';
 import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
+import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import styles from './page.module.scss';
 
@@ -1784,6 +1785,185 @@ const ProductGrid = () => {
     </div>
   );
 };`}</pre>
+                </div>
+              </div>
+
+              {/* ProductCards Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductCards</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/ProductCards
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    {/* Horizontal Variants */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '16px', color: '#666' }}>Horizontal Layout</h4>
+                      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        {/* In stock horizontal */}
+                        <ProductCards
+                          name="Classic T-Shirt"
+                          price={14.99}
+                          regularPrice={19.99}
+                          imageUrl="/categories/product-balloon.png"
+                          imageAlt="Classic T-Shirt"
+                          rating={4.5}
+                          reviewCount={280}
+                          colorChoices={4}
+                          stockCount={27}
+                          inStock={true}
+                          fulfillments={['Pickup', 'shipping']}
+                          variant="horizontal"
+                          onAddToCart={() => console.log('Add to cart: Classic T-Shirt')}
+                          onProductClick={() => console.log('View product: Classic T-Shirt')}
+                        />
+                        
+                        {/* Out of stock horizontal */}
+                        <ProductCards
+                          name="Premium Hoodie with Custom Design"
+                          price={34.99}
+                          regularPrice={49.99}
+                          imageUrl="/categories/product-balloon.png"
+                          imageAlt="Premium Hoodie"
+                          rating={4.2}
+                          reviewCount={150}
+                          colorChoices={6}
+                          inStock={false}
+                          fulfillments={['Pickup', 'shipping']}
+                          variant="horizontal"
+                          onViewDetails={() => console.log('View details: Premium Hoodie')}
+                          onProductClick={() => console.log('View product: Premium Hoodie')}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Vertical Variants */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '16px', color: '#666' }}>Vertical Layout</h4>
+                      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        {/* In stock vertical */}
+                        <ProductCards
+                          name="Graphic Tee"
+                          price={18.00}
+                          regularPrice={25.00}
+                          imageUrl="/categories/product-balloon.png"
+                          imageAlt="Graphic Tee"
+                          rating={4.8}
+                          reviewCount={450}
+                          colorChoices={8}
+                          stockCount={15}
+                          inStock={true}
+                          fulfillments={['Pickup', 'shipping']}
+                          variant="vertical"
+                          onAddToCart={() => console.log('Add to cart: Graphic Tee')}
+                          onProductClick={() => console.log('View product: Graphic Tee')}
+                        />
+                        
+                        {/* Out of stock vertical */}
+                        <ProductCards
+                          name="Limited Edition Jacket"
+                          price={89.99}
+                          regularPrice={120.00}
+                          imageUrl="/categories/product-balloon.png"
+                          imageAlt="Limited Edition Jacket"
+                          rating={5}
+                          reviewCount={75}
+                          colorChoices={3}
+                          inStock={false}
+                          fulfillments={['Pickup', 'shipping']}
+                          variant="vertical"
+                          onViewDetails={() => console.log('View details: Limited Edition Jacket')}
+                          onProductClick={() => console.log('View product: Limited Edition Jacket')}
+                        />
+
+                        {/* Minimal props example */}
+                        <ProductCards
+                          name="Basic Item"
+                          price={9.99}
+                          imageUrl="/categories/product-balloon.png"
+                          variant="vertical"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ProductCards from '@/components/molecules/ProductCards/ProductCards';
+
+// Horizontal layout - In stock
+<ProductCards
+  name="Classic T-Shirt"
+  price={14.99}
+  regularPrice={19.99}
+  imageUrl="/product-tshirt.jpg"
+  imageAlt="Classic T-Shirt"
+  rating={4.5}
+  reviewCount={280}
+  colorChoices={4}
+  stockCount={27}
+  inStock={true}
+  fulfillments={['Pickup', 'shipping']}
+  variant="horizontal"
+  onAddToCart={() => handleAddToCart('tshirt-001')}
+  onProductClick={() => navigateToProduct('tshirt-001')}
+/>
+
+// Vertical layout - Out of stock
+<ProductCards
+  name="Limited Edition Jacket"
+  price={89.99}
+  regularPrice={120.00}
+  imageUrl="/product-jacket.jpg"
+  imageAlt="Limited Edition Jacket"
+  rating={5}
+  reviewCount={75}
+  colorChoices={3}
+  inStock={false}
+  fulfillments={['Pickup', 'shipping']}
+  variant="vertical"
+  onViewDetails={() => handleViewDetails('jacket-001')}
+  onProductClick={() => navigateToProduct('jacket-001')}
+/>
+
+// Minimal configuration
+<ProductCards
+  name="Basic Item"
+  price={9.99}
+  imageUrl="/product-basic.jpg"
+  variant="vertical"
+/>
+
+// Usage in product grid
+function ProductGrid({ products }) {
+  return (
+    <div className="product-grid">
+      {products.map(product => (
+        <ProductCards
+          key={product.id}
+          name={product.name}
+          price={product.salePrice || product.price}
+          regularPrice={product.salePrice ? product.price : undefined}
+          imageUrl={product.imageUrl}
+          imageAlt={product.name}
+          rating={product.rating}
+          reviewCount={product.reviewCount}
+          colorChoices={product.variants?.length}
+          stockCount={product.inventory}
+          inStock={product.inventory > 0}
+          fulfillments={product.fulfillmentOptions}
+          variant="vertical"
+          onAddToCart={() => addToCart(product.id)}
+          onViewDetails={() => viewDetails(product.id)}
+          onProductClick={() => navigateToProduct(product.id)}
+        />
+      ))}
+    </div>
+  );
+}`}</pre>
                 </div>
               </div>
             </div>
