@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
     ],
     column2: [
       { label: 'Vendors', href: '/' },
-      { label: 'track You Order', href: '/' },
+      { label: 'Track Your Order', href: '/' },
       { label: 'Terms & Conditions', href: '/' },
       { label: 'SDS/Ingredient Information', href: '/' },
       { label: 'Your Privacy Choices', href: '/' },
@@ -72,39 +72,12 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               />
             </Link>
             <div className={styles.footer__social}>
-              <Link href="/" aria-label="Facebook">
+              <Link href="/" aria-label="Social media links">
                 <Image
                   src="/social-media.svg"
-                  alt=""
-                  width={32}
-                  height={32}
-                  className={styles.footer__socialIcon}
-                />
-              </Link>
-              <Link href="/" aria-label="Instagram">
-                <Image
-                  src="/social-media.svg"
-                  alt=""
-                  width={32}
-                  height={32}
-                  className={styles.footer__socialIcon}
-                />
-              </Link>
-              <Link href="/" aria-label="Pinterest">
-                <Image
-                  src="/social-media.svg"
-                  alt=""
-                  width={32}
-                  height={32}
-                  className={styles.footer__socialIcon}
-                />
-              </Link>
-              <Link href="/" aria-label="TikTok">
-                <Image
-                  src="/social-media.svg"
-                  alt=""
-                  width={32}
-                  height={32}
+                  alt="Facebook, Instagram, Pinterest, and TikTok"
+                  width={143}
+                  height={36}
                   className={styles.footer__socialIcon}
                 />
               </Link>

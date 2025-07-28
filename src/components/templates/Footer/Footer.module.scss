@@ -32,9 +32,9 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
 
     @media (min-width: $footer-mobile-breakpoint) {
       max-width: $footer-desktop-width; // 1440px from Figma
-      padding: 0 $spacing-6; // 24px desktop padding
+      padding: 0 250px; // Position content based on Figma design
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 162px 1fr; // Logo width + navigation
       gap: $spacing-20; // 80px gap
     }
   }
@@ -48,7 +48,6 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
     @media (min-width: $footer-mobile-breakpoint) {
       align-items: flex-start;
       margin-bottom: 0;
-      padding-left: $spacing-24; // Position at 17.361% of 1440px ≈ 250px
     }
   }
 
@@ -83,13 +82,10 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
 
   &__social {
     display: flex;
-    gap: $footer-social-gap;
     align-items: center;
 
     a {
       display: block;
-      width: $footer-social-icon-size;
-      height: $footer-social-icon-size;
       transition: opacity $transition-fast;
 
       &:hover {
@@ -105,8 +101,9 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
   }
 
   &__socialIcon {
-    width: $footer-social-icon-size;
-    height: $footer-social-icon-size;
+    display: block;
+    width: auto;
+    height: auto;
   }
 
   &__desktopNav {
@@ -116,7 +113,6 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: $spacing-20; // 80px between columns
-      padding-left: $spacing-16; // Adjust positioning
     }
   }
 
@@ -137,13 +133,19 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
   }
 
   &__link {
-    @include sofia-semibold; // Sofia Pro Semi Bold from Figma
+    @include avenir-heavy; // Avenir Heavy from Figma
     color: $footer-text; // $white
-    font-size: $font-size-base; // 16px from Figma
+    font-size: 17px; // 17px from Figma desktop
     line-height: 2; // 32px line height
     letter-spacing: $footer-letter-spacing; // 0.5667px from Figma
     text-decoration: none;
+    text-transform: none; // No uppercase
     transition: opacity $transition-fast;
+
+    @media (max-width: #{$footer-mobile-breakpoint - 1px}) {
+      @include sofia-semibold; // Sofia Pro Semi Bold for mobile
+      font-size: $font-size-base; // 16px for mobile
+    }
 
     &:hover {
       opacity: 0.8;
@@ -183,6 +185,7 @@ $footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
     font-size: $font-size-base; // 16px for mobile
     line-height: $line-height-relaxed; // 30px line height
     margin: 0;
+    text-transform: none; // No uppercase
 
     @media (min-width: $footer-mobile-breakpoint) {
       @include avenir-heavy; // Avenir Heavy for desktop

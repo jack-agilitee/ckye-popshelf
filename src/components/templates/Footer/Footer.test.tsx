@@ -20,15 +20,12 @@ describe('Footer', () => {
 
     it('renders social media icons', () => {
       render(<Footer />);
-      const facebookLink = screen.getByLabelText('Facebook');
-      const instagramLink = screen.getByLabelText('Instagram');
-      const pinterestLink = screen.getByLabelText('Pinterest');
-      const tiktokLink = screen.getByLabelText('TikTok');
+      const socialMediaLink = screen.getByLabelText('Social media links');
+      const socialMediaImage = screen.getByAltText('Facebook, Instagram, Pinterest, and TikTok');
 
-      expect(facebookLink).toBeInTheDocument();
-      expect(instagramLink).toBeInTheDocument();
-      expect(pinterestLink).toBeInTheDocument();
-      expect(tiktokLink).toBeInTheDocument();
+      expect(socialMediaLink).toBeInTheDocument();
+      expect(socialMediaImage).toBeInTheDocument();
+      expect(socialMediaImage).toHaveAttribute('src', '/social-media.svg');
     });
 
     it('renders all footer links', () => {
@@ -120,23 +117,12 @@ describe('Footer', () => {
       expect(footer).toBeInTheDocument();
     });
 
-    it('social media links have proper aria-labels', () => {
+    it('social media link has proper aria-label', () => {
       render(<Footer />);
       
-      expect(screen.getByLabelText('Facebook')).toBeInTheDocument();
-      expect(screen.getByLabelText('Instagram')).toBeInTheDocument();
-      expect(screen.getByLabelText('Pinterest')).toBeInTheDocument();
-      expect(screen.getByLabelText('TikTok')).toBeInTheDocument();
+      expect(screen.getByLabelText('Social media links')).toBeInTheDocument();
     });
 
-    it('decorative images have empty alt text', () => {
-      const { container } = render(<Footer />);
-      const socialIcons = container.querySelectorAll('.footer__socialIcon');
-      
-      socialIcons.forEach(icon => {
-        expect(icon).toHaveAttribute('alt', '');
-      });
-    });
 
     it('navigation areas have proper aria-labels', () => {
       const { container } = render(<Footer />);
