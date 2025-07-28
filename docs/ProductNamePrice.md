@@ -59,7 +59,8 @@ import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNam
   - Price: `@include product-name-price-price` (20px, Avenir Heavy)
   - Regular price: `@include product-name-price-regular` (14px, Avenir Medium)
 - **Spacing**:
-  - Share icon size: `$product-name-price-share-icon-size` (30px)
+  - Share button container: `$product-name-price-share-button-size` (30px)
+  - Share icon dimensions: 14.8px × 17px
   - Component spacing uses design system variables
 
 ## Notes

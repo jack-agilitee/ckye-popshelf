@@ -59,8 +59,8 @@ const ProductNamePrice: React.FC<ProductNamePriceProps> = ({
           <Image
             src="/share.svg"
             alt=""
-            width={30}
-            height={30}
+            width={14.8}
+            height={17}
           />
         </button>
       )}
