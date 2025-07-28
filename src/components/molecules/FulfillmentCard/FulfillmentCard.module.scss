@@ -1,0 +1,172 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+// Component-specific variables from Figma
+$fulfillment-card-shadow: 0px 5px 25px 1px rgba(0, 0, 0, 0.1);
+$fulfillment-card-button-width: 120px;
+$fulfillment-card-icon-spacing: $spacing-3; // 12px from title
+$fulfillment-card-max-width: 360px; // Based on Figma design
+$fulfillment-card-line-height: 24px;
+$fulfillment-card-line-height-sm: 20px;
+$fulfillment-card-title-offset: 3px; // Align with title baseline
+$fulfillment-card-outline-width: 2px;
+$fulfillment-card-outline-offset: 2px;
+
+.fulfillment-card {
+  background-color: $white; // #FFFFFF from Figma
+  border: $input-border-width solid $gray-300; // #E3E3E3 mapped to $gray-300
+  border-radius: $radius-md; // 8px from Figma
+  box-shadow: $fulfillment-card-shadow;
+  padding: $spacing-4; // 16px from Figma
+  width: 100%;
+  max-width: $fulfillment-card-max-width;
+  display: flex;
+  flex-direction: column;
+  height: fit-content; // Ensure minimum height for consistent layout
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-4; // 16px
+    position: relative;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: $spacing-6; // 24px from Figma
+    height: $spacing-6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    @include avenir-heavy; // Avenir Heavy from Figma
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height;
+    color: $black; // #000000 from Figma
+    margin: 0;
+    margin-left: $fulfillment-card-icon-spacing;
+    flex: 1;
+  }
+
+  &__link {
+    @include avenir-book; // Avenir Book (closest to Medium)
+    font-size: $font-size-xs; // 12px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $purple-primary; // #87189D from Figma
+    text-decoration: none;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    top: $fulfillment-card-title-offset;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: $fulfillment-card-outline-width solid $purple-primary;
+      outline-offset: $fulfillment-card-outline-offset;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: $spacing-4; // 16px gap between content and button
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__stock {
+    @include avenir-book; // Avenir Book (closest to Medium)
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $black; // #000000 from Figma
+    margin: 0;
+    margin-bottom: $spacing-1; // 4px
+
+    &--error {
+      color: $color-error; // #F40000 from Figma
+    }
+  }
+
+  &__address {
+    @include reset-button;
+    @include avenir-heavy; // Avenir Heavy from Figma
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $black; // #000000 from Figma
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $purple-primary;
+    }
+
+    &:focus-visible {
+      outline: $fulfillment-card-outline-width solid $purple-primary;
+      outline-offset: $fulfillment-card-outline-offset;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__nearby {
+    @include avenir-book; // Avenir Book (closest to Medium)
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $black; // #000000 from Figma
+    margin: 0;
+    margin-top: $spacing-6; // 24px from address
+  }
+
+  &__shipping {
+    @include avenir-book; // Avenir Book (closest to Medium)
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $black; // #000000 from Figma
+    margin: 0;
+    margin-bottom: $spacing-1; // 4px
+  }
+
+  &__zipcode {
+    @include avenir-heavy; // Avenir Heavy from Figma
+    text-decoration: underline;
+    margin-left: $spacing-1; // Small gap
+  }
+
+  &__timeline {
+    @include avenir-book; // Avenir Book (closest to Medium)
+    font-size: $font-size-sm; // 14px from Figma
+    line-height: $fulfillment-card-line-height-sm;
+    color: $black; // #000000 from Figma
+    margin: 0;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  &__button {
+    width: $fulfillment-card-button-width;
+    min-width: $fulfillment-card-button-width;
+    height: $button-height-sm; // 32px from Figma
+    padding: 0;
+    
+    // Override button font styles to match Figma
+    @include sofia-semibold; // Sofia Pro Semi Bold from Figma
+    font-size: $font-size-sm !important; // 14px from Figma
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+}

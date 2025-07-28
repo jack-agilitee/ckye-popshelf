@@ -20,6 +20,7 @@ import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductC
 import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions';
+import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2334,6 +2335,86 @@ function ProductGrid({ products }) {
 }`}</pre>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* FulfillmentCard Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>FulfillmentCard</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/FulfillmentCard
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}>
+                {/* In-store pickup with stock */}
+                <FulfillmentCard
+                  type={FulfillmentType.PICKUP}
+                  stockCount={27}
+                  storeName="315 NW Shenstone St."
+                  storeAddress="Nashville, TN"
+                  onAddToCart={() => console.log('Add to cart - pickup')}
+                  onAddressClick={() => console.log('Show store details')}
+                  onHowItWorksClick={() => console.log('Show pickup info')}
+                />
+                
+                {/* Out of stock pickup */}
+                <FulfillmentCard
+                  type={FulfillmentType.PICKUP}
+                  outOfStock={true}
+                  nearbyStoresCount={2}
+                  storeName="315 NW Shenstone St."
+                  storeAddress="Nashville, TN"
+                  onChangeStore={() => console.log('Open store selector')}
+                  onAddressClick={() => console.log('Show store details')}
+                  onHowItWorksClick={() => console.log('Show pickup info')}
+                />
+                
+                {/* Shipping option */}
+                <FulfillmentCard
+                  type={FulfillmentType.SHIPPING}
+                  zipCode="75240"
+                  shippingDays="3-5 days"
+                  onAddToCart={() => console.log('Add to cart - shipping')}
+                  onPolicyClick={() => console.log('Show shipping policy')}
+                />
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
+
+// In-store pickup with stock
+<FulfillmentCard
+  type={FulfillmentType.PICKUP}
+  stockCount={27}
+  storeName="315 NW Shenstone St."
+  storeAddress="Nashville, TN"
+  onAddToCart={() => handleAddToCart()}
+  onAddressClick={() => showStoreDetails()}
+  onHowItWorksClick={() => showPickupInfo()}
+/>
+
+// Out of stock pickup
+<FulfillmentCard
+  type={FulfillmentType.PICKUP}
+  outOfStock={true}
+  nearbyStoresCount={2}
+  onChangeStore={() => openStoreSelector()}
+  onAddressClick={() => showStoreDetails()}
+  onHowItWorksClick={() => showPickupInfo()}
+/>
+
+// Shipping option
+<FulfillmentCard
+  type={FulfillmentType.SHIPPING}
+  zipCode="75240"
+  shippingDays="3-5 days"
+  onAddToCart={() => handleAddToCart()}
+  onPolicyClick={() => showShippingPolicy()}
+/>`}</pre>
             </div>
           </section>
 
