@@ -25,6 +25,7 @@ import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
 import Header from '@/components/templates/Header/Header';
+import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -2808,6 +2809,75 @@ function AppLayout() {
         onClose={() => setIsDrawerOpen(false)}
       />
     </>
+  );
+}`}</pre>
+                </div>
+              </div>
+              
+              {/* Footer Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>Footer</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/templates/Footer
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
+                    {/* Footer example */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Footer Template</h4>
+                      <div style={{ marginLeft: '-24px', marginRight: '-24px' }}>
+                        <Footer />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`// Basic usage
+import Footer from '@/components/templates/Footer/Footer';
+
+function App() {
+  return (
+    <div className="app">
+      <Header />
+      <main>
+        {/* Page content */}
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+// In Next.js layout
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
+
+// With sticky footer
+function StickyFooterLayout() {
+  return (
+    <div style={{ 
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
+      <Header />
+      <main style={{ flex: 1 }}>
+        {/* Content grows to fill space */}
+      </main>
+      <Footer />
+    </div>
   );
 }`}</pre>
                 </div>

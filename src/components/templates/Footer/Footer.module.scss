@@ -1,0 +1,198 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+// Component-specific variables from Figma
+$footer-mobile-breakpoint: $breakpoint-md; // 768px
+$footer-logo-width-desktop: 162px; // From Figma desktop
+$footer-logo-height-desktop: 36px; // From Figma desktop
+$footer-logo-width-mobile: 145px; // From Figma mobile
+$footer-logo-height-mobile: 26px; // From Figma mobile
+$footer-social-icon-size: 32px; // Social media icon size
+$footer-social-gap: $spacing-3; // 12px between icons
+$footer-mobile-padding: 6.4%; // Mobile horizontal padding from Figma
+
+.footer {
+  background-color: $footer-background; // $purple-primary from Figma
+  color: $footer-text; // $white
+  position: relative;
+  width: 100%;
+
+  &__main {
+    padding: $spacing-14 0 $spacing-16; // 56px top, 64px bottom
+    position: relative;
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      min-height: calc($footer-desktop-height - $footer-copyright-height); // 324px - 84px
+    }
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 $footer-mobile-padding; // 6.4% mobile padding
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      max-width: $footer-desktop-width; // 1440px from Figma
+      padding: 0 $spacing-6; // 24px desktop padding
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: $spacing-20; // 80px gap
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $spacing-10; // 40px
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      align-items: flex-start;
+      margin-bottom: 0;
+      padding-left: $spacing-24; // Position at 17.361% of 1440px ≈ 250px
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin-bottom: $spacing-6; // 24px
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 4px;
+      border-radius: $radius-sm;
+    }
+
+    // Mobile logo size
+    img {
+      width: $footer-logo-width-mobile;
+      height: $footer-logo-height-mobile;
+    }
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      img {
+        width: $footer-logo-width-desktop;
+        height: $footer-logo-height-desktop;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: $footer-social-gap;
+    align-items: center;
+
+    a {
+      display: block;
+      width: $footer-social-icon-size;
+      height: $footer-social-icon-size;
+      transition: opacity $transition-fast;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $white;
+        outline-offset: 2px;
+        border-radius: $radius-sm;
+      }
+    }
+  }
+
+  &__socialIcon {
+    width: $footer-social-icon-size;
+    height: $footer-social-icon-size;
+  }
+
+  &__desktopNav {
+    display: none;
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-20; // 80px between columns
+      padding-left: $spacing-16; // Adjust positioning
+    }
+  }
+
+  &__mobileNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      display: none;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    @include sofia-semibold; // Sofia Pro Semi Bold from Figma
+    color: $footer-text; // $white
+    font-size: $font-size-base; // 16px from Figma
+    line-height: 2; // 32px line height
+    letter-spacing: $footer-letter-spacing; // 0.5667px from Figma
+    text-decoration: none;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+  }
+
+  &__copyright {
+    background-color: $black; // #000000 from Figma
+    height: $footer-copyright-height; // 84px from Figma
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__copyrightContainer {
+    max-width: $footer-desktop-width; // 1440px
+    margin: 0 auto;
+    padding: 0 $footer-mobile-padding; // 6.4% mobile padding
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      padding: 0 $spacing-6; // 24px desktop padding
+      text-align: left;
+    }
+  }
+
+  &__copyrightText {
+    @include sofia-semibold; // Sofia Pro Semi Bold for mobile
+    color: $footer-text; // $white
+    font-size: $font-size-base; // 16px for mobile
+    line-height: $line-height-relaxed; // 30px line height
+    margin: 0;
+
+    @media (min-width: $footer-mobile-breakpoint) {
+      @include avenir-heavy; // Avenir Heavy for desktop
+      font-size: $footer-font-size-copyright; // 13px from Figma
+    }
+  }
+
+  &__copyrightO {
+    @media (min-width: $footer-mobile-breakpoint) {
+      font-family: $font-family-primary; // Different font for "O" on desktop
+    }
+  }
+}
