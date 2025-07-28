@@ -22,7 +22,7 @@ $fulfillment-card-outline-offset: 2px;
   max-width: $fulfillment-card-max-width;
   display: flex;
   flex-direction: column;
-  min-height: 200px; // Ensure minimum height for consistent layout
+  height: fit-content; // Ensure minimum height for consistent layout
 
   &__header {
     display: flex;
