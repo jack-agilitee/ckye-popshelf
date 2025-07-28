@@ -20,9 +20,6 @@
     padding-left: $related-products-padding; // 20px from Figma
   }
 
-  &__category-swiper {
-    // Categories look perfect, no changes needed
-  }
 
   &__category-slide {
     width: auto !important; // Let button determine width
@@ -48,9 +45,6 @@
     padding-left: $related-products-padding; // 20px from Figma
   }
 
-  &__product-swiper {
-    // Match category swiper setup
-  }
 
   &__product-slide {
     width: fit-content !important; // 160px from Figma
@@ -83,13 +77,17 @@
     .swiper-pagination-bullet {
       width: $spacing-3; // 12px
       height: $spacing-3; // 12px
-      background-color: $gray-300; // Light gray for inactive dots
+      background-color: transparent;
+      border: 1px solid #D1D1D1; // Light gray outline from Figma
       opacity: 1;
-      transition: background-color $transition-fast;
-      margin: 0;
+      transition: all $transition-fast;
+      margin: 0 !important; // Override Swiper default margins
+      border-radius: 50%;
+      cursor: pointer;
 
       &-active {
-        background-color: $purple-primary; // Purple for active dot
+        background-color: $purple-primary; // Purple filled for active
+        border-color: $purple-primary;
       }
     }
   }
