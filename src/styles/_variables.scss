@@ -349,3 +349,14 @@ $product-name-price-share-button-size: 30px; // Share button container size (fro
 $product-name-price-share-icon-width: 14.8px; // Share icon width (from Figma)
 $product-name-price-share-icon-height: 17px; // Share icon height (from Figma)
 $product-name-price-letter-spacing: 0.2222px; // Price letter spacing (from Figma)
+
+// RelatedProducts Component
+$related-products-section-gap: 24px; // Gap between sections
+$related-products-card-width: 160px; // Product card width (from Figma)
+$related-products-card-gap: $spacing-2; // 8px gap between cards
+$related-products-button-width: 128px; // ADD TO CART button width (from Figma)
+$related-products-category-height: 40px; // Category button height (from Figma)
+$related-products-padding: $spacing-5; // 20px section padding (from Figma)
+$related-products-title-size: $font-size-base; // 16px section title (from Figma)
+$related-products-button-letter-spacing: 0.3px; // Sofia Pro button letter spacing (from Figma)
+$related-products-title-margin: 7px; // Title to content margin (from Figma)

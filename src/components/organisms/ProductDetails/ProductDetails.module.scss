@@ -1,0 +1,72 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product-details {
+  background-color: $white;
+  width: 100%;
+
+  // Tab navigation
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid $gray-placeholder; // #D8D8D8 from Figma
+    position: relative;
+  }
+
+  &__tab {
+    @include reset-button;
+    @include product-details-tab; // Will create this mixin
+    padding: 10px 0;
+    margin: 0 20px;
+    position: relative;
+    transition: color $transition-fast;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover:not(&--active) {
+      color: $gray-700;
+    }
+
+    // Active state
+    &--active {
+      color: $black;
+
+      // Active indicator bar
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background-color: $black;
+      }
+    }
+  }
+
+  // Content section
+  &__content {
+    background-color: $white;
+    padding: 20px;
+    min-height: 200px;
+  }
+
+  // Details tab content
+  &__details {
+    // ContentBlock will handle all the styling for title and items
+  }
+
+  // Ratings tab content
+  &__ratings {
+    // Empty by default
+  }
+
+  &__placeholder {
+    @include body-medium;
+    color: $text-secondary;
+    text-align: center;
+    padding: 40px 0;
+    margin: 0;
+  }
+}

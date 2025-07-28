@@ -20,6 +20,8 @@ import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductC
 import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
+import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
+import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -2240,6 +2242,239 @@ function CheckoutPage() {
       orderTotal={12.94}
       onProceedToCheckout={handleCheckout}
     />
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* ProductDetails Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductDetails</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/organisms/ProductDetails
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+                    <ProductDetails
+                      title="Highlights"
+                      highlights={[
+                        'Foil balloon is shaped like the letter E.',
+                        'Measures 14 inches tall when inflated',
+                        'Combine to spell out words and names.',
+                        'Coordinate with more silver party supplies.'
+                      ]}
+                      ratingsContent={
+                        <div style={{ padding: '20px', textAlign: 'center' }}>
+                          <p>Ratings and reviews content would go here</p>
+                        </div>
+                      }
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
+
+// Basic usage with highlights
+<ProductDetails
+  title="Highlights"
+  highlights={[
+    'Foil balloon is shaped like the letter E.',
+    'Measures 14 inches tall when inflated',
+    'Combine to spell out words and names.',
+    'Coordinate with more silver party supplies.'
+  ]}
+/>
+
+// With custom ratings content
+<ProductDetails
+  highlights={productHighlights}
+  ratingsContent={<ReviewsList reviews={productReviews} />}
+/>
+
+// Minimal configuration
+<ProductDetails />
+
+// In product detail page
+function ProductDetailPage({ product }) {
+  return (
+    <div className="product-detail-page">
+      <ProductImage src={product.image} />
+      <ProductNamePrice {...product} />
+      
+      <ProductDetails
+        highlights={product.highlights}
+        ratingsContent={
+          <ReviewsSection
+            reviews={product.reviews}
+            rating={product.rating}
+            onWriteReview={() => openReviewModal()}
+          />
+        }
+      />
+      
+      <RelatedProducts items={product.related} />
+    </div>
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* RelatedProducts Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>RelatedProducts</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/organisms/RelatedProducts
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+                    <RelatedProducts
+                      categories={[
+                        { id: '1', name: 'Foil Fringe Banner' },
+                        { id: '2', name: 'Foil Letter Balloons' },
+                        { id: '3', name: '16 Inch Letter Balloons' },
+                        { id: '4', name: 'Pink Themed Party' },
+                        { id: '5', name: 'Gold Party Supplies' },
+                      ]}
+                      products={[
+                        {
+                          id: '1',
+                          name: '321 Party! Foil Gold Create Your Own Banner',
+                          price: 5.00,
+                          imageUrl: '/products/product-1.jpg',
+                          imageAlt: 'Gold banner',
+                          inStock: true,
+                        },
+                        {
+                          id: '2',
+                          name: '321 Party! Champagne Balloon Cascade Kit',
+                          price: 5.00,
+                          imageUrl: '/products/product-2.jpg',
+                          imageAlt: 'Balloon kit',
+                          inStock: true,
+                        },
+                        {
+                          id: '3',
+                          name: '321 Party! Cupcake Foil Balloon',
+                          price: 4.00,
+                          imageUrl: '/products/product-3.png',
+                          imageAlt: 'Cupcake balloon',
+                          inStock: false,
+                        },
+                        {
+                          id: '4',
+                          name: '321 Party! Rose Gold Letter Balloon - A',
+                          price: 3.50,
+                          imageUrl: '/products/product-4.png',
+                          imageAlt: 'Letter A balloon',
+                          inStock: true,
+                        },
+                        {
+                          id: '5',
+                          name: '321 Party! Metallic Star Confetti',
+                          price: 2.99,
+                          imageUrl: '/products/product-1.jpg',
+                          imageAlt: 'Star confetti',
+                          inStock: true,
+                        },
+                        {
+                          id: '6',
+                          name: '321 Party! Birthday Cake Topper Set',
+                          price: 6.50,
+                          imageUrl: '/products/product-2.jpg',
+                          imageAlt: 'Cake topper set',
+                          inStock: true,
+                        },
+                      ]}
+                      onCategoryClick={(category) => console.log('Category clicked:', category)}
+                      onAddToCart={(product) => console.log('Add to cart:', product)}
+                      onViewDetails={(product) => console.log('View details:', product)}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
+
+// Basic usage
+<RelatedProducts
+  categories={categories}
+  products={products}
+  onCategoryClick={(category) => handleCategoryClick(category)}
+  onAddToCart={(product) => handleAddToCart(product)}
+  onViewDetails={(product) => handleViewDetails(product)}
+/>
+
+// With data structures
+const categories = [
+  { id: '1', name: 'Foil Fringe Banner' },
+  { id: '2', name: 'Foil Letter Balloons' },
+  { id: '3', name: '16 Inch Letter Balloons' },
+];
+
+const products = [
+  {
+    id: '1',
+    name: '321 Party! Foil Gold Create Your Own Banner',
+    price: 5.00,
+    imageUrl: '/products/banner.jpg',
+    imageAlt: 'Gold banner',
+    inStock: true,
+  },
+  {
+    id: '2',
+    name: '321 Party! Champagne Balloon Cascade Kit',
+    price: 5.00,
+    imageUrl: '/products/balloon-kit.jpg',
+    imageAlt: 'Balloon kit',
+    inStock: true,
+  },
+];
+
+// Only categories
+<RelatedProducts
+  categories={categories}
+  onCategoryClick={(category) => navigateToCategory(category.id)}
+/>
+
+// Only products
+<RelatedProducts
+  products={products}
+  onAddToCart={(product) => addToCart(product)}
+  onViewDetails={(product) => viewProductDetails(product)}
+/>
+
+// In product detail page
+function ProductDetailPage({ product }) {
+  const relatedCategories = useRelatedCategories(product.id);
+  const relatedProducts = useRelatedProducts(product.id);
+
+  return (
+    <div className="product-detail">
+      <ProductImage src={product.image} />
+      <ProductInfo {...product} />
+      
+      <RelatedProducts
+        categories={relatedCategories}
+        products={relatedProducts}
+        onCategoryClick={(category) => {
+          router.push(\`/category/\${category.id}\`);
+        }}
+        onAddToCart={(product) => {
+          cart.add(product);
+          toast.success('Added to cart!');
+        }}
+        onViewDetails={(product) => {
+          router.push(\`/product/\${product.id}\`);
+        }}
+      />
+    </div>
   );
 }`}</pre>
                 </div>

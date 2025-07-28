@@ -1,0 +1,95 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.related-products {
+  background-color: $white;
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: $spacing-6; // 24px
+    }
+  }
+
+  &__title {
+    @include avenir-heavy; // Avenir Heavy 16px from Figma
+    color: $black; // #000000 from Figma
+    margin: 0 0 $related-products-title-margin $related-products-padding; // 20px left padding, 7px bottom from Figma
+  }
+
+  &__categories {
+    padding-left: $related-products-padding; // 20px from Figma
+  }
+
+
+  &__category-slide {
+    width: auto !important; // Let button determine width
+  }
+
+  &__category-button {
+    height: $related-products-category-height; // 40px from Figma
+    padding: 0 $spacing-4; // Horizontal padding
+    white-space: nowrap;
+    
+    // Override Button component styles to match Figma
+    .button__label {
+      font-family: $font-family-avenir;
+      font-size: $font-size-base; // 16px
+      font-weight: $font-weight-medium;
+      line-height: 20px;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+  }
+
+  &__products {
+    padding-left: $related-products-padding; // 20px from Figma
+  }
+
+
+  &__product-slide {
+    width: fit-content !important; // 160px from Figma
+  }
+
+  &__card {
+    // MiniProductCard already has width: 160px from its own styles
+    
+    // Override button width to match Figma
+    .mini-product-card__button {
+      width: $related-products-button-width; // 128px from Figma
+      
+      // Override button text style to match Figma
+      .button__label {
+        font-family: $font-family-sofia;
+        font-size: $font-size-sm; // 14px
+        font-weight: $font-weight-semibold;
+        line-height: 14px;
+        letter-spacing: $related-products-button-letter-spacing; // 0.3px from Figma
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__pagination {
+    @include flex-center;
+    margin-top: $spacing-4; // 16px
+    gap: $spacing-2; // 8px between dots
+
+    :global(.swiper-pagination-bullet) {
+      width: $spacing-3 !important; // 12px
+      height: $spacing-3 !important; // 12px
+      background-color: transparent !important;
+      border: 1px solid #D1D1D1 !important; // Light gray outline from Figma
+      opacity: 1 !important;
+      transition: all $transition-fast;
+      margin: 0 !important; // Override Swiper default margins
+      border-radius: 50% !important;
+      cursor: pointer;
+
+      &:global(.swiper-pagination-bullet-active) {
+        background-color: $purple-primary !important; // Purple filled for active
+        border-color: $purple-primary !important;
+      }
+    }
+  }
+}
+
