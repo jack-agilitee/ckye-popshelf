@@ -1,0 +1,100 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+// Component-specific variables
+$product-options-image-size: 60px; // From Figma
+$product-options-dropdown-width: 200px; // From Figma
+$product-options-dropdown-height: 40px; // From Figma
+$product-options-selected-border-width: 2px; // From Figma
+$product-options-label-font-size: 13px; // From Figma
+
+// Custom typography mixin for Avenir Heavy 13px
+@mixin product-options-label {
+  font-family: $font-family-avenir;
+  font-size: $product-options-label-font-size;
+  font-weight: 900; // Heavy
+  line-height: $line-height-normal;
+  color: $gray-600; // #757575 from Figma
+}
+
+.product-options {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4; // 16px from Figma
+
+  &__color-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    @include product-options-label;
+    margin-bottom: $spacing-2; // 8px to match Figma spacing
+  }
+
+  &__color-selector {
+    display: flex;
+    gap: $spacing-2; // 8px from Figma
+    align-items: center;
+  }
+
+  &__color-option {
+    @include reset-button;
+    position: relative;
+    width: $product-options-image-size;
+    height: $product-options-image-size;
+    border-radius: $radius-sm; // 4px from Figma
+    overflow: hidden;
+    background-color: $white; // #FFFFFF from Figma
+    border: $input-border-width solid $gray-300; // #D8D8D8 mapped to $gray-300
+    transition: border-color $transition-fast;
+    cursor: pointer;
+
+    &:hover:not(&--selected) {
+      border-color: $gray-400;
+    }
+
+    &:focus-visible {
+      outline: $product-options-selected-border-width solid $purple-primary;
+      outline-offset: $product-options-selected-border-width;
+    }
+
+    &--selected {
+      border: $product-options-selected-border-width solid $purple-primary; // #87189D from Figma
+    }
+  }
+
+  &__color-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - $spacing-2); // 6.667% inset = ~4px padding on 60px
+    height: calc(100% - $spacing-2);
+    object-fit: contain;
+  }
+
+  &__letter-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6; // 24px from Figma
+  }
+
+  &__dropdown {
+    flex: 0 0 $product-options-dropdown-width;
+    
+    // Override dropdown styles to match Figma
+    :global(.dropdown__trigger) {
+      height: $product-options-dropdown-height;
+      border-color: $gray-600; // #757575 from Figma
+      box-shadow: $shadow-text-field; // From Figma: 0px 4px 16px 0px rgba(55, 58, 64, 0.15)
+      
+      // Override dropdown text style
+      :global(.dropdown__value) {
+        @include sofia-medium; // Sofia Pro Medium from Figma
+        font-size: $font-size-base; // 16px from Figma
+        color: $black; // #000000 from Figma
+      }
+    }
+  }
+}
