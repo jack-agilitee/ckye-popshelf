@@ -63,7 +63,7 @@ import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNam
   - Component spacing uses design system variables
 
 ## Notes
-- The share icon path needs to be provided. Currently using placeholder `/icons/share.svg`
+- Share icon is located at `/share.svg` in the public folder
 - Regular price only displays if different from current price
 - Share button only renders if onShare callback is provided
 - Component is marked as 'use client' for interactivity

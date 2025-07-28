@@ -56,9 +56,8 @@ const ProductNamePrice: React.FC<ProductNamePriceProps> = ({
           onClick={handleShareClick}
           aria-label="Share product"
         >
-          {/* TODO: Replace with actual share icon path */}
           <Image
-            src="/icons/share.svg"
+            src="/share.svg"
             alt=""
             width={30}
             height={30}
