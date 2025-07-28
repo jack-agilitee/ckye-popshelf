@@ -7,7 +7,7 @@ $header-border-color: $gray-border-light; // #F0F0F0 closest to Figma #F1F1F1
 $header-logo-width: 120px; // From Figma
 $header-logo-height: 26px; // Logo height from implementation
 $header-icon-size: 48px; // Touch target size from Figma
-$header-inner-icon-size: 24px; // Actual icon size
+$header-inner-icon-size: 48px; // Actual icon size from Figma
 $header-mobile-breakpoint: 768px;
 $header-desktop-width: 1024px; // From Figma
 $header-outline-width: 2px;
@@ -125,6 +125,7 @@ $header-border-width: 1px;
     display: block;
     height: $header-inner-icon-size;
     width: $header-inner-icon-size;
+    object-fit: contain;
   }
 
   &__cartBadge {

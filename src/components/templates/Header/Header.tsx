@@ -43,8 +43,8 @@ const Header: React.FC<HeaderProps> = ({
             <Image
               src="/menu.svg"
               alt=""
-              width={24}
-              height={24}
+              width={48}
+              height={48}
               className={styles.header__icon}
             />
             <span className={styles.header__menuText}>MENU</span>
@@ -80,8 +80,8 @@ const Header: React.FC<HeaderProps> = ({
             <Image
               src="/search.svg"
               alt=""
-              width={24}
-              height={24}
+              width={48}
+              height={48}
               className={styles.header__icon}
             />
           </button>
@@ -95,8 +95,8 @@ const Header: React.FC<HeaderProps> = ({
             <Image
               src="/cart.svg"
               alt=""
-              width={24}
-              height={24}
+              width={48}
+              height={48}
               className={styles.header__icon}
             />
             {cartItemCount > 0 && (

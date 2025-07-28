@@ -152,6 +152,12 @@
     gap: $spacing-6;
   }
 
+  &__templatesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+
   &__placeholder {
     @include card;
     background-color: $background-primary;
