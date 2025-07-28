@@ -21,6 +21,7 @@ import ProductCards from '@/components/molecules/ProductCards/ProductCards';
 import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
+import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
 import styles from './page.module.scss';
 
 const DropdownDemo = () => {
@@ -2316,6 +2317,147 @@ function ProductDetailPage({ product }) {
       />
       
       <RelatedProducts items={product.related} />
+    </div>
+  );
+}`}</pre>
+                </div>
+              </div>
+
+              {/* RelatedProducts Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>RelatedProducts</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/organisms/RelatedProducts
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+                    <RelatedProducts
+                      categories={[
+                        { id: '1', name: 'Foil Fringe Banner' },
+                        { id: '2', name: 'Foil Letter Balloons' },
+                        { id: '3', name: '16 Inch Letter Balloons' },
+                        { id: '4', name: 'Pink Themed Party' },
+                        { id: '5', name: 'Gold Party Supplies' },
+                      ]}
+                      products={[
+                        {
+                          id: '1',
+                          name: '321 Party! Foil Gold Create Your Own Banner',
+                          price: 5.00,
+                          imageUrl: '/products/banner.jpg',
+                          imageAlt: 'Gold banner',
+                          inStock: true,
+                        },
+                        {
+                          id: '2',
+                          name: '321 Party! Champagne Balloon Cascade Kit',
+                          price: 5.00,
+                          imageUrl: '/products/balloon-kit.jpg',
+                          imageAlt: 'Balloon kit',
+                          inStock: true,
+                        },
+                        {
+                          id: '3',
+                          name: '321 Party! Cupcake Foil Balloon',
+                          price: 4.00,
+                          imageUrl: '/products/cupcake-balloon.jpg',
+                          imageAlt: 'Cupcake balloon',
+                          inStock: false,
+                        },
+                        {
+                          id: '4',
+                          name: '321 Party! Rose Gold Letter Balloon - A',
+                          price: 3.50,
+                          imageUrl: '/products/letter-a.jpg',
+                          imageAlt: 'Letter A balloon',
+                          inStock: true,
+                        },
+                      ]}
+                      onCategoryClick={(category) => console.log('Category clicked:', category)}
+                      onAddToCart={(product) => console.log('Add to cart:', product)}
+                      onViewDetails={(product) => console.log('View details:', product)}
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
+
+// Basic usage
+<RelatedProducts
+  categories={categories}
+  products={products}
+  onCategoryClick={(category) => handleCategoryClick(category)}
+  onAddToCart={(product) => handleAddToCart(product)}
+  onViewDetails={(product) => handleViewDetails(product)}
+/>
+
+// With data structures
+const categories = [
+  { id: '1', name: 'Foil Fringe Banner' },
+  { id: '2', name: 'Foil Letter Balloons' },
+  { id: '3', name: '16 Inch Letter Balloons' },
+];
+
+const products = [
+  {
+    id: '1',
+    name: '321 Party! Foil Gold Create Your Own Banner',
+    price: 5.00,
+    imageUrl: '/products/banner.jpg',
+    imageAlt: 'Gold banner',
+    inStock: true,
+  },
+  {
+    id: '2',
+    name: '321 Party! Champagne Balloon Cascade Kit',
+    price: 5.00,
+    imageUrl: '/products/balloon-kit.jpg',
+    imageAlt: 'Balloon kit',
+    inStock: true,
+  },
+];
+
+// Only categories
+<RelatedProducts
+  categories={categories}
+  onCategoryClick={(category) => navigateToCategory(category.id)}
+/>
+
+// Only products
+<RelatedProducts
+  products={products}
+  onAddToCart={(product) => addToCart(product)}
+  onViewDetails={(product) => viewProductDetails(product)}
+/>
+
+// In product detail page
+function ProductDetailPage({ product }) {
+  const relatedCategories = useRelatedCategories(product.id);
+  const relatedProducts = useRelatedProducts(product.id);
+
+  return (
+    <div className="product-detail">
+      <ProductImage src={product.image} />
+      <ProductInfo {...product} />
+      
+      <RelatedProducts
+        categories={relatedCategories}
+        products={relatedProducts}
+        onCategoryClick={(category) => {
+          router.push(\`/category/\${category.id}\`);
+        }}
+        onAddToCart={(product) => {
+          cart.add(product);
+          toast.success('Added to cart!');
+        }}
+        onViewDetails={(product) => {
+          router.push(\`/product/\${product.id}\`);
+        }}
+      />
     </div>
   );
 }`}</pre>

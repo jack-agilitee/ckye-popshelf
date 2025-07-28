@@ -1,0 +1,127 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.related-products {
+  background-color: $white;
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: $related-products-section-gap; // 72px adjusted for better spacing
+    }
+  }
+
+  &__title {
+    @include avenir-heavy; // Avenir Heavy 16px from Figma
+    color: $black; // #000000 from Figma
+    margin: 0 0 $related-products-title-margin $related-products-padding; // 20px left padding, 7px bottom from Figma
+  }
+
+  &__categories {
+    padding-left: $related-products-padding; // 20px from Figma
+    overflow: hidden; // Prevent horizontal scroll
+  }
+
+  &__category-swiper {
+    margin-right: -$related-products-padding; // Compensate for container padding
+    
+    .swiper-wrapper {
+      align-items: center;
+    }
+  }
+
+  &__category-slide {
+    width: auto;
+  }
+
+  &__category-button {
+    height: $related-products-category-height; // 40px from Figma
+    padding: 0 $spacing-4; // Horizontal padding
+    white-space: nowrap;
+    
+    // Override Button component styles to match Figma
+    .button__label {
+      font-family: $font-family-avenir;
+      font-size: $font-size-base; // 16px
+      font-weight: $font-weight-medium;
+      line-height: 20px;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+  }
+
+  &__products {
+    padding-left: $related-products-padding; // 20px from Figma
+    position: relative;
+    overflow: hidden; // Prevent horizontal scroll
+  }
+
+  &__product-swiper {
+    margin-right: -$related-products-padding; // Compensate for container padding
+    
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+  }
+
+  &__product-slide {
+    width: $related-products-card-width; // 160px from Figma
+  }
+
+  &__card {
+    // Override MiniProductCard styles to match Figma exactly
+    width: $related-products-card-width; // 160px from Figma
+    
+    // Override button width to match Figma
+    .mini-product-card__button {
+      width: $related-products-button-width; // 128px from Figma
+      
+      // Override button text style to match Figma
+      .button__label {
+        font-family: $font-family-sofia;
+        font-size: $font-size-sm; // 14px
+        font-weight: $font-weight-semibold;
+        line-height: 14px;
+        letter-spacing: $related-products-button-letter-spacing; // 0.3px from Figma
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__pagination {
+    @include flex-center;
+    margin-top: $spacing-4; // 16px
+    gap: $spacing-2; // 8px between dots
+
+    .swiper-pagination-bullet {
+      width: $spacing-3; // 12px
+      height: $spacing-3; // 12px
+      background-color: $gray-300; // Light gray for inactive dots
+      opacity: 1;
+      transition: background-color $transition-fast;
+      margin: 0;
+
+      &-active {
+        background-color: $purple-primary; // Purple for active dot
+      }
+    }
+  }
+}
+
+// Remove any default Swiper margins/paddings
+.related-products {
+  .swiper {
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper-slide {
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+}
