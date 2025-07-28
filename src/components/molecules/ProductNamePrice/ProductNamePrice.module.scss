@@ -1,0 +1,58 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product-name-price {
+  position: relative;
+  width: 100%;
+
+  &__title {
+    @include product-name-price-title;
+    color: $black;
+    margin: 0;
+    margin-bottom: $spacing-4; // 16px for stars
+    padding-right: $spacing-10; // 40px to avoid share icon overlap
+  }
+
+  &__share {
+    @include reset-button;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $product-name-price-share-button-size;
+    height: $product-name-price-share-button-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__rating {
+    margin-bottom: $spacing-4; // 16px
+  }
+
+  &__pricing {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2; // 8px between price and regular price
+  }
+
+  &__price {
+    @include product-name-price-price;
+    color: $black;
+  }
+
+  &__regular-price {
+    @include product-name-price-regular;
+    color: $gray-700; // #636363
+  }
+}

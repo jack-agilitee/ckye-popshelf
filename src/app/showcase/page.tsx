@@ -18,6 +18,7 @@ import LocationPicker from '@/components/molecules/LocationPicker/LocationPicker
 import ProductCard from '@/components/molecules/ProductCard/ProductCard';
 import MiniProductCard from '@/components/molecules/MiniProductCard/MiniProductCard';
 import ProductCards from '@/components/molecules/ProductCards/ProductCards';
+import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import styles from './page.module.scss';
 
@@ -1876,6 +1877,130 @@ const ProductGrid = () => {
     </div>
   );
 };`}</pre>
+                </div>
+              </div>
+
+              {/* ProductNamePrice Component */}
+              <div className={styles.showcase__componentShowcase}>
+                <div className={styles.showcase__componentHeader}>
+                  <h3 className={styles.showcase__componentName}>ProductNamePrice</h3>
+                  <span className={styles.showcase__componentPath}>
+                    components/molecules/ProductNamePrice
+                  </span>
+                </div>
+                
+                <div className={styles.showcase__componentDemo}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px', margin: '0 auto' }}>
+                    {/* Full featured example */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Full Featured</h4>
+                      <ProductNamePrice
+                        name="Dermott Damask Throw Pillow (Set of 2)"
+                        price={9.00}
+                        regularPrice={9.50}
+                        rating={4.5}
+                        reviewCount={280}
+                        onShare={() => console.log('Share product clicked')}
+                      />
+                    </div>
+                    
+                    {/* Without regular price */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>No Regular Price</h4>
+                      <ProductNamePrice
+                        name="Modern Wall Clock"
+                        price={24.99}
+                        rating={5}
+                        reviewCount={42}
+                        onShare={() => console.log('Share product clicked')}
+                      />
+                    </div>
+                    
+                    {/* Without share button */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>No Share Button</h4>
+                      <ProductNamePrice
+                        name="Decorative Ceramic Vase"
+                        price={15.00}
+                        regularPrice={22.00}
+                        rating={3.8}
+                        reviewCount={156}
+                      />
+                    </div>
+                    
+                    {/* Minimal example */}
+                    <div>
+                      <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#666' }}>Minimal</h4>
+                      <ProductNamePrice
+                        name="Basic Item"
+                        price={5.99}
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className={styles.showcase__componentCode}>
+                  <pre>{`import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNamePrice';
+
+// Full featured usage
+<ProductNamePrice
+  name="Dermott Damask Throw Pillow (Set of 2)"
+  price={9.00}
+  regularPrice={9.50}
+  rating={4.5}
+  reviewCount={280}
+  onShare={() => handleShareProduct()}
+/>
+
+// Without regular price
+<ProductNamePrice
+  name="Modern Wall Clock"
+  price={24.99}
+  rating={5}
+  reviewCount={42}
+  onShare={() => handleShareProduct()}
+/>
+
+// Without share functionality
+<ProductNamePrice
+  name="Decorative Ceramic Vase"
+  price={15.00}
+  regularPrice={22.00}
+  rating={3.8}
+  reviewCount={156}
+/>
+
+// Minimal configuration
+<ProductNamePrice
+  name="Basic Item"
+  price={5.99}
+/>
+
+// In product detail page
+function ProductDetail({ product }) {
+  const handleShare = () => {
+    navigator.share({
+      title: product.name,
+      text: \`Check out \${product.name} at PopShelf!\`,
+      url: window.location.href
+    });
+  };
+
+  return (
+    <div className="product-detail">
+      <ProductImage src={product.image} />
+      <ProductNamePrice
+        name={product.name}
+        price={product.currentPrice}
+        regularPrice={product.originalPrice}
+        rating={product.rating}
+        reviewCount={product.reviewCount}
+        onShare={handleShare}
+      />
+      <ProductDescription text={product.description} />
+    </div>
+  );
+}`}</pre>
                 </div>
               </div>
 
