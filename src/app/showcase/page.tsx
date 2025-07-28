@@ -1981,7 +1981,7 @@ function ProductDetail({ product }) {
   const handleShare = () => {
     navigator.share({
       title: product.name,
-      text: `Check out ${product.name} at PopShelf!`,
+      text: \`Check out \${product.name} at PopShelf!\`,
       url: window.location.href
     });
   };
