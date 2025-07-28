@@ -140,64 +140,73 @@ const ProductCards: React.FC<ProductCardsProps> = ({
           ${className || ''}
         `}
       >
-        <div className={styles['product-cards__image-container']}>
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            width={80}
-            height={80}
-            className={styles['product-cards__image']}
-          />
-        </div>
+        {/* Top section with image and details */}
+        <div className={styles['product-cards__top-section']}>
+          {/* Left column: Image */}
+          <div className={styles['product-cards__image-container']}>
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              width={80}
+              height={80}
+              className={styles['product-cards__image']}
+            />
+          </div>
 
-        <div className={styles['product-cards__main-content']}>
-          <div className={styles['product-cards__top-section']}>
-            <div className={styles['product-cards__info']}>
-              <h3 
-                className={styles['product-cards__name']}
-                onClick={handleProductNameClick}
-                role={onProductClick ? 'button' : undefined}
-                tabIndex={onProductClick ? 0 : undefined}
-                onKeyDown={onProductClick ? (e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleProductNameClick();
-                  }
-                } : undefined}
-                title={name}
-              >
-                {name}
-              </h3>
-              <div className={styles['product-cards__rating']}>
-                <ReviewStars rating={rating} showCount={true} reviewCount={reviewCount} />
-              </div>
-              {colorChoices && colorChoices > 0 && (
-                <div className={styles['product-cards__color-choices']}>
-                  {colorChoices} color choices
+          {/* Right column: Name and review/price row */}
+          <div className={styles['product-cards__details']}>
+            {/* Row 1: Product name */}
+            <h3 
+              className={styles['product-cards__name']}
+              onClick={handleProductNameClick}
+              role={onProductClick ? 'button' : undefined}
+              tabIndex={onProductClick ? 0 : undefined}
+              onKeyDown={onProductClick ? (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleProductNameClick();
+                }
+              } : undefined}
+              title={name}
+            >
+              {name}
+            </h3>
+            
+            {/* Row 2: Reviews (left) and Price (right) */}
+            <div className={styles['product-cards__review-price-row']}>
+              <div className={styles['product-cards__left-column']}>
+                <div className={styles['product-cards__rating']}>
+                  <ReviewStars rating={rating} showCount={true} reviewCount={reviewCount} />
                 </div>
-              )}
-            </div>
-            <div className={styles['product-cards__price-section']}>
+                {colorChoices && colorChoices > 0 && (
+                  <div className={styles['product-cards__color-choices']}>
+                    {colorChoices} color choices
+                  </div>
+                )}
+              </div>
+              
               <div className={styles['product-cards__price-container']}>
                 <span className={styles['product-cards__price']}>
                   {formatPrice(price)}
                 </span>
                 {regularPrice && regularPrice !== price && (
-                  <span className={styles['product-cards__regular-price']}>
-                    reg {formatPrice(regularPrice)}
-                  </span>
+                  <div className={styles['product-cards__regular-price']}>
+                    <span>reg</span>
+                    <span>{formatPrice(regularPrice)}</span>
+                  </div>
                 )}
               </div>
             </div>
           </div>
-          
-          <div className={styles['product-cards__bottom-section']}>
-            <div className={styles['product-cards__status-section']}>
-              {renderStockStatus()}
-              {renderFulfillments()}
-            </div>
-            {renderButton()}
+        </div>
+        
+        {/* Bottom section with status and button */}
+        <div className={styles['product-cards__bottom-section']}>
+          <div className={styles['product-cards__status-section']}>
+            {renderStockStatus()}
+            {renderFulfillments()}
           </div>
+          {renderButton()}
         </div>
       </div>
     );

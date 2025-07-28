@@ -10,63 +10,69 @@
 
   // Horizontal variant
   &--horizontal {
-    display: flex;
-    flex-direction: row;
-    gap: $spacing-3;
     width: $product-cards-horizontal-width;
     height: $product-cards-horizontal-height;
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .product-cards__top-section {
+      display: flex;
+      gap: $spacing-2;
+    }
 
     .product-cards__image-container {
       width: $product-cards-horizontal-image-size;
       height: $product-cards-horizontal-image-size;
       flex-shrink: 0;
-      align-self: center;
     }
 
-    .product-cards__main-content {
+    .product-cards__details {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
-    .product-cards__top-section {
+    .product-cards__name {
+      margin: 0;
+      margin-bottom: $spacing-2;
+    }
+
+    .product-cards__review-price-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
     }
 
-    .product-cards__info {
-      flex: 1;
+    .product-cards__rating {
+      // Rating styles
+    }
+
+    .product-cards__price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .product-cards__regular-price {
+      display: flex;
+      gap: $spacing-1;
+      margin-top: $spacing-1;
+      
+      span {
+        @include product-card-regular-price;
+        color: $gray-600;
+      }
+    }
+
+    .product-cards__left-column {
       display: flex;
       flex-direction: column;
       gap: $spacing-1;
     }
 
-    .product-cards__name {
-      margin: 0;
-      max-width: 215px;
-    }
-
-    .product-cards__rating {
-      // No special styles needed
-    }
-
     .product-cards__color-choices {
-      // No special styles needed
-    }
-
-    .product-cards__price-section {
-      flex-shrink: 0;
-      margin-left: $spacing-3;
-    }
-
-    .product-cards__price-container {
-      display: flex;
-      align-items: baseline;
-      gap: $spacing-2;
-      flex-direction: row-reverse;
+      // Inherits gap from parent left-column
     }
 
     .product-cards__bottom-section {
@@ -78,15 +84,11 @@
     .product-cards__status-section {
       display: flex;
       flex-direction: column;
-      gap: $spacing-2;
-    }
-
-    .product-cards__stock-info {
-      // No special styles needed
+      gap: $spacing-1;
     }
 
     .product-cards__fulfillments {
-      // No special styles needed
+      margin-top: 0;
     }
 
     .product-cards__button {
@@ -216,6 +218,31 @@
     align-items: center;
     gap: $spacing-1;
     margin-top: $spacing-1;
+  }
+
+  &__content {
+    // Content wrapper for horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__details {
+    // Product details section in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__top-section {
+    // Top section containing image and details in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__review-price-row {
+    // Review and price row in horizontal variant
+    // Styles specific to horizontal are in the variant modifier
+  }
+
+  &__left-column {
+    // Left column in review-price row
+    // Styles specific to horizontal are in the variant modifier
   }
 
   &__checkmark {
