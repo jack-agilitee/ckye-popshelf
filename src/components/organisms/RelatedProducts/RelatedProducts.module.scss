@@ -6,7 +6,7 @@
 
   &__section {
     &:not(:last-child) {
-      margin-bottom: $related-products-section-gap; // 72px adjusted for better spacing
+      margin-bottom: $spacing-6; // 24px
     }
   }
 
@@ -74,20 +74,20 @@
     margin-top: $spacing-4; // 16px
     gap: $spacing-2; // 8px between dots
 
-    .swiper-pagination-bullet {
-      width: $spacing-3; // 12px
-      height: $spacing-3; // 12px
-      background-color: transparent;
-      border: 1px solid #D1D1D1; // Light gray outline from Figma
-      opacity: 1;
+    :global(.swiper-pagination-bullet) {
+      width: $spacing-3 !important; // 12px
+      height: $spacing-3 !important; // 12px
+      background-color: transparent !important;
+      border: 1px solid #D1D1D1 !important; // Light gray outline from Figma
+      opacity: 1 !important;
       transition: all $transition-fast;
       margin: 0 !important; // Override Swiper default margins
-      border-radius: 50%;
+      border-radius: 50% !important;
       cursor: pointer;
 
-      &-active {
-        background-color: $purple-primary; // Purple filled for active
-        border-color: $purple-primary;
+      &:global(.swiper-pagination-bullet-active) {
+        background-color: $purple-primary !important; // Purple filled for active
+        border-color: $purple-primary !important;
       }
     }
   }
