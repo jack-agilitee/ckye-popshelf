@@ -13,26 +13,6 @@
     display: block; // Ensure block display for absolute positioning context
   }
 
-  // Desktop decoration (hidden on mobile)
-  &__decoration {
-    display: none;
-
-    @media (min-width: $breakpoint-md) {
-      display: block;
-      position: absolute;
-      // Position to the right of image, overlapping with white card area
-      left: 480px; // Right side of the 620px container, behind the card
-      top: 20px; // Near top, will overlap with white card area
-      z-index: 2; // Behind the card (which has z-index 3)
-    }
-  }
-
-  &__decorationImage {
-    width: 107.744px;
-    height: 125.222px;
-    transform: rotate($featured-decoration-rotation);
-    display: block;
-  }
 
   // Image container
   &__imageContainer {
@@ -72,6 +52,25 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-2;
+
+    // Desktop decoration positioned relative to card
+    &::before {
+      @media (min-width: $breakpoint-md) {
+        content: '';
+        position: absolute;
+        width: 107.744px;
+        height: 125.222px;
+        background-image: url('/content/two-bubbles.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotate($featured-decoration-rotation);
+        // Center horizontally and position ABOVE the card
+        left: 50%;
+        top: -80px; // Position above the card
+        transform: translateX(-50%) rotate($featured-decoration-rotation);
+        z-index: -1; // Behind the card
+      }
+    }
 
     @media (min-width: $breakpoint-md) {
       position: absolute;

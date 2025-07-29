@@ -36,17 +36,6 @@ const FeaturedContentBlock: React.FC<FeaturedContentBlockProps> = ({
 
   return (
     <div className={`${styles.featuredContentBlock} ${className || ''}`}>
-      {/* Desktop decoration */}
-      <div className={styles.featuredContentBlock__decoration}>
-        <Image
-          src="/content/two-bubbles.svg"
-          alt=""
-          width={108}
-          height={125}
-          className={styles.featuredContentBlock__decorationImage}
-        />
-      </div>
-
       {/* Main image container */}
       <div className={styles.featuredContentBlock__imageContainer}>
         <picture>
