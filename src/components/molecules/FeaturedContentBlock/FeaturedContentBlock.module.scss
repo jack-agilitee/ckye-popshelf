@@ -20,10 +20,10 @@
     @media (min-width: $breakpoint-md) {
       display: block;
       position: absolute;
-      // Position relative to where the white card is
-      left: calc($featured-content-card-position-left + 10px); // Card left position + overlap
-      top: calc($featured-content-card-position-top - 30px); // Card top position - offset to overlap top of card
-      z-index: 4; // Above the card
+      // Position to the right of image, overlapping with white card area
+      left: 480px; // Right side of the 620px container, behind the card
+      top: 20px; // Near top, will overlap with white card area
+      z-index: 2; // Behind the card (which has z-index 3)
     }
   }
 
@@ -144,7 +144,7 @@
     right: 0;
     width: 104.505px;
     height: 120.144px;
-    z-index: 4; // Above the card
+    z-index: 2; // Behind the card
     pointer-events: none;
 
     @media (min-width: $breakpoint-md) {
