@@ -72,6 +72,16 @@ const FeaturedContentBlock: React.FC<FeaturedContentBlockProps> = ({
         </div>
       </div>
 
+      {/* Desktop decoration - positioned after card so it appears behind */}
+      <div className={styles.featuredContentBlock__desktopDecoration}>
+        <Image
+          src="/content/two-bubbles.svg"
+          alt=""
+          width={108}
+          height={125}
+        />
+      </div>
+
       {/* Mobile decoration */}
       <div className={styles.featuredContentBlock__mobileDecoration}>
         <Image

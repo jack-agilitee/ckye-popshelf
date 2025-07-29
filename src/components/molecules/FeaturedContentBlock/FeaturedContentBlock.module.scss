@@ -53,24 +53,6 @@
     flex-direction: column;
     gap: $spacing-2;
 
-    // Desktop decoration positioned relative to card
-    &::before {
-      @media (min-width: $breakpoint-md) {
-        content: '';
-        position: absolute;
-        width: 107.744px;
-        height: 125.222px;
-        background-image: url('/content/two-bubbles.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform: rotate($featured-decoration-rotation);
-        // Center horizontally and position ABOVE the card
-        left: 50%;
-        top: -80px; // Position above the card
-        transform: translateX(-50%) rotate($featured-decoration-rotation);
-        z-index: -10; // Behind the card content
-      }
-    }
 
     @media (min-width: $breakpoint-md) {
       position: absolute;
@@ -136,6 +118,24 @@
     width: $featured-icon-size;
     height: $featured-icon-size;
     flex-shrink: 0;
+  }
+
+  // Desktop decoration - appears behind card due to DOM order
+  &__desktopDecoration {
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: block;
+      position: absolute;
+      // Position relative to card position
+      left: calc($featured-content-card-position-left + ($featured-content-card-width / 2) - 54px); // Center on card
+      top: calc($featured-content-card-position-top - 80px); // Above card
+      z-index: 2; // Lower than card (which is 3)
+      
+      img {
+        transform: rotate($featured-decoration-rotation);
+      }
+    }
   }
 
   // Mobile decoration
