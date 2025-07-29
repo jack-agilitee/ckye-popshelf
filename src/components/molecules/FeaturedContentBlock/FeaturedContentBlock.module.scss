@@ -68,7 +68,7 @@
         left: 50%;
         top: -80px; // Position above the card
         transform: translateX(-50%) rotate($featured-decoration-rotation);
-        z-index: -1; // Behind the card
+        z-index: -10; // Behind the card content
       }
     }
 
@@ -80,6 +80,8 @@
       padding: $spacing-6 $spacing-4;
       margin: 0;
       box-shadow: $shadow-featured-desktop;
+      background-color: $white; // Ensure background is set
+      isolation: isolate; // Create new stacking context
     }
 
     &:hover {
