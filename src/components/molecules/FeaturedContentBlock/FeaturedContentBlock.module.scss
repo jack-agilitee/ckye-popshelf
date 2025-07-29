@@ -18,15 +18,12 @@
     display: none;
 
     @media (min-width: $breakpoint-md) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       position: absolute;
-      top: 5.293%;
-      left: 77.098%;
-      right: 5.841%;
-      bottom: 53.362%;
-      z-index: 2; // Above the image
+      // Position relative to where the white card is
+      left: calc($featured-content-card-position-left + 10px); // Card left position + overlap
+      top: calc($featured-content-card-position-top - 30px); // Card top position - offset to overlap top of card
+      z-index: 4; // Above the card
     }
   }
 
@@ -34,7 +31,7 @@
     width: 107.744px;
     height: 125.222px;
     transform: rotate($featured-decoration-rotation);
-    flex-shrink: 0;
+    display: block;
   }
 
   // Image container
@@ -147,7 +144,7 @@
     right: 0;
     width: 104.505px;
     height: 120.144px;
-    z-index: 3;
+    z-index: 4; // Above the card
     pointer-events: none;
 
     @media (min-width: $breakpoint-md) {
