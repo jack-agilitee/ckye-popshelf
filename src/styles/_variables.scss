@@ -390,6 +390,7 @@ $article-card-min-height: 280px; // Minimum card height to ensure image visibili
 $loyalty-progress-light: #d7b6dd; // Light purple segment (from Figma)
 $loyalty-progress-medium: #b774c1; // Medium purple segment (from Figma)
 $loyalty-progress-dark: #8a1a9b; // Dark purple segment (from Figma)
-$loyalty-progress-height: 18px; // Progress bar height (from Figma)
-$loyalty-progress-indicator-size: 14px; // White circle indicator size
+$loyalty-progress-height: 10px; // Progress bar height (from Figma - h-2.5)
+$loyalty-progress-indicator-size: 16px; // White circle indicator size (slightly larger than bar)
+$loyalty-progress-indicator-border: #9B34AA; // Purple border for indicator (from Figma)
 $loyalty-progress-track-bg: #e6e6e6; // Background track color

@@ -97,10 +97,10 @@ describe('LoyaltyProgressBar', () => {
     expect(indicator).toBeInTheDocument();
   });
 
-  it('positions indicator correctly at 0%', () => {
+  it('positions indicator correctly at minimum (clamped to 2%)', () => {
     const { container } = render(<LoyaltyProgressBar points={0} />);
     const indicator = container.querySelector('.loyalty-progress-bar__indicator') as HTMLElement;
-    expect(indicator).toHaveStyle({ left: '0%' });
+    expect(indicator).toHaveStyle({ left: '2%' });
   });
 
   it('positions indicator correctly at 50%', () => {
@@ -109,15 +109,15 @@ describe('LoyaltyProgressBar', () => {
     expect(indicator).toHaveStyle({ left: '50%' });
   });
 
-  it('positions indicator correctly at 100%', () => {
+  it('positions indicator correctly at maximum (clamped to 98%)', () => {
     const { container } = render(<LoyaltyProgressBar points={300} maxPoints={300} />);
     const indicator = container.querySelector('.loyalty-progress-bar__indicator') as HTMLElement;
-    expect(indicator).toHaveStyle({ left: '100%' });
+    expect(indicator).toHaveStyle({ left: '98%' });
   });
 
-  it('caps indicator position at 100% when points exceed maximum', () => {
+  it('caps indicator position at 98% when points exceed maximum', () => {
     const { container } = render(<LoyaltyProgressBar points={400} maxPoints={300} />);
     const indicator = container.querySelector('.loyalty-progress-bar__indicator') as HTMLElement;
-    expect(indicator).toHaveStyle({ left: '100%' });
+    expect(indicator).toHaveStyle({ left: '98%' });
   });
 });

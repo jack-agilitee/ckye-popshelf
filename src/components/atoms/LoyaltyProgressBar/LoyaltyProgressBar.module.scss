@@ -4,13 +4,14 @@
 .loyalty-progress-bar {
   position: relative;
   width: 100%;
+  padding: 4px 0; // Add padding to ensure indicator doesn't get cut off
 
   &__track {
     position: relative;
     height: $loyalty-progress-height;
     background-color: $loyalty-progress-track-bg;
     border-radius: $radius-full;
-    overflow: hidden;
+    overflow: visible; // Changed from hidden to show indicator properly
     display: flex;
   }
 
@@ -20,6 +21,7 @@
     position: relative;
     background-color: $loyalty-progress-track-bg;
     transition: background-color $transition-base;
+    overflow: hidden; // Keep segments clipped
 
     // First segment (light purple)
     &--first {
@@ -61,6 +63,7 @@
     width: $loyalty-progress-indicator-size;
     height: $loyalty-progress-indicator-size;
     background-color: $white;
+    border: 2px solid $loyalty-progress-indicator-border;
     border-radius: $radius-circle;
     box-shadow: $shadow-sm;
   }

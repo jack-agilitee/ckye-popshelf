@@ -24,7 +24,10 @@ const LoyaltyProgressBar: React.FC<LoyaltyProgressBarProps> = ({
   
   // Determine which segment the indicator is in
   const segmentWidth = 100 / 3;
-  const indicatorPosition = progressPercentage;
+  
+  // Clamp indicator position to stay within bounds (accounting for indicator size)
+  // The indicator should stay within 0% to 100% but we need to account for its width
+  const indicatorPosition = Math.min(Math.max(progressPercentage, 2), 98);
   
   // Calculate segment fill states
   const isFirstSegmentFilled = progressPercentage > 0;
