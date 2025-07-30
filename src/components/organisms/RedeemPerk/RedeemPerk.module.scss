@@ -1,0 +1,93 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.redeem-perk {
+  width: 100%;
+  max-width: $redeem-perk-width;
+  margin: 0 auto;
+  border-radius: $redeem-perk-radius;
+  overflow: hidden;
+  box-shadow: $redeem-perk-body-shadow;
+  background-color: $white;
+
+  &__header {
+    position: relative;
+    height: $redeem-perk-header-height;
+    background-color: $purple-primary;
+    box-shadow: $redeem-perk-header-shadow;
+    display: flex;
+    align-items: center;
+    padding: 0 $spacing-6;
+    padding-right: calc($redeem-perk-close-size + $redeem-perk-close-position + $spacing-2);
+  }
+
+  &__title {
+    font-family: $font-family-avenir;
+    font-size: $redeem-perk-title-size;
+    font-weight: $font-weight-extrabold; // Black/900
+    line-height: $redeem-perk-title-line-height;
+    color: $white;
+    margin: 0;
+  }
+
+  &__close {
+    position: absolute;
+    top: $redeem-perk-close-top;
+    right: $redeem-perk-close-position;
+    width: $redeem-perk-close-size;
+    height: $redeem-perk-close-size;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: 2px solid $white;
+      outline-offset: $spacing-1;
+    }
+
+    svg {
+      width: $spacing-6;
+      height: $spacing-6;
+    }
+  }
+
+  &__body {
+    background-color: $white;
+    padding: $spacing-8 $spacing-6 $spacing-10;
+    text-align: center;
+  }
+
+  &__instruction {
+    font-family: $font-family-avenir;
+    font-size: $redeem-perk-text-size;
+    font-weight: $font-weight-medium;
+    line-height: $redeem-perk-text-line-height;
+    color: $black;
+    letter-spacing: $redeem-perk-text-letter-spacing;
+    margin: 0 0 $spacing-8;
+    padding-top: calc($redeem-perk-text-padding - $redeem-perk-header-height - $spacing-8);
+  }
+
+  &__qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: $spacing-8;
+  }
+
+  &__qr-code {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+}
