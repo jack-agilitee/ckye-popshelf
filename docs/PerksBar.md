@@ -47,11 +47,12 @@ enum PerksTier {
 
 ## Features
 
-- **Visual Progress Bar**: Three-segment bar with purple gradient colors
-- **Automatic Locking**: Tiers to the right of the selected tier are automatically locked
-- **Lock Icons**: SVG lock icons overlay locked tiers
-- **Fixed Tier Names**: "like", "love", and "obsessed" perks
+- **Visual Progress Bar**: Gradient progress bar that fills based on selected tier
+- **Arrow Indicator**: Triangular pointer shows current position on the bar
+- **Automatic Locking**: Tiers to the right of the selected tier show lock icons
+- **Fixed Tier Names**: "like", "love", and "obsessed" perks displayed below bar
 - **Non-interactive**: Display-only component showing current status
+- **Smooth Animations**: Progress and indicator animate between states
 
 ## Design System Integration
 
@@ -75,10 +76,12 @@ The component uses the following design system tokens:
 
 ## Component Behavior
 
-The component automatically determines which tiers are locked based on the selected tier:
-- `PerksTier.LIKE`: love and obsessed are locked
-- `PerksTier.LOVE`: only obsessed is locked
-- `PerksTier.OBSESSED`: no tiers are locked
+The component displays a progress bar with the following behavior:
+- `PerksTier.LIKE`: Progress fills 16.67% (1/6), love and obsessed show lock icons
+- `PerksTier.LOVE`: Progress fills 50% (3/6), only obsessed shows lock icon
+- `PerksTier.OBSESSED`: Progress fills 100%, no lock icons shown
+
+The arrow indicator and progress bar animate smoothly when the tier changes.
 
 ## Examples
 
