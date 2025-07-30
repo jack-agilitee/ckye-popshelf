@@ -2516,7 +2516,7 @@ const features = [
                 <ArticleCard
                   title="galaxy Glitter Art"
                   subtitle="Out of this world creations"
-                  imageUrl="/content/galaxy-glitter.jpg"
+                  imageUrl="/content/glitter-art.jpg"
                   imageAlt="Galaxy glitter art supplies"
                   onClick={() => console.log('Article clicked: Galaxy Glitter Art')}
                 />
