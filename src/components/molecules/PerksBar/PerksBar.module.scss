@@ -2,88 +2,111 @@
 @import '../../../styles/mixins';
 
 .perks-bar {
-  position: relative;
   width: 100%;
   max-width: $perks-bar-width;
   margin: 0 auto;
 
-  &__background {
+  &__track {
     position: relative;
     height: $perks-bar-height;
     background-color: $gray-200;
-    border-radius: $perks-bar-height; // Fully rounded pill shape
+    border-radius: 35px; // Fully rounded ends
     box-shadow: $perks-bar-shadow;
     overflow: hidden;
     display: flex;
     align-items: center;
+
+    // Gray overlay for locked sections
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      background-color: $perks-bar-lock-overlay;
+      transition: width $transition-slow ease-out;
+      pointer-events: none;
+    }
+
+    // Overlay width based on selected tier
+    &:has(.perks-bar__fill[data-tier="like"])::after {
+      width: 66.67%; // Cover love and obsessed sections
+    }
+
+    &:has(.perks-bar__fill[data-tier="love"])::after {
+      width: 33.33%; // Cover only obsessed section
+    }
+
+    &:has(.perks-bar__fill[data-tier="obsessed"])::after {
+      width: 0; // No overlay when all unlocked
+    }
   }
 
-  &__gradient {
+  &__fill {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     background: linear-gradient(to right, $loyalty-progress-light, $loyalty-progress-medium, $loyalty-progress-dark);
+    border-radius: 35px;
     transition: width $transition-slow ease-out;
-    border-radius: $perks-bar-height;
+
+    // Width based on selected tier
+    &[data-tier="like"] {
+      width: 33.33%;
+    }
+
+    &[data-tier="love"] {
+      width: 66.67%;
+    }
+
+    &[data-tier="obsessed"] {
+      width: 100%;
+    }
   }
 
-  &__segment {
+  &__section {
     position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 2; // Above gradient
-    padding: $spacing-2;
+    z-index: 1; // Above the gradient fill
+    text-align: center;
   }
 
   &__divider {
-    position: relative;
     width: 1px;
     height: 100%;
     background-color: $white;
-    z-index: 2; // Above gradient
+    z-index: 1;
   }
 
-  &__lock-overlay {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    background-color: $perks-bar-lock-overlay;
-    z-index: 1; // Below content but above gradient
-  }
-
-  &__lock-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: $spacing-5; // 20px
-    height: $spacing-5;
-    color: $gray-700;
-    z-index: 3; // Above everything
-  }
-
-  &__tier-name {
+  &__label {
     font-family: $font-family-avenir;
     font-size: $perks-bar-tier-name-size;
     font-weight: $font-weight-extrabold;
     color: $black;
-    line-height: 1;
-    margin-bottom: 2px;
-    position: relative;
-    z-index: 2;
+    line-height: 1.2;
   }
 
-  &__tier-perks {
+  &__sublabel {
     font-family: $font-family-avenir;
     font-size: $perks-bar-perks-text-size;
     font-weight: $font-weight-normal;
     color: $black;
     letter-spacing: $perks-bar-letter-spacing;
-    position: relative;
+  }
+
+  &__lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    color: $gray-700;
     z-index: 2;
   }
 }

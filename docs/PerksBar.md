@@ -1,7 +1,7 @@
 # PerksBar Component
 
 ## Overview
-The PerksBar component is a molecule-level component that displays loyalty program tiers and their lock status. It shows three tiers (like, love, obsessed) with a visual progress bar design and lock indicators for tiers that haven't been unlocked yet.
+The PerksBar component is a molecule-level component that displays loyalty program tiers as a rounded pill-shaped progress bar. It shows three tiers (like, love, obsessed) with a gradient fill that expands based on the selected tier, white dividers between sections, and lock icons on inactive tiers.
 
 ## Figma Reference
 - URL: https://www.figma.com/design/ri9qaHxsKZS00ViWhwguiP/%F0%9F%93%8C-PS-Components?node-id=52-1342&m=dev
@@ -47,12 +47,12 @@ enum PerksTier {
 
 ## Features
 
-- **Rounded Pill Design**: Fully rounded ends creating a pill-shaped progress bar
-- **Progressive Gradient Fill**: Gradient fills from left to right based on tier selection
-- **White Dividers**: Clean white lines separate the three tier sections
-- **Lock Icons**: Appear centered on locked/inactive tiers
-- **Lock Overlay**: Gray overlay on inactive sections for clear visual distinction
-- **Fixed Tier Names**: "like", "love", and "obsessed" perks displayed within segments
+- **Rounded Pill Shape**: Fully rounded ends (border-radius: 35px)
+- **Progressive Gradient Fill**: Purple gradient expands based on tier selection
+- **White Dividers**: Vertical lines separate the three tier sections
+- **Lock Icons**: Display on inactive/locked tiers
+- **Gray Overlay**: Semi-transparent overlay on locked sections
+- **Smooth Animations**: Gradient width and overlay animate on tier change
 - **Non-interactive**: Display-only component showing current status
 
 ## Design System Integration
@@ -60,8 +60,8 @@ enum PerksTier {
 The component uses the following design system tokens:
 
 ### Colors
+- Background: `$gray-200`
 - Gradient: `$loyalty-progress-light`, `$loyalty-progress-medium`, `$loyalty-progress-dark`
-- Background: `$gray-200` for the base bar
 - Lock overlay: `$perks-bar-lock-overlay` (rgba(155, 151, 151, 0.3))
 - Text: `$black`
 - Lock icons: `$gray-700`
@@ -75,16 +75,15 @@ The component uses the following design system tokens:
 - Width: `$perks-bar-width` (335px)
 - Height: `$perks-bar-height` (69px)
 - Shadow: `$perks-bar-shadow`
-- Fully rounded ends (border-radius equals height)
 
 ## Component Behavior
 
-The component displays a pill-shaped bar with the following behavior:
-- `PerksTier.LIKE`: Gradient fills 33.33% (1/3), lock overlay covers remaining 66.67%
-- `PerksTier.LOVE`: Gradient fills 66.67% (2/3), lock overlay covers remaining 33.33%
-- `PerksTier.OBSESSED`: Gradient fills 100%, no lock overlay
+The component displays a pill-shaped progress bar with:
+- `PerksTier.LIKE`: Gradient fills 33.33%, love and obsessed show lock icons
+- `PerksTier.LOVE`: Gradient fills 66.67%, only obsessed shows lock icon
+- `PerksTier.OBSESSED`: Gradient fills 100%, no lock icons
 
-The gradient is a continuous fill that expands based on the selected tier, with lock icons appearing on the gray/locked sections.
+The gray overlay covers the inactive sections, providing clear visual distinction.
 
 ## Examples
 
@@ -143,12 +142,10 @@ function RewardsScreen({ loyaltyData }) {
 
 The component includes comprehensive tests covering:
 - Rendering with each tier selected
-- Gradient width calculations (33.33%, 66.67%, 100%)
-- Lock overlay positioning and sizing
 - Lock icon placement on inactive tiers
-- White divider rendering between segments
+- Divider rendering between sections
 - Custom className application
-- Background bar container structure
+- Track container structure
 - All enum values handling
 
 To run tests:
@@ -159,7 +156,6 @@ npm test PerksBar.test.tsx
 ## Accessibility
 
 - Lock icons include `aria-label="Locked"` for screen readers
-- Dividers have `aria-hidden="true"` as they are decorative
 - Component uses semantic HTML structure
 - Color contrast meets WCAG standards
 - Clear visual distinction between active and locked states
