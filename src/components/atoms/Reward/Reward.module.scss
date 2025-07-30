@@ -1,0 +1,142 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $reward-gap;
+  width: 100%;
+  max-width: $reward-badge-size;
+
+  &__badge {
+    width: $reward-badge-size;
+    height: $reward-badge-size;
+    background-color: $purple-primary;
+    border-radius: $reward-badge-radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $reward-gap;
+    flex-shrink: 0;
+  }
+
+  // Dollar amount styles (default, expiring, simple)
+  &__amount-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+  }
+
+  &__dollar-sign {
+    font-family: $font-family-sofia;
+    font-size: $reward-dollar-sign-size;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+  }
+
+  &__amount {
+    font-family: $font-family-sofia;
+    font-size: $reward-amount-size;
+    font-weight: 900; // Black weight
+    line-height: 1;
+  }
+
+  // Percentage styles
+  &__percent-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+  }
+
+  &__percent-number {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-number-size;
+    font-weight: 900; // Black weight
+    line-height: 1;
+    letter-spacing: $reward-percent-letter-spacing;
+
+    &--large {
+      font-family: $font-family-sofia;
+      font-size: $reward-percent-number-size-large;
+      font-weight: 900; // Black weight
+      line-height: 1;
+      letter-spacing: $reward-percent-letter-spacing;
+    }
+  }
+
+  &__percent-sign {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-sign-size;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+  }
+
+  &__percent-off {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-off-size;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+    color: $white;
+  }
+
+  // Icon variant
+  &__icon {
+    width: $reward-icon-size;
+    height: $reward-icon-size;
+    object-fit: contain;
+  }
+
+  // Label styles
+  &__label {
+    font-family: $font-family-sofia;
+    font-size: $reward-label-size;
+    font-weight: 900; // Black weight
+    line-height: 1;
+    color: $black;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+
+    &--multiline {
+      font-family: $font-family-sofia;
+      font-size: $reward-label-size;
+      font-weight: 900; // Black weight
+      line-height: $reward-label-line-height;
+      color: $black;
+      text-transform: uppercase;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  // Expiration styles
+  &__expiry {
+    font-family: $font-family-sofia;
+    font-size: $reward-expiry-size;
+    font-weight: $font-weight-normal;
+    line-height: 1;
+    color: $gray-700;
+    text-align: center;
+    width: $reward-badge-size;
+
+    &--alert {
+      font-family: $font-family-sofia;
+      font-size: $reward-expiry-size;
+      font-weight: $font-weight-semibold;
+      line-height: 1;
+      color: $color-error;
+      text-align: center;
+      width: $reward-badge-size;
+    }
+  }
+}
