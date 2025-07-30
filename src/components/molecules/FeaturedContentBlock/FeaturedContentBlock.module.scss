@@ -1,0 +1,159 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.featuredContentBlock {
+  position: relative;
+  width: 100%;
+  padding: 0 $spacing-4 $spacing-8; // Mobile padding
+
+  @media (min-width: $breakpoint-md) {
+    width: $featured-desktop-width;
+    height: $featured-desktop-height;
+    padding: 0;
+    display: block; // Ensure block display for absolute positioning context
+  }
+
+
+  // Image container
+  &__imageContainer {
+    margin-bottom: -$spacing-4; // Negative margin for overlap effect
+    position: relative;
+
+    @media (min-width: $breakpoint-md) {
+      margin-bottom: 0;
+      z-index: 1;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: $featured-mobile-image-height;
+    object-fit: cover;
+    border-radius: $radius-md;
+
+    @media (min-width: $breakpoint-md) {
+      width: $featured-desktop-width;
+      height: $featured-desktop-height;
+      border-radius: $radius-xl;
+    }
+  }
+
+  // Content card
+  &__card {
+    background-color: $white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-featured-mobile;
+    padding: $spacing-4 $spacing-4 $spacing-2 $spacing-4;
+    margin: 0 $spacing-4;
+    position: relative;
+    z-index: 3; // Above decoration
+    cursor: pointer;
+    transition: all $transition-base;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+
+
+    @media (min-width: $breakpoint-md) {
+      position: absolute;
+      left: $featured-content-card-position-left;
+      top: $featured-content-card-position-top;
+      width: $featured-content-card-width;
+      padding: $spacing-6 $spacing-4;
+      margin: 0;
+      box-shadow: $shadow-featured-desktop;
+      background-color: $white; // Ensure background is set
+      isolation: isolate; // Create new stacking context
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $purple-primary;
+      outline-offset: 2px;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__title {
+    @include sofia-semibold;
+    color: $black-primary;
+    font-size: $font-size-base;
+    line-height: 20px;
+    margin: 0;
+    text-transform: none; // Override sofia-semibold uppercase
+
+    @media (min-width: $breakpoint-md) {
+      @include avenir-heavy;
+      color: $gray-850; // #262525
+      font-size: $font-size-2xl; // 24px
+      line-height: 28px;
+      letter-spacing: $featured-title-letter-spacing-desktop;
+    }
+  }
+
+  &__description {
+    @include sofia-regular;
+    color: $gray-850; // #262525
+    font-size: $font-size-sm; // 14px
+    line-height: 20px;
+    margin: 0;
+
+    @media (min-width: $breakpoint-md) {
+      font-family: $font-family-avenir;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base; // 16px
+      line-height: normal;
+      letter-spacing: $featured-description-letter-spacing-desktop;
+    }
+  }
+
+  &__arrow {
+    width: $featured-icon-size;
+    height: $featured-icon-size;
+    flex-shrink: 0;
+  }
+
+  // Desktop decoration - appears behind card due to DOM order
+  &__desktopDecoration {
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: block;
+      position: absolute;
+      // Position relative to card position
+      left: calc($featured-content-card-position-left + ($featured-content-card-width / 2) - 54px); // Center on card
+      top: calc($featured-content-card-position-top - 90px); // Positioned above card
+      z-index: 2; // Lower than card (which is 3)
+      
+      img {
+        transform: rotate($featured-decoration-rotation);
+      }
+    }
+  }
+
+  // Mobile decoration
+  &__mobileDecoration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 104.505px;
+    height: 120.144px;
+    z-index: 2; // Behind the card
+    pointer-events: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__mobileDecorationImage {
+    display: block;
+  }
+}
