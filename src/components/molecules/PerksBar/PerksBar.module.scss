@@ -5,65 +5,86 @@
   position: relative;
   width: 100%;
   max-width: $perks-bar-width;
+  display: flex;
+  height: $perks-bar-height;
+  box-shadow: $perks-bar-shadow;
+  border-radius: $perks-bar-height; // Fully rounded
+  overflow: hidden;
   margin: 0 auto;
 
-  &__track {
-    position: relative;
-    height: $spacing-10; // 40px
-    background-color: $gray-200;
-    border-radius: $radius-full;
-    overflow: hidden;
-    box-shadow: $perks-bar-shadow;
-  }
-
-  &__progress {
+  // Gradient overlay for active segments
+  &::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(to right, $loyalty-progress-light, $loyalty-progress-medium, $loyalty-progress-dark);
-    border-radius: $radius-full;
-    transition: width $transition-slow ease-out;
+    opacity: 0;
+    transition: opacity $transition-slow ease-out;
+    pointer-events: none;
   }
 
-  &__indicator {
-    position: absolute;
-    top: 100%;
-    width: 0;
-    height: 0;
-    border-left: $spacing-3 solid transparent;
-    border-right: $spacing-3 solid transparent;
-    border-top: $spacing-3 solid $loyalty-progress-dark;
-    transform: translateX(-50%);
-    transition: left $transition-slow ease-out;
+  // Active state classes for gradient visibility
+  &--like-active::before {
+    opacity: 1;
+    right: 66.67%; // Show gradient only on first 1/3
   }
 
-  &__labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: $spacing-1;
-    padding: 0 $spacing-4;
+  &--love-active::before {
+    opacity: 1;
+    right: 33.33%; // Show gradient on first 2/3
   }
 
-  &__label {
+  &--obsessed-active::before {
+    opacity: 1;
+    right: 0; // Show gradient on full bar
+  }
+
+  &__segment {
+    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    position: relative;
+    justify-content: center;
+    background-color: $gray-200;
+    border-right: 1px solid $white;
+    z-index: 1;
 
-    &--locked {
-      opacity: 0.5;
+    // Remove border from last segment
+    &:last-child {
+      border-right: none;
+    }
+
+    // Active segment styling
+    &--active {
+      background-color: transparent; // Let gradient show through
+    }
+
+    // Locked segment overlay
+    &:not(.perks-bar__segment--active)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $perks-bar-lock-overlay;
+      pointer-events: none;
     }
   }
 
   &__lock-icon {
     position: absolute;
-    top: -$spacing-1;
-    right: -$spacing-2;
-    width: $spacing-4;
-    height: $spacing-4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $spacing-5; // 20px
+    height: $spacing-5;
     color: $gray-700;
+    z-index: 2;
   }
 
   &__tier-name {
@@ -72,7 +93,9 @@
     font-weight: $font-weight-extrabold;
     color: $black;
     line-height: 1;
-    margin-bottom: $spacing-1;
+    margin-bottom: 2px;
+    z-index: 2;
+    position: relative;
   }
 
   &__tier-perks {
@@ -81,5 +104,7 @@
     font-weight: $font-weight-normal;
     color: $black;
     letter-spacing: $perks-bar-letter-spacing;
+    z-index: 2;
+    position: relative;
   }
 }

@@ -20,9 +20,15 @@ describe('PerksBar', () => {
     const lockIcons = screen.getAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(2);
     
-    // Check progress bar width (16.67%)
-    const progressBar = container.querySelector('.perks-bar__progress');
-    expect(progressBar).toHaveStyle({ width: '16.67%' });
+    // Check the correct gradient class is applied
+    const perksBar = container.firstChild as HTMLElement;
+    expect(perksBar).toHaveClass('perks-bar--like-active');
+    
+    // Check active segments
+    const segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
+    expect(segments[1]).not.toHaveClass('perks-bar__segment--active'); // love
+    expect(segments[2]).not.toHaveClass('perks-bar__segment--active'); // obsessed
   });
 
   it('renders with LOVE tier selected', () => {
@@ -32,9 +38,15 @@ describe('PerksBar', () => {
     const lockIcons = screen.getAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(1);
     
-    // Check progress bar width (50%)
-    const progressBar = container.querySelector('.perks-bar__progress');
-    expect(progressBar).toHaveStyle({ width: '50%' });
+    // Check the correct gradient class is applied
+    const perksBar = container.firstChild as HTMLElement;
+    expect(perksBar).toHaveClass('perks-bar--love-active');
+    
+    // Check active segments
+    const segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
+    expect(segments[1]).toHaveClass('perks-bar__segment--active'); // love
+    expect(segments[2]).not.toHaveClass('perks-bar__segment--active'); // obsessed
   });
 
   it('renders with OBSESSED tier selected', () => {
@@ -44,9 +56,15 @@ describe('PerksBar', () => {
     const lockIcons = screen.queryAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(0);
     
-    // Check progress bar width (100%)
-    const progressBar = container.querySelector('.perks-bar__progress');
-    expect(progressBar).toHaveStyle({ width: '100%' });
+    // Check the correct gradient class is applied
+    const perksBar = container.firstChild as HTMLElement;
+    expect(perksBar).toHaveClass('perks-bar--obsessed-active');
+    
+    // Check active segments
+    const segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
+    expect(segments[1]).toHaveClass('perks-bar__segment--active'); // love
+    expect(segments[2]).toHaveClass('perks-bar__segment--active'); // obsessed
   });
 
   it('applies custom className', () => {
@@ -58,42 +76,40 @@ describe('PerksBar', () => {
     expect(perksBar).toHaveClass('custom-class');
   });
 
-  it('positions indicator correctly based on tier', () => {
+  it('renders three segments', () => {
+    const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
+    
+    const segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments).toHaveLength(3);
+    
+    // Check segment classes
+    expect(segments[0]).toHaveClass('perks-bar__segment--like');
+    expect(segments[1]).toHaveClass('perks-bar__segment--love');
+    expect(segments[2]).toHaveClass('perks-bar__segment--obsessed');
+  });
+
+  it('displays lock icons only on locked segments', () => {
     const { container, rerender } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
     
-    let indicator = container.querySelector('.perks-bar__indicator');
-    expect(indicator).toHaveStyle({ left: '16.67%' });
+    // LIKE selected: love and obsessed locked
+    let segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+    expect(segments[1].querySelector('.perks-bar__lock-icon')).toBeInTheDocument();
+    expect(segments[2].querySelector('.perks-bar__lock-icon')).toBeInTheDocument();
     
+    // LOVE selected: only obsessed locked
     rerender(<PerksBar selectedTier={PerksTier.LOVE} />);
-    indicator = container.querySelector('.perks-bar__indicator');
-    expect(indicator).toHaveStyle({ left: '50%' });
+    segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+    expect(segments[1].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+    expect(segments[2].querySelector('.perks-bar__lock-icon')).toBeInTheDocument();
     
+    // OBSESSED selected: none locked
     rerender(<PerksBar selectedTier={PerksTier.OBSESSED} />);
-    indicator = container.querySelector('.perks-bar__indicator');
-    expect(indicator).toHaveStyle({ left: '100%' });
-  });
-
-  it('applies locked class to correct labels', () => {
-    const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
-    
-    const labels = container.querySelectorAll('.perks-bar__label');
-    expect(labels[0]).not.toHaveClass('perks-bar__label--locked'); // like
-    expect(labels[1]).toHaveClass('perks-bar__label--locked'); // love
-    expect(labels[2]).toHaveClass('perks-bar__label--locked'); // obsessed
-  });
-
-  it('renders progress bar track', () => {
-    const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
-    
-    const track = container.querySelector('.perks-bar__track');
-    expect(track).toBeInTheDocument();
-  });
-
-  it('indicator has aria-hidden attribute', () => {
-    const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
-    
-    const indicator = container.querySelector('.perks-bar__indicator');
-    expect(indicator).toHaveAttribute('aria-hidden', 'true');
+    segments = container.querySelectorAll('.perks-bar__segment');
+    expect(segments[0].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+    expect(segments[1].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+    expect(segments[2].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
   });
 
   it('handles all PerksTier enum values', () => {
