@@ -1,0 +1,67 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.loyalty-progress-bar {
+  position: relative;
+  width: 100%;
+
+  &__track {
+    position: relative;
+    height: $loyalty-progress-height;
+    background-color: $loyalty-progress-track-bg;
+    border-radius: $radius-full;
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__segment {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background-color: $loyalty-progress-track-bg;
+    transition: background-color $transition-base;
+
+    // First segment (light purple)
+    &--first {
+      border-top-left-radius: $radius-full;
+      border-bottom-left-radius: $radius-full;
+
+      &.loyalty-progress-bar__segment--filled {
+        background-color: $loyalty-progress-light;
+      }
+    }
+
+    // Second segment (medium purple)
+    &--second {
+      &.loyalty-progress-bar__segment--filled {
+        background-color: $loyalty-progress-medium;
+      }
+    }
+
+    // Third segment (dark purple)
+    &--third {
+      border-top-right-radius: $radius-full;
+      border-bottom-right-radius: $radius-full;
+
+      &.loyalty-progress-bar__segment--filled {
+        background-color: $loyalty-progress-dark;
+      }
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left $transition-base;
+    z-index: 2;
+  }
+
+  &__indicator-dot {
+    width: $loyalty-progress-indicator-size;
+    height: $loyalty-progress-indicator-size;
+    background-color: $white;
+    border-radius: $radius-circle;
+    box-shadow: $shadow-sm;
+  }
+}
