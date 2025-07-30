@@ -2,7 +2,7 @@
 @import '../../../styles/mixins';
 
 .reward {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: $reward-gap;
@@ -12,68 +12,53 @@
     width: $reward-badge-size;
     height: $reward-badge-size;
     background-color: $purple-primary;
-    border-radius: $reward-badge-radius;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    position: relative;
+    gap: 0;
   }
 
-  // Dollar amount styles (default, expiring, simple)
-  &__amount-wrapper {
+  // Dollar styles
+  &__dollar-line {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    color: $white;
-    gap: 0;
+    line-height: 1;
   }
 
   &__dollar-sign {
     font-family: $font-family-sofia;
     font-size: $reward-dollar-sign-size;
     font-weight: $font-weight-semibold;
-    line-height: 1;
+    color: $white;
   }
 
-  &__amount {
+  &__dollar-amount {
     font-family: $font-family-sofia;
     font-size: $reward-amount-size;
-    font-weight: 900; // Black weight
-    line-height: 1;
+    font-weight: 900;
+    color: $white;
   }
 
-  // Percentage styles
-  &__percent-content {
+  // Percent styles
+  &__percent-line {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0;
-  }
-
-  &__percent-wrapper {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    color: $white;
-    gap: 0;
+    line-height: 1;
   }
 
   &__percent-number {
     font-family: $font-family-sofia;
     font-size: $reward-percent-number-size;
-    font-weight: 900; // Black weight
-    line-height: 1;
+    font-weight: 900;
     letter-spacing: $reward-percent-letter-spacing;
+    color: $white;
 
-    &--large {
-      font-family: $font-family-sofia;
+    &--employee {
       font-size: $reward-percent-number-size-large;
-      font-weight: 900; // Black weight
-      line-height: 1;
-      letter-spacing: $reward-percent-letter-spacing;
     }
   }
 
@@ -81,71 +66,48 @@
     font-family: $font-family-sofia;
     font-size: $reward-percent-sign-size;
     font-weight: $font-weight-semibold;
-    line-height: 1;
-  }
-
-  &__percent-off {
-    font-family: $font-family-sofia;
-    font-size: $reward-percent-off-size;
-    font-weight: $font-weight-semibold;
-    line-height: 1;
     color: $white;
   }
 
-  // Icon variant
+  &__off-text {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-off-size;
+    font-weight: $font-weight-semibold;
+    color: $white;
+    margin-top: -4px; // Slight negative margin to bring OFF closer
+  }
+
+  // Icon
   &__icon {
     width: $reward-icon-size;
     height: $reward-icon-size;
-    object-fit: contain;
   }
 
-  // Label styles
+  // Label
   &__label {
     font-family: $font-family-sofia;
     font-size: $reward-label-size;
-    font-weight: 900; // Black weight
-    line-height: 1;
+    font-weight: 900;
     color: $black;
     text-transform: uppercase;
     text-align: center;
-    white-space: nowrap;
-
-    &--multiline {
-      font-family: $font-family-sofia;
-      font-size: $reward-label-size;
-      font-weight: 900; // Black weight
-      line-height: $reward-label-line-height;
-      color: $black;
-      text-transform: uppercase;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-
-      span {
-        display: block;
-      }
-    }
+    line-height: $reward-label-line-height;
   }
 
-  // Expiration styles
+  // Expiration
   &__expiry {
     font-family: $font-family-sofia;
     font-size: $reward-expiry-size;
     font-weight: $font-weight-normal;
-    line-height: 1;
     color: $gray-700;
     text-align: center;
-    white-space: nowrap;
 
     &--alert {
       font-family: $font-family-sofia;
       font-size: $reward-expiry-size;
       font-weight: $font-weight-semibold;
-      line-height: 1;
       color: $color-error;
       text-align: center;
-      white-space: nowrap;
     }
   }
 }

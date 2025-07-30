@@ -31,7 +31,7 @@ const Reward: React.FC<RewardProps> = ({
   variant = 'default',
   amount = 5,
   percentage = 15,
-  iconPath,
+  iconPath = '/loyalty/cake.svg',
   showLabel = true,
   showExpiration = true,
   expirationDate = 'Exp. 12/10/2024',
@@ -43,28 +43,28 @@ const Reward: React.FC<RewardProps> = ({
       case 'percent':
       case 'birthday':
         return (
-          <div className={styles['reward__percent-content']}>
-            <div className={styles['reward__percent-wrapper']}>
+          <>
+            <div className={styles['reward__percent-line']}>
               <span className={styles['reward__percent-number']}>{percentage}</span>
               <span className={styles['reward__percent-sign']}>%</span>
             </div>
-            <span className={styles['reward__percent-off']}>OFF</span>
-          </div>
+            <div className={styles['reward__off-text']}>OFF</div>
+          </>
         );
       
       case 'employee':
         return (
-          <div className={styles['reward__percent-content']}>
-            <div className={styles['reward__percent-wrapper']}>
-              <span className={styles['reward__percent-number--large']}>30</span>
+          <>
+            <div className={styles['reward__percent-line']}>
+              <span className={styles['reward__percent-number--employee']}>30</span>
               <span className={styles['reward__percent-sign']}>%</span>
             </div>
-            <span className={styles['reward__percent-off']}>OFF</span>
-          </div>
+            <div className={styles['reward__off-text']}>OFF</div>
+          </>
         );
       
       case 'icon':
-        return iconPath ? (
+        return (
           <Image 
             src={iconPath}
             alt="Reward icon"
@@ -72,16 +72,16 @@ const Reward: React.FC<RewardProps> = ({
             height={72}
             className={styles['reward__icon']}
           />
-        ) : null;
+        );
       
       case 'default':
       case 'expiring':
       case 'simple':
       default:
         return (
-          <div className={styles['reward__amount-wrapper']}>
+          <div className={styles['reward__dollar-line']}>
             <span className={styles['reward__dollar-sign']}>$</span>
-            <span className={styles['reward__amount']}>{amount}</span>
+            <span className={styles['reward__dollar-amount']}>{amount}</span>
           </div>
         );
     }
@@ -92,9 +92,8 @@ const Reward: React.FC<RewardProps> = ({
 
     if (variant === 'birthday') {
       return (
-        <div className={styles['reward__label--multiline']}>
-          <span>BIRTHDAY</span>
-          <span>REWARD</span>
+        <div className={styles['reward__label']}>
+          BIRTHDAY<br />REWARD
         </div>
       );
     }
@@ -105,17 +104,11 @@ const Reward: React.FC<RewardProps> = ({
   const renderExpiration = () => {
     if (!showExpiration || variant === 'simple') return null;
 
-    if (variant === 'expiring' || isExpiring) {
-      return (
-        <div className={styles['reward__expiry--alert']}>
-          Expiring 9/20/2024
-        </div>
-      );
-    }
-
+    const isExpiringVariant = variant === 'expiring' || isExpiring;
+    
     return (
-      <div className={styles['reward__expiry']}>
-        {expirationDate}
+      <div className={isExpiringVariant ? styles['reward__expiry--alert'] : styles['reward__expiry']}>
+        {isExpiringVariant ? 'Expiring 9/20/2024' : expirationDate}
       </div>
     );
   };
