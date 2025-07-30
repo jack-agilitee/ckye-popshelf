@@ -43,24 +43,24 @@ const Reward: React.FC<RewardProps> = ({
       case 'percent':
       case 'birthday':
         return (
-          <>
+          <div className={styles['reward__percent-content']}>
             <div className={styles['reward__percent-wrapper']}>
               <span className={styles['reward__percent-number']}>{percentage}</span>
               <span className={styles['reward__percent-sign']}>%</span>
             </div>
             <span className={styles['reward__percent-off']}>OFF</span>
-          </>
+          </div>
         );
       
       case 'employee':
         return (
-          <>
+          <div className={styles['reward__percent-content']}>
             <div className={styles['reward__percent-wrapper']}>
               <span className={styles['reward__percent-number--large']}>30</span>
               <span className={styles['reward__percent-sign']}>%</span>
             </div>
             <span className={styles['reward__percent-off']}>OFF</span>
-          </>
+          </div>
         );
       
       case 'icon':

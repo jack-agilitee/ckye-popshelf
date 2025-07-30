@@ -2,12 +2,11 @@
 @import '../../../styles/mixins';
 
 .reward {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: $reward-gap;
-  width: 100%;
-  max-width: $reward-badge-size;
+  width: $reward-badge-size;
 
   &__badge {
     width: $reward-badge-size;
@@ -18,16 +17,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: $reward-gap;
     flex-shrink: 0;
+    position: relative;
   }
 
   // Dollar amount styles (default, expiring, simple)
   &__amount-wrapper {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     color: $white;
+    gap: 0;
   }
 
   &__dollar-sign {
@@ -45,11 +45,20 @@
   }
 
   // Percentage styles
-  &__percent-wrapper {
+  &__percent-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0;
+  }
+
+  &__percent-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
     color: $white;
+    gap: 0;
   }
 
   &__percent-number {
@@ -127,7 +136,7 @@
     line-height: 1;
     color: $gray-700;
     text-align: center;
-    width: $reward-badge-size;
+    white-space: nowrap;
 
     &--alert {
       font-family: $font-family-sofia;
@@ -136,7 +145,7 @@
       line-height: 1;
       color: $color-error;
       text-align: center;
-      width: $reward-badge-size;
+      white-space: nowrap;
     }
   }
 }
