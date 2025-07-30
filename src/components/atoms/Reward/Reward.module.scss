@@ -81,6 +81,7 @@
   &__icon {
     width: $reward-icon-size;
     height: $reward-icon-size;
+    filter: brightness(0) invert(1); // Make the icon white
   }
 
   // Label
