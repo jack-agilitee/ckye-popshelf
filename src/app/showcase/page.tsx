@@ -11,6 +11,7 @@ import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
 import Checkbox from '@/components/atoms/Checkbox/Checkbox';
 import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
 import ContentBlock from '@/components/atoms/ContentBlock/ContentBlock';
+import LoyaltyProgressBar from '@/components/atoms/LoyaltyProgressBar/LoyaltyProgressBar';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -1436,6 +1437,106 @@ function ProductDetails({ product }) {
                 </div>
               </div>
               
+            </div>
+
+            {/* LoyaltyProgressBar Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>LoyaltyProgressBar</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/atoms/LoyaltyProgressBar
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', maxWidth: '400px', margin: '0 auto' }}>
+                  {/* 0 points - Beginning */}
+                  <div style={{ textAlign: 'center' }}>
+                    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>0 Points (Bronze)</p>
+                    <LoyaltyProgressBar points={0} />
+                  </div>
+                  
+                  {/* 120 points - Middle */}
+                  <div style={{ textAlign: 'center' }}>
+                    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>120 Points (Silver)</p>
+                    <LoyaltyProgressBar points={120} />
+                  </div>
+                  
+                  {/* 231 points - Near end */}
+                  <div style={{ textAlign: 'center' }}>
+                    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>231 Points (Gold)</p>
+                    <LoyaltyProgressBar points={231} />
+                  </div>
+                  
+                  {/* 300 points - Complete */}
+                  <div style={{ textAlign: 'center' }}>
+                    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>300 Points (Platinum)</p>
+                    <LoyaltyProgressBar points={300} />
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import LoyaltyProgressBar from '@/components/atoms/LoyaltyProgressBar/LoyaltyProgressBar';
+
+// Basic usage
+<LoyaltyProgressBar points={120} />
+
+// Different point values
+<LoyaltyProgressBar points={0} />    // Start
+<LoyaltyProgressBar points={120} />  // Middle
+<LoyaltyProgressBar points={231} />  // Near end
+<LoyaltyProgressBar points={300} />  // Complete
+
+// With custom max points
+<LoyaltyProgressBar 
+  points={150} 
+  maxPoints={500} 
+/>
+
+// With custom className
+<LoyaltyProgressBar 
+  points={75} 
+  className="my-loyalty-bar" 
+/>
+
+// With custom aria label
+<LoyaltyProgressBar 
+  points={200} 
+  ariaLabel="200 reward points earned"
+/>
+
+// In a loyalty status component
+function LoyaltyStatus({ user }) {
+  return (
+    <div className="loyalty-status">
+      <h3>Your Rewards Progress</h3>
+      <LoyaltyProgressBar points={user.loyaltyPoints} />
+      <p className="points-text">
+        {user.loyaltyPoints} / 300 points
+      </p>
+      <p className="tier-text">
+        Current tier: {getTierName(user.loyaltyPoints)}
+      </p>
+    </div>
+  );
+}
+
+// Showing multiple tiers
+const tiers = [
+  { name: 'Bronze', points: 0 },
+  { name: 'Silver', points: 120 },
+  { name: 'Gold', points: 231 },
+  { name: 'Platinum', points: 300 }
+];
+
+{tiers.map(tier => (
+  <div key={tier.name} className="tier-display">
+    <span>{tier.name} ({tier.points} points)</span>
+    <LoyaltyProgressBar points={tier.points} />
+  </div>
+))}`}</pre>
+              </div>
             </div>
           </section>
 
