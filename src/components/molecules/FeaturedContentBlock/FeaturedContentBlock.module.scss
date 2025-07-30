@@ -129,7 +129,7 @@
       position: absolute;
       // Position relative to card position
       left: calc($featured-content-card-position-left + ($featured-content-card-width / 2) - 54px); // Center on card
-      top: calc($featured-content-card-position-top - 80px); // Above card
+      top: calc($featured-content-card-position-top - 90px); // Positioned above card
       z-index: 2; // Lower than card (which is 3)
       
       img {
