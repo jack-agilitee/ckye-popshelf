@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: all $transition-base;
   height: 100%;
+  min-height: $article-card-min-height;
 
   &:hover {
     box-shadow: $shadow-lg;
