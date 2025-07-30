@@ -27,6 +27,7 @@ import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
+import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyStatusCard';
 import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
@@ -2988,6 +2989,123 @@ function ProductDetailPage({ product }) {
   );
 }`}</pre>
                 </div>
+              </div>
+            </div>
+
+            {/* LoyaltyStatusCard Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>LoyaltyStatusCard</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/organisms/LoyaltyStatusCard
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center' }}>
+                  {/* Authenticated State */}
+                  <div style={{ width: '100%', maxWidth: '335px' }}>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center' }}>Authenticated State</h4>
+                    <LoyaltyStatusCard
+                      isAuthenticated={true}
+                      points={120}
+                      pointsToNextTier={80}
+                      currentLevel="love"
+                      onQrCodeClick={() => console.log('QR code clicked')}
+                    />
+                  </div>
+                  
+                  {/* Unauthenticated State */}
+                  <div style={{ width: '100%', maxWidth: '335px' }}>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center' }}>Unauthenticated State</h4>
+                    <LoyaltyStatusCard
+                      isAuthenticated={false}
+                      onLearnMoreClick={() => console.log('Learn more clicked')}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyStatusCard';
+
+// Authenticated state
+<LoyaltyStatusCard
+  isAuthenticated={true}
+  points={120}
+  pointsToNextTier={80}
+  currentLevel="love"
+  onQrCodeClick={() => console.log('QR code clicked')}
+/>
+
+// Unauthenticated state
+<LoyaltyStatusCard
+  isAuthenticated={false}
+  onLearnMoreClick={() => console.log('Learn more clicked')}
+/>
+
+// Different point values
+<LoyaltyStatusCard
+  isAuthenticated={true}
+  points={0}
+  pointsToNextTier={300}
+  currentLevel="bronze"
+/>
+
+<LoyaltyStatusCard
+  isAuthenticated={true}
+  points={250}
+  pointsToNextTier={50}
+  currentLevel="gold"
+/>
+
+// In a user dashboard
+function UserDashboard({ user }) {
+  const handleQrCodeClick = () => {
+    // Open QR scanner or show QR code modal
+    openQrScanner();
+  };
+
+  const handleLearnMore = () => {
+    // Navigate to loyalty program info page
+    router.push('/loyalty-program');
+  };
+
+  return (
+    <div className="dashboard">
+      <h2>Your Rewards</h2>
+      <LoyaltyStatusCard
+        isAuthenticated={user.isLoggedIn}
+        points={user.loyaltyPoints}
+        pointsToNextTier={user.pointsToNextTier}
+        currentLevel={user.loyaltyTier}
+        onQrCodeClick={handleQrCodeClick}
+        onLearnMoreClick={handleLearnMore}
+      />
+    </div>
+  );
+}
+
+// With loading state
+function LoyaltySection({ isLoading, user }) {
+  if (isLoading) {
+    return <div className="loyalty-skeleton">Loading...</div>;
+  }
+
+  return (
+    <LoyaltyStatusCard
+      isAuthenticated={!!user}
+      points={user?.loyaltyPoints || 0}
+      pointsToNextTier={user?.pointsToNextTier || 300}
+      currentLevel={user?.tier || 'bronze'}
+      onQrCodeClick={() => {
+        if (user?.qrCode) {
+          showQrCode(user.qrCode);
+        }
+      }}
+    />
+  );
+}`}</pre>
               </div>
             </div>
           </section>
