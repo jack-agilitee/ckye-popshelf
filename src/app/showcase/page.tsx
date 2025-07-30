@@ -29,6 +29,7 @@ import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
 import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyStatusCard';
 import LoyaltyMainPanel from '@/components/organisms/LoyaltyMainPanel/LoyaltyMainPanel';
+import RedeemPerk from '@/components/organisms/RedeemPerk/RedeemPerk';
 import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
@@ -3203,6 +3204,86 @@ function MobileRewardsScreen({ loyaltyData }) {
         />
       </main>
     </div>
+  );
+}`}</pre>
+              </div>
+            </div>
+
+            {/* RedeemPerk Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>RedeemPerk</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/organisms/RedeemPerk
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center' }}>
+                  {/* Default RedeemPerk */}
+                  <div style={{ textAlign: 'center' }}>
+                    <h4 style={{ marginBottom: '16px', color: '#87189d' }}>Default Redeem Perk</h4>
+                    <RedeemPerk 
+                      qrCodePath="/qr.svg"
+                      onClose={() => console.log('Close clicked')}
+                    />
+                  </div>
+
+                  {/* Custom text */}
+                  <div style={{ textAlign: 'center' }}>
+                    <h4 style={{ marginBottom: '16px', color: '#87189d' }}>Custom Text</h4>
+                    <RedeemPerk 
+                      title="Special Offer"
+                      instructionText="Show this code to our cashier for your discount"
+                      qrCodePath="/qr.svg"
+                      onClose={() => console.log('Close clicked')}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import RedeemPerk from '@/components/organisms/RedeemPerk/RedeemPerk';
+
+// Basic usage
+<RedeemPerk 
+  qrCodePath="/qr-code.svg"
+  onClose={() => console.log('Close clicked')}
+/>
+
+// With custom text
+<RedeemPerk 
+  title="Your Special Reward"
+  instructionText="Show this code to our team member"
+  qrCodePath="/qr-code.svg"
+  onClose={() => handleClose()}
+/>
+
+// In a modal context
+function RewardModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div onClick={(e) => e.stopPropagation()}>
+        <RedeemPerk 
+          qrCodePath="/rewards/qr-surprise.svg"
+          onClose={onClose}
+        />
+      </div>
+    </div>
+  );
+}
+
+// With custom reward data
+function CustomReward({ reward, onDismiss }) {
+  return (
+    <RedeemPerk 
+      title={reward.title}
+      instructionText={reward.instructions}
+      qrCodePath={reward.qrCodeUrl}
+      onClose={onDismiss}
+    />
   );
 }`}</pre>
               </div>
