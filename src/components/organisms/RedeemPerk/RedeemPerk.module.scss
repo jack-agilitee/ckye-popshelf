@@ -87,7 +87,9 @@
 
   &__qr-code {
     display: block;
-    width: auto;
-    height: auto;
+    width: $redeem-perk-qr-size !important;
+    height: $redeem-perk-qr-size !important;
+    max-width: 100%;
+    object-fit: contain;
   }
 }

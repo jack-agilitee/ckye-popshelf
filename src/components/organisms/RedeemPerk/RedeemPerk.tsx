@@ -73,6 +73,7 @@ const RedeemPerk: React.FC<RedeemPerkProps> = ({
             width={220}
             height={220}
             className={styles['redeem-perk__qr-code']}
+            priority
           />
         </div>
       </div>
