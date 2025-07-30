@@ -1,0 +1,106 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.loyalty-main-panel {
+  background-color: $white;
+  border: 1px solid $loyalty-main-panel-border-color;
+  border-radius: $loyalty-main-panel-radius;
+  box-shadow: $loyalty-main-panel-shadow;
+  width: 100%;
+  max-width: $loyalty-main-panel-max-width;
+  padding: $spacing-5;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+  }
+
+  &__level-label,
+  &__level-value {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black;
+  }
+
+  &__divider,
+  &__divider-bottom {
+    height: $border-default;
+    background-color: $loyalty-main-panel-border-color;
+    margin: $spacing-4 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-5;
+  }
+
+  &__qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-4;
+    text-align: center;
+  }
+
+  &__qr-code {
+    width: $loyalty-main-panel-qr-size;
+    height: $loyalty-main-panel-qr-size;
+  }
+
+  &__instructions {
+    font-family: $font-family-avenir;
+    font-size: $loyalty-main-panel-instruction-size;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-normal;
+    color: $gray-700;
+    margin: 0;
+    max-width: $loyalty-main-panel-instruction-max-width;
+  }
+
+  &__points-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &__points-circle {
+    width: $loyalty-card-points-ring-size;
+    height: $loyalty-card-points-ring-size;
+    border-radius: $radius-circle;
+    border: $loyalty-card-points-ring-border solid $loyalty-card-logo-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+  }
+
+  &__points-value {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $loyalty-card-logo-color;
+  }
+
+  &__points-label {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $loyalty-card-logo-color;
+  }
+
+  &__earn-link {
+    font-family: $font-family-avenir;
+    font-size: $loyalty-main-panel-instruction-size;
+    font-weight: $font-weight-medium;
+    color: $gray-700;
+    margin-left: $spacing-3;
+  }
+
+  &__progress {
+    width: 100%;
+  }
+}
