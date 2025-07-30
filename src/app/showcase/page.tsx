@@ -22,6 +22,7 @@ import ProductNamePrice from '@/components/molecules/ProductNamePrice/ProductNam
 import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions';
 import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
 import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
+import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2497,6 +2498,101 @@ const features = [
     onClick={() => router.push(feature.link)}
   />
 ))}`}</pre>
+            </div>
+          </section>
+
+          {/* ArticleCard Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>ArticleCard</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/ArticleCard
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px', maxWidth: '1000px', margin: '0 auto' }}>
+                {/* Example 1 - Galaxy Glitter Art */}
+                <ArticleCard
+                  title="galaxy Glitter Art"
+                  subtitle="Out of this world creations"
+                  imageUrl="/content/glitter-art.jpg"
+                  imageAlt="Galaxy glitter art supplies"
+                  onClick={() => console.log('Article clicked: Galaxy Glitter Art')}
+                />
+                
+                {/* Example 2 - DIY Home Decor */}
+                <ArticleCard
+                  title="DIY Home Decor Ideas"
+                  subtitle="Transform your space on a budget"
+                  imageUrl="/content/home-decor.jpg"
+                  imageAlt="DIY home decoration items"
+                  onClick={() => console.log('Article clicked: DIY Home Decor')}
+                />
+                
+                {/* Example 3 - Seasonal Crafts */}
+                <ArticleCard
+                  title="Seasonal Craft Projects"
+                  subtitle="Fun activities for every season"
+                  imageUrl="/content/seasonal-crafts.jpg"
+                  imageAlt="Seasonal craft materials"
+                  onClick={() => console.log('Article clicked: Seasonal Crafts')}
+                />
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
+
+// Basic usage
+<ArticleCard
+  title="galaxy Glitter Art"
+  subtitle="Out of this world creations"
+  imageUrl="/images/galaxy-art.jpg"
+  imageAlt="Galaxy glitter art supplies"
+/>
+
+// With click handler
+<ArticleCard
+  title="DIY Home Decor"
+  subtitle="Transform your space on a budget"
+  imageUrl="/images/home-decor.jpg"
+  imageAlt="Home decor items"
+  onClick={() => console.log('Article clicked')}
+/>
+
+// Article grid with navigation
+const articles = [
+  {
+    id: 1,
+    title: "galaxy Glitter Art",
+    subtitle: "Out of this world creations",
+    imageUrl: "/images/galaxy-art.jpg",
+    slug: "galaxy-glitter-art"
+  },
+  {
+    id: 2,
+    title: "DIY Home Decor",
+    subtitle: "Transform your space on a budget",
+    imageUrl: "/images/home-decor.jpg",
+    slug: "diy-home-decor"
+  },
+  // ... more articles
+];
+
+const router = useRouter();
+
+<div className="article-grid">
+  {articles.map(article => (
+    <ArticleCard
+      key={article.id}
+      title={article.title}
+      subtitle={article.subtitle}
+      imageUrl={article.imageUrl}
+      onClick={() => router.push(\`/articles/\${article.slug}\`)}
+    />
+  ))}
+</div>`}</pre>
             </div>
           </section>
 

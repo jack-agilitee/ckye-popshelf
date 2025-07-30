@@ -1,0 +1,89 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.article-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-text-field;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all $transition-base;
+  height: 100%;
+  min-height: $article-card-min-height;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+
+    .article-card__arrow-icon {
+      transform: translateX(4px);
+    }
+  }
+
+  &:focus {
+    outline: 2px solid $border-focus;
+    outline-offset: 2px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: $article-card-content-height;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-2;
+    background-color: $white;
+    padding: $spacing-4;
+    min-height: $article-card-content-height;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    @include avenir-heavy;
+    color: $black;
+    margin: 0;
+    @include line-clamp(1);
+  }
+
+  &__subtitle {
+    @include article-card-subtitle;
+    color: $gray-600;
+    margin: 0;
+    @include line-clamp(1);
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    width: $article-card-arrow-size;
+    height: $article-card-arrow-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__arrow-icon {
+    transition: transform $transition-fast;
+    width: $article-card-arrow-size;
+    height: $article-card-arrow-size;
+  }
+}

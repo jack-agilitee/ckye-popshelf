@@ -380,3 +380,8 @@ $featured-icon-size: 32px; // Arrow icon size (from Figma)
 $featured-decoration-rotation: 15deg; // Decoration rotation angle (from Figma)
 $featured-title-letter-spacing-desktop: -0.6667px; // Desktop title letter spacing (from Figma)
 $featured-description-letter-spacing-desktop: -0.4444px; // Desktop description letter spacing (from Figma)
+
+// ArticleCard Component
+$article-card-content-height: 72px; // Bottom content area height (from Figma)
+$article-card-arrow-size: 24px; // Arrow icon size (from Figma)
+$article-card-min-height: 280px; // Minimum card height to ensure image visibility
