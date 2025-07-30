@@ -17,8 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0;
-    padding: $spacing-3 0 0 0; // Add top padding for percentage variants
+    gap: $spacing-2;
   }
 
   // Dollar styles
@@ -75,7 +74,6 @@
     font-size: $reward-percent-off-size;
     font-weight: $font-weight-semibold;
     color: $white;
-    margin-top: -4px; // Slight negative margin to bring OFF closer
   }
 
   // Icon
