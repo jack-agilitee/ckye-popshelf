@@ -20,15 +20,14 @@ describe('PerksBar', () => {
     const lockIcons = screen.getAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(2);
     
-    // Check the correct gradient class is applied
-    const perksBar = container.firstChild as HTMLElement;
-    expect(perksBar).toHaveClass('perks-bar--like-active');
+    // Check gradient width
+    const gradient = container.querySelector('.perks-bar__gradient') as HTMLElement;
+    expect(gradient).toHaveStyle({ width: '33.33%' });
     
-    // Check active segments
-    const segments = container.querySelectorAll('.perks-bar__segment');
-    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
-    expect(segments[1]).not.toHaveClass('perks-bar__segment--active'); // love
-    expect(segments[2]).not.toHaveClass('perks-bar__segment--active'); // obsessed
+    // Check lock overlay
+    const lockOverlay = container.querySelector('.perks-bar__lock-overlay') as HTMLElement;
+    expect(lockOverlay).toBeInTheDocument();
+    expect(lockOverlay).toHaveStyle({ left: '33.33%', width: 'calc(100% - 33.33%)' });
   });
 
   it('renders with LOVE tier selected', () => {
@@ -38,15 +37,14 @@ describe('PerksBar', () => {
     const lockIcons = screen.getAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(1);
     
-    // Check the correct gradient class is applied
-    const perksBar = container.firstChild as HTMLElement;
-    expect(perksBar).toHaveClass('perks-bar--love-active');
+    // Check gradient width
+    const gradient = container.querySelector('.perks-bar__gradient') as HTMLElement;
+    expect(gradient).toHaveStyle({ width: '66.67%' });
     
-    // Check active segments
-    const segments = container.querySelectorAll('.perks-bar__segment');
-    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
-    expect(segments[1]).toHaveClass('perks-bar__segment--active'); // love
-    expect(segments[2]).not.toHaveClass('perks-bar__segment--active'); // obsessed
+    // Check lock overlay
+    const lockOverlay = container.querySelector('.perks-bar__lock-overlay') as HTMLElement;
+    expect(lockOverlay).toBeInTheDocument();
+    expect(lockOverlay).toHaveStyle({ left: '66.67%', width: 'calc(100% - 66.67%)' });
   });
 
   it('renders with OBSESSED tier selected', () => {
@@ -56,15 +54,13 @@ describe('PerksBar', () => {
     const lockIcons = screen.queryAllByLabelText('Locked');
     expect(lockIcons).toHaveLength(0);
     
-    // Check the correct gradient class is applied
-    const perksBar = container.firstChild as HTMLElement;
-    expect(perksBar).toHaveClass('perks-bar--obsessed-active');
+    // Check gradient width
+    const gradient = container.querySelector('.perks-bar__gradient') as HTMLElement;
+    expect(gradient).toHaveStyle({ width: '100%' });
     
-    // Check active segments
-    const segments = container.querySelectorAll('.perks-bar__segment');
-    expect(segments[0]).toHaveClass('perks-bar__segment--active'); // like
-    expect(segments[1]).toHaveClass('perks-bar__segment--active'); // love
-    expect(segments[2]).toHaveClass('perks-bar__segment--active'); // obsessed
+    // Check no lock overlay
+    const lockOverlay = container.querySelector('.perks-bar__lock-overlay');
+    expect(lockOverlay).not.toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -76,7 +72,7 @@ describe('PerksBar', () => {
     expect(perksBar).toHaveClass('custom-class');
   });
 
-  it('renders three segments', () => {
+  it('renders three segments with dividers', () => {
     const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
     
     const segments = container.querySelectorAll('.perks-bar__segment');
@@ -86,6 +82,10 @@ describe('PerksBar', () => {
     expect(segments[0]).toHaveClass('perks-bar__segment--like');
     expect(segments[1]).toHaveClass('perks-bar__segment--love');
     expect(segments[2]).toHaveClass('perks-bar__segment--obsessed');
+    
+    // Check dividers
+    const dividers = container.querySelectorAll('.perks-bar__divider');
+    expect(dividers).toHaveLength(2); // Two dividers between three segments
   });
 
   it('displays lock icons only on locked segments', () => {
@@ -110,6 +110,13 @@ describe('PerksBar', () => {
     expect(segments[0].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
     expect(segments[1].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
     expect(segments[2].querySelector('.perks-bar__lock-icon')).not.toBeInTheDocument();
+  });
+
+  it('renders background bar container', () => {
+    const { container } = render(<PerksBar selectedTier={PerksTier.LIKE} />);
+    
+    const background = container.querySelector('.perks-bar__background');
+    expect(background).toBeInTheDocument();
   });
 
   it('handles all PerksTier enum values', () => {

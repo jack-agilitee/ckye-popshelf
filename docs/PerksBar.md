@@ -47,12 +47,13 @@ enum PerksTier {
 
 ## Features
 
-- **Segmented Bar Design**: Three connected segments representing loyalty tiers
-- **Progressive Gradient Fill**: Active segments show purple gradient from left to right
-- **Automatic Locking**: Tiers beyond the selected tier show lock icons
+- **Rounded Pill Design**: Fully rounded ends creating a pill-shaped progress bar
+- **Progressive Gradient Fill**: Gradient fills from left to right based on tier selection
+- **White Dividers**: Clean white lines separate the three tier sections
+- **Lock Icons**: Appear centered on locked/inactive tiers
+- **Lock Overlay**: Gray overlay on inactive sections for clear visual distinction
 - **Fixed Tier Names**: "like", "love", and "obsessed" perks displayed within segments
 - **Non-interactive**: Display-only component showing current status
-- **Visual State Indicators**: Clear distinction between active and locked segments
 
 ## Design System Integration
 
@@ -60,10 +61,11 @@ The component uses the following design system tokens:
 
 ### Colors
 - Gradient: `$loyalty-progress-light`, `$loyalty-progress-medium`, `$loyalty-progress-dark`
-- Locked segments: `$gray-200` background with `$perks-bar-lock-overlay`
+- Background: `$gray-200` for the base bar
+- Lock overlay: `$perks-bar-lock-overlay` (rgba(155, 151, 151, 0.3))
 - Text: `$black`
 - Lock icons: `$gray-700`
-- Segment dividers: `$white`
+- Dividers: `$white`
 
 ### Typography
 - Tier names: Avenir Heavy, 16px
@@ -77,12 +79,12 @@ The component uses the following design system tokens:
 
 ## Component Behavior
 
-The component displays a segmented bar with the following behavior:
-- `PerksTier.LIKE`: First segment active with gradient, love and obsessed show lock icons
-- `PerksTier.LOVE`: First two segments active with continuous gradient, only obsessed shows lock icon
-- `PerksTier.OBSESSED`: All three segments active with full gradient, no lock icons shown
+The component displays a pill-shaped bar with the following behavior:
+- `PerksTier.LIKE`: Gradient fills 33.33% (1/3), lock overlay covers remaining 66.67%
+- `PerksTier.LOVE`: Gradient fills 66.67% (2/3), lock overlay covers remaining 33.33%
+- `PerksTier.OBSESSED`: Gradient fills 100%, no lock overlay
 
-The gradient spans continuously across all active segments, creating a unified progression effect.
+The gradient is a continuous fill that expands based on the selected tier, with lock icons appearing on the gray/locked sections.
 
 ## Examples
 
@@ -141,11 +143,12 @@ function RewardsScreen({ loyaltyData }) {
 
 The component includes comprehensive tests covering:
 - Rendering with each tier selected
-- Correct lock states for each selection
-- Active segment highlighting and gradient classes
+- Gradient width calculations (33.33%, 66.67%, 100%)
+- Lock overlay positioning and sizing
+- Lock icon placement on inactive tiers
+- White divider rendering between segments
 - Custom className application
-- Three segments with proper structure
-- Lock icon placement on locked segments
+- Background bar container structure
 - All enum values handling
 
 To run tests:
@@ -156,9 +159,10 @@ npm test PerksBar.test.tsx
 ## Accessibility
 
 - Lock icons include `aria-label="Locked"` for screen readers
+- Dividers have `aria-hidden="true"` as they are decorative
 - Component uses semantic HTML structure
 - Color contrast meets WCAG standards
-- Segmented design provides clear visual separation
+- Clear visual distinction between active and locked states
 
 ## Best Practices
 

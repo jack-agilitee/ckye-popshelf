@@ -5,41 +5,27 @@
   position: relative;
   width: 100%;
   max-width: $perks-bar-width;
-  display: flex;
-  height: $perks-bar-height;
-  box-shadow: $perks-bar-shadow;
-  border-radius: $perks-bar-height; // Fully rounded
-  overflow: hidden;
   margin: 0 auto;
 
-  // Gradient overlay for active segments
-  &::before {
-    content: '';
+  &__background {
+    position: relative;
+    height: $perks-bar-height;
+    background-color: $gray-200;
+    border-radius: $perks-bar-height; // Fully rounded pill shape
+    box-shadow: $perks-bar-shadow;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  &__gradient {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    height: 100%;
     background: linear-gradient(to right, $loyalty-progress-light, $loyalty-progress-medium, $loyalty-progress-dark);
-    opacity: 0;
-    transition: opacity $transition-slow ease-out;
-    pointer-events: none;
-  }
-
-  // Active state classes for gradient visibility
-  &--like-active::before {
-    opacity: 1;
-    right: 66.67%; // Show gradient only on first 1/3
-  }
-
-  &--love-active::before {
-    opacity: 1;
-    right: 33.33%; // Show gradient on first 2/3
-  }
-
-  &--obsessed-active::before {
-    opacity: 1;
-    right: 0; // Show gradient on full bar
+    transition: width $transition-slow ease-out;
+    border-radius: $perks-bar-height;
   }
 
   &__segment {
@@ -49,31 +35,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $gray-200;
-    border-right: 1px solid $white;
-    z-index: 1;
+    z-index: 2; // Above gradient
+    padding: $spacing-2;
+  }
 
-    // Remove border from last segment
-    &:last-child {
-      border-right: none;
-    }
+  &__divider {
+    position: relative;
+    width: 1px;
+    height: 100%;
+    background-color: $white;
+    z-index: 2; // Above gradient
+  }
 
-    // Active segment styling
-    &--active {
-      background-color: transparent; // Let gradient show through
-    }
-
-    // Locked segment overlay
-    &:not(.perks-bar__segment--active)::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: $perks-bar-lock-overlay;
-      pointer-events: none;
-    }
+  &__lock-overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: $perks-bar-lock-overlay;
+    z-index: 1; // Below content but above gradient
   }
 
   &__lock-icon {
@@ -84,7 +63,7 @@
     width: $spacing-5; // 20px
     height: $spacing-5;
     color: $gray-700;
-    z-index: 2;
+    z-index: 3; // Above everything
   }
 
   &__tier-name {
@@ -94,8 +73,8 @@
     color: $black;
     line-height: 1;
     margin-bottom: 2px;
-    z-index: 2;
     position: relative;
+    z-index: 2;
   }
 
   &__tier-perks {
@@ -104,7 +83,7 @@
     font-weight: $font-weight-normal;
     color: $black;
     letter-spacing: $perks-bar-letter-spacing;
-    z-index: 2;
     position: relative;
+    z-index: 2;
   }
 }
