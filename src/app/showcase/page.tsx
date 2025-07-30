@@ -28,6 +28,7 @@ import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
 import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyStatusCard';
+import LoyaltyMainPanel from '@/components/organisms/LoyaltyMainPanel/LoyaltyMainPanel';
 import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
@@ -3104,6 +3105,104 @@ function LoyaltySection({ isLoading, user }) {
         }
       }}
     />
+  );
+}`}</pre>
+              </div>
+            </div>
+            
+            {/* LoyaltyMainPanel Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>LoyaltyMainPanel</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/organisms/LoyaltyMainPanel
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center' }}>
+                  {/* Default State */}
+                  <div style={{ width: '100%', maxWidth: '335px' }}>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center', color: '#87189d' }}>Default State (0 points)</h4>
+                    <LoyaltyMainPanel />
+                  </div>
+                  
+                  {/* With Points */}
+                  <div style={{ width: '100%', maxWidth: '335px' }}>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center', color: '#87189d' }}>With Points</h4>
+                    <LoyaltyMainPanel level="love" points={120} />
+                  </div>
+                  
+                  {/* Different Levels */}
+                  <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <div style={{ width: '335px' }}>
+                      <h4 style={{ marginBottom: '16px', textAlign: 'center', color: '#87189d' }}>Gold Level</h4>
+                      <LoyaltyMainPanel level="gold" points={250} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import LoyaltyMainPanel from '@/components/organisms/LoyaltyMainPanel/LoyaltyMainPanel';
+
+// Default usage
+<LoyaltyMainPanel />
+
+// With custom level and points
+<LoyaltyMainPanel 
+  level="love" 
+  points={120} 
+/>
+
+// Different levels
+<LoyaltyMainPanel level="bronze" points={50} />
+<LoyaltyMainPanel level="silver" points={150} />
+<LoyaltyMainPanel level="gold" points={250} />
+<LoyaltyMainPanel level="platinum" points={500} />
+
+// In a loyalty dashboard
+function LoyaltyDashboard({ user }) {
+  return (
+    <div className="dashboard">
+      <h1>Your Rewards</h1>
+      <LoyaltyMainPanel 
+        level={user.loyaltyTier}
+        points={user.loyaltyPoints}
+      />
+    </div>
+  );
+}
+
+// With loading state
+function LoyaltySection({ isLoading, userData }) {
+  if (isLoading) {
+    return <div className="skeleton">Loading loyalty information...</div>;
+  }
+
+  return (
+    <LoyaltyMainPanel 
+      level={userData?.tier || 'like'}
+      points={userData?.points || 0}
+    />
+  );
+}
+
+// In a mobile app view
+function MobileRewardsScreen({ loyaltyData }) {
+  return (
+    <div className="mobile-screen">
+      <header className="app-header">
+        <h2>Rewards</h2>
+      </header>
+      <main className="app-content">
+        <LoyaltyMainPanel 
+          level={loyaltyData.currentLevel}
+          points={loyaltyData.totalPoints}
+          className="mobile-loyalty-panel"
+        />
+      </main>
+    </div>
   );
 }`}</pre>
               </div>

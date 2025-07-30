@@ -409,3 +409,12 @@ $loyalty-card-letter-spacing: 0.4px; // Letter spacing for level text (from Figm
 $loyalty-card-checkin-font-size: 15px; // Check in label font size (from Figma)
 $loyalty-card-box-width: 157px; // Loyalty box image width
 $loyalty-card-box-height: 106px; // Loyalty box image height
+
+// LoyaltyMainPanel Component
+$loyalty-main-panel-border-color: #DCDADA; // Border color (from Figma)
+$loyalty-main-panel-radius: 10px; // Border radius (from Figma)
+$loyalty-main-panel-shadow: 0px 3px 10px 0px rgba(55, 58, 64, 0.145); // Shadow (from Figma)
+$loyalty-main-panel-qr-size: 160px; // QR code size
+$loyalty-main-panel-max-width: 335px; // Max width (from Figma)
+$loyalty-main-panel-instruction-size: 14px; // Instruction text size (from Figma)
+$loyalty-main-panel-instruction-max-width: 280px; // Max width for instruction text
