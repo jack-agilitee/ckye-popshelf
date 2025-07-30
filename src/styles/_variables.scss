@@ -17,6 +17,7 @@ $orange-primary: #FF6B35;
 $yellow-primary: #FFD23F;
 $yellow-star: #FFC700; // Used in ReviewStars filled state (from Figma)
 $green-primary: #4CAF50;
+$green-ring: #91D5AD; // Green for loyalty points ring (from Figma)
 $green-success: #00C853;
 $blue-primary: #2196F3;
 $blue-info: #00B8D4;
@@ -394,3 +395,17 @@ $loyalty-progress-height: 10px; // Progress bar height (from Figma - h-2.5)
 $loyalty-progress-indicator-size: 16px; // White circle indicator size (slightly larger than bar)
 $loyalty-progress-indicator-border: #9B34AA; // Purple border for indicator (from Figma)
 $loyalty-progress-track-bg: #e6e6e6; // Background track color
+
+// LoyaltyStatusCard Component
+$loyalty-card-shadow: 0px 3px 10px 0px rgba(55, 58, 64, 0.15); // Card shadow (from Figma)
+$loyalty-card-max-width: 335px; // Card max width (from Figma)
+$loyalty-card-qr-size: 30px; // QR code size
+$loyalty-card-points-ring-size: 45px; // Points ring size
+$loyalty-card-points-ring-border: 6px; // Points ring border width (from Figma)
+$loyalty-card-logo-height: 25px; // Logo height
+$loyalty-card-logo-color: #8a1a9b; // Purple for popshelf logo (from Figma)
+$loyalty-card-link-color: #87189d; // Link color for "How does..." text (from Figma)
+$loyalty-card-letter-spacing: 0.4px; // Letter spacing for level text (from Figma)
+$loyalty-card-checkin-font-size: 15px; // Check in label font size (from Figma)
+$loyalty-card-box-width: 157px; // Loyalty box image width
+$loyalty-card-box-height: 106px; // Loyalty box image height

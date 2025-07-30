@@ -1,0 +1,203 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.loyalty-status-card {
+  background-color: $white;
+  border-radius: $radius-md;
+  box-shadow: $loyalty-card-shadow;
+  padding: $spacing-5;
+  width: 100%;
+  max-width: $loyalty-card-max-width;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-1;
+  }
+
+  &__logo {
+    height: $loyalty-card-logo-height;
+    width: auto;
+  }
+
+  &__peeps {
+    @include body-large;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-normal;
+    color: $loyalty-card-logo-color;
+    font-size: $font-size-2xl;
+    line-height: $line-height-tight;
+  }
+
+  &__divider {
+    height: $border-default;
+    background-color: $gray-300;
+    margin: $spacing-2 0 $spacing-4;
+  }
+
+  // Authenticated state styles
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-4;
+  }
+
+  &__points-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+  }
+
+  &__points-ring {
+    width: $loyalty-card-points-ring-size;
+    height: $loyalty-card-points-ring-size;
+    border-radius: $radius-circle;
+    border: $loyalty-card-points-ring-border solid $green-ring;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+  }
+
+  &__points-value {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black-primary;
+  }
+
+  &__points-label {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black-primary;
+  }
+
+  &__status-section {
+    text-align: right;
+  }
+
+  &__next-tier {
+    @include body-small;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $gray-700;
+  }
+
+  &__progress-section {
+    margin-bottom: $spacing-4;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__level {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &__level-label,
+  &__level-value {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black-primary;
+    letter-spacing: $loyalty-card-letter-spacing;
+  }
+
+  &__checkin {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+  }
+
+  &__checkin-label {
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black-primary;
+    font-size: $loyalty-card-checkin-font-size;
+    line-height: $line-height-normal;
+  }
+
+  &__qr-button {
+    @include reset-button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__qr-code {
+    width: $loyalty-card-qr-size;
+    height: $loyalty-card-qr-size;
+  }
+
+  // Unauthenticated state styles
+  &__unauth-content {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+    margin-bottom: $spacing-6;
+  }
+
+  &__box-wrapper {
+    flex-shrink: 0;
+  }
+
+  &__box-image {
+    width: $loyalty-card-box-width;
+    height: $loyalty-card-box-height;
+    object-fit: contain;
+  }
+
+  &__unauth-text {
+    flex: 1;
+  }
+
+  &__unauth-message {
+    @include body-medium;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-medium;
+    color: $black;
+    margin: 0;
+    line-height: $line-height-tight;
+    white-space: pre-wrap;
+  }
+
+  &__learn-more {
+    @include reset-button;
+    @include body-small;
+    font-family: $font-family-avenir;
+    font-weight: $font-weight-normal;
+    color: $loyalty-card-link-color;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}
