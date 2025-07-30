@@ -24,6 +24,7 @@ import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions
 import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
 import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
+import PerksBar, { PerksTier } from '@/components/molecules/PerksBar/PerksBar';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2696,6 +2697,98 @@ const router = useRouter();
     />
   ))}
 </div>`}</pre>
+            </div>
+          </section>
+          
+          {/* PerksBar Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>PerksBar</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/PerksBar
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center' }}>
+                {/* LIKE tier selected */}
+                <div style={{ textAlign: 'center' }}>
+                  <h4 style={{ marginBottom: '16px', color: '#87189d' }}>LIKE Tier Selected</h4>
+                  <PerksBar selectedTier={PerksTier.LIKE} />
+                  <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>Love and Obsessed tiers are locked</p>
+                </div>
+                
+                {/* LOVE tier selected */}
+                <div style={{ textAlign: 'center' }}>
+                  <h4 style={{ marginBottom: '16px', color: '#87189d' }}>LOVE Tier Selected</h4>
+                  <PerksBar selectedTier={PerksTier.LOVE} />
+                  <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>Only Obsessed tier is locked</p>
+                </div>
+                
+                {/* OBSESSED tier selected */}
+                <div style={{ textAlign: 'center' }}>
+                  <h4 style={{ marginBottom: '16px', color: '#87189d' }}>OBSESSED Tier Selected</h4>
+                  <PerksBar selectedTier={PerksTier.OBSESSED} />
+                  <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>All tiers are unlocked</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import PerksBar, { PerksTier } from '@/components/molecules/PerksBar/PerksBar';
+
+// Basic usage - LIKE tier selected
+<PerksBar selectedTier={PerksTier.LIKE} />
+
+// LOVE tier selected
+<PerksBar selectedTier={PerksTier.LOVE} />
+
+// OBSESSED tier selected
+<PerksBar selectedTier={PerksTier.OBSESSED} />
+
+// In a loyalty dashboard
+function LoyaltyDashboard({ userTier }) {
+  return (
+    <div className="dashboard">
+      <h2>Your Perks Status</h2>
+      <PerksBar selectedTier={userTier} />
+      <p>Unlock more perks by earning points!</p>
+    </div>
+  );
+}
+
+// With user progress mapping
+function UserProgress({ user }) {
+  const getTierFromPoints = (points: number): PerksTier => {
+    if (points >= 500) return PerksTier.OBSESSED;
+    if (points >= 200) return PerksTier.LOVE;
+    return PerksTier.LIKE;
+  };
+
+  return (
+    <div className="progress-section">
+      <PerksBar selectedTier={getTierFromPoints(user.points)} />
+      <p>{user.points} points earned</p>
+    </div>
+  );
+}
+
+// In a rewards screen
+function RewardsScreen({ loyaltyData }) {
+  return (
+    <div className="rewards-screen">
+      <header>
+        <h1>Your Rewards</h1>
+      </header>
+      <section className="perks-status">
+        <PerksBar selectedTier={loyaltyData.currentTier} />
+      </section>
+      <section className="available-perks">
+        {/* List perks based on tier */}
+      </section>
+    </div>
+  );
+}`}</pre>
             </div>
           </section>
 

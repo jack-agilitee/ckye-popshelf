@@ -418,3 +418,12 @@ $loyalty-main-panel-qr-size: 160px; // QR code size
 $loyalty-main-panel-max-width: 335px; // Max width (from Figma)
 $loyalty-main-panel-instruction-size: 14px; // Instruction text size (from Figma)
 $loyalty-main-panel-instruction-max-width: 280px; // Max width for instruction text
+
+// PerksBar Component
+$perks-bar-width: 335px; // Component width (from Figma)
+$perks-bar-height: 69px; // Component height (from Figma)
+$perks-bar-shadow: 0px 4px 16px 0px rgba(55, 58, 64, 0.15); // Same as radio selector
+$perks-bar-lock-overlay: rgba(155, 151, 151, 0.3); // Lock overlay color (from Figma)
+$perks-bar-letter-spacing: 0.35px; // Letter spacing for "perks" text (from Figma)
+$perks-bar-tier-name-size: 16px; // Tier name font size (from Figma)
+$perks-bar-perks-text-size: 14px; // "perks" text size (from Figma)
