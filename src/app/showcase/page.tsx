@@ -3005,7 +3005,7 @@ function ProductDetailPage({ product }) {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center' }}>
                   {/* Authenticated State */}
                   <div style={{ width: '100%', maxWidth: '335px' }}>
-                    <h4 style={{ marginBottom: '16px', textAlign: 'center' }}>Authenticated State</h4>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center', color: '#87189d' }}>Authenticated State</h4>
                     <LoyaltyStatusCard
                       isAuthenticated={true}
                       points={120}
@@ -3017,7 +3017,7 @@ function ProductDetailPage({ product }) {
                   
                   {/* Unauthenticated State */}
                   <div style={{ width: '100%', maxWidth: '335px' }}>
-                    <h4 style={{ marginBottom: '16px', textAlign: 'center' }}>Unauthenticated State</h4>
+                    <h4 style={{ marginBottom: '16px', textAlign: 'center', color: '#87189d' }}>Unauthenticated State</h4>
                     <LoyaltyStatusCard
                       isAuthenticated={false}
                       onLearnMoreClick={() => console.log('Learn more clicked')}

@@ -176,7 +176,8 @@
     font-weight: $font-weight-medium;
     color: $black;
     margin: 0;
-    line-height: $line-height-relaxed;
+    line-height: $line-height-tight;
+    white-space: pre-wrap;
   }
 
   &__learn-more {

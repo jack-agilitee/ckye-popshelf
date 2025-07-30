@@ -57,7 +57,7 @@ const LoyaltyStatusCard: React.FC<LoyaltyStatusCardProps> = ({
           </div>
           <div className={styles['loyalty-status-card__unauth-text']}>
             <p className={styles['loyalty-status-card__unauth-message']}>
-              earn points<br />and unlock<br />free perks
+              earn points and unlock free perks
             </p>
           </div>
         </div>
