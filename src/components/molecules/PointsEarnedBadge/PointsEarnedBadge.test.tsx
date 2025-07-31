@@ -122,16 +122,16 @@ describe('PointsEarnedBadge', () => {
   });
 
   describe('Visual states', () => {
-    it('applies progress border for points states', () => {
+    it('shows progress circle for points states', () => {
       const { container } = render(<PointsEarnedBadge state="points earned" />);
-      const circle = container.querySelector('.points-earned-badge__circle--progress');
-      expect(circle).toBeInTheDocument();
+      const progressCircle = container.querySelector('.points-earned-badge__progress-circle');
+      expect(progressCircle).toBeInTheDocument();
     });
 
-    it('applies empty border for no points state', () => {
+    it('does not show progress circle for no points state', () => {
       const { container } = render(<PointsEarnedBadge state="no points" />);
-      const circle = container.querySelector('.points-earned-badge__circle--empty');
-      expect(circle).toBeInTheDocument();
+      const progressCircle = container.querySelector('.points-earned-badge__progress-circle');
+      expect(progressCircle).not.toBeInTheDocument();
     });
 
     it('applies purple subtitle for reward expiring state', () => {

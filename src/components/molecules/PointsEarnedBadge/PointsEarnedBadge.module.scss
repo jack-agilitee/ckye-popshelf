@@ -13,14 +13,18 @@
     border-radius: $radius-circle;
     background-color: $white;
     flex-shrink: 0;
-    
-    &--progress {
-      border: $points-earned-border-width solid $purple-primary;
-    }
-    
-    &--empty {
-      border: $points-earned-border-width solid $points-earned-purple-lightest;
-    }
+  }
+  
+  &__progress-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &__progress-circle {
+    transition: stroke-dashoffset 0.3s ease;
   }
   
   &__circle-content {
@@ -62,23 +66,15 @@
   }
   
   &__reward-wrapper {
-    width: $points-earned-circle-size;
-    height: $points-earned-circle-size;
+    width: $reward-badge-size; // Use the actual reward size
+    height: $reward-badge-size;
     flex-shrink: 0;
   }
   
   &__reward {
     width: 100%;
     
-    // Override Reward component styles to fit our layout
-    .reward {
-      width: 100%;
-      
-      &__badge {
-        width: $points-earned-circle-size;
-        height: $points-earned-circle-size;
-      }
-    }
+    // No need to override sizes - let Reward use its natural size
   }
   
   &__content {

@@ -105,6 +105,14 @@ const PointsEarnedBadge: React.FC<PointsEarnedBadgeProps> = ({
   // Determine border color based on state
   const hasProgressBorder = state !== 'no points' && !showReward;
 
+  // Calculate progress percentage for circular progress
+  const progressPercentage = (() => {
+    if (showReward || state === 'no points') return 0;
+    // Assuming 1000 points = 100% (full reward)
+    const maxPoints = 1000;
+    return Math.min((displayPoints / maxPoints) * 100, 100);
+  })();
+
   // Determine subtitle color
   const isSubtitlePurple = state === 'reward expiring';
 
@@ -122,7 +130,34 @@ const PointsEarnedBadge: React.FC<PointsEarnedBadgeProps> = ({
           />
         </div>
       ) : (
-        <div className={`${styles['points-earned-badge__circle']} ${hasProgressBorder ? styles['points-earned-badge__circle--progress'] : styles['points-earned-badge__circle--empty']}`}>
+        <div className={styles['points-earned-badge__circle']}>
+          {/* SVG Progress Circle */}
+          <svg className={styles['points-earned-badge__progress-svg']} viewBox="0 0 88 88">
+            {/* Background circle */}
+            <circle
+              cx="44"
+              cy="44"
+              r="38"
+              fill="none"
+              stroke="#E5D4ED"
+              strokeWidth="12"
+            />
+            {/* Progress circle */}
+            {hasProgressBorder && (
+              <circle
+                cx="44"
+                cy="44"
+                r="38"
+                fill="none"
+                stroke="#87189D"
+                strokeWidth="12"
+                strokeDasharray={`${2 * Math.PI * 38}`}
+                strokeDashoffset={`${2 * Math.PI * 38 * (1 - progressPercentage / 100)}`}
+                transform="rotate(-90 44 44)"
+                className={styles['points-earned-badge__progress-circle']}
+              />
+            )}
+          </svg>
           <div className={styles['points-earned-badge__circle-content']}>
             <div className={styles['points-earned-badge__points']}>{displayPoints}</div>
             <div className={styles['points-earned-badge__label']}>points</div>
