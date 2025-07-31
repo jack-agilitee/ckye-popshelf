@@ -25,6 +25,7 @@ import ProductOptions from '@/components/molecules/ProductOptions/ProductOptions
 import FulfillmentCard, { FulfillmentType } from '@/components/molecules/FulfillmentCard/FulfillmentCard';
 import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
+import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2852,6 +2853,94 @@ const router = useRouter();
     />
   ))}
 </div>`}</pre>
+            </div>
+          </section>
+
+          {/* BadgeEarned Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>BadgeEarned</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/BadgeEarned
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '600px', margin: '0 auto' }}>
+                {/* Default usage */}
+                <BadgeEarned />
+                
+                {/* Custom messages */}
+                <BadgeEarned 
+                  title="Great job John!"
+                  subtitle="You completed your first order!"
+                />
+                
+                {/* Achievement examples */}
+                <BadgeEarned 
+                  title="Loyalty Champion!"
+                  subtitle="You've made 10 purchases this month"
+                />
+                
+                {/* Birthday badge */}
+                <BadgeEarned 
+                  title="Happy Birthday!"
+                  subtitle="You earned a special birthday badge"
+                />
+                
+                {/* Long text example */}
+                <BadgeEarned 
+                  title="Outstanding Achievement Unlocked!"
+                  subtitle="You've been recognized as one of our most valued customers this year"
+                />
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
+
+// Default usage
+<BadgeEarned />
+
+// Custom title and subtitle
+<BadgeEarned 
+  title="Great job John!"
+  subtitle="You completed your first order!"
+/>
+
+// Achievement examples
+<BadgeEarned 
+  title="Loyalty Champion!"
+  subtitle="You've made 10 purchases this month"
+/>
+
+// Birthday badge
+<BadgeEarned 
+  title="Happy Birthday!"
+  subtitle="You earned a special birthday badge"
+/>
+
+// With custom className
+<BadgeEarned 
+  title="Achievement Unlocked!"
+  subtitle="You've reached Gold status"
+  className="my-custom-class"
+/>
+
+// In a notification system
+function AchievementNotification({ achievement }) {
+  return (
+    <div className="notification-container">
+      <BadgeEarned 
+        title={achievement.title}
+        subtitle={achievement.description}
+      />
+      <button onClick={dismissNotification}>
+        Dismiss
+      </button>
+    </div>
+  );
+}`}</pre>
             </div>
           </section>
 
