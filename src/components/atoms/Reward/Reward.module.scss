@@ -1,0 +1,130 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $reward-gap;
+  width: $reward-badge-size;
+
+  &__badge {
+    width: $reward-badge-size;
+    height: $reward-badge-size;
+    background-color: $purple-primary;
+    border-radius: $reward-badge-radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $reward-gap;
+  }
+
+  // Dollar styles
+  &__dollar-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  &__dollar-sign {
+    font-family: $font-family-sofia;
+    font-size: $reward-dollar-sign-size;
+    font-weight: $font-weight-semibold;
+    color: $white;
+  }
+
+  &__dollar-amount {
+    font-family: $font-family-sofia;
+    font-size: $reward-amount-size;
+    font-weight: 900; // Black weight
+    color: $white;
+  }
+
+  // Percent styles
+  &__percent-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  &__percent-number {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-number-size;
+    font-weight: 900; // Black weight
+    letter-spacing: $reward-percent-letter-spacing;
+    color: $white;
+
+    &--employee {
+      font-size: $reward-percent-number-size-employee;
+    }
+  }
+
+  &__percent-sign {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-sign-size;
+    font-weight: $font-weight-semibold;
+    color: $white;
+  }
+
+  &__off-text {
+    font-family: $font-family-sofia;
+    font-size: $reward-percent-off-size;
+    font-weight: $font-weight-semibold;
+    color: $white;
+  }
+
+  // Icon
+  &__icon {
+    width: $reward-icon-size;
+    height: $reward-icon-size;
+    filter: brightness(0) invert(1); // Make icon white
+  }
+
+  // Label
+  &__label {
+    font-family: $font-family-sofia;
+    font-size: $reward-label-size;
+    font-weight: 900; // Black weight
+    color: $black;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+
+    &--birthday {
+      font-family: $font-family-sofia;
+      font-size: $reward-label-size;
+      font-weight: 900; // Black weight
+      color: $black;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: $reward-label-line-height;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  // Expiration
+  &__expiry {
+    font-family: $font-family-sofia;
+    font-size: $reward-expiry-size;
+    font-weight: $font-weight-normal;
+    color: $gray-700;
+    text-align: center;
+
+    &--alert {
+      font-family: $font-family-sofia;
+      font-size: $reward-expiry-size;
+      font-weight: $font-weight-semibold;
+      color: $color-error;
+      text-align: center;
+    }
+  }
+}

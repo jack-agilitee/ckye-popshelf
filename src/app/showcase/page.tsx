@@ -12,6 +12,7 @@ import Checkbox from '@/components/atoms/Checkbox/Checkbox';
 import ReviewStars from '@/components/atoms/ReviewStars/ReviewStars';
 import ContentBlock from '@/components/atoms/ContentBlock/ContentBlock';
 import LoyaltyProgressBar from '@/components/atoms/LoyaltyProgressBar/LoyaltyProgressBar';
+import Reward from '@/components/atoms/Reward/Reward';
 import QuantitySelector from '@/components/molecules/QuantitySelector/QuantitySelector';
 import CategoryTile from '@/components/molecules/CategoryTile/CategoryTile';
 import OrderStatus, { OrderStatusType } from '@/components/molecules/OrderStatus/OrderStatus';
@@ -1539,6 +1540,160 @@ const tiers = [
     <LoyaltyProgressBar points={tier.points} />
   </div>
 ))}`}</pre>
+              </div>
+            </div>
+
+            {/* Reward Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>Reward</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/atoms/Reward
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                  {/* Main variations */}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Main Variations</h4>
+                    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      {/* Dollar */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward dollar={5} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Dollar ($5)</p>
+                      </div>
+                      
+                      {/* Percentage */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward percentage={15} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Percentage (15%)</p>
+                      </div>
+                      
+                      {/* Employee */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward isEmployee={true} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Employee (30%)</p>
+                      </div>
+                      
+                      {/* Birthday */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward percentage={20} isBirthday={true} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Birthday</p>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward icon="/loyalty/cake.svg" />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Icon</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Expiration examples */}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Expiration States</h4>
+                    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      {/* Normal expiration */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward dollar={10} expirationDate={new Date('2024-12-31')} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Normal Expiration</p>
+                      </div>
+                      
+                      {/* Expiring soon */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward dollar={5} expirationDate={(() => {
+                          const date = new Date();
+                          date.setDate(date.getDate() + 3);
+                          return date;
+                        })()} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Expiring Soon</p>
+                      </div>
+                      
+                      {/* No expiration */}
+                      <div style={{ textAlign: 'center' }}>
+                        <Reward percentage={25} hideExpiration={true} />
+                        <p style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>No Expiration</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import Reward from '@/components/atoms/Reward/Reward';
+
+// Dollar reward
+<Reward dollar={5} />
+
+// Percentage reward
+<Reward percentage={15} />
+
+// Employee discount (always 30%)
+<Reward isEmployee={true} />
+
+// Birthday reward with percentage
+<Reward percentage={20} isBirthday={true} />
+
+// Icon reward
+<Reward icon="/loyalty/cake.svg" />
+
+// With expiration date
+<Reward 
+  dollar={10} 
+  expirationDate={new Date('2024-12-31')}
+/>
+
+// Expiring soon (within 5 days - shows red)
+const expiringDate = new Date();
+expiringDate.setDate(expiringDate.getDate() + 3);
+<Reward 
+  dollar={5} 
+  expirationDate={expiringDate}
+/>
+
+// Hide label or expiration
+<Reward 
+  percentage={25}
+  hideLabel={true}
+  hideExpiration={true}
+/>
+
+// Custom label
+<Reward 
+  dollar={5}
+  label="SPECIAL"
+/>
+
+// Rewards list implementation
+const rewards = [
+  { type: 'dollar', value: 5, expires: new Date('2024-12-31') },
+  { type: 'percent', value: 15, expires: new Date('2024-08-15') },
+  { type: 'employee' },
+  { type: 'birthday', value: 20 },
+  { type: 'icon', path: '/loyalty/cake.svg' }
+];
+
+return (
+  <div className="rewards-grid">
+    {rewards.map((reward, index) => {
+      switch (reward.type) {
+        case 'dollar':
+          return <Reward key={index} dollar={reward.value} expirationDate={reward.expires} />;
+        case 'percent':
+          return <Reward key={index} percentage={reward.value} expirationDate={reward.expires} />;
+        case 'employee':
+          return <Reward key={index} isEmployee={true} />;
+        case 'birthday':
+          return <Reward key={index} percentage={reward.value} isBirthday={true} />;
+        case 'icon':
+          return <Reward key={index} icon={reward.path} />;
+        default:
+          return null;
+      }
+    })}
+  </div>
+);`}</pre>
               </div>
             </div>
           </section>
