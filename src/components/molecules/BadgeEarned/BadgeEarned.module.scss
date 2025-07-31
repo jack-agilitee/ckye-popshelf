@@ -1,0 +1,82 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.badge-earned {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4; // 16px gap from Figma
+  padding: $spacing-2; // 8px padding from Figma
+  background-color: $white;
+  border-radius: $radius-md; // 8px radius from Figma
+  overflow: hidden;
+
+  &__badge-container {
+    position: relative;
+    width: $badge-earned-badge-size;
+    height: $badge-earned-badge-size;
+    flex-shrink: 0;
+  }
+
+  &__burst {
+    position: absolute;
+    width: $badge-earned-burst-size;
+    height: $badge-earned-burst-size;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  &__badge {
+    position: relative;
+    width: $badge-earned-badge-size;
+    height: $badge-earned-badge-size;
+    border-radius: $radius-circle;
+    border: $badge-earned-badge-border solid $purple-primary;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &__badge-gradient {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      $white 0%,
+      $purple-secondary 96.875%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: $badge-earned-icon-size;
+    height: $badge-earned-icon-size;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1; // 4px gap from Figma
+    flex: 1;
+  }
+
+  &__title {
+    font-family: $font-family-sofia;
+    font-size: $font-size-xl; // 20px from Figma
+    font-weight: $font-weight-semibold;
+    line-height: $badge-earned-title-line-height; // 26px from Figma
+    color: $purple-primary;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: $font-family-sofia;
+    font-size: $font-size-lg; // 18px from Figma
+    font-weight: $font-weight-normal;
+    line-height: 1; // 18px line-height matches font size
+    color: $black;
+    margin: 0;
+  }
+}

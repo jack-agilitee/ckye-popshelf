@@ -11,6 +11,7 @@ $purple-light: #A542B3; // Lighter shade
 $purple-lightest: #F3E9FB;
 
 // Secondary Colors
+$purple-secondary: #C691D0; // Secondary purple from Figma
 $pink-primary: #E91E63;
 $pink-light: #F8BBD0;
 $orange-primary: #FF6B35;
@@ -452,3 +453,10 @@ $reward-label-size: 24px; // "REWARD" label size (from Figma)
 $reward-label-line-height: 24px; // Label line height for multi-line (from Figma)
 $reward-expiry-size: 12px; // Expiration text size (from Figma)
 $reward-icon-size: 72px; // Icon size in icon variant (from Figma)
+
+// BadgeEarned Component
+$badge-earned-badge-size: 80px; // Badge circle size (from Figma)
+$badge-earned-badge-border: 7.273px; // Badge border width (from Figma)
+$badge-earned-icon-size: 48px; // Icon size inside badge (from Figma)
+$badge-earned-burst-size: 94.546px; // Star burst decoration size (from Figma)
+$badge-earned-title-line-height: 26px; // Title line height (from Figma)
