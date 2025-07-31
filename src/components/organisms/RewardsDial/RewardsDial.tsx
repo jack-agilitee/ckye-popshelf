@@ -40,6 +40,12 @@ const RewardsDial: React.FC<RewardsDialProps> = ({
       <div className={styles['rewards-dial__circle']}>
         {/* SVG Progress Circle */}
         <svg className={styles['rewards-dial__svg']} viewBox="0 0 240 240">
+          <defs>
+            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#87189D" />
+              <stop offset="100%" stopColor="#B366BD" />
+            </linearGradient>
+          </defs>
           {/* Background circle - always light purple */}
           <circle
             cx="120"
@@ -49,14 +55,14 @@ const RewardsDial: React.FC<RewardsDialProps> = ({
             stroke="#E5D4ED"
             strokeWidth="32"
           />
-          {/* Progress circle - purple for actual progress */}
+          {/* Progress circle - purple gradient for actual progress */}
           {hasProgress && (
             <circle
               cx="120"
               cy="120"
               r={radius}
               fill="none"
-              stroke="#87189D"
+              stroke="url(#progressGradient)"
               strokeWidth="32"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
@@ -97,7 +103,9 @@ const RewardsDial: React.FC<RewardsDialProps> = ({
       )}
 
       {state === 'error' && (
-        <div className={styles['rewards-dial__error-text']}>loading error</div>
+        <div className={styles['rewards-dial__status']}>
+          <p>loading error</p>
+        </div>
       )}
     </div>
   );

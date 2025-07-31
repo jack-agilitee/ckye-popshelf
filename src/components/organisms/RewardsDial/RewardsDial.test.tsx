@@ -82,7 +82,7 @@ describe('RewardsDial', () => {
       expect(screen.getByText('!')).toBeInTheDocument();
       expect(screen.queryByText('points')).not.toBeInTheDocument();
       expect(screen.getByText('loading error')).toBeInTheDocument();
-      expect(screen.queryByText('points away')).not.toBeInTheDocument();
+      expect(screen.queryByText('from a reward')).not.toBeInTheDocument();
       expect(screen.queryByText('every')).not.toBeInTheDocument();
     });
 
