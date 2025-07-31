@@ -1,0 +1,166 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.points-chart {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2; // 8px gap from Figma
+  width: 100%;
+  font-family: $font-family-sofia;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-2; // 8px gap
+    width: 100%;
+  }
+
+  &__title {
+    @include body-medium; // Base 16px
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-medium; // Sofia Pro Medium
+    color: $black; // #000000 from Figma
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__dropdown {
+    flex-shrink: 0;
+    width: $points-chart-dropdown-width; // 176px width from Figma
+  }
+
+  &__dropdown-field {
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    position: relative;
+  }
+
+  &__y-axis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: $points-chart-height; // Chart height from Figma
+    flex-shrink: 0;
+    width: $points-chart-y-axis-width; // Width for Y-axis labels
+    padding: 4px; // Padding for label containers
+  }
+
+  &__y-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px; // 4px padding from Figma
+    border-radius: 100px; // Rounded background
+    width: $points-chart-y-axis-width; // 32px width container
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-normal; // Sofia Pro Regular
+    font-size: $points-chart-label-size; // 9px from Figma
+    line-height: normal;
+    color: $gray-500; // #989AA5 from Figma mapped to closest variable
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &__chart {
+    flex: 1;
+    height: $points-chart-height; // 200px height from Figma
+    min-width: 0;
+    position: relative;
+  }
+
+  &__x-axis {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    padding-left: $points-chart-y-axis-width; // Offset for Y-axis width
+  }
+
+  &__x-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $points-chart-x-label-padding; // 4px vertical, 8px horizontal padding
+    border-radius: 100px; // Rounded background
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-medium; // Sofia Pro Medium
+    font-size: $points-chart-label-size; // 9px from Figma
+    line-height: normal;
+    color: $gray-500; // #989AA5 from Figma
+    text-align: center;
+    white-space: nowrap;
+    min-width: 24px; // Minimum width for consistency
+    flex-shrink: 0;
+
+    // Current/active month styling
+    &--current {
+      background-color: $purple-primary; // #87189D from Figma
+      color: $white; // #FFFFFF from Figma
+    }
+  }
+
+  &__summary {
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-medium; // Sofia Pro Medium
+    font-size: $points-chart-summary-size; // 14px from Figma
+    line-height: normal;
+    color: $purple-primary; // #87189D from Figma
+    text-align: center;
+    width: 100%;
+    margin-top: $spacing-1; // Small top margin for spacing
+  }
+
+  // Responsive adjustments
+  @media (max-width: $breakpoint-sm) {
+    &__header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacing-3; // 12px gap on mobile
+    }
+
+    &__title {
+      text-align: center;
+    }
+
+    &__dropdown {
+      width: 100%;
+    }
+
+    &__x-axis {
+      padding-left: $points-chart-y-axis-mobile-width; // Reduced offset on mobile
+    }
+
+    &__y-axis {
+      width: $points-chart-y-axis-mobile-width; // Narrower Y-axis on mobile
+    }
+
+    &__y-label {
+      width: $points-chart-y-axis-mobile-width;
+      font-size: $points-chart-label-mobile-size; // Slightly smaller on mobile
+    }
+
+    &__x-label {
+      padding: $points-chart-x-label-mobile-padding; // Smaller padding on mobile
+      font-size: $points-chart-label-mobile-size; // Slightly smaller on mobile
+      min-width: 20px;
+    }
+
+    &__summary {
+      font-size: $points-chart-summary-mobile-size; // 12px on mobile
+    }
+  }
+}

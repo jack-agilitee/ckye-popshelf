@@ -494,3 +494,17 @@ $rewards-dial-dollar-amount-size: 64px; // Dollar amount size (from Figma)
 $rewards-dial-inner-shadow: 0px -4px 8px 0px inset rgba(0, 0, 0, 0.1), 0px 4px 8px 0px inset rgba(0, 0, 0, 0.1); // Dial inner shadow (from Figma)
 $rewards-dial-conversion-letter-spacing: -1px; // Letter spacing for conversion text (from Figma)
 $rewards-dial-gradient-end: #B366BD; // Gradient end color for progress (from Figma)
+
+// PointsChart Component
+$points-chart-height: 200px; // Chart area height (from Figma)
+$points-chart-y-axis-width: 32px; // Y-axis labels width (from Figma)
+$points-chart-y-axis-mobile-width: 24px; // Y-axis labels width on mobile
+$points-chart-dropdown-width: 176px; // Dropdown field width (from Figma)
+$points-chart-label-size: 9px; // Axis label font size (from Figma)
+$points-chart-label-mobile-size: 8px; // Axis label font size on mobile
+$points-chart-x-label-padding: 4px 8px; // X-axis label padding (from Figma)
+$points-chart-x-label-mobile-padding: 2px 4px; // X-axis label padding on mobile
+$points-chart-summary-size: 14px; // Summary text size (from Figma)
+$points-chart-summary-mobile-size: 12px; // Summary text size on mobile
+$points-chart-gradient-start: rgba(135, 24, 157, 0.4); // Chart gradient start (from Figma)
+$points-chart-gradient-end: rgba(135, 24, 157, 0.1); // Chart gradient end (from Figma)
