@@ -27,6 +27,7 @@ import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/Fe
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
 import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
+import PointsEarningCart from '@/components/molecules/PointsEarningCart/PointsEarningCart';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -3056,6 +3057,80 @@ type PointsEarnedBadgeState =
   | 'reward available' // $5 reward
   | 'birthday'         // 15% OFF
   | 'employee'         // 30% OFF`}</pre>
+            </div>
+          </section>
+
+          {/* PointsEarningCart Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>PointsEarningCart</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/PointsEarningCart
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px', margin: '0 auto' }}>
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>Authenticated State</h4>
+                  <PointsEarningCart points={180} isAuthenticated={true} />
+                </div>
+                
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>Unauthenticated State</h4>
+                  <PointsEarningCart 
+                    points={180} 
+                    isAuthenticated={false}
+                    onSignIn={() => alert('Sign In clicked!')}
+                    onRegister={() => alert('Register clicked!')}
+                  />
+                </div>
+
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>Different Point Values</h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <PointsEarningCart points={50} isAuthenticated={true} />
+                    <PointsEarningCart points={250} isAuthenticated={true} />
+                    <PointsEarningCart points={1000} isAuthenticated={false} onSignIn={() => {}} onRegister={() => {}} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import PointsEarningCart from '@/components/molecules/PointsEarningCart/PointsEarningCart';
+
+// Authenticated state
+<PointsEarningCart 
+  points={180} 
+  isAuthenticated={true} 
+/>
+
+// Unauthenticated state with callbacks
+<PointsEarningCart 
+  points={180} 
+  isAuthenticated={false}
+  onSignIn={() => handleSignIn()}
+  onRegister={() => handleRegister()}
+/>
+
+// With custom className
+<PointsEarningCart 
+  points={250} 
+  isAuthenticated={false}
+  className="custom-banner" 
+  onSignIn={handleSignIn}
+  onRegister={handleRegister}
+/>
+
+// Props interface
+interface PointsEarningCartProps {
+  points: number;              // Required - number of points to earn
+  isAuthenticated?: boolean;   // Optional - defaults to false
+  onSignIn?: () => void;       // Optional - sign in callback
+  onRegister?: () => void;     // Optional - register callback
+  className?: string;          // Optional - additional CSS classes
+}`}</pre>
             </div>
           </section>
 

@@ -1,0 +1,107 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.points-earning-cart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $points-earning-cart-padding;
+  border-radius: $radius-md;
+  border: $points-earning-cart-border-width solid $purple-primary;
+  background: linear-gradient(135deg, rgba(135, 24, 157, 0.1) 0%, rgba(135, 24, 157, 0.05) 100%);
+  box-shadow: $points-earning-cart-shadow;
+  gap: $spacing-4;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-4;
+    width: 100%;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    width: $points-earning-cart-logo-width;
+    height: $points-earning-cart-logo-height;
+  }
+
+  &__logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__message {
+    @include body-medium;
+    color: $purple-primary;
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-semibold;
+    margin: 0 0 0 0;
+    line-height: $line-height-snug;
+  }
+
+  &__points {
+    font-size: $points-earning-cart-points-size;
+    font-weight: $font-weight-extrabold;
+    font-family: $font-family-sofia;
+  }
+
+  &__subtitle {
+    @include body-medium;
+    color: $purple-primary;
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+    line-height: $line-height-snug;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-4;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    height: $points-earning-cart-button-height;
+    width: $points-earning-cart-button-width;
+    padding: $points-earning-cart-button-padding-y $points-earning-cart-button-padding-x;
+    border-radius: $points-earning-cart-button-radius;
+    font-size: $points-earning-cart-button-text-size;
+    font-family: $font-family-sofia;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    line-height: 15px;
+
+    // Override button styles for this specific use case
+    &.button--secondary {
+      background-color: $white;
+      border: 1px solid $purple-primary;
+      color: $purple-primary;
+
+      &:hover {
+        background-color: rgba($purple-primary, 0.1);
+      }
+    }
+
+    &.button--primary {
+      background-color: $purple-primary;
+      border: 1px solid $purple-primary;
+      color: $white;
+
+      &:hover {
+        background-color: darken($purple-primary, 5%);
+      }
+    }
+  }
+}
