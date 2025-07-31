@@ -17,7 +17,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: $reward-gap;
+    box-sizing: border-box;
+
+    &--icon {
+      justify-content: center;
+    }
   }
 
   // Dollar styles
@@ -25,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    line-height: 0.8;
   }
 
   &__dollar-sign {
@@ -33,6 +37,7 @@
     font-size: $reward-dollar-sign-size;
     font-weight: $font-weight-semibold;
     color: $white;
+    line-height: 1;
   }
 
   &__dollar-amount {
@@ -40,6 +45,7 @@
     font-size: $reward-amount-size;
     font-weight: 900; // Black weight
     color: $white;
+    line-height: 1;
   }
 
   // Percent styles
@@ -47,7 +53,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    line-height: 0.8;
+    margin-bottom: -8px;
   }
 
   &__percent-number {
@@ -56,6 +63,7 @@
     font-weight: 900; // Black weight
     letter-spacing: $reward-percent-letter-spacing;
     color: $white;
+    line-height: 1;
 
     &--employee {
       font-size: $reward-percent-number-size-employee;
@@ -67,6 +75,7 @@
     font-size: $reward-percent-sign-size;
     font-weight: $font-weight-semibold;
     color: $white;
+    line-height: 1;
   }
 
   &__off-text {
@@ -74,6 +83,7 @@
     font-size: $reward-percent-off-size;
     font-weight: $font-weight-semibold;
     color: $white;
+    line-height: 1;
   }
 
   // Icon

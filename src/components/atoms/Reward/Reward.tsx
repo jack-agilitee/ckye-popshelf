@@ -86,7 +86,7 @@ const Reward: React.FC<RewardProps> = ({
       return (
         <>
           <div className={styles['reward__percent-line']}>
-            <span className={styles['reward__percent-number--employee']}>30</span>
+            <span className={`${styles['reward__percent-number']} ${styles['reward__percent-number--employee']}`}>30</span>
             <span className={styles['reward__percent-sign']}>%</span>
           </div>
           <div className={styles['reward__off-text']}>OFF</div>
@@ -144,7 +144,7 @@ const Reward: React.FC<RewardProps> = ({
 
   return (
     <div className={`${styles.reward} ${className || ''}`}>
-      <div className={styles['reward__badge']}>
+      <div className={`${styles['reward__badge']} ${icon ? styles['reward__badge--icon'] : ''}`}>
         {renderBadgeContent()}
       </div>
       {renderLabel()}
