@@ -32,27 +32,17 @@
     width: $badge-earned-badge-size;
     height: $badge-earned-badge-size;
     border-radius: $radius-circle;
-    border: $badge-earned-badge-border solid $purple-primary;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  &__badge-gradient {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at center,
-      $white 0%,
-      $purple-secondary 96.875%
-    );
+    background-color: $purple-primary;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
   }
 
   &__icon {
     width: $badge-earned-icon-size;
     height: $badge-earned-icon-size;
+    filter: brightness(0) invert(1); // Make icon white
   }
 
   &__content {
