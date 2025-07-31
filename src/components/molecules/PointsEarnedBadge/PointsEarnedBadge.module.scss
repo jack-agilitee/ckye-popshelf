@@ -1,0 +1,133 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.points-earned-badge {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2; // 8px gap from Figma
+  
+  &__circle {
+    position: relative;
+    width: $points-earned-circle-size;
+    height: $points-earned-circle-size;
+    border-radius: $radius-circle;
+    background-color: $white;
+    flex-shrink: 0;
+  }
+  
+  &__progress-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &__progress-circle {
+    transition: stroke-dashoffset 0.3s ease;
+  }
+  
+  &__circle-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-1; // 4px gap
+    padding-top: $spacing-2; // 8px top padding from Figma
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: $radius-circle;
+      box-shadow: $points-earned-inner-shadow-light, $points-earned-inner-shadow-dark;
+      pointer-events: none;
+    }
+  }
+  
+  &__points {
+    font-family: $font-family-sofia;
+    font-size: $points-earned-points-size;
+    font-weight: 900; // Black weight
+    color: $black;
+    line-height: 1;
+    z-index: 1;
+  }
+  
+  &__label {
+    font-family: $font-family-sofia;
+    font-size: $points-earned-label-size;
+    font-weight: $font-weight-normal;
+    color: $gray-700;
+    line-height: 1;
+    z-index: 1;
+  }
+  
+  &__reward-wrapper {
+    width: $reward-badge-size; // Use the actual reward size
+    height: $reward-badge-size;
+    flex-shrink: 0;
+  }
+  
+  &__reward {
+    width: 100%;
+    
+    // No need to override sizes - let Reward use its natural size
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2; // 8px gap between elements
+    flex: 1;
+  }
+  
+  &__title {
+    font-family: $font-family-sofia;
+    font-size: $font-size-xl; // 20px from Figma
+    font-weight: $font-weight-semibold;
+    color: $black;
+    line-height: 1;
+    margin: 0;
+  }
+  
+  &__subtitle {
+    font-family: $font-family-sofia;
+    font-size: $font-size-xs; // 12px from Figma
+    font-weight: $font-weight-normal;
+    color: $gray-700;
+    line-height: 1;
+    margin: 0;
+    
+    &--purple {
+      font-weight: $font-weight-medium;
+      color: $purple-primary;
+    }
+  }
+  
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: $points-earned-button-height;
+    padding: 0 $points-earned-button-padding-x;
+    background-color: $purple-primary;
+    color: $white;
+    font-family: $font-family-sofia;
+    font-size: $points-earned-button-text-size;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    line-height: 1.25;
+    align-self: flex-start;
+    
+    &--app {
+      border-radius: $points-earned-button-radius-app;
+    }
+    
+    &--web {
+      border-radius: $points-earned-button-radius-web;
+    }
+  }
+}

@@ -26,6 +26,7 @@ import FulfillmentCard, { FulfillmentType } from '@/components/molecules/Fulfill
 import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
+import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2941,6 +2942,119 @@ function AchievementNotification({ achievement }) {
     </div>
   );
 }`}</pre>
+            </div>
+          </section>
+
+          {/* PointsEarnedBadge Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>PointsEarnedBadge</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/PointsEarnedBadge
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '800px', margin: '0 auto' }}>
+                {/* Points States */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                  <PointsEarnedBadge />
+                  <PointsEarnedBadge state="no points" />
+                  <PointsEarnedBadge state="download" />
+                  <PointsEarnedBadge state="800 pts" />
+                </div>
+                
+                {/* Reward States */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                  <PointsEarnedBadge state="reward available" />
+                  <PointsEarnedBadge state="reward expiring" />
+                  <PointsEarnedBadge state="birthday" />
+                  <PointsEarnedBadge state="employee" />
+                </div>
+                
+                {/* Type Variants */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <h4 style={{ margin: '16px 0 8px 0', color: '#87189d' }}>Platform Variants</h4>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                    <PointsEarnedBadge state="points earned" type="app" />
+                    <PointsEarnedBadge state="points earned" type="web" />
+                  </div>
+                </div>
+                
+                {/* Custom Content */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <h4 style={{ margin: '16px 0 8px 0', color: '#87189d' }}>Custom Content</h4>
+                  <PointsEarnedBadge 
+                    title="Welcome!"
+                    subtitle="Start earning points with your first purchase"
+                    points={0}
+                    state="no points"
+                  />
+                  <PointsEarnedBadge 
+                    title="Amazing progress!"
+                    subtitle="You've earned 100 points this week"
+                    points={650}
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
+
+// Default usage (points earned state)
+<PointsEarnedBadge />
+
+// Different states
+<PointsEarnedBadge state="no points" />
+<PointsEarnedBadge state="800 pts" />
+<PointsEarnedBadge state="reward available" />
+<PointsEarnedBadge state="reward expiring" />
+<PointsEarnedBadge state="birthday" />
+<PointsEarnedBadge state="employee" />
+
+// Platform variants
+<PointsEarnedBadge type="app" />  // Rounded button
+<PointsEarnedBadge type="web" />  // Less rounded button
+
+// Custom content
+<PointsEarnedBadge 
+  state="points earned"
+  title="Great job!"
+  subtitle="You're earning points fast!"
+  points={450}
+/>
+
+// State-based usage in loyalty dashboard
+function LoyaltyWidget({ user }) {
+  const getState = () => {
+    if (user.points === 0) return 'no points';
+    if (user.points >= 800 && user.points < 1000) return '800 pts';
+    if (user.hasReward) return 'reward available';
+    if (user.rewardExpiring) return 'reward expiring';
+    if (user.isBirthMonth) return 'birthday';
+    if (user.isEmployee) return 'employee';
+    return 'points earned';
+  };
+
+  return (
+    <PointsEarnedBadge 
+      state={getState()}
+      points={user.points}
+    />
+  );
+}
+
+// All available states
+type PointsEarnedBadgeState = 
+  | 'points earned'    // Points with progress border
+  | 'no points'        // 0 with light border
+  | 'reward expiring'  // $5 with expiring message
+  | 'download'         // Points earned message
+  | '800 pts'          // Close to reward message
+  | 'reward available' // $5 reward
+  | 'birthday'         // 15% OFF
+  | 'employee'         // 30% OFF`}</pre>
             </div>
           </section>
 
