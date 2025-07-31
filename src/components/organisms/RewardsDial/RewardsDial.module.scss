@@ -54,7 +54,7 @@
     font-size: $rewards-dial-points-size;
     font-weight: 900; // Black weight
     color: $black;
-    line-height: 0;
+    line-height: 1;
     text-align: center;
   }
   
@@ -63,7 +63,7 @@
     font-size: $rewards-dial-points-label-size;
     font-weight: $font-weight-normal;
     color: $gray-700;
-    line-height: 0;
+    line-height: 1;
     text-align: center;
   }
   
@@ -121,6 +121,6 @@
     font-weight: $font-weight-semibold;
     color: $black;
     text-align: center;
-    line-height: 0;
+    line-height: normal;
   }
 }

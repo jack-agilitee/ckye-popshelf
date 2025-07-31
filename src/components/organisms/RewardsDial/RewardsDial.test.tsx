@@ -113,17 +113,18 @@ describe('RewardsDial', () => {
       const { container } = render(<RewardsDial points={500} />);
       const progressCircles = container.querySelectorAll('circle');
       expect(progressCircles).toHaveLength(2); // Background + progress
-      expect(progressCircles[0]).toHaveAttribute('stroke', '#87189D');
+      expect(progressCircles[0]).toHaveAttribute('stroke', '#E5D4ED'); // Background always light purple
+      expect(progressCircles[1]).toHaveAttribute('stroke', '#87189D'); // Progress is purple
     });
 
-    it('renders empty circle for no points', () => {
+    it('renders only background circle for no points', () => {
       const { container } = render(<RewardsDial state="no-points" />);
       const progressCircles = container.querySelectorAll('circle');
       expect(progressCircles).toHaveLength(1); // Only background
       expect(progressCircles[0]).toHaveAttribute('stroke', '#E5D4ED');
     });
 
-    it('renders empty circle for negative points', () => {
+    it('renders only background circle for negative points', () => {
       const { container } = render(<RewardsDial points={-10} state="negative" />);
       const progressCircles = container.querySelectorAll('circle');
       expect(progressCircles).toHaveLength(1); // Only background
@@ -133,7 +134,9 @@ describe('RewardsDial', () => {
     it('renders full progress at 100%', () => {
       const { container } = render(<RewardsDial points={1000} />);
       const progressCircles = container.querySelectorAll('circle');
-      expect(progressCircles).toHaveLength(1); // Only filled circle, no overlay
+      expect(progressCircles).toHaveLength(2); // Background + full progress
+      expect(progressCircles[0]).toHaveAttribute('stroke', '#E5D4ED');
+      expect(progressCircles[1]).toHaveAttribute('stroke', '#87189D');
     });
   });
 

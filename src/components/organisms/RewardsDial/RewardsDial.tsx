@@ -40,23 +40,23 @@ const RewardsDial: React.FC<RewardsDialProps> = ({
       <div className={styles['rewards-dial__circle']}>
         {/* SVG Progress Circle */}
         <svg className={styles['rewards-dial__svg']} viewBox="0 0 240 240">
-          {/* Background circle */}
+          {/* Background circle - always light purple */}
           <circle
             cx="120"
             cy="120"
             r={radius}
             fill="none"
-            stroke={hasProgress ? '#87189D' : '#E5D4ED'}
+            stroke="#E5D4ED"
             strokeWidth="32"
           />
-          {/* Progress circle overlay for partial progress */}
-          {hasProgress && progressPercentage < 100 && (
+          {/* Progress circle - purple for actual progress */}
+          {hasProgress && (
             <circle
               cx="120"
               cy="120"
               r={radius}
               fill="none"
-              stroke="#E5D4ED"
+              stroke="#87189D"
               strokeWidth="32"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
