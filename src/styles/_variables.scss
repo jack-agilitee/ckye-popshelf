@@ -481,3 +481,15 @@ $points-earned-percent-employee-size: 52.8px; // Employee percentage size (from 
 $points-earned-percent-letter-spacing: -5px; // Letter spacing for percent (from Figma)
 $points-earned-inner-shadow-light: 0px -2.933px 5.867px 0px inset rgba(0, 0, 0, 0.05); // Light inner shadow
 $points-earned-inner-shadow-dark: 0px 2.933px 5.867px 0px inset rgba(0, 0, 0, 0.1); // Dark inner shadow
+
+// RewardsDial Component
+$rewards-dial-size: 240px; // Main dial size (from Figma)
+$rewards-dial-border-width: 32px; // Border thickness for progress (from Figma)
+$rewards-dial-points-size: 80px; // Points number font size (from Figma)
+$rewards-dial-points-label-size: 14px; // "points" label size (from Figma)
+$rewards-dial-status-size: 30px; // "X points away" text size (from Figma)
+$rewards-dial-conversion-size: 24px; // "every $1 = 10 points" text size (from Figma)
+$rewards-dial-dollar-sign-size: 32px; // Dollar sign size (from Figma)
+$rewards-dial-dollar-amount-size: 64px; // Dollar amount size (from Figma)
+$rewards-dial-inner-shadow: 0px -4px 8px 0px inset rgba(0, 0, 0, 0.1), 0px 4px 8px 0px inset rgba(0, 0, 0, 0.1); // Dial inner shadow (from Figma)
+$rewards-dial-conversion-letter-spacing: -1px; // Letter spacing for conversion text (from Figma)

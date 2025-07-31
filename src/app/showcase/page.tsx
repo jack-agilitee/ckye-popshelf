@@ -33,6 +33,7 @@ import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProdu
 import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyStatusCard';
 import LoyaltyMainPanel from '@/components/organisms/LoyaltyMainPanel/LoyaltyMainPanel';
 import RedeemPerk from '@/components/organisms/RedeemPerk/RedeemPerk';
+import RewardsDial from '@/components/organisms/RewardsDial/RewardsDial';
 import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
@@ -3643,6 +3644,117 @@ function CustomReward({ reward, onDismiss }) {
       onClose={onDismiss}
     />
   );
+}`}</pre>
+              </div>
+            </div>
+
+            {/* RewardsDial Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>RewardsDial</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/organisms/RewardsDial
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center' }}>
+                  {/* Points States Grid */}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Points Progress States</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={50} />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>50 points</p>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={292} />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>292 points</p>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={827} />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>827 points</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Special States */}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Special States</h4>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial state="no-points" />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>No Points</p>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial state="error" />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>Error State</p>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={-15} state="negative" />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>Negative Points</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Custom Threshold Example */}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Custom Reward Threshold</h4>
+                    <div style={{ display: 'flex', gap: '32px', justifyContent: 'center' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={300} rewardThreshold={500} />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>300/500 points</p>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <RewardsDial points={450} rewardThreshold={500} />
+                        <p style={{ marginTop: '8px', fontSize: '14px', color: '#666' }}>450/500 points</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import RewardsDial from '@/components/organisms/RewardsDial/RewardsDial';
+
+// Basic usage
+<RewardsDial points={292} />
+
+// Different states
+<RewardsDial state="no-points" />
+<RewardsDial state="error" />
+<RewardsDial points={-15} state="negative" />
+
+// Custom reward threshold
+<RewardsDial 
+  points={500} 
+  rewardThreshold={750} 
+/>
+
+// In a loyalty dashboard
+function LoyaltyDashboard({ user }) {
+  return (
+    <div className="dashboard">
+      <RewardsDial 
+        points={user.loyaltyPoints}
+        state={user.hasError ? 'error' : 'points'}
+      />
+      <h2>{user.name}'s Rewards Progress</h2>
+    </div>
+  );
+}
+
+// With loading states
+function PointsDisplay({ isLoading, points, error }) {
+  if (error) {
+    return <RewardsDial state="error" />;
+  }
+  
+  if (isLoading) {
+    return <RewardsDial points={0} state="no-points" />;
+  }
+  
+  return <RewardsDial points={points} />;
 }`}</pre>
               </div>
             </div>
