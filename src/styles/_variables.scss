@@ -183,6 +183,7 @@ $shadow-radio-selector: 0 4px 16px 0 rgba(55, 58, 64, 0.15); // From RadioButton
 $shadow-text-field: 0px 4px 16px 0px rgba(55, 58, 64, 0.15); // From TextField Figma
 $shadow-featured-desktop: 12px 12px 24px 0px #E6E6E6; // From FeaturedContentBlock desktop
 $shadow-featured-mobile: 0px 3px 10px 0px rgba(55, 58, 64, 0.15); // From FeaturedContentBlock mobile
+$shadow-points-earned-cart: 0px -1px 6px 0px rgba(0, 0, 0, 0.2); // From PointsEarnedCart Figma
 
 // Z-Index
 // -------
@@ -481,6 +482,13 @@ $points-earned-percent-employee-size: 52.8px; // Employee percentage size (from 
 $points-earned-percent-letter-spacing: -5px; // Letter spacing for percent (from Figma)
 $points-earned-inner-shadow-light: 0px -2.933px 5.867px 0px inset rgba(0, 0, 0, 0.05); // Light inner shadow
 $points-earned-inner-shadow-dark: 0px 2.933px 5.867px 0px inset rgba(0, 0, 0, 0.1); // Dark inner shadow
+
+// PointsEarnedCart Component
+$points-earned-cart-border-width: 2px; // Border width (from Figma)
+$points-earned-cart-padding: $spacing-4; // 16px padding (from Figma)
+$points-earned-cart-text-size: $font-size-base; // 16px for regular text (from Figma)
+$points-earned-cart-points-size: $font-size-2xl; // 24px for points number (from Figma)
+$points-earned-cart-max-width: 335px; // Max width based on mobile design
 
 // RewardsDial Component
 $rewards-dial-size: 240px; // Main dial size (from Figma)

@@ -1,0 +1,30 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.points-earned-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $points-earned-cart-padding;
+  max-width: $points-earned-cart-max-width;
+  border-radius: $radius-md;
+  border: $points-earned-cart-border-width solid $purple-primary;
+  background: linear-gradient(135deg, rgba(135, 24, 157, 0.1) 0%, rgba(135, 24, 157, 0.05) 100%);
+  box-shadow: $shadow-points-earned-cart;
+
+  &__text {
+    @include body-medium;
+    color: $purple-primary;
+    font-family: $font-family-sofia;
+    text-align: center;
+    margin: 0;
+    line-height: $line-height-normal;
+  }
+
+  &__points {
+    font-size: $points-earned-cart-points-size;
+    font-weight: $font-weight-extrabold;
+    font-family: $font-family-sofia;
+  }
+}
