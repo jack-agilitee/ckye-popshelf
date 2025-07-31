@@ -27,6 +27,7 @@ import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/Fe
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
 import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
+import PointsEarnedCart from '@/components/molecules/PointsEarnedCart/PointsEarnedCart';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -3056,6 +3057,63 @@ type PointsEarnedBadgeState =
   | 'reward available' // $5 reward
   | 'birthday'         // 15% OFF
   | 'employee'         // 30% OFF`}</pre>
+            </div>
+          </section>
+
+          {/* PointsEarnedCart Component */}
+          <section className={styles.showcase__componentShowcase}>
+            <div className={styles.showcase__componentHeader}>
+              <h3 className={styles.showcase__componentName}>PointsEarnedCart</h3>
+              <span className={styles.showcase__componentPath}>
+                components/molecules/PointsEarnedCart
+              </span>
+            </div>
+            
+            <div className={styles.showcase__componentDemo}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '400px', margin: '0 auto' }}>
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>Standard Usage</h4>
+                  <PointsEarnedCart points={180} />
+                </div>
+                
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>Different Point Values</h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <PointsEarnedCart points={50} />
+                    <PointsEarnedCart points={250} />
+                    <PointsEarnedCart points={1000} />
+                  </div>
+                </div>
+
+                <div>
+                  <h4 style={{ fontSize: '14px', fontWeight: 600, color: '#666', marginBottom: '12px' }}>With Custom Styling</h4>
+                  <PointsEarnedCart points={320} className="custom-points-banner" />
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.showcase__componentCode}>
+              <pre>{`import PointsEarnedCart from '@/components/molecules/PointsEarnedCart/PointsEarnedCart';
+
+// Basic usage
+<PointsEarnedCart points={180} />
+
+// Different point values
+<PointsEarnedCart points={50} />
+<PointsEarnedCart points={250} />
+<PointsEarnedCart points={1000} />
+
+// With custom className
+<PointsEarnedCart 
+  points={320} 
+  className="custom-points-banner" 
+/>
+
+// Props interface
+interface PointsEarnedCartProps {
+  points: number;        // Required - number of points earned
+  className?: string;    // Optional - additional CSS classes
+}`}</pre>
             </div>
           </section>
 
