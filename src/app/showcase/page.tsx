@@ -35,6 +35,7 @@ import LoyaltyStatusCard from '@/components/organisms/LoyaltyStatusCard/LoyaltyS
 import LoyaltyMainPanel from '@/components/organisms/LoyaltyMainPanel/LoyaltyMainPanel';
 import RedeemPerk from '@/components/organisms/RedeemPerk/RedeemPerk';
 import RewardsDial from '@/components/organisms/RewardsDial/RewardsDial';
+import PointsChart from '@/components/organisms/PointsChart/PointsChart';
 import Header from '@/components/templates/Header/Header';
 import Footer from '@/components/templates/Footer/Footer';
 import styles from './page.module.scss';
@@ -3814,6 +3815,132 @@ function PointsDisplay({ isLoading, points, error }) {
   
   return <RewardsDial points={points} />;
 }`}</pre>
+              </div>
+            </div>
+
+            {/* PointsChart Component */}
+            <div className={styles.showcase__componentShowcase}>
+              <div className={styles.showcase__componentHeader}>
+                <h3 className={styles.showcase__componentName}>PointsChart</h3>
+                <span className={styles.showcase__componentPath}>
+                  components/organisms/PointsChart
+                </span>
+              </div>
+              
+              <div className={styles.showcase__componentDemo}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center' }}>
+                  {/* Monthly View */}
+                  <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Monthly View</h4>
+                    <PointsChart 
+                      data={[
+                        { month: 'Jun', points: 350, displayMonth: 'Jun' },
+                        { month: 'Jul', points: 450, displayMonth: 'Jul' },
+                        { month: 'Aug', points: 320, displayMonth: 'Aug' },
+                        { month: 'Sep', points: 580, displayMonth: 'Sep' },
+                        { month: 'Oct', points: 290, displayMonth: 'Oct' },
+                      ]}
+                      totalPoints={1990}
+                      period="monthly"
+                    />
+                  </div>
+
+                  {/* Yearly View */}
+                  <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Yearly View</h4>
+                    <PointsChart 
+                      data={[
+                        { month: 'Jan', points: 200, displayMonth: 'Jan' },
+                        { month: 'Feb', points: 250, displayMonth: 'Feb' },
+                        { month: 'Mar', points: 180, displayMonth: 'Mar' },
+                        { month: 'Apr', points: 320, displayMonth: 'Apr' },
+                        { month: 'May', points: 410, displayMonth: 'May' },
+                        { month: 'Jun', points: 350, displayMonth: 'Jun' },
+                        { month: 'Jul', points: 450, displayMonth: 'Jul' },
+                        { month: 'Aug', points: 320, displayMonth: 'Aug' },
+                        { month: 'Sep', points: 580, displayMonth: 'Sep' },
+                        { month: 'Oct', points: 290, displayMonth: 'Oct' },
+                        { month: 'Nov', points: 190, displayMonth: 'Nov' },
+                        { month: 'Dec', points: 220, displayMonth: 'Dec' },
+                      ]}
+                      totalPoints={3760}
+                      period="yearly"
+                    />
+                  </div>
+
+                  {/* Interactive Example */}
+                  <div style={{ width: '100%', maxWidth: '600px' }}>
+                    <h4 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>Interactive Example</h4>
+                    <PointsChart 
+                      data={[
+                        { month: 'Jun', points: 350, displayMonth: 'Jun' },
+                        { month: 'Jul', points: 450, displayMonth: 'Jul' },
+                        { month: 'Aug', points: 320, displayMonth: 'Aug' },
+                        { month: 'Sep', points: 580, displayMonth: 'Sep' },
+                        { month: 'Oct', points: 290, displayMonth: 'Oct' },
+                      ]}
+                      totalPoints={1990}
+                      period="monthly"
+                      onPeriodChange={(period) => console.log('Period changed to:', period)}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.showcase__componentCode}>
+                <pre>{`import PointsChart from '@/components/organisms/PointsChart/PointsChart';
+
+// Basic usage with monthly data
+const monthlyData = [
+  { month: 'Jun', points: 350, displayMonth: 'Jun' },
+  { month: 'Jul', points: 450, displayMonth: 'Jul' },
+  { month: 'Aug', points: 320, displayMonth: 'Aug' },
+  { month: 'Sep', points: 580, displayMonth: 'Sep' },
+  { month: 'Oct', points: 290, displayMonth: 'Oct' },
+];
+
+<PointsChart 
+  data={monthlyData}
+  totalPoints={1990}
+  period="monthly"
+/>
+
+// With period change handler
+const [period, setPeriod] = useState('monthly');
+const [chartData, setChartData] = useState(monthlyData);
+
+const handlePeriodChange = (newPeriod) => {
+  setPeriod(newPeriod);
+  setChartData(newPeriod === 'monthly' ? monthlyData : yearlyData);
+};
+
+<PointsChart 
+  data={chartData}
+  totalPoints={period === 'monthly' ? 1990 : 3760}
+  period={period}
+  onPeriodChange={handlePeriodChange}
+/>
+
+// In a loyalty dashboard
+function LoyaltyDashboard({ userPoints, chartData }) {
+  return (
+    <div className="dashboard">
+      <h2>Your Points History</h2>
+      <PointsChart 
+        data={chartData}
+        totalPoints={userPoints.total}
+        period="yearly"
+      />
+    </div>
+  );
+}
+
+// With custom styling
+<PointsChart 
+  data={chartData}
+  totalPoints={2400}
+  className="custom-points-chart"
+/>`}</pre>
               </div>
             </div>
           </section>
