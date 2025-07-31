@@ -29,15 +29,13 @@ const BadgeEarned: React.FC<BadgeEarnedProps> = ({
           className={styles['badge-earned__burst']}
         />
         <div className={styles['badge-earned__badge']}>
-          <div className={styles['badge-earned__badge-gradient']}>
-            <Image 
-              src="/loyalty/badge.svg"
-              alt=""
-              width={48}
-              height={48}
-              className={styles['badge-earned__icon']}
-            />
-          </div>
+          <Image 
+            src="/loyalty/badge.svg"
+            alt=""
+            width={48}
+            height={48}
+            className={styles['badge-earned__icon']}
+          />
         </div>
       </div>
       <div className={styles['badge-earned__content']}>
