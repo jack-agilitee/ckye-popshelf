@@ -1,140 +1,220 @@
 # PointsEarned Component
 
-A component that displays the number of points that will be earned upon order completion with a circular green icon.
+## Overview
+The PointsEarned component is a molecule-level component that displays loyalty points status and rewards with various states. It features a circular progress indicator for points or displays rewards (dollar amounts or percentages) based on the state.
 
 ## Figma Reference
-
-- URL: https://www.figma.com/design/ri9qaHxsKZS00ViWhwguiP/%F0%9F%93%8C-PS-Components?node-id=34-402&m=dev
-- Node ID: 34:402
+- URL: https://www.figma.com/design/ri9qaHxsKZS00ViWhwguiP/%F0%9F%93%8C-PS-Components?node-id=595-5546&m=dev
+- Node ID: 595-5546
 
 ## Usage
 
 ```tsx
-import PointsEarned from '@/components/atoms/PointsEarned/PointsEarned';
+import PointsEarned from '@/components/molecules/PointsEarned/PointsEarned';
 
-// Basic usage
-<PointsEarned points={100} />
+// Default usage (points earned state)
+<PointsEarned />
 
-// With custom styling
-<PointsEarned points={250} className="my-custom-class" />
+// No points state
+<PointsEarned state="no points" />
 
-// Zero points
-<PointsEarned points={0} />
+// Close to reward
+<PointsEarned state="800 pts" />
 
-// Large number of points
-<PointsEarned points={5000} />
+// Reward states
+<PointsEarned state="reward available" />
+<PointsEarned state="reward expiring" />
+
+// Special rewards
+<PointsEarned state="birthday" />
+<PointsEarned state="employee" />
+
+// Custom content
+<PointsEarned 
+  state="points earned"
+  title="Great job!"
+  subtitle="You're earning points fast!"
+  points={450}
+/>
+
+// Web variant (less rounded button)
+<PointsEarned type="web" />
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `points` | `number` | Required | The number of points to display |
-| `className` | `string` | - | Additional CSS class names |
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `state` | `PointsEarnedState` | No | `'points earned'` | The state/variant of the component |
+| `type` | `'app' \| 'web'` | No | `'app'` | The platform variant (affects button styling) |
+| `title` | `string` | No | Based on state | Custom title text |
+| `subtitle` | `string` | No | Based on state | Custom subtitle text |
+| `points` | `number` | No | Based on state | Custom points value |
+| `className` | `string` | No | - | Additional CSS classes |
 
-## Design Specifications
-
-- **Container**:
-  - Background: #FFFFFF (white)
-  - Border radius: 4px
-  - Shadow: 0px 4px 16px rgba(55,58,64,0.15)
-  - Padding: 16px
-  - Gap: 12px between icon and text
-
-- **Icon**:
-  - Size: 46.88x48px
-  - Color: #3AB44A (green)
-  - Shape: Ellipse/Circle
-
-- **Typography**:
-  - Font: Avenir Medium, 16px
-  - Color: #1F1F1F (black-primary)
-  - Line height: 20px (1.25)
-  - Points number centered in icon
-  - Text: "points will be earned when you complete this order."
-
-## Component Details
-
-The PointsEarned component is an informational atom that displays:
-- A green circular icon with the points number centered inside
-- Descriptive text explaining when points will be earned
-- Clean white card design with subtle shadow
-
-## Accessibility
-
-- SVG icon marked with `aria-hidden="true"` as it's decorative
-- Semantic HTML structure with proper text content
-- Supports keyboard navigation when focused
-
-## Testing
-
-Run tests with:
-
-```bash
-npm run test -- PointsEarned.test.tsx
+### PointsEarnedState Type
+```typescript
+type PointsEarnedState = 
+  | 'points earned'    // Shows points with purple border
+  | 'no points'        // Shows 0 with light purple border
+  | 'reward expiring'  // Shows $5 reward with expiring message
+  | 'download'         // Shows points earned message
+  | '800 pts'          // Shows "you're so close!" message
+  | 'reward available' // Shows $5 reward
+  | 'birthday'         // Shows 15% OFF birthday reward
+  | 'employee'         // Shows 30% OFF employee discount
 ```
 
-Test coverage includes:
-- Correct points number rendering
-- Zero and large number handling
-- Custom className application
-- SVG icon presence
-- Component structure validation
+## States and Their Default Content
+
+### Points States
+- **points earned**: 292 points, "points earned!", progress border
+- **no points**: 0 points, "keep going!", light border
+- **download**: 330 points, "points earned!"
+- **800 pts**: 800 points, "you're so close!", "Just 200 points left..."
+
+### Reward States
+- **reward available**: $5 reward, "you have a reward!"
+- **reward expiring**: $5 reward, "reward expiring" (purple subtitle)
+- **birthday**: 15% OFF, "birthday reward!"
+- **employee**: 30% OFF, "thankful for you!"
+
+## Features
+
+- **Dynamic Display**: Shows either points circle or reward based on state
+- **Progress Border**: Purple border for active points states, light purple for empty
+- **Automatic Content**: Smart defaults for title and subtitle based on state
+- **Platform Variants**: Different button border radius for app vs web
+- **Reward Integration**: Uses the Reward atom component for reward states
+- **Inner Shadow**: Subtle depth effect on the points circle
+
+## Design System Integration
+
+The component uses the following design system tokens:
+
+### Colors
+- Circle border (progress): `$purple-primary` (#87189D)
+- Circle border (empty): `$points-earned-purple-lightest` (#E5D4ED)
+- Background: `$white` (#FFFFFF)
+- Title text: `$black` (#000000)
+- Subtitle text: `$gray-700` (#636363)
+- Subtitle (expiring): `$purple-primary` (#87189D)
+- Button background: `$purple-primary` (#87189D)
+- Button text: `$white` (#FFFFFF)
+
+### Typography
+- Points number: Sofia Pro Black, 28px
+- Points label: Sofia Pro Regular, 8px
+- Title: Sofia Pro Semi Bold, 20px
+- Subtitle: Sofia Pro Regular/Medium, 12px
+- Button: Sofia Pro Medium, 12px, uppercase
+
+### Spacing
+- Gap between circle and content: `$spacing-2` (8px)
+- Gap between text elements: `$spacing-2` (8px)
+- Circle padding top: `$spacing-2` (8px)
+
+### Dimensions
+- Circle size: 88px × 88px
+- Circle border: 12px
+- Button height: 32px
+- Button padding: 0 24px
+- Button radius (app): 24px
+- Button radius (web): 8px
 
 ## Examples
 
-### In a Checkout Flow
-
+### Loyalty Dashboard Integration
 ```tsx
-function CheckoutSummary() {
-  const { subtotal, pointsEarned } = useCheckout();
+function LoyaltyDashboard({ user }) {
+  const getPointsState = () => {
+    if (user.points === 0) return 'no points';
+    if (user.points >= 800 && user.points < 1000) return '800 pts';
+    if (user.hasReward) return 'reward available';
+    return 'points earned';
+  };
 
   return (
-    <div className="checkout-summary">
-      <h2>Order Summary</h2>
-      <div className="subtotal">Subtotal: ${subtotal}</div>
-      <PointsEarned points={pointsEarned} />
-      <button>Complete Order</button>
+    <div className="dashboard">
+      <PointsEarned 
+        state={getPointsState()}
+        points={user.points}
+      />
     </div>
   );
 }
 ```
 
-### With Conditional Display
-
+### Special Events
 ```tsx
-function OrderRewards() {
-  const { isRewardsMember, calculatedPoints } = useRewards();
-
-  if (!isRewardsMember) {
-    return <JoinRewardsPrompt />;
+function SpecialOffers({ user }) {
+  if (user.isBirthMonth) {
+    return <PointsEarned state="birthday" />;
   }
-
-  return (
-    <div className="order-rewards">
-      <PointsEarned points={calculatedPoints} />
-      <p className="rewards-balance">
-        Current balance: {currentPoints} points
-      </p>
-    </div>
-  );
+  
+  if (user.isEmployee) {
+    return <PointsEarned state="employee" />;
+  }
+  
+  return <PointsEarned state="points earned" points={user.points} />;
 }
 ```
 
-### In a Cart Summary
-
+### Custom Messages
 ```tsx
-function CartSummary() {
-  const { items, totalPoints } = useCart();
+// Welcome message for new users
+<PointsEarned 
+  state="no points"
+  title="Welcome to PopShelf!"
+  subtitle="Start shopping to earn your first points"
+/>
 
-  return (
-    <aside className="cart-summary">
-      <h3>Cart ({items.length} items)</h3>
-      {totalPoints > 0 && (
-        <PointsEarned points={totalPoints} />
-      )}
-      <CheckoutButton />
-    </aside>
-  );
-}
+// Achievement message
+<PointsEarned 
+  state="points earned"
+  title="Amazing progress!"
+  subtitle="You've earned 100 points this week"
+  points={650}
+/>
+
+// Milestone reached
+<PointsEarned 
+  state="800 pts"
+  title="Almost there!"
+  subtitle="One more purchase to unlock your reward"
+/>
 ```
+
+## Component Composition
+
+The PointsEarned component uses the Reward atom component for displaying rewards (dollar amounts and percentages). This ensures consistency with the standalone Reward component while adapting it to fit within the PointsEarned layout.
+
+## Accessibility
+
+- Uses semantic HTML with appropriate heading levels (h3 for title)
+- Button is marked up as a div since it's non-interactive
+- Color contrast meets WCAG AA standards
+- Text is readable and hierarchical
+
+## Testing
+
+The component includes comprehensive tests covering:
+- All state variations
+- Type variations (app/web)
+- Custom prop overrides
+- Visual states (borders, colors)
+- Component structure and BEM classes
+- Reward component integration
+
+To run tests:
+```bash
+npm test src/components/molecules/PointsEarned/PointsEarned.test.tsx
+```
+
+## Implementation Notes
+
+- The component is not interactive (button is display-only)
+- Reward states automatically use the Reward atom component
+- Points values have smart defaults but can be overridden
+- The inner shadow effect uses CSS pseudo-elements for depth
+- Border changes based on state (progress vs empty)
