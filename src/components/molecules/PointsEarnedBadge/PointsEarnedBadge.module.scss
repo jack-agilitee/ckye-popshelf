@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.points-earned {
+.points-earned-badge {
   display: flex;
   align-items: center;
   gap: $spacing-2; // 8px gap from Figma

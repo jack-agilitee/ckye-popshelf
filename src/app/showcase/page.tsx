@@ -26,7 +26,7 @@ import FulfillmentCard, { FulfillmentType } from '@/components/molecules/Fulfill
 import FeaturedContentBlock from '@/components/molecules/FeaturedContentBlock/FeaturedContentBlock';
 import ArticleCard from '@/components/molecules/ArticleCard/ArticleCard';
 import BadgeEarned from '@/components/molecules/BadgeEarned/BadgeEarned';
-import PointsEarned from '@/components/molecules/PointsEarned/PointsEarned';
+import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
 import OrderSummary from '@/components/organisms/OrderSummary/OrderSummary';
 import ProductDetails from '@/components/organisms/ProductDetails/ProductDetails';
 import RelatedProducts from '@/components/organisms/RelatedProducts/RelatedProducts';
@@ -2945,12 +2945,12 @@ function AchievementNotification({ achievement }) {
             </div>
           </section>
 
-          {/* PointsEarned Component */}
+          {/* PointsEarnedBadge Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>PointsEarned</h3>
+              <h3 className={styles.showcase__componentName}>PointsEarnedBadge</h3>
               <span className={styles.showcase__componentPath}>
-                components/molecules/PointsEarned
+                components/molecules/PointsEarnedBadge
               </span>
             </div>
             
@@ -2958,39 +2958,39 @@ function AchievementNotification({ achievement }) {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '800px', margin: '0 auto' }}>
                 {/* Points States */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-                  <PointsEarned />
-                  <PointsEarned state="no points" />
-                  <PointsEarned state="download" />
-                  <PointsEarned state="800 pts" />
+                  <PointsEarnedBadge />
+                  <PointsEarnedBadge state="no points" />
+                  <PointsEarnedBadge state="download" />
+                  <PointsEarnedBadge state="800 pts" />
                 </div>
                 
                 {/* Reward States */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-                  <PointsEarned state="reward available" />
-                  <PointsEarned state="reward expiring" />
-                  <PointsEarned state="birthday" />
-                  <PointsEarned state="employee" />
+                  <PointsEarnedBadge state="reward available" />
+                  <PointsEarnedBadge state="reward expiring" />
+                  <PointsEarnedBadge state="birthday" />
+                  <PointsEarnedBadge state="employee" />
                 </div>
                 
                 {/* Type Variants */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <h4 style={{ margin: '16px 0 8px 0', color: '#87189d' }}>Platform Variants</h4>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-                    <PointsEarned state="points earned" type="app" />
-                    <PointsEarned state="points earned" type="web" />
+                    <PointsEarnedBadge state="points earned" type="app" />
+                    <PointsEarnedBadge state="points earned" type="web" />
                   </div>
                 </div>
                 
                 {/* Custom Content */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <h4 style={{ margin: '16px 0 8px 0', color: '#87189d' }}>Custom Content</h4>
-                  <PointsEarned 
+                  <PointsEarnedBadge 
                     title="Welcome!"
                     subtitle="Start earning points with your first purchase"
                     points={0}
                     state="no points"
                   />
-                  <PointsEarned 
+                  <PointsEarnedBadge 
                     title="Amazing progress!"
                     subtitle="You've earned 100 points this week"
                     points={650}
@@ -3000,25 +3000,25 @@ function AchievementNotification({ achievement }) {
             </div>
             
             <div className={styles.showcase__componentCode}>
-              <pre>{`import PointsEarned from '@/components/molecules/PointsEarned/PointsEarned';
+              <pre>{`import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
 
 // Default usage (points earned state)
-<PointsEarned />
+<PointsEarnedBadge />
 
 // Different states
-<PointsEarned state="no points" />
-<PointsEarned state="800 pts" />
-<PointsEarned state="reward available" />
-<PointsEarned state="reward expiring" />
-<PointsEarned state="birthday" />
-<PointsEarned state="employee" />
+<PointsEarnedBadge state="no points" />
+<PointsEarnedBadge state="800 pts" />
+<PointsEarnedBadge state="reward available" />
+<PointsEarnedBadge state="reward expiring" />
+<PointsEarnedBadge state="birthday" />
+<PointsEarnedBadge state="employee" />
 
 // Platform variants
-<PointsEarned type="app" />  // Rounded button
-<PointsEarned type="web" />  // Less rounded button
+<PointsEarnedBadge type="app" />  // Rounded button
+<PointsEarnedBadge type="web" />  // Less rounded button
 
 // Custom content
-<PointsEarned 
+<PointsEarnedBadge 
   state="points earned"
   title="Great job!"
   subtitle="You're earning points fast!"
@@ -3038,7 +3038,7 @@ function LoyaltyWidget({ user }) {
   };
 
   return (
-    <PointsEarned 
+    <PointsEarnedBadge 
       state={getState()}
       points={user.points}
     />
@@ -3046,7 +3046,7 @@ function LoyaltyWidget({ user }) {
 }
 
 // All available states
-type PointsEarnedState = 
+type PointsEarnedBadgeState = 
   | 'points earned'    // Points with progress border
   | 'no points'        // 0 with light border
   | 'reward expiring'  // $5 with expiring message

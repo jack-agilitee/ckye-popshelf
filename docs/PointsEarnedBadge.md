@@ -1,7 +1,7 @@
-# PointsEarned Component
+# PointsEarnedBadge Component
 
 ## Overview
-The PointsEarned component is a molecule-level component that displays loyalty points status and rewards with various states. It features a circular progress indicator for points or displays rewards (dollar amounts or percentages) based on the state.
+The PointsEarnedBadge component is a molecule-level component that displays loyalty points status and rewards with various states. It features a circular progress indicator for points or displays rewards (dollar amounts or percentages) based on the state.
 
 ## Figma Reference
 - URL: https://www.figma.com/design/ri9qaHxsKZS00ViWhwguiP/%F0%9F%93%8C-PS-Components?node-id=595-5546&m=dev
@@ -10,27 +10,27 @@ The PointsEarned component is a molecule-level component that displays loyalty p
 ## Usage
 
 ```tsx
-import PointsEarned from '@/components/molecules/PointsEarned/PointsEarned';
+import PointsEarnedBadge from '@/components/molecules/PointsEarnedBadge/PointsEarnedBadge';
 
 // Default usage (points earned state)
-<PointsEarned />
+<PointsEarnedBadge />
 
 // No points state
-<PointsEarned state="no points" />
+<PointsEarnedBadge state="no points" />
 
 // Close to reward
-<PointsEarned state="800 pts" />
+<PointsEarnedBadge state="800 pts" />
 
 // Reward states
-<PointsEarned state="reward available" />
-<PointsEarned state="reward expiring" />
+<PointsEarnedBadge state="reward available" />
+<PointsEarnedBadge state="reward expiring" />
 
 // Special rewards
-<PointsEarned state="birthday" />
-<PointsEarned state="employee" />
+<PointsEarnedBadge state="birthday" />
+<PointsEarnedBadge state="employee" />
 
 // Custom content
-<PointsEarned 
+<PointsEarnedBadge 
   state="points earned"
   title="Great job!"
   subtitle="You're earning points fast!"
@@ -38,23 +38,23 @@ import PointsEarned from '@/components/molecules/PointsEarned/PointsEarned';
 />
 
 // Web variant (less rounded button)
-<PointsEarned type="web" />
+<PointsEarnedBadge type="web" />
 ```
 
 ## Props
 
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
-| `state` | `PointsEarnedState` | No | `'points earned'` | The state/variant of the component |
+| `state` | `PointsEarnedBadgeState` | No | `'points earned'` | The state/variant of the component |
 | `type` | `'app' \| 'web'` | No | `'app'` | The platform variant (affects button styling) |
 | `title` | `string` | No | Based on state | Custom title text |
 | `subtitle` | `string` | No | Based on state | Custom subtitle text |
 | `points` | `number` | No | Based on state | Custom points value |
 | `className` | `string` | No | - | Additional CSS classes |
 
-### PointsEarnedState Type
+### PointsEarnedBadgeState Type
 ```typescript
-type PointsEarnedState = 
+type PointsEarnedBadgeState = 
   | 'points earned'    // Shows points with purple border
   | 'no points'        // Shows 0 with light purple border
   | 'reward expiring'  // Shows $5 reward with expiring message
@@ -136,7 +136,7 @@ function LoyaltyDashboard({ user }) {
 
   return (
     <div className="dashboard">
-      <PointsEarned 
+      <PointsEarnedBadge 
         state={getPointsState()}
         points={user.points}
       />
@@ -149,28 +149,28 @@ function LoyaltyDashboard({ user }) {
 ```tsx
 function SpecialOffers({ user }) {
   if (user.isBirthMonth) {
-    return <PointsEarned state="birthday" />;
+    return <PointsEarnedBadge state="birthday" />;
   }
   
   if (user.isEmployee) {
-    return <PointsEarned state="employee" />;
+    return <PointsEarnedBadge state="employee" />;
   }
   
-  return <PointsEarned state="points earned" points={user.points} />;
+  return <PointsEarnedBadge state="points earned" points={user.points} />;
 }
 ```
 
 ### Custom Messages
 ```tsx
 // Welcome message for new users
-<PointsEarned 
+<PointsEarnedBadge 
   state="no points"
   title="Welcome to PopShelf!"
   subtitle="Start shopping to earn your first points"
 />
 
 // Achievement message
-<PointsEarned 
+<PointsEarnedBadge 
   state="points earned"
   title="Amazing progress!"
   subtitle="You've earned 100 points this week"
@@ -178,7 +178,7 @@ function SpecialOffers({ user }) {
 />
 
 // Milestone reached
-<PointsEarned 
+<PointsEarnedBadge 
   state="800 pts"
   title="Almost there!"
   subtitle="One more purchase to unlock your reward"
@@ -187,7 +187,7 @@ function SpecialOffers({ user }) {
 
 ## Component Composition
 
-The PointsEarned component uses the Reward atom component for displaying rewards (dollar amounts and percentages). This ensures consistency with the standalone Reward component while adapting it to fit within the PointsEarned layout.
+The PointsEarnedBadge component uses the Reward atom component for displaying rewards (dollar amounts and percentages). This ensures consistency with the standalone Reward component while adapting it to fit within the PointsEarnedBadge layout.
 
 ## Accessibility
 
@@ -208,7 +208,7 @@ The component includes comprehensive tests covering:
 
 To run tests:
 ```bash
-npm test src/components/molecules/PointsEarned/PointsEarned.test.tsx
+npm test src/components/molecules/PointsEarnedBadge/PointsEarnedBadge.test.tsx
 ```
 
 ## Implementation Notes

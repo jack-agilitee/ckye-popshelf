@@ -1,8 +1,8 @@
 import React from 'react';
 import Reward from '@/components/atoms/Reward/Reward';
-import styles from './PointsEarned.module.scss';
+import styles from './PointsEarnedBadge.module.scss';
 
-export type PointsEarnedState = 
+export type PointsEarnedBadgeState = 
   | 'points earned'
   | 'no points'
   | 'reward expiring'
@@ -12,13 +12,13 @@ export type PointsEarnedState =
   | 'birthday'
   | 'employee';
 
-export type PointsEarnedType = 'app' | 'web';
+export type PointsEarnedBadgeType = 'app' | 'web';
 
-interface PointsEarnedProps {
+interface PointsEarnedBadgeProps {
   /** The state/variant of the component */
-  state?: PointsEarnedState;
+  state?: PointsEarnedBadgeState;
   /** The type/platform variant */
-  type?: PointsEarnedType;
+  type?: PointsEarnedBadgeType;
   /** Title text */
   title?: string;
   /** Subtitle text */
@@ -29,7 +29,7 @@ interface PointsEarnedProps {
   className?: string;
 }
 
-const PointsEarned: React.FC<PointsEarnedProps> = ({
+const PointsEarnedBadge: React.FC<PointsEarnedBadgeProps> = ({
   state = 'points earned',
   type = 'app',
   title,
@@ -109,33 +109,33 @@ const PointsEarned: React.FC<PointsEarnedProps> = ({
   const isSubtitlePurple = state === 'reward expiring';
 
   return (
-    <div className={`${styles['points-earned']} ${className || ''}`}>
+    <div className={`${styles['points-earned-badge']} ${className || ''}`}>
       {showReward ? (
-        <div className={styles['points-earned__reward-wrapper']}>
+        <div className={styles['points-earned-badge__reward-wrapper']}>
           <Reward
             dollar={state === 'reward expiring' || state === 'reward available' ? 5 : undefined}
             percentage={state === 'birthday' ? 15 : state === 'employee' ? 30 : undefined}
             isEmployee={state === 'employee'}
             hideLabel={true}
             hideExpiration={true}
-            className={styles['points-earned__reward']}
+            className={styles['points-earned-badge__reward']}
           />
         </div>
       ) : (
-        <div className={`${styles['points-earned__circle']} ${hasProgressBorder ? styles['points-earned__circle--progress'] : styles['points-earned__circle--empty']}`}>
-          <div className={styles['points-earned__circle-content']}>
-            <div className={styles['points-earned__points']}>{displayPoints}</div>
-            <div className={styles['points-earned__label']}>points</div>
+        <div className={`${styles['points-earned-badge__circle']} ${hasProgressBorder ? styles['points-earned-badge__circle--progress'] : styles['points-earned-badge__circle--empty']}`}>
+          <div className={styles['points-earned-badge__circle-content']}>
+            <div className={styles['points-earned-badge__points']}>{displayPoints}</div>
+            <div className={styles['points-earned-badge__label']}>points</div>
           </div>
         </div>
       )}
       
-      <div className={styles['points-earned__content']}>
-        <h3 className={styles['points-earned__title']}>{displayTitle}</h3>
-        <p className={`${styles['points-earned__subtitle']} ${isSubtitlePurple ? styles['points-earned__subtitle--purple'] : ''}`}>
+      <div className={styles['points-earned-badge__content']}>
+        <h3 className={styles['points-earned-badge__title']}>{displayTitle}</h3>
+        <p className={`${styles['points-earned-badge__subtitle']} ${isSubtitlePurple ? styles['points-earned-badge__subtitle--purple'] : ''}`}>
           {displaySubtitle}
         </p>
-        <div className={`${styles['points-earned__button']} ${styles[`points-earned__button--${type}`]}`}>
+        <div className={`${styles['points-earned-badge__button']} ${styles[`points-earned-badge__button--${type}`]}`}>
           EXPLORE REWARDS
         </div>
       </div>
@@ -143,4 +143,4 @@ const PointsEarned: React.FC<PointsEarnedProps> = ({
   );
 };
 
-export default PointsEarned;
+export default PointsEarnedBadge;
