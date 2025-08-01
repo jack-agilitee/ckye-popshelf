@@ -631,7 +631,7 @@ const ShowcasePage = () => {
               {/* Button Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Button</h3>
+                  <h3 className={styles.showcase__componentName}>Button (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/Button
                   </span>
@@ -708,7 +708,7 @@ const ShowcasePage = () => {
               {/* Chip Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Chip</h3>
+                  <h3 className={styles.showcase__componentName}>Chip (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/Chip
                   </span>
@@ -768,7 +768,7 @@ const ShowcasePage = () => {
               {/* RadioButtonSelector Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>RadioButtonSelector</h3>
+                  <h3 className={styles.showcase__componentName}>RadioButtonSelector (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/RadioButtonSelector
                   </span>
@@ -849,7 +849,7 @@ const RadioGroup = () => {
               {/* Dropdown Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Dropdown</h3>
+                  <h3 className={styles.showcase__componentName}>Dropdown (1.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/Dropdown
                   </span>
@@ -919,7 +919,7 @@ const shippingOptions: DropdownOption[] = [
               {/* TextField Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>TextField</h3>
+                  <h3 className={styles.showcase__componentName}>TextField (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/TextField
                   </span>
@@ -999,7 +999,7 @@ import TextField from '@/components/atoms/TextField/TextField';
               {/* CartHeader Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>CartHeader</h3>
+                  <h3 className={styles.showcase__componentName}>CartHeader (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/CartHeader
                   </span>
@@ -1087,7 +1087,7 @@ const AppHeader = () => {
               {/* PointsEarned Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>PointsEarned</h3>
+                  <h3 className={styles.showcase__componentName}>PointsEarned (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/PointsEarned
                   </span>
@@ -1162,7 +1162,7 @@ const OrderRewards = () => {
               {/* Checkbox Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Checkbox</h3>
+                  <h3 className={styles.showcase__componentName}>Checkbox (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/Checkbox
                   </span>
@@ -1243,7 +1243,7 @@ function SettingsForm() {
               {/* ReviewStars Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ReviewStars</h3>
+                  <h3 className={styles.showcase__componentName}>ReviewStars (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/ReviewStars
                   </span>
@@ -1359,7 +1359,7 @@ function ProductCard({ product }: {
               {/* ContentBlock Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ContentBlock</h3>
+                  <h3 className={styles.showcase__componentName}>ContentBlock (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/atoms/ContentBlock
                   </span>
@@ -1451,7 +1451,7 @@ function ProductDetails({ product }) {
             {/* LoyaltyProgressBar Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>LoyaltyProgressBar</h3>
+                <h3 className={styles.showcase__componentName}>LoyaltyProgressBar (1 Day)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/atoms/LoyaltyProgressBar
                 </span>
@@ -1551,7 +1551,7 @@ const tiers = [
             {/* Reward Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>Reward</h3>
+                <h3 className={styles.showcase__componentName}>Reward (1.5 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/atoms/Reward
                 </span>
@@ -1714,7 +1714,7 @@ return (
               {/* QuantitySelector Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>QuantitySelector</h3>
+                  <h3 className={styles.showcase__componentName}>QuantitySelector (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/QuantitySelector
                   </span>
@@ -1794,7 +1794,7 @@ const CartItem = ({ item }) => {
               {/* CategoryTile Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>CategoryTile</h3>
+                  <h3 className={styles.showcase__componentName}>CategoryTile (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/CategoryTile
                   </span>
@@ -1851,7 +1851,7 @@ const CategoryGrid = () => {
               {/* OrderStatus Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>OrderStatus</h3>
+                  <h3 className={styles.showcase__componentName}>OrderStatus (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/OrderStatus
                   </span>
@@ -1930,7 +1930,7 @@ const OrderTracker = () => {
               {/* LocationPicker Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>LocationPicker</h3>
+                  <h3 className={styles.showcase__componentName}>LocationPicker (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/LocationPicker
                   </span>
@@ -1989,7 +1989,7 @@ const StorePickup = () => {
               {/* ProductCard Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ProductCard</h3>
+                  <h3 className={styles.showcase__componentName}>ProductCard (1.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/ProductCard
                   </span>
@@ -2063,7 +2063,7 @@ const ShoppingCart = () => {
               {/* MiniProductCard Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>MiniProductCard</h3>
+                  <h3 className={styles.showcase__componentName}>MiniProductCard (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/MiniProductCard
                   </span>
@@ -2147,7 +2147,7 @@ const ProductGrid = () => {
               {/* ProductNamePrice Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ProductNamePrice</h3>
+                  <h3 className={styles.showcase__componentName}>ProductNamePrice (0.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/ProductNamePrice
                   </span>
@@ -2271,7 +2271,7 @@ function ProductDetail({ product }) {
               {/* ProductOptions Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ProductOptions</h3>
+                  <h3 className={styles.showcase__componentName}>ProductOptions (1.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/ProductOptions
                   </span>
@@ -2428,7 +2428,7 @@ const letterOptionsWithDisabled: DropdownOption[] = [
               {/* ProductCards Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ProductCards</h3>
+                  <h3 className={styles.showcase__componentName}>ProductCards (1.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/molecules/ProductCards
                   </span>
@@ -2609,7 +2609,7 @@ function ProductGrid({ products }) {
           {/* FulfillmentCard Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>FulfillmentCard</h3>
+              <h3 className={styles.showcase__componentName}>FulfillmentCard (1 Day)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/FulfillmentCard
               </span>
@@ -2689,7 +2689,7 @@ function ProductGrid({ products }) {
           {/* FeaturedContentBlock Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>FeaturedContentBlock</h3>
+              <h3 className={styles.showcase__componentName}>FeaturedContentBlock (1.5 Days)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/FeaturedContentBlock
               </span>
@@ -2768,7 +2768,7 @@ const features = [
           {/* ArticleCard Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>ArticleCard</h3>
+              <h3 className={styles.showcase__componentName}>ArticleCard (1 Day)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/ArticleCard
               </span>
@@ -2863,7 +2863,7 @@ const router = useRouter();
           {/* BadgeEarned Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>BadgeEarned</h3>
+              <h3 className={styles.showcase__componentName}>BadgeEarned (1 Day)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/BadgeEarned
               </span>
@@ -2951,7 +2951,7 @@ function AchievementNotification({ achievement }) {
           {/* PointsEarnedBadge Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>PointsEarnedBadge</h3>
+              <h3 className={styles.showcase__componentName}>PointsEarnedBadge (1 Day)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/PointsEarnedBadge
               </span>
@@ -3064,7 +3064,7 @@ type PointsEarnedBadgeState =
           {/* PointsEarnedCart Component */}
           <section className={styles.showcase__componentShowcase}>
             <div className={styles.showcase__componentHeader}>
-              <h3 className={styles.showcase__componentName}>PointsEarnedCart</h3>
+              <h3 className={styles.showcase__componentName}>PointsEarnedCart (0.5 Days)</h3>
               <span className={styles.showcase__componentPath}>
                 components/molecules/PointsEarnedCart
               </span>
@@ -3129,7 +3129,7 @@ interface PointsEarnedCartProps {
               {/* OrderSummary Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>OrderSummary</h3>
+                  <h3 className={styles.showcase__componentName}>OrderSummary (2 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/organisms/OrderSummary
                   </span>
@@ -3181,7 +3181,7 @@ function CheckoutPage() {
               {/* ProductDetails Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>ProductDetails</h3>
+                  <h3 className={styles.showcase__componentName}>ProductDetails (2 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/organisms/ProductDetails
                   </span>
@@ -3257,7 +3257,7 @@ function ProductDetailPage({ product }) {
               {/* RelatedProducts Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>RelatedProducts</h3>
+                  <h3 className={styles.showcase__componentName}>RelatedProducts (2 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/organisms/RelatedProducts
                   </span>
@@ -3415,7 +3415,7 @@ function ProductDetailPage({ product }) {
             {/* LoyaltyStatusCard Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>LoyaltyStatusCard</h3>
+                <h3 className={styles.showcase__componentName}>LoyaltyStatusCard (1.5 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/organisms/LoyaltyStatusCard
                 </span>
@@ -3532,7 +3532,7 @@ function LoyaltySection({ isLoading, user }) {
             {/* LoyaltyMainPanel Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>LoyaltyMainPanel</h3>
+                <h3 className={styles.showcase__componentName}>LoyaltyMainPanel (1.5 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/organisms/LoyaltyMainPanel
                 </span>
@@ -3630,7 +3630,7 @@ function MobileRewardsScreen({ loyaltyData }) {
             {/* RedeemPerk Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>RedeemPerk</h3>
+                <h3 className={styles.showcase__componentName}>RedeemPerk (1.5 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/organisms/RedeemPerk
                 </span>
@@ -3710,7 +3710,7 @@ function CustomReward({ reward, onDismiss }) {
             {/* RewardsDial Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>RewardsDial</h3>
+                <h3 className={styles.showcase__componentName}>RewardsDial (2 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/organisms/RewardsDial
                 </span>
@@ -3821,7 +3821,7 @@ function PointsDisplay({ isLoading, points, error }) {
             {/* PointsChart Component */}
             <div className={styles.showcase__componentShowcase}>
               <div className={styles.showcase__componentHeader}>
-                <h3 className={styles.showcase__componentName}>PointsChart</h3>
+                <h3 className={styles.showcase__componentName}>PointsChart (2 Days)</h3>
                 <span className={styles.showcase__componentPath}>
                   components/organisms/PointsChart
                 </span>
@@ -3956,7 +3956,7 @@ function LoyaltyDashboard({ userPoints, chartData }) {
               {/* Header Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Header</h3>
+                  <h3 className={styles.showcase__componentName}>Header (1.5 Days)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/templates/Header
                   </span>
@@ -4047,7 +4047,7 @@ function AppLayout() {
               {/* Footer Component */}
               <div className={styles.showcase__componentShowcase}>
                 <div className={styles.showcase__componentHeader}>
-                  <h3 className={styles.showcase__componentName}>Footer</h3>
+                  <h3 className={styles.showcase__componentName}>Footer (1 Day)</h3>
                   <span className={styles.showcase__componentPath}>
                     components/templates/Footer
                   </span>
